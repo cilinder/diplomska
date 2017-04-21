@@ -1,0 +1,18 @@
+\select@language {english}
+\select@language {slovene}
+\contentsline {chapter}{Povzetek}{}{chapter*.1}
+\select@language {english}
+\contentsline {chapter}{Abstract}{}{chapter*.2}
+\select@language {slovene}
+\contentsline {chapter}{\numberline {1}Uvod}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Osnovne Definicije}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Primeri kategorij}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Razli\IeC {\v c}ni tipi morfizmov}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Funktorji in naravne transformacije}{5}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Morfizmi med kategorijami}{5}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}Morfizmi med funktorji}{6}{subsection.1.4.2}
+\contentsline {chapter}{\numberline {2}Pomembne trditve}{7}{chapter.2}
+\contentsline {chapter}{\numberline {3}Yonedova lema}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Yonedova vlo\IeC {\v z}itev}{9}{section.3.1}
+\contentsline {section}{\numberline {3.2}Yonedova lema}{10}{section.3.2}
+\contentsline {section}{\numberline {3.3}Posledice Yonedove leme}{13}{section.3.3}

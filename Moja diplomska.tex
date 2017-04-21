@@ -1,0 +1,630 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage[utf8x]{inputenc}   % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
+\usepackage[slovene,english]{babel}    % naloži, med drugim, slovenske delilne vzorce
+\usepackage[pdftex]{graphicx}  % omogoča vlaganje slik različnih formatov
+\usepackage{fancyhdr}          % poskrbi, na primer, za glave strani
+\usepackage{comment}
+\usepackage[pdftex, colorlinks=true,
+						citecolor=black, filecolor=black, 
+						linkcolor=black, urlcolor=black,
+						pagebackref=false, 
+						pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
+\usepackage{color}       % dodal Solina
+\usepackage{soul}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\usepackage{tikz-cd} 
+\usetikzlibrary{babel} % this fixes problems with tikz-cd
+% http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	DIPLOMA INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ttitle}{Yonedova lema in njena uporaba}
+\newcommand{\ttitleEn}{Naslov EN}
+\newcommand{\tsubject}{\ttitle}
+\newcommand{\tsubjectEn}{\ttitleEn}
+\newcommand{\tauthor}{Jure Taslak}
+\newcommand{\tkeywords}{računalnik, računalnik, računalnik}
+\newcommand{\tkeywordsEn}{computer, computer, computer}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% naslovi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\newcommand{\autfont}{\Large}
+\newcommand{\titfont}{\LARGE\bf}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\setcounter{tocdepth}{1}	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konstrukti
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\theoremstyle{definition}
+\newtheorem{definicija}{Definicija}[chapter]
+ 
+\theoremstyle{plain}
+\newtheorem{izrek}{Izrek}[chapter]
+\newtheorem{trditev}{Trditev}[izrek]
+\newtheorem{lema}[izrek]{Lema}
+\newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
+
+\theoremstyle{definition}
+\newtheorem{primer}{Primer}[chapter]
+\newtheorem*{primer*}{Primer}
+
+\theoremstyle{remark}
+\newtheorem*{opomba}{Opomba}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Jure Taslak}
+\title{Yonedova lema in njena uporaba}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% pdfInfo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\pdfinfo{%
+    /Title    (\ttitle)
+    /Author   (\tauthor, damjan@cvetan.si)
+    /Subject  (\ttitleEn)
+    /Keywords (\tkeywordsEn)
+    /ModDate  (\pdfcreationdate)
+    /Trapped  /False
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\eqtext}[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{=}} % write text over =
+% could use a way to make the text smaller
+
+\newcommand{\cat}[1]{\textbf{#1}}
+\newcommand{\homset}[2]{\mathrm{Hom(#1,#2)}}
+
+\DeclareMathOperator{\Hom}{Hom}
+
+\newcommand{\set}[1]{\{#1\}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\selectlanguage{slovene}
+\frontmatter
+\setcounter{page}{1} %
+\renewcommand{\thepage}{}       % preprecimo težave s številkami strani v kazalu
+\newcommand{\sn}[1]{"`#1"'}                    % dodal Solina (slovenski narekovaji)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%naslovnica
+ \thispagestyle{empty}%
+   \begin{center}
+    {\large\sc Univerza v Ljubljani\\%
+      Fakulteta za računalništvo in informatiko}%
+    \vskip 10em%
+    {\autfont \tauthor\par}%
+    {\titfont \ttitle \par}%
+    {\vskip 3em \textsc{DIPLOMSKO DELO\\[5mm]
+    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ RAČUNALNIŠTVO IN MATEMATIKA}\par}%
+
+    \vfill\null%
+    {\large \textsc{Mentor}: prof.\ dr.  Andrej Bauer\par}%
+    {\vskip 2em \large Ljubljana, 2017 \par}%
+\end{center}
+% prazna stran
+%\clearemptydoublepage      % dodal Solina (izjava o licencah itd. se izpiše na hrbtni strani naslovnice)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%copyright stran
+\thispagestyle{empty}
+\vspace*{8cm}
+
+\noindent
+{\sc Copyright}. 
+Rezultati diplomske naloge so intelektualna lastnina avtorja in Fakultete za računalništvo in informatiko Univerze v Ljubljani.
+Za objavo in koriščenje rezultatov diplomske naloge je potrebno pisno privoljenje avtorja, Fakultete za računalništvo in informatiko ter mentorja.
+
+\begin{center}
+\mbox{}\vfill
+\emph{Besedilo je oblikovano z urejevalnikom besedil \LaTeX.}
+\end{center}
+% prazna stran
+\clearemptydoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% stran 3 med uvodnimi listi
+\thispagestyle{empty}
+\vspace*{4cm}
+
+\noindent
+Fakulteta za računalništvo in informatiko izdaja naslednjo nalogo:
+\medskip
+\begin{tabbing}
+\hspace{32mm}\= \hspace{6cm} \= \kill
+
+
+Tematika naloge:
+\end{tabbing}
+Besedilo teme diplomskega dela študent prepiše iz študijskega informacijskega sistema, kamor ga je vnesel mentor. V nekaj stavkih bo opisal, kaj pričakuje od kandidatovega diplomskega dela. Kaj so cilji, kakšne metode uporabiti, morda bo zapisal tudi ključno literaturo.
+\vspace{15mm}
+
+\vspace{2cm}
+
+% prazna stran
+\clearemptydoublepage
+
+% zahvala
+\thispagestyle{empty}\mbox{}\vfill\null\it%
+\noindent
+Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazite, da ne boste koga pozabili. Utegnil vam bo zameriti. Temu se da izogniti tako, da celotno zahvalo izpustite.
+\rm\normalfont
+
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% posvetilo, če sama zahvala ne zadošča :-)
+\thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
+
+\normalfont\end{minipage}
+
+% prazna stran
+\clearemptydoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% kazalo
+\pagestyle{empty}
+\def\thepage{}% preprecimo tezave s stevilkami strani v kazalu
+\tableofcontents{}
+
+% prazna stran
+\clearemptydoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% povzetek
+\addcontentsline{toc}{chapter}{Povzetek}
+\chapter*{Povzetek}
+
+\noindent\textbf{Naslov:} \ttitle
+\bigskip
+
+\noindent\textbf{Avtor:} \tauthor
+\bigskip
+
+%\noindent\textbf{Povzetek:} 
+\noindent V vzorcu je predstavljen postopek priprave diplomskega dela z uporabo okolja \LaTeX. Vaš povzetek mora sicer vsebovati približno 100 besed, ta tukaj je odločno prekratek.
+Dober povzetek vključuje: (1) kratek opis obravnavanega problema, (2) kratek opis vašega pristopa za reševanje tega problema in (3) (najbolj uspešen) rezultat ali prispevek magistrske naloge.
+
+\bigskip
+
+\noindent\textbf{Ključne besede:} \tkeywords.
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% abstract
+\selectlanguage{english}
+\addcontentsline{toc}{chapter}{Abstract}
+\chapter*{Abstract}
+
+\noindent\textbf{Title:} \ttitleEn
+\bigskip
+
+\noindent\textbf{Author:} \tauthor
+\bigskip
+
+%\noindent\textbf{Abstract:} 
+\noindent This sample document presents an approach to typesetting your BSc thesis using \LaTeX. 
+A proper abstract should contain around 100 words which makes this one way too short.
+\bigskip
+
+\noindent\textbf{Keywords:} \tkeywordsEn.
+\selectlanguage{slovene}
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\chapter{Uvod}
+Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko?
+
+\section{Osnovne Definicije}
+
+\begin{definicija}
+$Kategorija$ sestoji iz naslednjih stvari:
+\begin{itemize}
+\item \textit{Objektov} : A,B,C,X,Y,...
+\item \textit{Puščic} : f,g,h,...
+\item Za vsako puščico imamo podana dva objekta: $$dom(f), \quad cod(f)$$
+ki jima pravimo domena in kodomena puščice f. Pišemo:
+$$f\colon A \to B$$
+kjer sta A = dom(f) in B = cod(f).
+Pravimo da f gre od A do B.
+\item Za vsaki puščici $f \colon A \to B$ in $g \colon B \to C$, torej taki da velja cod(f) = dom(g), obstaja puščica $g\circ A \to C$, ki ji pravimo \textit{kompozitum} f in g
+
+\[
+\begin{tikzcd}
+A \arrow[r, "f"] \arrow[rd, "g \circ f"']  & B  \arrow[d, "g"] \\
+				& C
+\end{tikzcd}
+\] 
+
+\item Za vsak objekt A obstaja puščica
+$$1_A : A \to A$$
+ki ji pravimo \textit{identitetna puščica} na A.		
+\end{itemize}
+Za vse te podatke morata veljati naslednja dva pravila:
+\begin{itemize}
+\item Asociativnost: Za vsake $f : A \to B, g : B \to C, h : C \to D$ velja
+$$h \circ (g \circ f) = (h \circ g) \circ f$$
+\item Enota: Za vsak $f : A \to B$ velja
+$$f \circ 1_A = f = 1_B \circ f$$
+\end{itemize}
+\end{definicija}
+
+Kategorija je karkoli, kar zadošča tem pogojem
+
+\section{Primeri kategorij}
+
+\begin{primer}
+Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo je kategorija množic in funkcij med njimi. Označimo ga z \textbf{Sets}. Za kategorijo se vedno prvo vprašamo: kaj so objekti in kaj so puščice. Pri \textbf{Sets} so objekti množice in puščice funkcije.
+Izpolnjena morata biti pogoja asociativnosti in enote.
+Kompozitum puščic je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
+Vlogo identitetne puščice igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ def. kot $id_A(x) = x$ za vsak element $x \in A$.
+\end{primer}
+
+\begin{primer}
+Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \textbf{Sets}, in sicer $\textbf{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa puščice. To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identitetno puščico. To seveda imamo, saj bo to podedovana identitetna funkcija iz \textbf{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res puščica v tej kategoriji.
+\end{primer}
+
+\begin{primer}
+Kaj bi bil primer "majhne" kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identitetni morfizem mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 puščicami res kategorija? Za vsak objekt (ki jih ni) obstaja identitetni morfizem in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in en identitetni morfizem. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in eno neidentitetno puščico med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
+
+\begin{equation}
+\begin{tikzcd}
+\bullet \arrow[loop right] &&&  \arrow[loop left] \bullet \arrow[r] & \bullet \arrow[loop right]
+\end{tikzcd}
+\end{equation}
+Identitetnih morfizmov se ponavadi ne riše. Kategorija $\cat{3}$ bi izgledala takole.
+
+\begin{equation}
+\begin{tikzcd}
+\bullet \arrow[r] \arrow[rd] & \bullet \arrow[d] \\
+& \bullet
+\end{tikzcd}
+\end{equation}
+
+\end{primer}
+
+\begin{primer}
+Naj bo $(P, \leq)$ delno urejena množica. Ali je to tudi kategorija? Najprej se moramo vprašati, kaj so objekti v tej kategoriji in kaj so puščice.
+Imamo množio elementov $p,q \in P$ med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente P in podamo puščico med p in q natanko takrat ko v P velja $p \leq q$.
+Torej: 
+\begin{itemize}
+\item \textbf{Objekti:} Elementi množice P
+\item \textbf{Puščice:} Puščica $p \rightarrow q \Leftrightarrow p \leq q$
+\end{itemize}
+Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
+
+\begin{enumerate}[label=(\alph*)]
+\item Za vsak objekt $p \in P$ potrebujemo puščico $1_p : p \to p$. Ali obstaja taka puščica? Seveda, saj za vsak p velja $p \leq p$, kar nam da želeno identitetno puščico.
+\item Za vsaki dve puščici $p \to q$ in $q \to r$ mora obstajati kompozitum $p \to r$. Ali obstaja ta kompozitum? Seveda, saj je relacija $\leq$ tranzitivna in iz $p \leq q$ in $q \leq r$ sledi $p \leq r$, kar nam da želeni kompozitum.
+\end{enumerate}
+Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije v nekem smislu posplošene delno urejene množice.
+\end{primer}
+
+
+\section{Različni tipi morfizmov}
+Uvedemo prvo abstraktno definicijo v jeziku teorije kategorij, nečesa kar je že poznano iz drugih področij matematike.
+
+\begin{definicija} Naj bo \cat{C} poljubna kategorija. Puščici $f : A \to B$ pravimo \textit{izomorfizem} (ali izo na kratko), če obstaja taka puščica $g : B \to A$, da velja
+$$g \circ f = 1_A \ in \ f \circ g = 1_B$$
+Puščici g pravimo \textit{inverz} puščice f
+\end{definicija}
+Velja:
+
+\begin{trditev} Inverzi, ko obstajajo, so enolični.
+\end{trditev}
+\begin{dokaz}
+Naj bo $f : A \to B$ izomorfizem in naj bosta $g,h: B \to A$ njegova inveza. Potem velja $g = 1_A \circ g = h \circ f \circ g = h \circ 1_B = h$
+\end{dokaz}
+
+Zaradi česar za inverz od f pišemo $f^{-1}$
+
+\begin{primer*}
+Izomorfizmi v kategoriji $\cat{Sets}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar ostaja enoličen inverz te funkcije, ki se komponira v identitetno funkcijo. 
+\end{primer*}
+
+\begin{primer*}
+Vsaka identitetni morfizem je izomorfizem, nima pa nujno kategorija drugih morfizmov kot identitetnega. Na primer kategorija $\cat{2}$ ima samo en neidentitetni morfizem, ki pa nima inverza torej ni izomorfizem.
+\end{primer*}
+
+Primer z funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funkcija bijektivna ravno takrat, ko je surjektivna ter injektivna. Vprašamo se, kaj bi pa bili karakterizaciji teh dveh lastnosti v jeziku teorije kategorij. Izkaže se, da pridemo do malenkost bolj splošnih pojmov, ki jih predstavimo v naslednjih dveh definicijah.
+
+\begin{definicija}
+\underline{Epimorfizem} je tak morfizem $e : E \to A$, da za vsaka morfizma $f,g : A \to B$ iz $f \circ e = g \circ e$ sledi $f = g$. Epimorfizmu rečemo tudi epi na kratko.
+\end{definicija}
+
+\begin{definicija}
+\underline{Monomorfizem} je tak morfizem $m : B \to M$, da za vsaka morfizma $f,g : A \to B$ iz $m \circ f = m \circ g$ sledi $f = g$. Monomorfizmu rečemo tudi mono na kratko.
+\end{definicija}
+
+\begin{primer*}
+Preverimo, da mono in epi morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti f sledi $g(x) = h(x)$ za vsak x, torej g = h. Privzemimo sedaj, da je f monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice 1 v A predstavljajo ravno elemente množice A. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je f res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je f res epi. Naj bo sedaj f epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjim predpisom.
+\end{primer*}
+
+\section{Funktorji in naravne transformacije}
+
+\subsection{Morfizmi med kategorijami}
+Sedaj imamo nekaj definicij, ki veljajo v splošnih kategorijah, a apliciramo jih lahko samo na vsaki posamezni. Kar bi radi storili, je da prehajamo iz ene kategorije v drugo in pogledamo, če je kak problem lažje rešljiv v kaki drugi kategoriji in to rešitev bi potem prevedli na kategorijo, kjer nas problem bolj zanima.
+Zato uvedemo naslednjo definicijo.
+\begin{definicija}
+Naj bosta $\cat{C} \ in \ \cat{D}$ poljubni kategoriji. \textit{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C} \ in \ \cat{D}$ je par morfizmov
+$$F_0 : \cat{C}_0 \to \cat{D}_0$$
+med objekti in
+$$F_1 : \cat{C}_1 \to \cat{D}_1$$
+med puščicami, tako da veljajo naslednje lastnosti:
+\begin{enumerate}
+\item $F(f : A \to B) = F(f) : F(A) \to F(B)$
+\item $F(1_A) = 1_{F(A)}$
+\item Za puščici $f : A \to B, \ g : B \to C$ mora veljati:
+$$F(g \circ f) = F(g) \circ F(f)$$
+\end{enumerate}
+\end{definicija}
+
+\subsection{Morfizmi med funktorji}
+Radi bi nadaljevali temo posploševanja morfizmov in ker smo nazadnje definirali morfizme med kategorijami, se naravno pojavi vprašanje, ali lahko definiramo morfizme med temi morfizmi. Odgovor je pozitiven in pridemo do naslednje definicije.
+
+\begin{definicija}
+Naj bosta $\cat{C}$ in $\cat{D}$ poljubni kategoriji in naj bosta $F,G : \cat{C} \to \cat{D}$ funktorja med tema kategorijama. \\
+\textit{Naravna transformacija} $\vartheta : F \Rightarrow G$ iz F v G, je družina puščic 
+$$(\vartheta_C : FC \to GC)_{C \in \cat{C}}$$
+tako, da za vsako puščico $f : C \to D$ naslednji diagram:
+
+\begin{equation}
+\begin{tikzcd}[sep=huge]
+FC \arrow[r, "\vartheta_C"] \arrow[d, "F(f)"'] & GC \arrow[d, "G(f)"] \\
+FD \arrow[r, "\vartheta_D"'] & GD
+\end{tikzcd}
+\end{equation}
+komutira
+\end{definicija}
+
+
+\chapter{Pomembne trditve}
+
+\begin{lema} Če je funktor G poln in zvest, potem ohranja vse limite.
+\end{lema}
+\begin{dokaz}
+
+\end{dokaz} 
+ 
+\begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
+\end{trditev}
+\begin{dokaz}
+Naj bo $D: \bf{J} \to \bf{C}$ diagram oblike D v {\bf C} in naj bo $$\lim_{\xleftarrow[j \in \bf{J}]{}}D_j$$ limita za D, oz
+\dashuline{$\Hom(C,lim D_j)$ je limita za $\Hom(C,-) \circ D$} \\
+\\
+ kjer je $Hom(C,-)\circ D : \bf{J} \to \bf{C}$ diagram v {\bf Sets}
+\end{dokaz}
+
+
+\begin{definicija}
+Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$ z puščico $true: 1 \to \Omega$
+\end{definicija}
+
+
+\chapter{Yonedova lema}
+
+\section{Yonedova vložitev}
+
+Naj bo $\mathbf{C}$ lokalno majhna kategorija.
+Potem vemo, da za vsak objekt $C \in \mathbf{C}$ obstaja kovariantni predstavljivi funktor
+$$Hom_{\mathbf{C}}(C, -):\mathbf{C} \to \mathbf{Sets}$$
+Ker lahko ta objekt C izbiramo poljubno imamo v resnici funktor 
+$$k(C) = Hom(C, \_)$$
+Opravka imamo v bistvu z kontravariantnim funktorjem 
+$$k : \mathbf{C}^{op} \to \mathbf{Sets}^{\mathbf{C}}$$
+
+Saj za 
+
+\begin{definicija} {\it Yonedova vložitev} je funktor $y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$ \\  za $C \in \bf{C}$ je $$y(C) := Hom_{\bf{C}}(-, C) : \bf{C}^{op} \to \bf{Sets}$$ in za puščice $f : C \to D$
+$$y(f) := Hom(-,f) : Hom(-,C) \to Hom(-,D)$$
+\end{definicija}
+
+Kasneje bomo pokazali, da je funktor y res vložitev. Funktorju pravimo {\it vložitev}, če je zvest poln in injektiven na objektih.
+
+\section{Yonedova lema}
+
+\begin{izrek}[Yonedova lema]
+Naj bo {\bf C} lokalno majhna kategorija. Potem za vsak objekt $C \in \bf{C}$ in funktor $F : \textbf{C}^{op} \to \textbf{Sets}$ velja
+$$Hom(yC,F) \cong FC$$
+In ta izomorfizem je naraven tako v C kot v F, kar pomeni, da za $f : C \to D$ naslednji diagram
+
+\begin{equation} \label{diag1}
+\begin{tikzcd}[row sep=huge]
+Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "\text{Hom(yf,F)}"'] & FC \arrow[d, "F(f)"] \\
+Hom(yD,F) \arrow[r, "\cong"'] & FD
+\end{tikzcd}
+\end{equation}
+
+
+komutira ter za naravno transformacijo $\varphi : F \Rightarrow G$ naslednji diagram
+
+\begin{equation} \label{diag2}
+\begin{tikzcd}[row sep=huge]
+Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "\text{Hom(yC,}\varphi\text{)}"'] & FC \arrow[d, "\varphi_C"] \\
+Hom(yC,G) \arrow[r, "\cong"']	&	GC
+\end{tikzcd}
+\end{equation}
+komutira. \\
+\textbf{Opomba:} $Hom(yC,F)$ je množica naravnih transformacij med funktorjema $yC,F : \bf{C} \to \bf{Sets}$, oz. $Hom(yC,F) = Hom_{\bf{Sets}^{\textbf{C}^{op}}}(yC,F) = Nat(yC,F)$.
+
+\end{izrek}
+\begin{dokaz}
+Poglejmo, kaj mora veljati za neko naravno transformacijo \\ $\vartheta : yC \Rightarrow F$, ki je v bistvu družina puščic $(\vartheta_D : yC(D) \to F(D))_{D \in \bf{C}}$. Te puščice morajo izpolnjevati naturalnostni pogoj, da za vsako puščico $f : D \to C$
+
+\[ \begin{tikzcd}[row sep=huge]
+Hom(C,C) \arrow[r, "\vartheta_C"] \arrow[d, "\text{Hom(f,C)}"'] & FC \arrow[d, "\text{F(f)}"] \\
+Hom(D,C) \arrow[r, "\vartheta_D"] & FD
+\end{tikzcd} \]
+komutira. Torej mora veljati 
+$$(F(f) \circ \vartheta_C) (g) = (\vartheta_D \circ Hom(f,C)) (g)$$
+za vsak $g \in Hom(C,C)$. En tak g je identitetna puščica na C, oz. $1_C : C \to C$. Torej mora veljati enakost:
+
+\begin{align} \label{eq1}
+\begin{split}
+\underline{F(f) \circ \vartheta_C(1_C)}& = \vartheta_D \circ Hom(f,C)(1_C) = \\
+\vartheta_D \circ Hom(f,C)(1_C)& = \vartheta_D \circ ( \_ \circ f )(1_C) =
+\vartheta_D \circ ( 1_C \circ f) = \underline{\vartheta_D(f)}
+\end{split}
+\end{align}
+\\
+Torej vidimo, da je vrednost komponente za $\vartheta$ v D določena že s tem, kam slika $\vartheta_C$ puščico $1_C$. \\
+Naj bo z $\alpha_{C,F} : Hom(yC,F) \to FC$ označen želeni izomorfizem. \\
+Definiramo torej za naravno transformacijo $\vartheta \in Hom(yC,F)$
+\begin{equation}
+\alpha_{C,F}(\vartheta) := \vartheta_C(1_C)
+\end{equation}
+
+Označimo:
+\begin{equation}
+\boxed{\alpha_{C,F}(\vartheta) = \widehat{\vartheta}}
+\end{equation} 
+
+In za vsak element $a \in FC$ definirajmo naravno transformacijo $\vartheta_a \in Hom(yC,F)$ po komponentah, in sicer:
+\begin{align}
+&(\vartheta_a)_D : yC(D) \to F(D) \\
+&(\vartheta_a)_D(f : D \to C) := F(f)(a)
+\end{align}
+
+Označimo:
+\begin{equation}
+\boxed{\alpha^{-1}_{C,F}(a) = \widetilde{a}}
+\end{equation}
+
+Sedaj je potrebno preveriti, da tako definirana preslikava res ustreza pogojem izreka. \\
+\\
+Najprej preverimo, da sta si predpisa vzajemno inverzna. \\
+Torej, da za vsak $\vartheta \in Hom(yC,F)$ velja: 
+$$\widetilde{\widehat{\vartheta}} = \vartheta$$
+in za vsak $a \in FC$ velja
+$$\widehat{\widetilde{a}} = a$$
+\\ 1.)
+$\widehat{\vartheta} = \vartheta_C(1_C) \in FC$. \\
+Potem je $\widetilde{\widehat{\vartheta}} = \eta_{\widehat{\vartheta}} \in Hom(yC,F)$. Poglejmo kako ta naravna transformacija deluje na puščicah. Naj bo $f : D \to C$
+\begin{align*}
+(\eta_{\widehat{\vartheta}})_D : yC(&D) \to FD \\
+&f \xmapsto{def} Ff(\widehat{\vartheta}) \\
+\end{align*}
+
+In velja
+\begin{align*}
+&Ff(\widehat{\vartheta}) = Ff(\vartheta_C(1_C)) = \vartheta_D(f) \\
+\implies& \forall f \in \textbf{C}_1  : (\eta_{\widehat{\vartheta}})_D(f) = \vartheta_D(f) \\
+\implies& \forall D \in \textbf{C} : (\eta_{\widehat{\vartheta}})_D = \vartheta_D \\
+\implies& \eta_{\widehat{\vartheta}} = \vartheta
+\implies \underline{\widetilde{\widehat{\vartheta}} = \vartheta}
+\end{align*}
+2.) 
+
+$$\widetilde{a} = \vartheta_a : yC \Rightarrow F$$
+In velja
+\begin{align*}
+(\vartheta_a)_D : yC(D) \to FD \\
+f \mapsto F(f)(a) \\
+\end{align*}
+Torej
+$$\widehat{\widetilde{a}} = (\vartheta_a)_C(1_C) = F(1_C)(a) = 1_{F(C)}(a) = a$$
+\\
+Sedaj moramo še pokazati, da sta zadoščena naturalnostna pogoja: \\
+Naj bo $f : C \to D$ in naj bo $\vartheta \in Hom(yC,F)$. \\
+Pokazali bi radi:
+\begin{equation}
+Ff \circ \alpha_{C,F}(\vartheta) = \alpha_{D,F} \circ Hom(yf,F)(\vartheta)
+\end{equation}
+Velja pa:
+
+$$Ff \circ \alpha_{C,F}(\vartheta) = \underline{Ff(\vartheta_C(1_C))}$$
+
+In po drugi strani:
+\begin{align*}
+\alpha_{D,F} \circ Hom(yf,F)(\vartheta) = \alpha_{D,F}(\vartheta \circ yf) = \\
+(\vartheta \circ yf)_D (1_D) = \vartheta_D \circ yf_D(1_D) = \\
+\vartheta_D(f \circ 1_D) = \underline{\vartheta_D(f)}
+\end{align*}
+Enakost \ref{eq1} pa nam pove ravno da je $Ff(\vartheta_C(1_C)) = \vartheta_D(f)$
+To pa pomeni ravno, da diagram \ref{diag1} komutira.
+
+Kaj pa drugi diagram. Naj bo $\varphi : F \Rightarrow G$ naravna transformacija med funktorjema $F,G : \cat{C}^{op} \to \cat{Sets}$. \\
+Veljati mora enakost:
+$$\varphi_C \circ \alpha_{C,F}(\vartheta) = \alpha_{C,G} \circ Hom(yC,\varphi)(\vartheta)$$
+Imamo:
+$$\varphi_C \circ \alpha_{C,F}(\vartheta) = \underline{\varphi_C(\vartheta_C(1_C))}$$
+In za desno stran:
+$$\alpha_{C,G} \circ Hom(yC,\varphi)(\vartheta) = \alpha_{C,G}(\varphi \circ \vartheta) = 
+(\varphi \circ \vartheta)_C(1_C) = \varphi_C \circ \vartheta_C(1_C) = \underline{\varphi_C(\vartheta_C(1_C)}$$
+Torej diagram \ref{diag2} tudi komutira.
+
+\end{dokaz}
+
+\section{Posledice Yonedove leme}
+
+Takoj dobimo posledico, ki upraviči poimenovanje funktorja y vložitev
+\begin{trditev} Funktor $y : \cat{C} \to \cat{Sets}^{\cat{C}^{op}}$ je poln in zvest.
+\end{trditev}
+\begin{dokaz}
+
+\end{dokaz}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
