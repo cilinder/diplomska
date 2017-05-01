@@ -59,7 +59,7 @@
 \newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
 
 \theoremstyle{definition}
-\newtheorem{primer}{Primer}[chapter]
+\newtheorem{primer}{Primer}[section]
 \newtheorem*{primer*}{Primer}
 
 \theoremstyle{remark}
@@ -293,7 +293,7 @@ Vlogo identitetne puščice igra identitetna funkcija, ki jo lahko vedno definir
 \end{primer}
 
 \begin{primer}
-Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \textbf{Sets}, in sicer $\textbf{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa puščice. To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identitetno puščico. To seveda imamo, saj bo to podedovana identitetna funkcija iz \textbf{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res puščica v tej kategoriji.
+Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \textbf{Sets}, in sicer $\textbf{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa puščice. To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identitetno puščico. To seveda imamo, saj bo to podedovana identitetna funkcija iz \textbf{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res puščica v tej kategoriji. Tu imamo tudi primer kategorije, katere objekti so množice z dodatno strukturo ter so morfizmi objektov funkcije, ki ohranjajo strukturo teh množic.
 \end{primer}
 
 \begin{primer}
@@ -315,6 +315,37 @@ Identitetnih morfizmov se ponavadi ne riše. Kategorija $\cat{3}$ bi izgledala t
 
 \end{primer}
 
+
+\begin{primer}
+Delno urejena množica ali poset je množica opremljena z relacijo, ki se jo ponavadi označuje z $\leq$ in je:
+\begin{itemize}
+\item Refleksivna
+\item Antisimetrična
+\item Tranzitivna
+\end{itemize}
+Morfizem delno urejenih množic P in Q je \textit{monotona} funkcija
+$$m : P \to Q$$
+kar pomeni, da za vsaka $x,y \in P$ za katera je $x \leq y$, potem velja $m(x) \leq m(y)$. Ali je to kategorija? Izpolnjevati mora aksiome za kategorij, torej ali imamo identitetne morfizme za vsako delno urejeno množico P? Naravni kandidat je identitetna funkcija $1_P : P \to P$, ki je monotona, say iz $x \leq y$ sledi $x \leq y$.
+Kompozitum dveh monotonih funkcij $m : P \to Q$ in $n : P \to Q$ je tudi monotona funkcija, saj za $x \leq y$ zaradi monotonosti $m$ velja $m(x) \leq m(y)$ in zaradi monotonosti $n$ velja $n(m(x)) \leq n(m(y))$. Imamo torej kategorijo, ki jo označujemo s $\cat{Pos}$, delno urejenih množic in monotonih funkcij.
+\end{primer}
+
+\begin{primer}
+Monoid $(M, \bullet)$ je množica opremljena z binarno operacijo množenja, za katero drži
+\begin{itemize}
+\item Zaprtost: $\forall x,y \in M : x \bullet y \in M$
+\item Asociativnost: $\forall x,y,z \in M : x \bullet ( y \bullet z ) = ( x \bullet y ) \bullet z$
+\item Obstoj enote: obstaja tak $e \in M$ tako da $\forall x \in M : e \bullet x = x \bullet e = x$
+\end{itemize}
+Homomorfizmi monoidov so funkcije $f : M \to N$ za katere velja
+\begin{enumerate}
+\item $f(e_M) = e_N$
+\item $f(x \bullet y) = f(x) \bullet f(y)$
+\end{enumerate}
+Identitetni homorfizem $1_M : M \to M$ bo predstavljal identitetni morfizem v tej kategoriji. Kompozitum dveh homorfizmov je spet homomorfizem, torej imamo novo kategorijo monoidov in homorfizmov med njimi, ki jo označujemo s $\cat{Mon}$.
+
+
+\end{primer}
+
 \begin{primer}
 Naj bo $(P, \leq)$ delno urejena množica. Ali je to tudi kategorija? Najprej se moramo vprašati, kaj so objekti v tej kategoriji in kaj so puščice.
 Imamo množio elementov $p,q \in P$ med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente P in podamo puščico med p in q natanko takrat ko v P velja $p \leq q$.
@@ -331,6 +362,7 @@ Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
 \end{enumerate}
 Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije v nekem smislu posplošene delno urejene množice.
 \end{primer}
+
 
 
 \section{Različni tipi morfizmov}
@@ -368,13 +400,74 @@ Primer z funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funk
 \underline{Monomorfizem} je tak morfizem $m : B \to M$, da za vsaka morfizma $f,g : A \to B$ iz $m \circ f = m \circ g$ sledi $f = g$. Monomorfizmu rečemo tudi mono na kratko.
 \end{definicija}
 
-\begin{primer*}
-Preverimo, da mono in epi morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti f sledi $g(x) = h(x)$ za vsak x, torej g = h. Privzemimo sedaj, da je f monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice 1 v A predstavljajo ravno elemente množice A. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je f res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je f res epi. Naj bo sedaj f epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjim predpisom.
-\end{primer*}
+\begin{primer}
+Preverimo, da mono in epi morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti f sledi $g(x) = h(x)$ za vsak x, torej g = h. Privzemimo sedaj, da je f monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice 1 v A predstavljajo ravno elemente množice A. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je f res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je f res epi. Naj bo sedaj f epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
+\[
+g(x)=
+\begin{cases}
+1 \quad\text{;}\quad x \in \mathrm{Im}f \\
+0 \quad\text{;}\quad x \notin \mathrm{Im}f \\
+\end{cases}
+\]
+$$ h(x) = 1 \quad \forall x \in B $$
+Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $g \circ f(x) = g(f(x)) = 1$ za vsak $x \in A$, saj je $f(x) \in \mathrm{Im}f$. Po drugi strani pa je tudi $h \circ f(x) = h(f(x)) = 1$. Torej je za vsak $x \in A$, $g \circ f(x) = h \circ f(x)$, oziroma $g\circ f = h\circ f$ in ker je f epimorfizem sledi $g = h$, kar pa pomeni, da je za vsak $y \in B$ nek tak $x \in A$, da z f lahko pridemo do njega, kar pa pomeni ravno, da je f surjektivna.
+\end{primer}
+
+Ta primer bi nam dal misliti, da so epi in mono-morfizmi vedno, kadar imamo opravka z objekti, ki predstavljajo množice, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
+
+\begin{primer}
+Naj bo $f : \mathbb{N} \to \mathbb{Z}$ homomorfizem monoidov, definiran s predpisom $f(n) = n \quad \forall n \in \mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. Veljajo torej zveze
+$$ g \circ f(1) = h \circ f(1) \implies g(1) = h(1)$$
+
+$$
+g(n) = g(1+\ldots + 1) = g(1) + \ldots + g(1) = ng(1) = n h(1) = h(n)
+$$
+
+$$ g(-n) = -g(n) = -h(n) = h(-n)$$
+Če vse to pogledamo skupaj, vidimo da velja
+$$g(k) = h(k) \quad \forall k \in \mathbb{Z}$$
+kar pa pomeni $g = h$. Torej je f epimorfizem. Način kako smo prišli do tega primera nam da misliti, da mogoče kar je potrebno, za to da je homorfizem monoidov epi, da je surjektiven na generatorje kodomene.
+Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga lahko pri kompoziciji krajšamo z desne: $fe = ge \implies f=g$. Obratno, če je morfizem $m$ mono, pomeni, da ga lahko krajšamo z leve: $mf = mg \implies f = g$.
+
+\end{primer}
+
+
+\section{Konstrukcije novih kategorij}
+
+% TODO: ta primer bi bilo boljše prestaviti po uvedbi definicije funktorja in kategorije Cat
+\begin{primer}
+Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \textit{Produkt} kategorij $\cat{C} \times \cat{D}$ je prav tako kategorija, z objekti oblike $(C,D)$, kjer sta $C \in \cat{C}$ in $D \in \cat{D}$ in morfizmi oblike $(f,g) : (C,D) \to (C',D')$, kjer je $f : C \to C'$ morfizem v $\cat{C}$ ter $g : D \to D'$ morfizem v $\cat{D}$. Identitene morfizme ter kompozitume definiramo po komponentah, torej
+\begin{equation*}
+1_{(C,D)} = (1_C,1_D)
+\end{equation*}
+\begin{equation*}
+(f,g) \circ (f',g') = (f \circ f', g \circ g')
+\end{equation*}
+za $C \in \cat{C}$, $D \in \cat{D}$ ter $f,f'$ puščici v $\cat{C}$ in $g,g'$ puščici v $\cat{D}$.
+Za produkt $\cat{C} \times \cat{D}$ imamo dva \textit{projekcijska funktorja} 
+\[
+\begin{tikzcd}
+\cat{C} & \arrow[l, "\pi_{\cat{C}}"'] \cat{C} \times \cat{D} \arrow[r, "\pi_{\cat{D}}"] & \cat{D}
+\end{tikzcd}
+\]
+definirana kot $\pi_{\cat{C}}(C,D) = C$ in $\pi_{\cat{D}}(C,D) = D$ ter na morfizmih $\pi_{\cat{C}}(f,g) = f$ in $\pi_{\cat{D}}(f,g) = g$.
+\end{primer}
+
+\begin{primer}
+\textit{Obratna} ali \textit{obratna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : C \to D$ v $\cat{C}$ imamo morfizem $f : D \to C$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitetni morfizmi ostanejo isti
+\end{primer}
+
 
 \section{Funktorji in naravne transformacije}
 
 \subsection{Morfizmi med kategorijami}
+
+
+\begin{primer}
+Neuradni moto teorije kategorij bi se lahko glasil \textit{puščice so bistvene}
+kar bi pomenilo, da nas ponavadi ne zanima toliko kaj točno so objekti v neki specifični kategoriji temveč kaj se dogaja s puščicami med njimi.
+\end{primer}
+
 Sedaj imamo nekaj definicij, ki veljajo v splošnih kategorijah, a apliciramo jih lahko samo na vsaki posamezni. Kar bi radi storili, je da prehajamo iz ene kategorije v drugo in pogledamo, če je kak problem lažje rešljiv v kaki drugi kategoriji in to rešitev bi potem prevedli na kategorijo, kjer nas problem bolj zanima.
 Zato uvedemo naslednjo definicijo.
 \begin{definicija}
