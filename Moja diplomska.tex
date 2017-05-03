@@ -94,7 +94,7 @@
 
 \DeclareMathOperator{\Hom}{Hom}
 
-\newcommand{\set}[1]{\{#1\}}
+\newcommand{\set}[1]{\{\,#1\,\}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -363,7 +363,9 @@ Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
 Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije v nekem smislu posplošene delno urejene množice.
 \end{primer}
 
-
+\begin{primer}
+Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi učasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identitetni morfizem za nek topološki prostor $(X, \mathcal{T})$ je identietna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Kompozitum dveh preslikav je spet preslikava. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
+\end{primer}
 
 \section{Različni tipi morfizmov}
 Uvedemo prvo abstraktno definicijo v jeziku teorije kategorij, nečesa kar je že poznano iz drugih področij matematike.
@@ -454,8 +456,139 @@ definirana kot $\pi_{\cat{C}}(C,D) = C$ in $\pi_{\cat{D}}(C,D) = D$ ter na morfi
 \end{primer}
 
 \begin{primer}
-\textit{Obratna} ali \textit{obratna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : C \to D$ v $\cat{C}$ imamo morfizem $f : D \to C$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitetni morfizmi ostanejo isti
+\textit{Obratna} ali \textit{dualna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : A \to B$ v $\cat{C}$ imamo morfizem $f : B \to A$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitetni morfizmi ostanejo isti, kaj se pa zgodi z kompozitumi. Objekte in morfizme v obratni kategoriji se ponavadi označuje kar z enakimi oznakami, a da bodo stvari bolj jasne uvedimo za trenutek naslednje oznake: Za morfizem $f : A \to B$ v $\cat{C}$ pišimo $f^* : B^* \to A^*$ v $\cat{C}^{op}$. Tako dobimo zvezo med operacijami v $\cat{C}$ in $\cat{C}^{op}$.
+\begin{align*}
+(1_C)^* &= 1_{C^*} \\
+(g \circ f)* &= f^* \circ g^*
+\end{align*}
+Torej diagram v $\cat{C}$
+\[ \begin{tikzcd}
+A \arrow[r, "f"] \arrow[rd, "g \circ f"'] & B \arrow[d, "g"] \\
+&	C \\
+\end{tikzcd} \]
+v $\cat{C}^{op}$ zgleda kot
+
+\[ \begin{tikzcd}
+A^* & \arrow[l, "f^*"'] B^* \\
+& \arrow[lu, "f^* \circ g^*"] C^* \arrow[u, "g^*"']
+\end{tikzcd} \]
+
+Dualna kategorija nam predstavi pojem dualnosti, ki se izkaže za zelo pomembnega v študiju teorije kategorij, saj nam omogoča, da razne konstrukcije prenesemo v njihovo dualno obliko in tako iz eno konstrukcije dobimo dve. 
+\begin{primer*}
+Tako dualnost smo že srečali, ko smo upeljali pojma epimorfizma ter monomorfizma. Naj bosta $e : E \to A$ epimorfizem in $m : D \to M$ monomorfizem v kategoriji $\cat{C}$. Če postavimo njuna diagrama enega ob drugega
+
+\[ \begin{tikzcd}
+E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "f'"'] & B & & C \ar[r, shift left, "g"] \ar[r, shift right, "g'"'] & D \ar[r, "m"] & M
+\end{tikzcd} \]
+postane jasno, da je en samo dualna verzija drugega, ali z drugimi besedami, epimorfizem je monomorfizem v dualni kategoriji. Ta ideja 
+
+
+\end{primer*}
+
 \end{primer}
+
+\begin{primer}
+\textit{Kategorija morfizmov} $\cat{C}^{\rightarrow}$ kategorije $\cat{C}$ je kategorija dobljena iz kategorije $\cat{C}$ tako, da za objekte vzamemo morfizme iz kategorije $\cat{C}$, na primer $f : A \to B$ in $g : C \to D$ kar bi lahko izgledalo nekako takole
+\[ \begin{tikzcd}
+A \arrow[d, "f"'] & A' \arrow[d, "f'"] \\
+B & B'
+\end{tikzcd} \]
+Kako bi sedaj prešli iz $f$ v $g$? Naravna ideja, ki se nam porodi, je da povežemo obe stranici navideznega kvadrata z morfizmi v $\cat{C}$.
+\[ \begin{tikzcd}
+A \arrow[d, "f"'] \arrow[r, "g_1"] & A' \arrow[d, "f'"] \\
+B \arrow[r, "g_2"'] & B'
+\end{tikzcd} \]
+Morfizem $f \to g$ je torej par morfizmov $(h_1, h_2)$ iz $\cat{C}$.
+Identitetni morfizem je par $(1_A, 1_B)$.
+Kar mora še veljati, da bi to bila kategorija, je da lahko take morfizme komponiramo med seboj. Kar mora še veljati je, da sta obe poti po kvadratu enaki, torej $g \circ h_1 = h_2 \circ f$, čemur rečemo, da \textit{kvadrat komutira} (zakaj je to pomembno brez motivacije s strani naravnih transformacij?). Preveriti moramo, da ta pogoj ohranja komponiranje, ali z drugimi besedami, če komponiramo da komutirajoča kvadrata, ali dobimo nov komutirajoč kvadrat.
+Recimo, da imamo naslednjo situacijo
+
+\[ \begin{tikzcd}
+A \arrow[d, "f"'] \arrow[r, "g_1"] & A' \arrow[d, "f'"] \arrow[r, "h_1"] & A'' \arrow[d, "f''"] \\
+B \arrow[r, "g_2"'] & B' \arrow[r, "h_2"'] & B'' \\
+\end{tikzcd} \]
+kjer so $f, f', f''$ objekti v $\cat{C}^{\rightarrow}$, $(g_1, g_2), (h_1,h_2)$ pa morfizmi v $\cat{C}^{\rightarrow}$. Kaj bi bil kompozitum morfizmov $(h_1,h_2) \circ (g_1,g_2)$. Očitna izbira, ki se tudi izkaže za pravilno, je komponiranje po komponentah, oziroma $(h_1,h_2) \circ (g_1,g_2) = (h_1 \circ g_1, h_2 \circ g_2)$. Preveritmi moramo komutativnostni pogoj. 
+\begin{align*}
+f'' \circ (h_1 \circ g_1) &= (f'' \circ h_1) \circ g_1 = \\
+(h_2 \circ f') \circ g_1 &= h_2 \circ (f' \circ g1) = \\
+h_2 \circ (g_2 \circ f) &= (h_2 \circ g_2) \circ f
+\end{align*}
+
+\end{primer}
+
+\begin{primer}
+\textit{Rezinska kategorija} $\cat{C}/C$ kategorije $\cat{C}$ preko objekta $C \in \cat{C}$. Ideja te kategorije je podobna kategoriji puščic, a da v tem primeru gledamo morfizme v $\cat{C}$, ki imajo kodomeno, torej kažejo v, objekt $C$. Na primer
+
+\[ \begin{tikzcd}
+A \arrow[rd, "f"'] & & \arrow[ld, "f'"] A' \\
+& C &
+\end{tikzcd} \]
+
+Ostale stvari delujejo podobno kot v kategoriji puščic. Morfizmi so ravno tako morfizmi v $\cat{C}$ a z eno zahtevo manj, saj sedaj ne bo potrebno poslati kodomene prvega morfizma v kodomeno drugega. Tako, bi bil v našem primeru morfizem $f \to f'$ morfizem $g : A \to A'$ v $\cat{C}$, tako da sledeči trikotnik komutira
+
+\[ \begin{tikzcd}
+A \arrow[rd, "f"'] \ar[rr, "g"] & & \arrow[ld, "f'"] A' \\
+& C &
+\end{tikzcd} \]
+oziroma z enačbo
+$$f' \circ g = f$$
+Identitetni morfizem se podeduje iz $\cat{C}$, kompozitum pa deluje ravno tako kot v kategoriji puščic. Če pogledamo malo bolj natančno, lahko vidimo, da ta konstrukcija izgleda kot neka "podkonstrukcija" kategorije puščic, če iz vseh objektov kategorije $\cat{C}^{\rightarrow}$ vzamemo le tiste s kodomeno $C$. Potem so morfizmi oblike $(g, 1_C)$ in vidimo, da komutativnostni kvadrati ustrezajo ravno komutativnostnim trikotnikom v $\cat{C}/C$.
+
+\[ \begin{tikzcd}
+A \ar[d, "f"'] \ar[r, "g"] & A' \ar[d, "f'"] \\
+C \ar[r, "1_C"'] & C \\
+\end{tikzcd} \]
+
+Imamo tudi \textit{korezinsko} kategorijo $C/\cat{C}$ kjer za objekte vzamemo morfizme v $\cat{C}$, ki kažejo iz C, oziroma tiste z domeno C. Ostale stvari potekajo podobno kot v rezinski kategoriji.
+
+\end{primer}
+
+\section{Začetni in končni objekti}
+V kategoriji $\cat{Set}$ množic in funkcij med njimi poznamo posebne tipe množic, kot na primer prazna množic in eno-elementa množica. Poglejmo si abstraktizacijo teh dveh posebnih primerov v jezik teorije kategorij. Definicijo podamo s tako imenovano \textit{univerzalno lastnostjo}, ki nam pove kako so med seboj povezani morfizmi, ki so relevantni v tej konstrukciji (boljši način za to povedat).
+
+\begin{definicija}
+V poljubni kategoriji $\cat{C}$ je objekt
+\begin{itemize}
+\item[] 0 \textit{začetni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$0 \to C$$
+\item[] 1 \textit{končni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$C \to 1$$
+\end{itemize}
+\end{definicija}
+Končni objekt je ravno začetni objekt v dualni kategoriji $\cat{C}^{op}$. Ker sta definiciji začetnega in končnega objekta podani z univerzalno lastnostjo lahko pričakujemo, da bodo objekti podani do izomorfizma natančno. To pove naslednja trditev.
+
+\begin{trditev}
+Začetni in končni objekti so enolično določeni, do izomorfizma natančno
+\end{trditev}
+\begin{dokaz}
+Naj bosta $0$ in $\hat{0}$ začetna objekta v kategoriji $\cat{C}$ in naj bo $C \in \cat{C}$ poljuben objekt. Potem obstaja enoličen $f : 0 \to C$ in enoličen $\hat{f} : \hat{0} \to C$, prav tako pa obstajata enolična $g : 0 \to \hat{0}$ ter $\hat{g} : \hat{0} \to 0$. Torej je $\hat{g} \circ g$ enoličen morfizem od 0 do 0. To pa pomeni, da mora biti identitetni morfizem (saj ta vedno obstaja in je enoličen), kar pa pomeni, da je $g$ izomorfizem.
+Naj bosta sedaj $1$ in $\hat{1}$ končna objekta in naj bo $A \in \cat{C}$ poljuben. Potem obstaja natanko en morfizem $f : A \to 1$ in natanko en morfizem $\hat{f} : A \to \hat{1}$, prav tako pa obstajata enolična $g : 1 \to \hat{1}$ in $\hat{g} : \hat{1} \to 1$, in je kompozitum $\hat{g} \circ g$ enoličen morfizem $1 \to \hat{1}$, torej identiteta. Torej je $g$ izomorfizem.
+\end{dokaz}
+Vidimo lahko, da sta dokaza za začetni in končni objekt potekala praktično enako. Gre seveda za delo dualnosti, ki jo bomo tudi formalno predstavili.
+
+\begin{primer}
+V kategoriji $\cat{Set}$ je začetni objekt prazna množica, saj za vsako množico $A$ obstaja natanko ena funkcija $! : \emptyset \to A$, ki nobenega elementa ne slika nikamor. Končni objekt v $\cat{Set}$ je množica z enim elementom $1 = \set{*}$. Za vsako množico $A$ obstaja natanko ena funkcija $f : A \to 1$, ki slika vse elemente iz $A$ v *. Tukaj lahko vidimo, da je končni objekt določen "le" do izomorfizma natančno, saj je množica $\set{*}$ izomorfna vsaki drugi enoelementni množici s funkcijo $f : \set{*} \to {a}$, $f(*) = a$. Ta funkcija je očitno bijekcija, torej izomorfizem v ketegoriji $\cat{Set}$.
+\end{primer}
+
+% Dodaj primere: Pos, Mon, Top.
+
+\begin{primer}
+Kaj bi bil končni objekt v kategoriji $\cat{Pos}$ delno urejenih množic in monotonih funkcij. 
+\end{primer}
+
+\section{Posplošeni elementi}
+Za razumevanje tega, kaj je neka množica potrebujemo natanko poznavanje vseh njenih elementov. To nam pove vse, kar lahko vemo o tej množici. Elemente neke množice A pa lahko identificiramo s funkcijami $1 \to A$, saj vsako funkcijo $f : 1 \to A$ identificiramo s tem kam pošlje edini element, z drugimi besedami, množica A je izomorfna množici vseh funkcij iz 1 v A. To množico označujemo z $\Hom_{\cat{Sets}} (1,A)$ in ji pravimo hom-set (boljši izraz ?). Takšne množice bodo ključnega pomena pri Yonedovi lemi.
+Za kako drugo matematično strukturo to lahko ni dovolj. Na primer za poznavanje topološkega prostora moramo poznati še okolice točk tega prostora in nam poznavanje samo točk prostora ne pove ničesar o lastnostih tega prostora. Kateri morfizmi pa so potrebni za poznavanje nekega objekta. To vprašanje nas privede do naslednje definicije
+
+\begin{definicija}
+\textit{Posplošeni element}
+\end{definicija}
+
+
+\section{Produkti}
+Kot smo to že storili, poskusimo znano konstrukcijo iz teorije množic posplošiti na poljubno kategorijo. V $\cat{Set}$ poznamo za množici $A$ in $B$ njun kartezični produkt $A \times B$, ki je definiran kot množica vseh parov 
+$$A \times B := \set{(a,b) \mid a \in A, b \in B}$$
+Imamo tudi dve koordinatni projekciji $\pi_A : A\times B \to A$ in $\pi_B : A \times B \to B$ definirani kot $\pi_A(a,b) = a$ in $\pi_B(a,b) = b$.
+
+\section{Dualnost}
 
 
 \section{Funktorji in naravne transformacije}
