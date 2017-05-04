@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.5.3)  3 MAY 2017 02:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.4)  4 MAY 2017 18:25
 entering extended mode
 **"./Moja diplomska.tex"
 ("Moja diplomska.tex"
-LaTeX2e <2016/03/31> patch level 3
+LaTeX2e <2017/01/01> patch level 1
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -62,7 +62,7 @@ File: babel.def 2016/04/23 3.9r Babel common definitions
 Package babel Info: Making " an active character on input line 79.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
-Language: english 2012/08/20 v3.3p English support from the babel system
+Language: english 2017/01/24 v3.3q English support from the babel system
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -75,7 +75,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -86,7 +86,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -263,7 +263,7 @@ Package: amsthm 2015/03/04 v2.20.2
 \dth@everypar=\toks30
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2016/06/28 v2.15d AMS math features
+Package: amsmath 2016/11/05 v2.16a AMS math features
 \@mathmargin=\skip57
 
 For additional information on amsmath, use the `?' option.
@@ -283,20 +283,20 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count101
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 213.
 \uproot@=\count102
 \leftroot@=\count103
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 375.
 \classnum@=\count104
 \DOTSCASE@=\count105
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen115
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \macc@depth=\count106
 \c@MaxMatrixCols=\count107
 \dotsspace@=\muskip11
@@ -317,8 +317,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \multlinegap=\skip58
 \multlinetaggap=\skip59
 \mathdisplay@stack=\toks35
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -383,10 +383,10 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box31
 \enitdp@description=\count118
 )
-("C:\Users\jure\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tikz-cd\tikz-cd.sty
-"
+("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-cd\tikz-cd.sty"
 Package: tikz-cd 2014/10/30 v0.9e Commutative diagrams with tikz
- ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
@@ -664,8 +664,7 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 librarytopaths.code.tex"
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-("C:\Users\jure\AppData\Local\Programs\MiKTeX 2.9\tex\generic\tikz-cd\tikzlibra
-rycd.code.tex"
+("C:\Program Files\MiKTeX 2.9\tex\generic\tikz-cd\tikzlibrarycd.code.tex"
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
 librarymatrix.code.tex"
 File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
@@ -768,7 +767,7 @@ Package babel Info: Redefining slovene shorthand "|
  [1
 
 
-{C:/Users/jure/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Try loading font information for U+msa on input line 142.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
@@ -1082,8 +1081,6 @@ Package babel Info: Redefining slovene shorthand "|
 [10]
 Package babel Info: Redefining slovene shorthand "|
 (babel)             in language  on input line 577.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 586.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1092,10 +1089,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 588.
+(babel)             in language  on input line 583.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 588.
+(babel)             in language  on input line 583.
 [11]
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 586.
 Package babel Info: Redefining slovene shorthand "|
 (babel)             in language  on input line 591.
 Package babel Info: Redefining slovene shorthand "|
@@ -1108,9 +1107,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 622.
+(babel)             in language  on input line 616.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 622.
+(babel)             in language  on input line 616.
 [12]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1244,10 +1243,10 @@ Package rerunfilecheck Info: File `"Moja diplomska".out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 856.
  ) 
 Here is how much of TeX's memory you used:
- 20250 strings out of 493333
- 382740 string characters out of 3139198
- 460157 words of memory out of 3000000
- 23317 multiletter control sequences out of 15000+200000
+ 20254 strings out of 493333
+ 382707 string characters out of 3139198
+ 460262 words of memory out of 3000000
+ 23321 multiletter control sequences out of 15000+200000
  15134 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,18n,84p,1250b,1104s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1271,7 +1270,7 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Moja diplomska.pdf" (35 pages, 339082 bytes).
+Output written on "Moja diplomska.pdf" (35 pages, 339538 bytes).
 PDF statistics:
  393 PDF objects out of 1000 (max. 8388607)
  94 named destinations out of 1000 (max. 500000)
