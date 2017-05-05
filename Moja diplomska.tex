@@ -44,10 +44,15 @@
 \newcommand{\autfont}{\Large}
 \newcommand{\titfont}{\LARGE\bf}
 \newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
-\setcounter{tocdepth}{1}	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% konstrukti
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\setcounter{tocdepth}{1}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%									%
+% konstrukti						%
+%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 
 \theoremstyle{definition}
 \newtheorem{definicija}{Definicija}[chapter]
@@ -65,8 +70,20 @@
 \theoremstyle{remark}
 \newtheorem*{opomba}{Opomba}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%								%
+%	Tikz-cd nastavitve			%
+%								%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tikzcdset{
+ 	diagrams={sep=large},
+	labels={font=\small}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Avtor in naslov			%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Jure Taslak}
 \title{Yonedova lema in njena uporaba}
@@ -83,9 +100,12 @@
     /Trapped  /False
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Misc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%									%
+% 		Misc						%
+%									%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\eqtext}[1]{\stackrel{\mathclap{\normalfont\mbox{#1}}}{=}} % write text over =
 % could use a way to make the text smaller
 
@@ -579,16 +599,107 @@ Za razumevanje tega, kaj je neka množica potrebujemo natanko poznavanje vseh nj
 Za kako drugo matematično strukturo to lahko ni dovolj. Na primer za poznavanje topološkega prostora moramo poznati še okolice točk tega prostora in nam poznavanje samo točk prostora ne pove ničesar o lastnostih tega prostora. Kateri morfizmi pa so potrebni za poznavanje nekega objekta. To vprašanje nas privede do naslednje definicije
 
 \begin{definicija}
-Naj bo $T$ nek objekt v kategoriji $\cat{C}$, Pravimo mu \textit{testni objekt}. Naj bo $A$ poljuben objekt v $\cat{C}$. \textit{Posplošeni element} je morfizem $t:T \to A$ iz testnega objekta v A.
+ \textit{Posplošeni element} objekta $A \in \cat{C}$ je poljuben morfizem 
+$$t : T \to A$$
+iz nekega testnega objekta $T$ v A.
 \end{definicija}
+Kot je bilo že omenjeno, nam opsplošeni elementi razkrijejo dodatno strukturo, kot ponazori naslednji primer
 
+\begin{primer}
+Recimo, da imamo dve delno urejeni množici X in A z naslednjo ureditvijo:
+\begin{align*}
+X = \set{x \leq y, x \leq z} \\
+A = \set{a \leq b \leq c} \\
+\end{align*}
+Obe množici imata po 3 elemente, a vidimo, da nimata identične strukture. Torej med njima imamo monotono bijektivno funkcijo $f : X \to A$ definirano kot
+$$f(x) = a, \quad f(y) = b, \quad f(z) = c$$
+a ta funkcija \textbf{ni} izomorfizem v $\cat{Pos}$. Ti dve strukturi v resnici nista izomorfni, a kako to pokazati. En način je z tako imenovanimi \textit{invariantami}, to so lastnosti neke strukture, ki se ohranjajo z izomorfizmi, oz. jih imajo enake vse izomorfne strukture. Invariante se da definirati na lep način z posplošenimi elementi. V našem primeru vidimo, da je invarianta število elementov enaka za obe množici, kar ustreza temu, da morfizmi iz enoelementne delno urejene množice \textbf{1} ne ločujejo med njima. Poglejmo si namesto tega "\textbf{2}-elemente" teh množic. To so morfizmi iz množice $\textbf{2} = \set{0 \leq 1}$ v naši množici. Takih morfizmov v množico X je 5, in sicer trije morfizmi, ki slikajo oba elementa v isti element, na primer oba v x ter še dva dodatna morfizma
+$$0 \mapsto x, 1 \mapsto y \qquad 0 \mapsto x, 1 \mapsto z$$
+medtem, ko imamo za morfizme $\textbf{2} \to A$, tri dodatne morfizme poleg "točkovnih" (takih, ki slikaj vse elemente v eno točko.
+$$0 \mapsto a, 1 \mapsto b \qquad 0 \mapsto b, 1 \mapsto c \qquad 0 \mapsto a, 1 \mapsto c$$
+kjer zadnji morfizem dobimo zaradi tranzitivnosti.
+Tako je invarianta, ki jo lahko poimenujemo kar "število morfizmov iz \textbf{2}" za množico X enaka 5, za množico A pa 6, torej lahko sklepamo, da množici nista izomorfni v $\cat{Pos}$.
+\end{primer}
+
+Posplošeni elementi so uporabni tudi za "testiranje" določenih lastnosti. Poglejmo si na primer diagrame naslednje oblike
+
+$$\begin{tikzcd}[column sep=large]
+X \ar[r, shift left, "x"] \ar[r, shift right, "x'"'] & A \ar[r, "f"] & B \\
+\end{tikzcd}$$
+Tukaj je morfizem f mono, natanko takrat, ko za vsaka morfizma $x, x'$ iz $fx = fx'$ sledi $x = x'$, ali z drugimi besedami, f je "injektiven na posplošenih elementih" če želimo. \\
+Podobno, da lahko za diagram oblike 
+
+$$\begin{tikzcd}[column sep=large, row sep=large]
+A \ar[d, "g"'] \ar[r, "f"] & B \ar[d, "\alpha"] \\
+D \ar[r, "\beta"'] & D
+\end{tikzcd}$$
+povemo, da komutira, mora le veljati, da je 
+$$\alpha f x = \beta g x$$
+za vsak posplošen element $x : X \to A$, kajti potem velja tudi za posplošen element $1_A : A \to A$. Posplošeni elementi so posebej koristni za testiranje takih in podobnih kategoričnih lastnosti.
 
 \section{Produkti}
 Kot smo to že storili, poskusimo znano konstrukcijo iz teorije množic posplošiti na poljubno kategorijo. V $\cat{Set}$ poznamo za množici $A$ in $B$ njun kartezični produkt $A \times B$, ki je definiran kot množica vseh parov 
 $$A \times B := \set{(a,b) \mid a \in A, b \in B}$$
-Imamo tudi dve koordinatni projekciji $\pi_A : A\times B \to A$ in $\pi_B : A \times B \to B$ definirani kot $\pi_A(a,b) = a$ in $\pi_B(a,b) = b$.
+Imamo tudi dve koordinatni projekciji $\pi_A : A\times B \to A$ in $\pi_B : A \times B \to B$ definirani kot $\pi_A(a,b) = a$ in $\pi_B(a,b) = b$. Za vsak element $x \in A \times B$ velja $x = (\pi_A(x), \pi_B(x))$. Ker vemo, da lahko elemente množice $A \times B$ predstavimo kot morfizme $1 \to A \times B$ nam to da diagram naslednje oblike
+
+$$ \begin{tikzcd}[row sep=huge, column sep=large]
+&  1 \ar[dl, "a"'] \ar[d, dashed, "\text{(a,b)}", font=\large] \ar[dr, "b"] & \\
+A & \ar[l, "\pi_A"] A \times B \ar[r, "\pi_B"'] & B \\
+\end{tikzcd} $$
+
+Če 1 zamenjamo z posplošenim elementom, dobimo naslednjo definicijo
+
+\begin{definicija}
+Produkt objektov $A,B \in \cat{C}$ je objekt P, skupaj z projekcijama
+$$\begin{tikzcd}
+A & P \ar[l, "p_A"'] \ar[r, "p_A"] & B
+\end{tikzcd}$$
+z naslednjo univerzalno lastnostjo. Za vsak objekt X iz $\cat{C}$ in morfizma $x_A : X \to A$, $x_B : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram komutira
+
+$$\begin{tikzcd}
+& X \ar[ld, "x_A"'] \ar[d, dashed, "u"] \ar[rd, "x_B"] & \\
+A & P \ar[l, "p_A"'] \ar[r, "p_B"] & B
+\end{tikzcd}$$
+
+ali z enačbami
+$$x_A = p_A \circ u \quad x_B = p_B \circ u$$
+Morfizmoma $p_A$ in $p_B$ pravimo (koordinatni) \textit{projekciji}.
+\end{definicija}
+
+Kot vedno z univerzalnimi lastnostmi podanimi na tak način, bo veljala naslednja trditev
+
+\begin{trditev}
+Produkti so enolični do izomorfizma natančno
+\end{trditev}
+\begin{dokaz}
+Naj bosta P in R oba produkt objektov A in B z produktnima projekcijama $p_A, p_B$ ter $r_A, r_B$ respectively. Ker je P produkt A in B obstaja enoličen morfizem $u : R \to P$, da velja $r_A = p_Au, r_B = p_Bu$. Obratno ker je R produkt A in B obstaja enoličen $v : P \to R$, da veljata zvezi $p_A = r_Au, p_B = r_Bu$. Stanje prikažemo v diagramu
+
+$$\begin{tikzcd}
+& R \ar[dd, dashed, bend right, "u"'] \ar[dl, "r_A"'] \ar[dr, "r_B"] & \\
+A & & B \\
+& P \ar[uu, dashed, bend right, "v"'] \ar[ul, "p_A"] \ar[ur, "p_B"'] & \\
+\end{tikzcd}$$
+
+Morfizem $u \circ v $ je torej enolični morfizem iz P v P. To pa pomeni, da mora biti identitetni morfizem. Enako velja za $v \circ u$, torej sta si inverza in sta P in R izomorfna.
+\end{dokaz}
+
+\begin{primer}
+Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti.
+\end{primer}
 
 \section{Dualnost}
+Povejmo (za trenutek še brez dokaza) dve trditvi, ki nam opišeta in utemeljia pojem dualnosti v kategoriji.
+
+\begin{trditev} \textit{(Formalna dualnost)}. 
+Za vsak stavek $\Sigma$ v jeziku teorije kategorij, če $\Sigma$ sledi iz aksiomov kategorij, potem sledi tudi njegov dualni stavek $\Sigma^*$.
+\end{trditev}
+
+\begin{trditev} \textit{(Konceptualna dualnost)}.
+Za vsako trditev $\Sigma$ o kategorijah, če $\Sigma$ drži za vse kategorije, potem drži tudi dualna trditev $\Sigma^*$.
+\end{trditev}
+
+
+
 
 
 \section{Funktorji in naravne transformacije}

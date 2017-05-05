@@ -1,8 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.4)  4 MAY 2017 18:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.5.3)  6 MAY 2017 01:20
 entering extended mode
 **"./Moja diplomska.tex"
 ("Moja diplomska.tex"
-LaTeX2e <2017/01/01> patch level 1
+LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\book.cls"
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -62,7 +62,7 @@ File: babel.def 2016/04/23 3.9r Babel common definitions
 Package babel Info: Making " an active character on input line 79.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\babel-english\english.ldf"
-Language: english 2017/01/24 v3.3q English support from the babel system
+Language: english 2012/08/20 v3.3p English support from the babel system
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
@@ -75,7 +75,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -86,7 +86,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
-File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -263,7 +263,7 @@ Package: amsthm 2015/03/04 v2.20.2
 \dth@everypar=\toks30
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2016/11/05 v2.16a AMS math features
+Package: amsmath 2016/06/28 v2.15d AMS math features
 \@mathmargin=\skip57
 
 For additional information on amsmath, use the `?' option.
@@ -283,20 +283,20 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count101
-LaTeX Info: Redefining \frac on input line 213.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count102
 \leftroot@=\count103
-LaTeX Info: Redefining \overline on input line 375.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count104
 \DOTSCASE@=\count105
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen115
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \macc@depth=\count106
 \c@MaxMatrixCols=\count107
 \dotsspace@=\muskip11
@@ -317,8 +317,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip58
 \multlinetaggap=\skip59
 \mathdisplay@stack=\toks35
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -383,10 +383,10 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box31
 \enitdp@description=\count118
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\tikz-cd\tikz-cd.sty"
+("C:\Users\jure\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tikz-cd\tikz-cd.sty
+"
 Package: tikz-cd 2014/10/30 v0.9e Commutative diagrams with tikz
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\frontendlayer\tikz.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\basiclayer\pgf.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pgf\utilities\pgfrcs.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\utilities\pgfutil-common.tex"
@@ -664,7 +664,8 @@ File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
 librarytopaths.code.tex"
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
-("C:\Program Files\MiKTeX 2.9\tex\generic\tikz-cd\tikzlibrarycd.code.tex"
+("C:\Users\jure\AppData\Local\Programs\MiKTeX 2.9\tex\generic\tikz-cd\tikzlibra
+rycd.code.tex"
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikz
 librarymatrix.code.tex"
 File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
@@ -692,20 +693,20 @@ File: tikzlibrarybabel.code.tex 2013/06/24 v3.0.1a (rcs-revision 1.1)
  ("Moja diplomska.aux")
 \openout1 = `"Moja diplomska.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 122.
+LaTeX Font Info:    ... okay on input line 122.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -737,7 +738,7 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 \AtBeginShipoutBox=\box44
-Package hyperref Info: Link coloring OFF on input line 102.
+Package hyperref Info: Link coloring OFF on input line 122.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -747,9 +748,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 102.
-LaTeX Info: Redefining \pageref on input line 102.
-LaTeX Info: Redefining \nameref on input line 102.
+LaTeX Info: Redefining \ref on input line 122.
+LaTeX Info: Redefining \pageref on input line 122.
+LaTeX Info: Redefining \nameref on input line 122.
 
 ("Moja diplomska.out") ("Moja diplomska.out")
 \@outlinefile=\write5
@@ -761,98 +762,98 @@ ABD: EveryShipout initializing macros
 File: uni-1.def 2013/05/13 UCS: Unicode data U+0100..U+01FF
 )
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 139.
+(babel)             in language  on input line 159.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 139.
+(babel)             in language  on input line 159.
  [1
 
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 142.
+{C:/Users/jure/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for U+msa on input line 162.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 142.
+LaTeX Font Info:    Try loading font information for U+msb on input line 162.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 165.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 165.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.145 \clearemptydoublepage
+l.165 \clearemptydoublepage
                             [2]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 168.
+(babel)             in language  on input line 188.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 168.
+(babel)             in language  on input line 188.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.168 \clearemptydoublepage
+l.188 \clearemptydoublepage
                             [3
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 168.
+(babel)             in language  on input line 188.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 168.
+(babel)             in language  on input line 188.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.168 \clearemptydoublepage
+l.188 \clearemptydoublepage
                             [4
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 177.
+(babel)             in language  on input line 197.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 177.
+(babel)             in language  on input line 197.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 \clearemptydoublepage
+l.197 \clearemptydoublepage
                             [5]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 177.
+(babel)             in language  on input line 197.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 177.
+(babel)             in language  on input line 197.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 \clearemptydoublepage
+l.197 \clearemptydoublepage
                             [6
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 186.
+(babel)             in language  on input line 206.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 186.
+(babel)             in language  on input line 206.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.186 \clearemptydoublepage
+l.206 \clearemptydoublepage
                             [7]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 186.
+(babel)             in language  on input line 206.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 186.
+(babel)             in language  on input line 206.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.186 \clearemptydoublepage
+l.206 \clearemptydoublepage
                             [8
 
 ] ("Moja diplomska.toc")
@@ -860,101 +861,101 @@ l.186 \clearemptydoublepage
 \openout6 = `"Moja diplomska.toc"'.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 196.
+(babel)             in language  on input line 216.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 196.
+(babel)             in language  on input line 216.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.196 \clearemptydoublepage
+l.216 \clearemptydoublepage
                             [9
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 196.
+(babel)             in language  on input line 216.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 196.
+(babel)             in language  on input line 216.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.196 \clearemptydoublepage
+l.216 \clearemptydoublepage
                             [10
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 201.
+(babel)             in language  on input line 221.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 238.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 238.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \clearemptydoublepage
+l.238 \clearemptydoublepage
                             [11
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 238.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 238.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.218 \clearemptydoublepage
+l.238 \clearemptydoublepage
                             [12
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 240.
+(babel)             in language  on input line 260.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 240.
+(babel)             in language  on input line 260.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.240 \clearemptydoublepage
+l.260 \clearemptydoublepage
                             [13
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 240.
+(babel)             in language  on input line 260.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 240.
+(babel)             in language  on input line 260.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.240 \clearemptydoublepage
+l.260 \clearemptydoublepage
                             [14
 
 ]
 Poglavje 1.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 247.
+(babel)             in language  on input line 267.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 250.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 255.
+(babel)             in language  on input line 270.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 275.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 255.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 275.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 277.
+(babel)             in language  on input line 294.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 277.
+(babel)             in language  on input line 294.
  [1
 
 
 ]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 286.
+(babel)             in language  on input line 306.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -963,9 +964,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 301.
+(babel)             in language  on input line 321.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 301.
+(babel)             in language  on input line 321.
 [2]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -974,18 +975,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 337.
+(babel)             in language  on input line 356.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 337.
+(babel)             in language  on input line 356.
 [3]
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 370.
-
-
-Package hyperref Warning: Composite letter `\textasciicaron+c'
-(hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 370.
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -993,10 +986,18 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 373.
+(babel)             in language  on input line 388.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 373.
+(babel)             in language  on input line 388.
 [4]
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 390.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 390.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.92502pt.
@@ -1004,9 +1005,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 407.
+(babel)             in language  on input line 423.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 407.
+(babel)             in language  on input line 423.
 [5]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1015,12 +1016,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 433.
+(babel)             in language  on input line 448.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 433.
+(babel)             in language  on input line 448.
 [6]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 437.
+(babel)             in language  on input line 457.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1029,9 +1030,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 468.
+(babel)             in language  on input line 488.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 468.
+(babel)             in language  on input line 488.
 [7]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1040,9 +1041,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 505.
+(babel)             in language  on input line 517.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 505.
+(babel)             in language  on input line 517.
 [8]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1051,22 +1052,22 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 534.
+(babel)             in language  on input line 548.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 534.
+(babel)             in language  on input line 548.
 [9]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 546.
+(babel)             in language  on input line 566.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 546.
+(hyperref)                removing `\textasciicaron' on input line 566.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 546.
+(hyperref)                removing `\textasciicaron' on input line 566.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1075,12 +1076,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 566.
+(babel)             in language  on input line 572.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 566.
+(babel)             in language  on input line 572.
 [10]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 577.
+(babel)             in language  on input line 597.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1089,38 +1090,38 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 583.
+(babel)             in language  on input line 600.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 583.
+(babel)             in language  on input line 600.
 [11]
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 586.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 591.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 594.
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
+ Make it at least 14.92502pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 616.
+(babel)             in language  on input line 617.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 616.
+(babel)             in language  on input line 617.
 [12]
+Overfull \hbox (46.5276pt too wide) in paragraph at lines 617--619
+\OT1/cmr/m/n/12 medtem, ko imamo za mor-fizme $[] \OMS/cmsy/m/n/12 ! \OML/cmm/m
+/it/12 A$\OT1/cmr/m/n/12 , tri do-da-tne mor-fizme po-leg "tockovnih"(takih,
+ []
+
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 640.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
+ Make it at least 14.92502pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 639.
+(babel)             in language  on input line 642.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 639.
+(babel)             in language  on input line 642.
 [13]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1129,24 +1130,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 639.
+(babel)             in language  on input line 676.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 639.
-[14
-
-]
-Poglavje 2.
+(babel)             in language  on input line 676.
+[14]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 639.
+(babel)             in language  on input line 690.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 703.
 
-Underfull \hbox (badness 10000) in paragraph at lines 650--655
 
- []
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 662.
+(babel)             in language  on input line 711.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 662.
+(babel)             in language  on input line 711.
 [15]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1155,24 +1157,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 662.
+(babel)             in language  on input line 748.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 662.
-[16
+(babel)             in language  on input line 748.
+[16]
+Poglavje 2.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 748.
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--764
+
+ []
+
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 771.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 771.
+[17
 
 ]
-Poglavje 3.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 662.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 664.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 682.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 694.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 694.
-[17]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1180,11 +1183,36 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 720.
+(babel)             in language  on input line 771.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 720.
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 751--755
+(babel)             in language  on input line 771.
+[18
+
+]
+Poglavje 3.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 771.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 773.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 791.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 803.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 803.
+[19]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 829.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 829.
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 860--864
 
  []
 
@@ -1195,11 +1223,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 773.
+(babel)             in language  on input line 882.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 773.
-[19]
-Overfull \hbox (6.33081pt too wide) detected at line 811
+(babel)             in language  on input line 882.
+[21]
+Overfull \hbox (6.33081pt too wide) detected at line 920
 \OML/cmm/m/it/12 [] \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 Hom\OT1/cmr/m/n/12 (\O
 ML/cmm/m/it/12 yC; '\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 #\OT1/cmr/m/n/12 ) = \OM
 L/cmm/m/it/12 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ' \OMS/cmsy/m/n/12  \OML/cm
@@ -1215,12 +1243,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 811.
+(babel)             in language  on input line 920.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 811.
-[20]
+(babel)             in language  on input line 920.
+[22]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 816.
+(babel)             in language  on input line 925.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1229,25 +1257,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 856.
+(babel)             in language  on input line 965.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 856.
-[21]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 856.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 856.
+(babel)             in language  on input line 965.
+[23]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 965.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 965.
  ("Moja diplomska.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 856.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 856.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 965.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 965.
 Package rerunfilecheck Info: File `"Moja diplomska".out' has not changed.
 (rerunfilecheck)             Checksum: 2F4207D29898EBCFF0AA3C0F70D94A38;1043.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 856.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 965.
  ) 
 Here is how much of TeX's memory you used:
- 20254 strings out of 493333
- 382707 string characters out of 3139198
- 460262 words of memory out of 3000000
- 23321 multiletter control sequences out of 15000+200000
- 15134 words of font info for 54 fonts, out of 3000000 for 9000
+ 20516 strings out of 493333
+ 389117 string characters out of 3139198
+ 461458 words of memory out of 3000000
+ 23573 multiletter control sequences out of 15000+200000
+ 17336 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,18n,84p,1250b,1104s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pr
@@ -1257,22 +1285,23 @@ es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX
 onts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
 ic/amsfonts/cmextra/cmex8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
-rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Moja diplomska.pdf" (35 pages, 339538 bytes).
+msfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6
+.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsl12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "Moja diplomska.pdf" (37 pages, 366550 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
- 94 named destinations out of 1000 (max. 500000)
+ 415 PDF objects out of 1000 (max. 8388607)
+ 102 named destinations out of 1000 (max. 500000)
  149 words of extra memory for PDF output out of 10000 (max. 10000000)
 
