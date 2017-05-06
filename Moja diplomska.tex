@@ -196,6 +196,8 @@ Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazit
 % prazna stran
 \clearemptydoublepage
 
+Pozdrav
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % posvetilo, če sama zahvala ne zadošča :-)
 \thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
@@ -301,7 +303,8 @@ $$f \circ 1_A = f = 1_B \circ f$$
 \end{itemize}
 \end{definicija}
 
-Kategorija je karkoli, kar zadošča tem pogojem
+Kategorija je karkoli, kar zadošča tem pogojem.
+Objekte kategorije všasih označujemo z $Obj(\cat{C})$ in morfizme z $Arr(\cat{C})$.
 
 \section{Primeri kategorij}
 
@@ -683,6 +686,8 @@ A & & B \\
 Morfizem $u \circ v $ je torej enolični morfizem iz P v P. To pa pomeni, da mora biti identitetni morfizem. Enako velja za $v \circ u$, torej sta si inverza in sta P in R izomorfna.
 \end{dokaz}
 
+Zaradi tega lahko produkt A in B upravičeno označujemo z $A \times B$.
+
 \begin{primer}
 Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti.
 \end{primer}
@@ -698,14 +703,154 @@ Za vsak stavek $\Sigma$ v jeziku teorije kategorij, če $\Sigma$ sledi iz aksiom
 Za vsako trditev $\Sigma$ o kategorijah, če $\Sigma$ drži za vse kategorije, potem drži tudi dualna trditev $\Sigma^*$.
 \end{trditev}
 
+Kar lahko vzamemo iz teh dveh trditev je, da za vsako trditev, ki jo dokažemo za poljubno kategorijo, "zastonj" dobimo še njeno dualno trditev, brez dodatnega dela. Tako bi lahko na primer pri dokazu, da so začetni in končni objekti določeni do izomorfizma natančno uporabili dejstvo, da je končni objekt dualni pojem začetnega objekta in naredili dokaz le za enega izmed njiju.
+Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij, na primer univerzalne lastnosti produkta, hkrati obravnavali tudi njen dual. V tem primeru dualni konstrukciji dodamo predpono "ko-". Tako pridemo do naslednje definicije
+
+\subsection{Koprodukti}
+\begin{definicija}
+Naj bosta A in B objekta v kategorji $\cat{C}$. \textit{Koprodukt} A-ja in B-ja je objekt Q skupaj z dvema morfizmoma $q_A : A \to Q$, $q_B : B \to Q$. Z naslednjo univerzalno lastnostjo. Za vsak objekt X in morfizmoma $x_A : A \to X$, $x_B : B \to X$ obstaja enoličen morfizem $u : Q \to X$, za katerega naslednji diagram komutira
+
+$$\begin{tikzcd}
+& X & \\
+A \ar[ur, "x_A"] \ar[r, "q_A"'] & Q \ar[u, dashed, pos=0.35, "v"']  & B \ar[l, "q_B"] \ar[ul, "x_B"'] \\
+\end{tikzcd}$$
+z enačbami
+$$x_A = v q_A \quad x_B = v q_B$$
+\end{definicija}
+Kot za produkte velja naslednja trditev.
+\begin{trditev}
+Koprodukti so enolično določeni do izomorfizma natančno.
+\end{trditev}
+\begin{dokaz}
+Uporabimo dejstvo, da to velja za produkte in da je koprodukt dual produkta.
+\end{dokaz}
+
+Koprodukt A in B zato označujemo z $A + B$.
+\begin{primer}
+Ali lahko najdemo koprodukte v kategoriji $\cat{Set}$? 
+Veljati mora univerzalna lastnost koprodukta.
+Poskusimo z množico $A+B := \set{(a,1) \mid a \in A} \cup \set{(b,2) \mid b \in B}$ in funkcijama $i_A : A \to A + B$, $i_A(a) = (a,1)$ in $i_B : B \to A+B$, $i_B(b) = (b,2)$. Tej množici pravimo tudi disjunktna unija A in B.
+\end{primer}
+
+\section{Hom-sets}
+Ustavimo se na kratko pri tej zelo pomembni temi, ki smo jo že srečali in bo postala ključnega pomena kasneje. Naj bo $\cat{C}$ taka kategorija, da je za vsaka dva objekta $A,B \in \cat{C}$ morfizmov med njima toliko, da jih lahko spravimo v množico. Kategoriji kjer velja ta pogoj pravimo \textit{lokalno majhna kategorija}. To množico označujemo kot
+$$\Hom_{\cat{C}}(A,B) := \set{f \in Arr(\cat{C}) \mid dom(f) = A, cod(f) = B}$$
 
 
+%TODO
 
+\section{Zožki in kozožki}
+
+\subsection{Zožki}
+Ideja zožkov je sledeča, zamislimo si, da imamo dve funkciji
+
+$$\begin{tikzcd}
+A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B 
+\end{tikzcd}$$
+
+Radi bi zožali domeno A na takšno podmnožico, da se f in g na njej ujemata. Torej $\set{x \in A \mid f(x) = g(x)} \subseteq A$. Označimo to množico z E in inkluzijo E v A z e, torej $\forall x \in E \enspace e(x)= x $. To, da je nek $x \in A$ v E lahko ekvivalentno povemo, kot da obstaja nek morfizem $\hat{x} : 1 \to A$ za katerega je $f \circ \hat{x} = g \circ \hat{x}$. Kar pa ravno tako pomeni, da obstaja nek $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz E. Situacijo lahko ponazorimo z naslednjim diagramom.
+$$\begin{tikzcd}
+E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
+1 \ar[u, dashed, "\hat{x}'"] \ar[ur, "\hat{x}"'] \\
+\end{tikzcd}$$
+
+Uporabimo isto idejo kot prej in množico 1 zamenjamo s posplošenim elementom in dobimo naslednjo definicijo.
+
+\begin{definicija}
+\textit{Zožek} dveh morfizmov $f, g : A \to B$ je par objekta E in morfizma $e : E \to A$, da velja $f \circ e = g \circ r$, z univerzalno lastnostjo, da za vsak objekt X in morfizem $x : X \to A$, za katerega velja $f \circ x = g \circ x$, obstaja enoličen morfizem $x' : X \to E$, da lahko x razdelimo na e in $x'$ (pravilna terminologija?), oziroma $x = ex'$.
+\end{definicija}
+
+\begin{primer}
+Preverimo, da naš motivacijski zgled res ustreza definiciji zožka. Naj bo torej X množica in $h : X \to A$ tak, da je $f \circ h = g \circ h$.
+\end{primer}
+
+Velja naslednja trditev
+
+\begin{trditev}
+Če je $e : E \to A$ del kozožka, je e monomorfizem.
+\end{trditev}
+\begin{dokaz}
+Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$. Potem po definiciji e velja $fex = gex$. Sledi, da obstaja 
+\end{dokaz}
+\vskip 1em
+O kozožku si lahko mislimo, da zoži B z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi Q.
+
+\begin{primer}
+
+\end{primer}
+
+\subsection{Kozožki}
+Kozožki so dualni koncept zožkov, zato lahko kar napišemo definicijo
+
+\begin{definicija}
+\textit{Kozožek} morfizmov $f,g:A \to B$ je objekt Q in morfizem $q: B \to Q$ za katega je $q \circ f = q \circ g$, z naslednjo univezalno lastnostjo. Za vsak objekt Z in morfizem $z : B \to Z$ za katerega velja $z \circ f = z \circ g$, obstaja enoličen morfizem $z' : Q \to Z$, da velja $z = z' \circ q$.
+\end{definicija}
+
+Slednja trditev sledi iz dualnosti.
+
+\begin{trditev}
+Če je $q : B \to Q$ del kozožka, je q epimorfizem.
+\end{trditev}
+
+\begin{definicija}
+Kozožki so posplošitev pojma kvocientne množice definirane z ekvivalenčno relacijo. Naj bo torej $A$ poljubna množica ter $R$ ekvivalenčna relacija na A, kar pomeni $R \subseteq A \times A$, z naslednjimi lastnostmi
+\begin{itemize}
+\item Refleksivnost: $xRx \enspace \forall x \in A$
+\item Simetričnost: $xRy \Rightarrow yRx \enspace \forall x,y \in A$
+\item Tranzitivnost: $xRy \enspace\&\enspace yRz \Rightarrow xRZ \enspace \forall x,y,z \in A$
+\end{itemize}
+Potem imamo dve koordinatni projekciji $r_1 : R \to A$, $r_2 : R \to A$ inkluzije $R$ v $A \times A$.
+
+$$\begin{tikzcd}
+& R \ar[dl, "r_1"'] \ar[d, hook] \ar[dr, "r_2"] & \\
+A & A \times A \ar[l, "p_1"] \ar[r, "p_2"'] & A \\
+\end{tikzcd}$$
+definirani kot $r_1(x,y) = x$ in $r_2(x,y) = y$. Potem je kvocientna projekcija $\pi : A \to A/R$ kozožek $r_1$ in $r_2$.
+
+\end{definicija}
+
+\begin{primer}
+V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $\sim$ ekvivalenčna relacija na $X$.
+\end{primer}
+
+\section{Povleki in potiski}
+%TODO
+\subsection{Povlek}
+
+\begin{definicija}
+Naj bosta $f : A \to C$ in $g : B \to C$ morfizma v kategoriji $\cat{C}$. \textit{Povlek} $f$ in $g$ je objekt $P$ z morfizmoma $p_1 : P \to A$, $p_2 : P \to B$, tako da tako imenovani "pullback kvadrat" (ustrezna terminologija?) komutira. Torej $fp_1 = gp_2$. Pri tem je P univerzalen tak objekt, kar pomeni, da za vsake $X$, $x_1 : X \to A$, $x_2 : X \to B$ za katere velja $fx_1 = gx_2$ obstaja enoličen morfizem $u : X \to P$ za katerega se $x_1$ in $x_2$ delita z $p_1$ in $p_2$.
+
+$$\begin{tikzcd}
+X
+\arrow[drr, bend left, "x_2"]
+\arrow[ddr, bend right, "x_1"']
+\arrow[dr, dotted, "u" description] & & \\
+& P \arrow[r, "p_2"] \arrow[d, "p_1"']
+& B \arrow[d, "g"] \\
+& A \arrow[r, "f"']
+& C
+\end{tikzcd}$$
+Z enačbami
+$$x_1 = p_1u \quad x_2 = p_2u$$
+\end{definicija}
+
+Na prvi pogled povlek deluje podobno kot produkt $A$ in $B$, a imamo še dva dodatna morfizma $f$ in $g$. Ta podobnost ni slučajna.
+
+\subsection{Kozožki}
+%TODO
+
+\section{Limite, kolimite in eksponenti}
+%TODO
+\subsection{Limite}
+%TODO
+\subsection{Kolimite}
+%TODO
+\subsection{Eksponenti}
+%TODO
 
 \section{Funktorji in naravne transformacije}
 
 \subsection{Morfizmi med kategorijami}
-
 
 \begin{primer}
 Neuradni moto teorije kategorij bi se lahko glasil \textit{puščice so bistvene}
@@ -748,12 +893,6 @@ komutira
 
 
 \chapter{Pomembne trditve}
-
-\begin{lema} Če je funktor G poln in zvest, potem ohranja vse limite.
-\end{lema}
-\begin{dokaz}
-
-\end{dokaz} 
  
 \begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
 \end{trditev}
