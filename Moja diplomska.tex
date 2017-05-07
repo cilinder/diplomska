@@ -758,32 +758,40 @@ Uporabimo isto idejo kot prej in množico 1 zamenjamo s posplošenim elementom i
 
 \begin{definicija}
 \textit{Zožek} dveh morfizmov $f, g : A \to B$ je par objekta E in morfizma $e : E \to A$, da velja $f \circ e = g \circ r$, z univerzalno lastnostjo, da za vsak objekt X in morfizem $x : X \to A$, za katerega velja $f \circ x = g \circ x$, obstaja enoličen morfizem $x' : X \to E$, da lahko x razdelimo na e in $x'$ (pravilna terminologija?), oziroma $x = ex'$.
+Slika, ki jo lahko imamo v mislih je
+$$\begin{tikzcd}
+E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
+X \ar[u, dashed, "x'"] \ar[ur, "x"']
+\end{tikzcd}$$
+
 \end{definicija}
 
 \begin{primer}
-Preverimo, da naš motivacijski zgled res ustreza definiciji zožka. Naj bo torej X množica in $h : X \to A$ tak, da je $f \circ h = g \circ h$.
+Preverimo, da naš motivacijski zgled res ustreza definiciji zožka. Naj bosta $E$ in $e$ definirana kot zgoraj ter naj bosta $X$ in $h:X \to A$ taka, da velja $f \circ h = g \circ h$, kar pomeni, da je $f \circ h(x) = g \circ  h(x) \enspace \forall x \in X$. To je seveda ekvivalentno temu, da je $h(x) \in E \enspace \forall x \in X$. Kar pa pomeni, da bo naša funkcija $h' : X \to E$ definirana kot $h'(x) = h(x) \enspace \forall x \in X$. Lahko se je prepričati, da je to edina funkcija, ki ustreza temu pogoju (bolj podrobna zadnji stavek?).
 \end{primer}
 
 Velja naslednja trditev
 
 \begin{trditev}
-Če je $e : E \to A$ del kozožka, je e monomorfizem.
+Če je $e : E \to A$ del zožka, je e monomorfizem.
 \end{trditev}
 \begin{dokaz}
 Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$. Potem po definiciji e velja $fex = gex$. Sledi, da obstaja 
 \end{dokaz}
-\vskip 1em
-O kozožku si lahko mislimo, da zoži B z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi Q.
 
-\begin{primer}
-
-\end{primer}
 
 \subsection{Kozožki}
+
 Kozožki so dualni koncept zožkov, zato lahko kar napišemo definicijo
 
 \begin{definicija}
 \textit{Kozožek} morfizmov $f,g:A \to B$ je objekt Q in morfizem $q: B \to Q$ za katega je $q \circ f = q \circ g$, z naslednjo univezalno lastnostjo. Za vsak objekt Z in morfizem $z : B \to Z$ za katerega velja $z \circ f = z \circ g$, obstaja enoličen morfizem $z' : Q \to Z$, da velja $z = z' \circ q$.
+
+$$\begin{tikzcd}
+A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \ar[r, "q"] \ar[dr, "z"'] & Q \ar[d, dashed, "z'"] \\
+& & Z \\
+\end{tikzcd}$$
+
 \end{definicija}
 
 Slednja trditev sledi iz dualnosti.
@@ -792,7 +800,7 @@ Slednja trditev sledi iz dualnosti.
 Če je $q : B \to Q$ del kozožka, je q epimorfizem.
 \end{trditev}
 
-\begin{definicija}
+\begin{primer}
 Kozožki so posplošitev pojma kvocientne množice definirane z ekvivalenčno relacijo. Naj bo torej $A$ poljubna množica ter $R$ ekvivalenčna relacija na A, kar pomeni $R \subseteq A \times A$, z naslednjimi lastnostmi
 \begin{itemize}
 \item Refleksivnost: $xRx \enspace \forall x \in A$
@@ -806,12 +814,15 @@ $$\begin{tikzcd}
 A & A \times A \ar[l, "p_1"] \ar[r, "p_2"'] & A \\
 \end{tikzcd}$$
 definirani kot $r_1(x,y) = x$ in $r_2(x,y) = y$. Potem je kvocientna projekcija $\pi : A \to A/R$ kozožek $r_1$ in $r_2$.
+To je res, kajti denimo, da imamo neko funkcijo $h : B \to X$, za katero velja $h \circ f = h \circ g$.
 
-\end{definicija}
+\end{primer}
 
 \begin{primer}
 V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $\sim$ ekvivalenčna relacija na $X$.
 \end{primer}
+
+O kozožku si lahko mislimo, da zoži B z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi Q.
 
 \section{Povleki in potiski}
 %TODO
