@@ -19,6 +19,7 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{enumitem}
+\usepackage{commath}
 
 \usepackage{tikz-cd} 
 \usetikzlibrary{babel} % this fixes problems with tikz-cd
@@ -114,7 +115,7 @@
 
 \DeclareMathOperator{\Hom}{Hom}
 
-\newcommand{\set}[1]{\{\,#1\,\}}
+\renewcommand{\set}[1]{\{\,#1\,\}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -776,7 +777,13 @@ Velja naslednja trditev
 Če je $e : E \to A$ del zožka, je e monomorfizem.
 \end{trditev}
 \begin{dokaz}
-Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$. Potem po definiciji e velja $fex = gex$. Sledi, da obstaja 
+Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$, recimo temu $z = ex = ey$. Potem po definiciji e velja $fex = gex$. Sledi, da obstaja enoličen $\hat{z} : X \to E$, da je $z = e\hat{z} = ex = ey$. To pa pomeni, da je $x = y$.
+
+$$\begin{tikzcd}
+E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
+X \ar[u, bend left, shift left, dashed, "\hat{z}"] \ar[u, shift left, "x"] \ar[u, shift right, "y"'] \ar[ur, "z"'] \\
+\end{tikzcd}$$
+
 \end{dokaz}
 
 
@@ -814,7 +821,14 @@ $$\begin{tikzcd}
 A & A \times A \ar[l, "p_1"] \ar[r, "p_2"'] & A \\
 \end{tikzcd}$$
 definirani kot $r_1(x,y) = x$ in $r_2(x,y) = y$. Potem je kvocientna projekcija $\pi : A \to A/R$ kozožek $r_1$ in $r_2$.
-To je res, kajti denimo, da imamo neko funkcijo $h : B \to X$, za katero velja $h \circ f = h \circ g$.
+Veljati mora $\forall (x,y) \in R : \pi r_1(x,y) = \pi r_2(x,y) \Leftrightarrow \pi(x) = \pi(y) \Leftrightarrow xRy \Leftrightarrow (x,y) \in R$. Denimo nato, da je $f$ tak, da $fr_1 = fr_2$, oz. $fr_1(x,y) = fr_2(x,y) $, kar pa pomeni, da $f$ slika ekvivalentna elementa iz $A$ v isti element, ker pa $\pi$  ravno tako slika ekvivalentna elementa v isti element, lahko $\hat{f}$ definiramo kot $\hat{f}(\pi(x)) ) = f(x) = f(y) = \hat{f}(\pi(y))$ (mogoče boljša notacija $xRy \Leftrightarrow [x] = [y]$?). Torej je $\hat{f}$ dobro definirana. Ali je ta funkcija $\hat{f}$ edina taka? Recimo, da obstaja že neka druga $g : A/R \to X$, da zanjo velja $f = g\pi$. Potem je za $xRy$, $g\pi(x) = f(x) = f(y) = g\pi(y)$. Ker pa je $\hat{f}(\pi(x)) = f(x) = g\pi(x)$, je $g = \hat{f}$. (Bolj razširiti argument?)
+
+$$\begin{tikzcd}
+R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & A \ar[r, "\pi"] \ar[dr, "f"'] & A/R \ar[d, dashed, "\hat{f}"] \\
+& & X \\
+\end{tikzcd}$$
+
+
 
 \end{primer}
 
@@ -824,8 +838,10 @@ V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo n
 
 O kozožku si lahko mislimo, da zoži B z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi Q.
 
+
 \section{Povleki in potiski}
 %TODO
+
 \subsection{Povlek}
 
 \begin{definicija}
@@ -847,24 +863,154 @@ $$x_1 = p_1u \quad x_2 = p_2u$$
 
 Na prvi pogled povlek deluje podobno kot produkt $A$ in $B$, a imamo še dva dodatna morfizma $f$ in $g$. Ta podobnost ni slučajna.
 
-\subsection{Kozožki}
+\begin{primer}
+Poglejmo si kako bi lahko izgledal povlek v kategoriji $\cat{Set}$. Denimo, da imamo dve funkciji $f : A \to C$ in $g : B \to C$. Potrebujemo tako množico $P$, skupaj s funkcijama $p_1 : P \to A$, $p_2 : P \to B$. Za prvi približek vzamimo množico $A \times B$ skupaj s koordinatnima projekcijama in poglejmo kako bi jo morali popraviti, da bi izpolnjevala pogoj $fp_1 = gr_2$. Veljati bi moralo $fp_1(x,y) = gp_2(x,y) \Leftrightarrow f(x) = g(y)$. Torej v $P$ moramo imeti samo vse pare $(x,y)$ za katere je $f(x) = g(y)$. Definiramo $P := \set{(x,y) \in A \times B \mid f(x) = g(y)}$, z pododovanima projekcijama, ki ju tudi poimenujemo $p_1$ in $p_2$. Preverimo če res izpolnjuje univerzalno lastnost. Denimo, da sta še $z_1 : Z \to A$ in $z_2 : Z \to B$ taki, da $fz_1 = gz_2$. Situacija je takšna
+
+$$\begin{tikzcd}
+Z
+\arrow[drr, bend left, "z_2"]
+\arrow[ddr, bend right, "z_1"'] & & \\
+& P \arrow[r, "p_2"] \arrow[d, "p_1"']
+& B \arrow[d, "g"] \\
+& A \arrow[r, "f"']
+& C
+\end{tikzcd}$$
+
+Definirajmo $u : Z \to P$ kot $u(z) = (z_1(z), z_2(z))$
+
+
+\end{primer}
+
+\subsection{Potiski}
 %TODO
 
 \section{Limite, kolimite in eksponenti}
 %TODO
+
+
 \subsection{Limite}
 %TODO
+
+Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo nek objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "najboljši" tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
+
+\begin{definicija}
+\textit{Diagram oblike} $\cat{J}$ v kategoriji $\cat{C}$ je funktor $D : \cat{J} \to \cat{C}$. Kjer $\cat{J}$ pravimo tudi \textit{indeksna} kategorija. Objekte v indeksni kategoriji označujemo z $i,j,\ldots$ in vrednosti funktorja $D_i,D_j,\ldots$ \\
+\textit{Stožec nad diagramom} $D$ je objekt $C$ v $\cat{C}$ skupaj z družino morfizmov $c_i : C \to D_i$ iz $\cat{C}$ za vsak objekt $i \in \cat{J}$, tako da za vsak morfizem $\alpha : i \to j$ v $\cat{J}$ naslednji diagram komutira
+
+$$\begin{tikzcd}[column sep=small]
+& C \ar[dl, "c_i"'] \ar[dr, "c_j"] & \\
+D_i \ar[rr, "D_\alpha"'] & & D_j \\
+\end{tikzcd}$$
+
+ali z enačbami $$c_j = D_\alpha \circ c_i$$
+
+Morfizem stožcev $\vartheta : (C, c_i) \to (C', c_i')$ je morfizem $\vartheta : C \to C'$ v $\cat{C}$, tako, da za vsak $i \in \cat{J}$ naslednji diagram komutira
+
+$$\begin{tikzcd}
+C \ar[dr, "c_i"'] \ar[r, "\vartheta"] & C' \ar[d, "c_i'"] \\
+& D_i
+\end{tikzcd}$$
+
+oz. $$c_i = c_i' \vartheta$$
+
+Tako dobimo novo kategorijo $\cat{Cone}(D)$ stožcev na $D$.
+\end{definicija}
+
+Diagrame $D$ si lahko predstavljamo kot "slike oblike $\cat{J}$ v $\cat{C}$. Poglejmo si to na majhnem primeru. Kaj se zgodi na primer, če za $\cat{J}$ vzamemo na primer diskretno kategorijo z dvemi elementi $\cat{J} = \set{1,2}$. Stožec nad diagramom $D : \cat{J} \to \cat{C}$ sestoji iz objekta $C$ in dveh morfizmov $c_1 : C \to D_1$, $c_2 : C \to D_2$.
+
+$$\begin{tikzcd}[column sep=normal, row sep=small]
+& C \ar[dl, "c_1"'] \ar[dr, "c_2"] & \\
+D_1 && D_2 \\
+\end{tikzcd}$$
+
+Morfizem stožcev $\vartheta : (C,c_i) \to (C', c_i')$ zgleda kot 
+
+$$\begin{tikzcd}
+& C' \ar[dl, "c_1'"'] \ar[d, "\vartheta"] \ar[dr, "c_2'"] & \\
+D_1 & C \ar[l, "c_1"] \ar[r, "c_2"'] & D_2 \\
+\end{tikzcd}$$
+
+da trikotnika komutirata, ali $c_1' = c_1\vartheta$, $c_2' = c_2\vartheta$.
+
+\begin{definicija}
+\textit{Limita} nad diagramom $D : \cat{J} \to \cat{C}$ je končni objekt v kategoriji stožcev nad $D$ $\cat{Cone}(D)$. Limito diagrama označujemo kot
+$$\lim_{i \in \cat{J}}D_i$$
+(mogoče rajši samo $\lim D$)
+z morfizmi $p_i : \lim D \to D_i$.
+
+
+Če v celoti napišemo univerzalno lastnost, ki jo ima limita nad $D$, pravi, da za vsak drug stožec $(C,c_i)$ v $\cat{Cone}(D)$ obstaja enoličen morfizem $u : C \to \lim D$, tako da za vse $i \in \cat{J}$ velja $c_i = p_i \circ u$.
+
+$$\begin{tikzcd}
+C \ar[rr, dashed, "u"] \ar[drrr, pos=7/11, "c_j"'] \ar[dr, "c_i"'] & & \lim D \ar[dl, crossing over, pos=1/3, "p_i"'] \ar[dr, "p_j"] \\
+& D_i \ar[rr, "D_\alpha"'] & & D_j \\
+\end{tikzcd}$$
+\end{definicija}
+
+Limito si lahko torej predstavljamo kot "najbližji" stožec diagramu $D$, kajti vsi drugi stožci morajo "iti skozi" limito. Limita nekega diagrama ne obstaja nujno. Če obstaja limita za vsak diagram $D : \cat{J} \to \cat{C}$ za neko indeksno kategorijo $\cat{J}$ pravimo, da $\cat{C}$ \textit{ima limite tipa} $\cat{J}$.
+
+\begin{primer}
+Nadaljujmo s primerom za diagrame iz diskretne kategorije na dveh objektih, ki jo poimenujmo kot zgoraj z $\cat{J}$. Kaj je limita nad $D : \cat{J} \to \cat{C}$. To je tak objekt $\lim D$ z morfizmi $p_1 : \lim D \to D_1$, $p_2 : \lim D \to D_2$, da za vsak objekt $X$ opremljen z morfizmoma $x_1 : X \to D_1$, $x_2 : X \to D_2$, obstaja enoličen morfizem $u : X \to \lim D$, da naslednja trikotnika komutirata 
+
+$$\begin{tikzcd}
+& X \ar[dl, "x_1"'] \ar[d, dashed, "u"] \ar[dr, "x_2"] & \\
+D_1 & \lim D \ar[l, "p_1"] \ar[r, "p_2"'] & D_2 \\
+\end{tikzcd}$$
+
+V tem diagramu pa lahko spoznamo ravno univerzalno lastnost produkta objektov $D_1$ in $D_2$. Torej kategorija $\cat{C}$ ima limite tipa $\cat{J}$ natanko takrat, ko ima binarne produkte.
+
+\end{primer}
+
+\begin{primer}
+Poskusimo še z bolj enostavno indeksno kategorijo. Naj bo $\cat{J}$ prazna kategorija brez objektov in brez puščic. Potem obstaja natanko en diagram $D : \cat{J} \to \cat{C}$, ki nobenega objekta ne pošlje nikamor. Limita $\lim D$ nad tem diagramom je objekt, brez dodatnih morfizmov, da za vsak drug objekt $C$ obstaja natanko en morfizem $u : C \to \lim D$, da nič dodatnega ne komutira. Ta limita je torej natanko \textit{končni objekt} v $\cat{C}$.
+\end{primer}
+
+\begin{primer}
+Naj bo $\cat{J}$ enaka kategoriji $\cat{1} = \set{\ast}$ z enim objektom in enim morfizmom. Stožec nad diagramom $D : \cat{1} \to \cat{C}$ je objekt $C$ skupaj z morfizmom $c : C \to D$ (abuse notacije, dovolj razumljivo ?). Limita nad D je objekt $\lim D$ z morfizmom $p : \lim D \to D$, da za vsak drug stožec $(C, c)$ obstaja enoličen morfizem $u : C \to \lim D$, da trikotnik
+
+$$\begin{tikzcd}[column sep=small]
+C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D \ar[dl, "p"] \\
+& D & \\
+\end{tikzcd}$$
+komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D$ je končni objekt v tej kategoriji.
+\end{primer}
+
+\begin{primer}
+Poglejmo kako ta abstraktna karakterizacija limit ustreza znanemu pojmu limite v analizi. Limita zaporedja na primer realnih števia $(a_n)_{n \in \mathbb{N}}$ je tako realno število $L \in \mathbb{R}$, da za vsak $\epsilon > 0$ obstaja tak $n_0 \in \mathbb{N}$ , da za vsak $n \geq n_n : \abs{a_n - L} < \epsilon$. (Za ta primer nam manjka definicija filtra v topološkem prostoru za to pa nam manjka definicija topološke mreže
+\end{primer}
+
+
 \subsection{Kolimite}
 %TODO
+
+
 \subsection{Eksponenti}
-%TODO
+
+\begin{definicija}
+Naj ima kategorija $\cat{C}$ binarne produkte. \textit{Eksponent} objektov B in C sestoji iz objekta 
+$$C^B$$
+in morfizma
+$$\epsilon : C^B \times B \to C$$ imenovanega \textit{evaluacija}, takega, da za vsak objekt $A$ in morfizem 
+$$f : A \times B \to C$$
+obstaja enoličen morfizem 
+$$\widetilde{f} : A \to C^B$$
+tako da velja
+$$\epsilon \circ (\widetilde{f} \times 1_B) = f$$
+kar lahko vidimo v spodnjem diagramu.
+
+$$\begin{tikzcd}
+C^B &  C^B \times B \ar[r, "\epsilon"] & C \\
+A \ar[u, dashed, "\widetilde{f}"] &  A \times B \ar[u, "\widetilde{f} \times 1_B"] \ar[ur, "f"'] & \\
+\end{tikzcd}$$
+
+\end{definicija}
 
 \section{Funktorji in naravne transformacije}
 
 \subsection{Morfizmi med kategorijami}
 
 \begin{primer}
-Neuradni moto teorije kategorij bi se lahko glasil \textit{puščice so bistvene}
+Neuradni moto teorije kategorij bi se lahko glasil \textit{puščice so bistvene},
 kar bi pomenilo, da nas ponavadi ne zanima toliko kaj točno so objekti v neki specifični kategoriji temveč kaj se dogaja s puščicami med njimi.
 \end{primer}
 
@@ -904,6 +1050,16 @@ komutira
 
 
 \chapter{Pomembne trditve}
+
+\begin{trditev}
+Kategorija ime vse \textit{končne limite} natanko takrat, ko ima vse končne produkte in zožke.
+
+To da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \cat{J} \to \cat{C}$ limito v $\cat{C}$.
+
+\end{trditev}
+\begin{dokaz}
+
+\end{dokaz} 
  
 \begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
 \end{trditev}
@@ -926,16 +1082,16 @@ Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$
 
 Naj bo $\mathbf{C}$ lokalno majhna kategorija.
 Potem vemo, da za vsak objekt $C \in \mathbf{C}$ obstaja kovariantni predstavljivi funktor
-$$Hom_{\mathbf{C}}(C, -):\mathbf{C} \to \mathbf{Sets}$$
+$$\Hom_{\mathbf{C}}(C, -):\mathbf{C} \to \mathbf{Sets}$$
 Ker lahko ta objekt C izbiramo poljubno imamo v resnici funktor 
-$$k(C) = Hom(C, \_)$$
+$$k(C) = \Hom(C, \_)$$
 Opravka imamo v bistvu z kontravariantnim funktorjem 
 $$k : \mathbf{C}^{op} \to \mathbf{Sets}^{\mathbf{C}}$$
 
 Saj za 
 
-\begin{definicija} {\it Yonedova vložitev} je funktor $y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$ \\  za $C \in \bf{C}$ je $$y(C) := Hom_{\bf{C}}(-, C) : \bf{C}^{op} \to \bf{Sets}$$ in za puščice $f : C \to D$
-$$y(f) := Hom(-,f) : Hom(-,C) \to Hom(-,D)$$
+\begin{definicija} {\it Yonedova vložitev} je funktor $y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$ \\  za $C \in \bf{C}$ je $$y(C) := \Hom_{\bf{C}}(-, C) : \bf{C}^{op} \to \bf{Sets}$$ in za puščice $f : C \to D$
+$$y(f) := \Hom(-,f) : \Hom(-,C) \to \Hom(-,D)$$
 \end{definicija}
 
 Kasneje bomo pokazali, da je funktor y res vložitev. Funktorju pravimo {\it vložitev}, če je zvest poln in injektiven na objektih.
@@ -944,13 +1100,13 @@ Kasneje bomo pokazali, da je funktor y res vložitev. Funktorju pravimo {\it vlo
 
 \begin{izrek}[Yonedova lema]
 Naj bo {\bf C} lokalno majhna kategorija. Potem za vsak objekt $C \in \bf{C}$ in funktor $F : \textbf{C}^{op} \to \textbf{Sets}$ velja
-$$Hom(yC,F) \cong FC$$
+$$\Hom(yC,F) \cong FC$$
 In ta izomorfizem je naraven tako v C kot v F, kar pomeni, da za $f : C \to D$ naslednji diagram
 
 \begin{equation} \label{diag1}
 \begin{tikzcd}[row sep=huge]
-Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "\text{Hom(yf,F)}"'] & FC \arrow[d, "F(f)"] \\
-Hom(yD,F) \arrow[r, "\cong"'] & FD
+\Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "{\Hom(yf,F)}"'] & FC \arrow[d, "F(f)"] \\
+\Hom(yD,F) \arrow[r, "\cong"'] & FD
 \end{tikzcd}
 \end{equation}
 
@@ -959,36 +1115,36 @@ komutira ter za naravno transformacijo $\varphi : F \Rightarrow G$ naslednji dia
 
 \begin{equation} \label{diag2}
 \begin{tikzcd}[row sep=huge]
-Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "\text{Hom(yC,}\varphi\text{)}"'] & FC \arrow[d, "\varphi_C"] \\
-Hom(yC,G) \arrow[r, "\cong"']	&	GC
+\Hom(yC,F) \arrow[r, "\cong"] \arrow[d, "{\Hom(yC,}\varphi\text{)}"'] & FC \arrow[d, "\varphi_C"] \\
+\Hom(yC,G) \arrow[r, "\cong"']	&	GC
 \end{tikzcd}
 \end{equation}
 komutira. \\
-\textbf{Opomba:} $Hom(yC,F)$ je množica naravnih transformacij med funktorjema $yC,F : \bf{C} \to \bf{Sets}$, oz. $Hom(yC,F) = Hom_{\bf{Sets}^{\textbf{C}^{op}}}(yC,F) = Nat(yC,F)$.
+\textbf{Opomba:} $\Hom(yC,F)$ je množica naravnih transformacij med funktorjema $yC,F : \bf{C} \to \bf{Sets}$, oz. $\Hom(yC,F) = \Hom_{\bf{Sets}^{\textbf{C}^{op}}}(yC,F) = Nat(yC,F)$.
 
 \end{izrek}
 \begin{dokaz}
 Poglejmo, kaj mora veljati za neko naravno transformacijo \\ $\vartheta : yC \Rightarrow F$, ki je v bistvu družina puščic $(\vartheta_D : yC(D) \to F(D))_{D \in \bf{C}}$. Te puščice morajo izpolnjevati naturalnostni pogoj, da za vsako puščico $f : D \to C$
 
 \[ \begin{tikzcd}[row sep=huge]
-Hom(C,C) \arrow[r, "\vartheta_C"] \arrow[d, "\text{Hom(f,C)}"'] & FC \arrow[d, "\text{F(f)}"] \\
-Hom(D,C) \arrow[r, "\vartheta_D"] & FD
+\Hom(C,C) \arrow[r, "\vartheta_C"] \arrow[d, "{\Hom(f,C)}"'] & FC \arrow[d, "\text{F(f)}"] \\
+\Hom(D,C) \arrow[r, "\vartheta_D"] & FD
 \end{tikzcd} \]
 komutira. Torej mora veljati 
-$$(F(f) \circ \vartheta_C) (g) = (\vartheta_D \circ Hom(f,C)) (g)$$
-za vsak $g \in Hom(C,C)$. En tak g je identitetna puščica na C, oz. $1_C : C \to C$. Torej mora veljati enakost:
+$$(F(f) \circ \vartheta_C) (g) = (\vartheta_D \circ \Hom(f,C)) (g)$$
+za vsak $g \in \Hom(C,C)$. En tak g je identitetna puščica na C, oz. $1_C : C \to C$. Torej mora veljati enakost:
 
 \begin{align} \label{eq1}
 \begin{split}
-\underline{F(f) \circ \vartheta_C(1_C)}& = \vartheta_D \circ Hom(f,C)(1_C) = \\
-\vartheta_D \circ Hom(f,C)(1_C)& = \vartheta_D \circ ( \_ \circ f )(1_C) =
+\underline{F(f) \circ \vartheta_C(1_C)}& = \vartheta_D \circ \Hom(f,C)(1_C) = \\
+\vartheta_D \circ \Hom(f,C)(1_C)& = \vartheta_D \circ ( \_ \circ f )(1_C) =
 \vartheta_D \circ ( 1_C \circ f) = \underline{\vartheta_D(f)}
 \end{split}
 \end{align}
 \\
 Torej vidimo, da je vrednost komponente za $\vartheta$ v D določena že s tem, kam slika $\vartheta_C$ puščico $1_C$. \\
-Naj bo z $\alpha_{C,F} : Hom(yC,F) \to FC$ označen želeni izomorfizem. \\
-Definiramo torej za naravno transformacijo $\vartheta \in Hom(yC,F)$
+Naj bo z $\alpha_{C,F} : \Hom(yC,F) \to FC$ označen želeni izomorfizem. \\
+Definiramo torej za naravno transformacijo $\vartheta \in \Hom(yC,F)$
 \begin{equation}
 \alpha_{C,F}(\vartheta) := \vartheta_C(1_C)
 \end{equation}
@@ -998,7 +1154,7 @@ Označimo:
 \boxed{\alpha_{C,F}(\vartheta) = \widehat{\vartheta}}
 \end{equation} 
 
-In za vsak element $a \in FC$ definirajmo naravno transformacijo $\vartheta_a \in Hom(yC,F)$ po komponentah, in sicer:
+In za vsak element $a \in FC$ definirajmo naravno transformacijo $\vartheta_a \in \Hom(yC,F)$ po komponentah, in sicer:
 \begin{align}
 &(\vartheta_a)_D : yC(D) \to F(D) \\
 &(\vartheta_a)_D(f : D \to C) := F(f)(a)
@@ -1012,13 +1168,13 @@ Označimo:
 Sedaj je potrebno preveriti, da tako definirana preslikava res ustreza pogojem izreka. \\
 \\
 Najprej preverimo, da sta si predpisa vzajemno inverzna. \\
-Torej, da za vsak $\vartheta \in Hom(yC,F)$ velja: 
+Torej, da za vsak $\vartheta \in \Hom(yC,F)$ velja: 
 $$\widetilde{\widehat{\vartheta}} = \vartheta$$
 in za vsak $a \in FC$ velja
 $$\widehat{\widetilde{a}} = a$$
 \\ 1.)
 $\widehat{\vartheta} = \vartheta_C(1_C) \in FC$. \\
-Potem je $\widetilde{\widehat{\vartheta}} = \eta_{\widehat{\vartheta}} \in Hom(yC,F)$. Poglejmo kako ta naravna transformacija deluje na puščicah. Naj bo $f : D \to C$
+Potem je $\widetilde{\widehat{\vartheta}} = \eta_{\widehat{\vartheta}} \in \Hom(yC,F)$. Poglejmo kako ta naravna transformacija deluje na puščicah. Naj bo $f : D \to C$
 \begin{align*}
 (\eta_{\widehat{\vartheta}})_D : yC(&D) \to FD \\
 &f \xmapsto{def} Ff(\widehat{\vartheta}) \\
@@ -1044,7 +1200,7 @@ Torej
 $$\widehat{\widetilde{a}} = (\vartheta_a)_C(1_C) = F(1_C)(a) = 1_{F(C)}(a) = a$$
 \\
 Sedaj moramo še pokazati, da sta zadoščena naturalnostna pogoja: \\
-Naj bo $f : C \to D$ in naj bo $\vartheta \in Hom(yC,F)$. \\
+Naj bo $f : C \to D$ in naj bo $\vartheta \in \Hom(yC,F)$. \\
 Pokazali bi radi:
 \begin{equation}
 Ff \circ \alpha_{C,F}(\vartheta) = \alpha_{D,F} \circ Hom(yf,F)(\vartheta)
@@ -1055,7 +1211,7 @@ $$Ff \circ \alpha_{C,F}(\vartheta) = \underline{Ff(\vartheta_C(1_C))}$$
 
 In po drugi strani:
 \begin{align*}
-\alpha_{D,F} \circ Hom(yf,F)(\vartheta) = \alpha_{D,F}(\vartheta \circ yf) = \\
+\alpha_{D,F} \circ \Hom(yf,F)(\vartheta) = \alpha_{D,F}(\vartheta \circ yf) = \\
 (\vartheta \circ yf)_D (1_D) = \vartheta_D \circ yf_D(1_D) = \\
 \vartheta_D(f \circ 1_D) = \underline{\vartheta_D(f)}
 \end{align*}
@@ -1064,11 +1220,11 @@ To pa pomeni ravno, da diagram \ref{diag1} komutira.
 
 Kaj pa drugi diagram. Naj bo $\varphi : F \Rightarrow G$ naravna transformacija med funktorjema $F,G : \cat{C}^{op} \to \cat{Sets}$. \\
 Veljati mora enakost:
-$$\varphi_C \circ \alpha_{C,F}(\vartheta) = \alpha_{C,G} \circ Hom(yC,\varphi)(\vartheta)$$
+$$\varphi_C \circ \alpha_{C,F}(\vartheta) = \alpha_{C,G} \circ \Hom(yC,\varphi)(\vartheta)$$
 Imamo:
 $$\varphi_C \circ \alpha_{C,F}(\vartheta) = \underline{\varphi_C(\vartheta_C(1_C))}$$
 In za desno stran:
-$$\alpha_{C,G} \circ Hom(yC,\varphi)(\vartheta) = \alpha_{C,G}(\varphi \circ \vartheta) = 
+$$\alpha_{C,G} \circ \Hom(yC,\varphi)(\vartheta) = \alpha_{C,G}(\varphi \circ \vartheta) = 
 (\varphi \circ \vartheta)_C(1_C) = \varphi_C \circ \vartheta_C(1_C) = \underline{\varphi_C(\vartheta_C(1_C)}$$
 Torej diagram \ref{diag2} tudi komutira.
 
