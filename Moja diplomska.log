@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.4)  8 MAY 2017 03:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.4.4)  8 MAY 2017 12:41
 entering extended mode
 **"./Moja diplomska.tex"
 ("Moja diplomska.tex"
@@ -1133,12 +1133,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 680.
+(babel)             in language  on input line 677.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 680.
+(babel)             in language  on input line 677.
 [14]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 696.
+(babel)             in language  on input line 697.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1147,12 +1147,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 709.
+(babel)             in language  on input line 706.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 709.
+(babel)             in language  on input line 706.
 [15]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 736.
+(babel)             in language  on input line 737.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1161,23 +1161,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 738.
+(babel)             in language  on input line 739.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 738.
+(babel)             in language  on input line 739.
 [16]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 743.
+(babel)             in language  on input line 744.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.92502pt.
+ Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 766.
+(babel)             in language  on input line 767.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 766.
+(babel)             in language  on input line 767.
 [17]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1186,9 +1186,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 800.
+(babel)             in language  on input line 801.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 800.
+(babel)             in language  on input line 801.
 [18]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1197,12 +1197,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 829.
+(babel)             in language  on input line 830.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 829.
+(babel)             in language  on input line 830.
 [19]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 842.
+(babel)             in language  on input line 843.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1211,12 +1211,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 867.
+(babel)             in language  on input line 868.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 867.
+(babel)             in language  on input line 868.
 [20]
+Overfull \hbox (6.43433pt too wide) in paragraph at lines 882--883
+[]\OT1/cmr/m/n/12 Potem ve-lja $\OML/cmm/m/it/12 p[]u\OT1/cmr/m/n/12 (\OML/cmm/
+m/it/12 z\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 p[]\OT1/cmr/m/n/12 (\OML/cmm/m/it
+/12 z[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; z
+[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 )) = \OML/cmm/m/it/12 z[]\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 )$ in $\OML/cmm/m/it/12 p[]u\
+OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 p[]\OT1/
+cmr/m/n/12 (\OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n
+/12 )\OML/cmm/m/it/12 ; z[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 )
+) =
+ []
+
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 887.
+(babel)             in language  on input line 895.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1225,9 +1240,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 900.
+(babel)             in language  on input line 903.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 900.
+(babel)             in language  on input line 903.
 [21]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1236,9 +1251,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 936.
+(babel)             in language  on input line 928.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 936.
+(babel)             in language  on input line 928.
 [22]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1247,9 +1262,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 966.
+(babel)             in language  on input line 962.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 966.
+(babel)             in language  on input line 962.
 [23]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1263,7 +1278,7 @@ Package babel Info: Redefining slovene shorthand "|
 (babel)             in language  on input line 996.
 [24]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1008.
+(babel)             in language  on input line 1023.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1272,9 +1287,9 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1035.
+(babel)             in language  on input line 1030.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1035.
+(babel)             in language  on input line 1030.
 [25]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1283,25 +1298,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1052.
+(babel)             in language  on input line 1062.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1052.
+(babel)             in language  on input line 1062.
 [26]
-Poglavje 2.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1052.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1067--1072
-
- []
-
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1079.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1079.
-[27
-
-]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1309,23 +1309,35 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1079.
+(babel)             in language  on input line 1067.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1079.
+(babel)             in language  on input line 1067.
+[27]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1067.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1067.
 [28
 
 ]
-Poglavje 3.
+Poglavje 2.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1079.
+(babel)             in language  on input line 1067.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1082--1087
+
+ []
+
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1081.
+(babel)             in language  on input line 1094.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1099.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1111.
-Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1111.
+(babel)             in language  on input line 1094.
 [29]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1334,11 +1346,36 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1137.
+(babel)             in language  on input line 1094.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1137.
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1172
+(babel)             in language  on input line 1094.
+[30
+
+]
+Poglavje 3.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1094.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1096.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1114.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1126.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1126.
+[31]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1152.
+Package babel Info: Redefining slovene shorthand "|
+(babel)             in language  on input line 1152.
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1183--1187
 
  []
 
@@ -1349,11 +1386,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1190.
+(babel)             in language  on input line 1205.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1190.
-[31]
-Overfull \hbox (4.21692pt too wide) detected at line 1228
+(babel)             in language  on input line 1205.
+[33]
+Overfull \hbox (4.21692pt too wide) detected at line 1243
 \OML/cmm/m/it/12 [] \OMS/cmsy/m/n/12  []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 yC;
  '\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 #\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 []\
 OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ' \OMS/cmsy/m/n/12  \OML/cmm/m/it/12 #\OT1/cm
@@ -1369,12 +1406,12 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1228.
+(babel)             in language  on input line 1243.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1228.
-[32]
+(babel)             in language  on input line 1243.
+[34]
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1233.
+(babel)             in language  on input line 1248.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1383,25 +1420,25 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1273.
+(babel)             in language  on input line 1288.
 Package babel Info: Redefining slovene shorthand "|
-(babel)             in language  on input line 1273.
-[33]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1273.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1273.
+(babel)             in language  on input line 1288.
+[35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1288.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1288.
  ("Moja diplomska.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1273.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1273.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1288.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1288.
 
 Package rerunfilecheck Info: File `"Moja diplomska".out' has not changed.
 (rerunfilecheck)             Checksum: 098DDE0AD8541171CB8519B3976157B6;1317.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1273.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1288.
  ) 
 Here is how much of TeX's memory you used:
- 21437 strings out of 493333
- 409915 string characters out of 3139198
- 479227 words of memory out of 3000000
- 24446 multiletter control sequences out of 15000+200000
+ 21441 strings out of 493333
+ 409970 string characters out of 3139198
+ 479282 words of memory out of 3000000
+ 24448 multiletter control sequences out of 15000+200000
  17336 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,18n,84p,1250b,1105s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1426,9 +1463,9 @@ pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Moja diplomska.pdf" (47 pages, 415390 bytes).
+Output written on "Moja diplomska.pdf" (49 pages, 418098 bytes).
 PDF statistics:
- 511 PDF objects out of 1000 (max. 8388607)
- 143 named destinations out of 1000 (max. 500000)
+ 522 PDF objects out of 1000 (max. 8388607)
+ 145 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

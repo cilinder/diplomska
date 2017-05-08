@@ -658,25 +658,26 @@ Produkt objektov $A,B \in \cat{C}$ je objekt P, skupaj z projekcijama
 $$\begin{tikzcd}
 A & P \ar[l, "p_A"'] \ar[r, "p_A"] & B
 \end{tikzcd}$$
-z naslednjo univerzalno lastnostjo. Za vsak objekt X iz $\cat{C}$ in morfizma $x_A : X \to A$, $x_B : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram komutira
+z naslednjo univerzalno lastnostjo. Za vsak objekt X iz $\cat{C}$ in morfizma $f : X \to A$, $g : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram komutira
 
 $$\begin{tikzcd}
-& X \ar[ld, "x_A"'] \ar[d, dashed, "u"] \ar[rd, "x_B"] & \\
+& X \ar[ld, "f"'] \ar[d, dashed, "u"] \ar[rd, "g"] & \\
 A & P \ar[l, "p_A"'] \ar[r, "p_B"] & B
 \end{tikzcd}$$
 
 ali z enačbami
-$$x_A = p_A \circ u \quad x_B = p_B \circ u$$
-Morfizmoma $p_A$ in $p_B$ pravimo (koordinatni) \textit{projekciji}.
+$$f = p_A \circ u \quad g = p_B \circ u$$
+Morfizmoma $p_A$ in $p_B$ pravimo (koordinatni) \textit{projekciji}. Enolični morfizem $u$ ponavadi označujemo z $\langle f,g \rangle$.
 \end{definicija}
 
+Če v kategoriji obstaja produkt za vsaka dva objekta pravimo, da ta kategorija \textit{ima binarne produkte}. \\
 Kot vedno z univerzalnimi lastnostmi podanimi na tak način, bo veljala naslednja trditev
 
 \begin{trditev}
 Produkti so enolični do izomorfizma natančno
 \end{trditev}
 \begin{dokaz}
-Naj bosta P in R oba produkt objektov A in B z produktnima projekcijama $p_A, p_B$ ter $r_A, r_B$ respectively. Ker je P produkt A in B obstaja enoličen morfizem $u : R \to P$, da velja $r_A = p_Au, r_B = p_Bu$. Obratno ker je R produkt A in B obstaja enoličen $v : P \to R$, da veljata zvezi $p_A = r_Au, p_B = r_Bu$. Stanje prikažemo v diagramu
+Naj bosta P in R oba produkt objektov A in B z produktnima projekcijama $p_A, p_B$ ter $r_A, r_B$ (respectively?). Ker je P produkt A in B obstaja enoličen morfizem $u : R \to P$, da velja $r_A = p_Au, r_B = p_Bu$. Obratno ker je R produkt A in B obstaja enoličen $v : P \to R$, da veljata zvezi $p_A = r_Au, p_B = r_Bu$. Stanje prikažemo v diagramu
 
 $$\begin{tikzcd}
 & R \ar[dd, dashed, bend right, "u"'] \ar[dl, "r_A"'] \ar[dr, "r_B"] & \\
@@ -690,7 +691,7 @@ Morfizem $u \circ v $ je torej enolični morfizem iz P v P. To pa pomeni, da mor
 Zaradi tega lahko produkt A in B upravičeno označujemo z $A \times B$.
 
 \begin{primer}
-Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti.
+Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti. Naj bosta $A \times B$ kartezični produkt množic $A$ in $B$ z koordinatnima projekcijama $\pi_A$ in $\pi_B$. Denimo, da obstaja množica $X$ s funkcijama $f : X \to A$, $g : X \to B$. Definirajmo funkcijo $\langle f,g \rangle : X \to A \times B$ kot $\langle f,g \rangle(x) = (f(x),g(x))$.
 \end{primer}
 
 \section{Dualnost}
@@ -864,11 +865,13 @@ $$x_1 = p_1u \quad x_2 = p_2u$$
 Na prvi pogled povlek deluje podobno kot produkt $A$ in $B$, a imamo še dva dodatna morfizma $f$ in $g$. Ta podobnost ni slučajna.
 
 \begin{primer}
-Poglejmo si kako bi lahko izgledal povlek v kategoriji $\cat{Set}$. Denimo, da imamo dve funkciji $f : A \to C$ in $g : B \to C$. Potrebujemo tako množico $P$, skupaj s funkcijama $p_1 : P \to A$, $p_2 : P \to B$. Za prvi približek vzamimo množico $A \times B$ skupaj s koordinatnima projekcijama in poglejmo kako bi jo morali popraviti, da bi izpolnjevala pogoj $fp_1 = gr_2$. Veljati bi moralo $fp_1(x,y) = gp_2(x,y) \Leftrightarrow f(x) = g(y)$. Torej v $P$ moramo imeti samo vse pare $(x,y)$ za katere je $f(x) = g(y)$. Definiramo $P := \set{(x,y) \in A \times B \mid f(x) = g(y)}$, z pododovanima projekcijama, ki ju tudi poimenujemo $p_1$ in $p_2$. Preverimo če res izpolnjuje univerzalno lastnost. Denimo, da sta še $z_1 : Z \to A$ in $z_2 : Z \to B$ taki, da $fz_1 = gz_2$. Situacija je takšna
+Poglejmo si kako bi lahko izgledal povlek v kategoriji $\cat{Set}$. Denimo, da imamo dve funkciji $f : A \to C$ in $g : B \to C$. Potrebujemo tako množico $P$, skupaj s funkcijama $p_1 : P \to A$, $p_2 : P \to B$. Za prvi približek vzamimo množico $A \times B$ skupaj s koordinatnima projekcijama in poglejmo kako bi jo morali popraviti, da bi izpolnjevala pogoj $fp_1 = gr_2$. Veljati bi moralo $fp_1(x,y) = gp_2(x,y) \Leftrightarrow f(x) = g(y)$. Torej v $P$ moramo imeti samo vse pare $(x,y)$ za katere je $f(x) = g(y)$. Definiramo $P := \set{(x,y) \in A \times B \mid f(x) = g(y)}$, z pododovanima projekcijama, ki ju tudi poimenujemo $p_1$ in $p_2$. Preverimo če res izpolnjuje univerzalno lastnost. Denimo, da sta še $z_1 : Z \to A$ in $z_2 : Z \to B$ taki, da $fz_1 = gz_2$. Definirajmo $u : Z \to P$ kot $u(z) = (z_1(z), z_2(z))$
+Situacija je takšna
 
 $$\begin{tikzcd}
 Z
 \arrow[drr, bend left, "z_2"]
+\ar[dr, "u"]
 \arrow[ddr, bend right, "z_1"'] & & \\
 & P \arrow[r, "p_2"] \arrow[d, "p_1"']
 & B \arrow[d, "g"] \\
@@ -876,10 +879,15 @@ Z
 & C
 \end{tikzcd}$$
 
-Definirajmo $u : Z \to P$ kot $u(z) = (z_1(z), z_2(z))$
-
-
+Potem velja $p_1u(z) = p_1(z_1(z),z_2(z)) = z_1(z)$ in $p_2u(z) = p_2(z_1(z),z_2(z)) = z_2(z)$ za vsak $z \in Z$. Denimo sedaj, da obstaja še neka druga funkcija $v : Z \to P$, za katero je $z_1 = p_1v$, $z_2 = p_2v$. Poglejmo, kaj mora veljati za funkcijo $v$. Naj bo $v(z) = (a,b) \in P$ za nek $z \in Z$. Veljati mora $z_1(z) = p_1v(z) = p_1(x,y) = x$. Po drugi strani pa $z_2(z) = p_2v(z) = p_2(x,y) = y$. Torej je $v(z) = (x,y) = (z_1(z),z_2(z))$, oziroma $v = u$.
 \end{primer}
+
+Poglejmo kako bi lahko to idejo konstrukcije povleka razširili na poljubno kategorijio.
+
+\begin{trditev}
+Naj bo $\cat{C}$ kategorija z 
+\end{trditev}
+
 
 \subsection{Potiski}
 %TODO
@@ -975,9 +983,6 @@ C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D \ar[dl, "p"] \\
 komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D$ je končni objekt v tej kategoriji.
 \end{primer}
 
-\begin{primer}
-Poglejmo kako ta abstraktna karakterizacija limit ustreza znanemu pojmu limite v analizi. Limita zaporedja na primer realnih števia $(a_n)_{n \in \mathbb{N}}$ je tako realno število $L \in \mathbb{R}$, da za vsak $\epsilon > 0$ obstaja tak $n_0 \in \mathbb{N}$ , da za vsak $n \geq n_n : \abs{a_n - L} < \epsilon$. (Za ta primer nam manjka definicija filtra v topološkem prostoru za to pa nam manjka definicija topološke mreže
-\end{primer}
 
 
 \subsection{Kolimite}
@@ -1003,7 +1008,17 @@ C^B &  C^B \times B \ar[r, "\epsilon"] & C \\
 A \ar[u, dashed, "\widetilde{f}"] &  A \times B \ar[u, "\widetilde{f} \times 1_B"] \ar[ur, "f"'] & \\
 \end{tikzcd}$$
 
+Tu morfizmu $\widetilde{f}$ pravimo \textit{transponiranka} od $f$.
+
 \end{definicija}
+
+Za vsak morfizem $$g : A \to B^C$$ pišemo
+$$ \overline{g} := \epsilon \circ (g \times 1_B) : A \times B \to C$$
+in morfizem $\overline{g}$ tudi imenujemo \textit{transponiranka} od $g$. Po enoličnosti iz definicije potem velja
+$$\widetilde{\overline{g}} = g$$
+Velja pa tudi
+$$\overline{\widetilde{f}} = f$$
+za vsak $f : A \times B \to C$.
 
 \section{Funktorji in naravne transformacije}
 
