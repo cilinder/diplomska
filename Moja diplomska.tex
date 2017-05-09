@@ -10,16 +10,20 @@
 						pagebackref=false, 
 						pdfproducer={LaTeX}, pdfcreator={LaTeX}, hidelinks]{hyperref}
 \usepackage{color}       % dodal Solina
-\usepackage{soul}
+%\usepackage{soul}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{ulem}
+
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{commath}
+
+\usepackage{ulem} % ta knjižnica redefinira komando \emph
+% ta komanda jo nastavi nazaj na privzeto vrednost
+\normalem
 
 \usepackage{tikz-cd} 
 \usetikzlibrary{babel} % this fixes problems with tikz-cd
@@ -59,9 +63,9 @@
 \newtheorem{definicija}{Definicija}[chapter]
  
 \theoremstyle{plain}
-\newtheorem{izrek}{Izrek}[chapter]
-\newtheorem{trditev}{Trditev}[izrek]
-\newtheorem{lema}[izrek]{Lema}
+\newtheorem{izrek}[definicija]{Izrek}
+\newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{lema}[definicija]{Lema}
 \newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
 
 \theoremstyle{definition}
@@ -273,29 +277,29 @@ Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko
 \section{Osnovne Definicije}
 
 \begin{definicija}
-$Kategorija$ sestoji iz naslednjih stvari:
+\emph{Kategorija} sestoji iz naslednjih stvari:
 \begin{itemize}
-\item \textit{Objektov} : A,B,C,X,Y,...
-\item \textit{Puščic} : f,g,h,...
-\item Za vsako puščico imamo podana dva objekta: $$dom(f), \quad cod(f)$$
-ki jima pravimo domena in kodomena puščice f. Pišemo:
+\item \emph{Objektov} : $A,B,C,X,Y,\ldots$
+\item \emph{Morfizmov} : $f,g,h,\ldots$
+\item Za vsak morfizem imamo podana dva objekta: $$dom(f), \quad cod(f).$$
+ki jima pravimo domena in kodomena morfizma $f$. Pišemo:
 $$f\colon A \to B$$
-kjer sta A = dom(f) in B = cod(f).
-Pravimo da f gre od A do B.
-\item Za vsaki puščici $f \colon A \to B$ in $g \colon B \to C$, torej taki da velja cod(f) = dom(g), obstaja puščica $g\circ A \to C$, ki ji pravimo \textit{kompozitum} f in g
-
+kjer sta $A = dom(f)$ in $B = cod(f)$.
+Pravimo da $f$ gre od $A$ do $B$.
+\item Za vsaka morfizma $f \colon A \to B$ in $g \colon B \to C$, torej taka da velja $cod(f)$ = $dom(g)$, obstaja morfizem $g\circ A \to C$, ki mu pravimo \emph{kompozitum} $f$ in $g$.
+%
 \[
 \begin{tikzcd}
 A \arrow[r, "f"] \arrow[rd, "g \circ f"']  & B  \arrow[d, "g"] \\
 				& C
 \end{tikzcd}
 \] 
-
-\item Za vsak objekt A obstaja puščica
+%
+\item Za vsak objekt $A$ obstaja morfizem
 $$1_A : A \to A$$
-ki ji pravimo \textit{identitetna puščica} na A.		
+ki mu pravimo \emph{identiteta} na A.		
 \end{itemize}
-Za vse te podatke morata veljati naslednja dva pravila:
+Za vse te podatke morata veljati naslednji dve pravili:
 \begin{itemize}
 \item Asociativnost: Za vsake $f : A \to B, g : B \to C, h : C \to D$ velja
 $$h \circ (g \circ f) = (h \circ g) \circ f$$
@@ -303,42 +307,42 @@ $$h \circ (g \circ f) = (h \circ g) \circ f$$
 $$f \circ 1_A = f = 1_B \circ f$$
 \end{itemize}
 \end{definicija}
-
+%
 Kategorija je karkoli, kar zadošča tem pogojem.
 Objekte kategorije všasih označujemo z $Obj(\cat{C})$ in morfizme z $Arr(\cat{C})$.
 
 \section{Primeri kategorij}
 
 \begin{primer}
-Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo je kategorija množic in funkcij med njimi. Označimo ga z \textbf{Sets}. Za kategorijo se vedno prvo vprašamo: kaj so objekti in kaj so puščice. Pri \textbf{Sets} so objekti množice in puščice funkcije.
+Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo je kategorija množic in funkcij med njimi. Označimo ga z \cat{Sets}. Za kategorijo se vedno prvo vprašamo: kaj so objekti in kaj so morfizmi? Pri \textbf{Sets} so objekti množice in morfizmi funkcije.
 Izpolnjena morata biti pogoja asociativnosti in enote.
-Kompozitum puščic je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
-Vlogo identitetne puščice igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ def. kot $id_A(x) = x$ za vsak element $x \in A$.
+Kompozitum morfizmov je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
+Vlogo identitete igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ def. kot $id_A(x) = x$ za vsak element $x \in A$.
 \end{primer}
 
 \begin{primer}
-Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \textbf{Sets}, in sicer $\textbf{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa puščice. To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identitetno puščico. To seveda imamo, saj bo to podedovana identitetna funkcija iz \textbf{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res puščica v tej kategoriji. Tu imamo tudi primer kategorije, katere objekti so množice z dodatno strukturo ter so morfizmi objektov funkcije, ki ohranjajo strukturo teh množic.
+Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \cat{Sets}, in sicer $\cat{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa morfizmi? 
+To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identiteto. To seveda imamo, saj bo to podedovana identitetna funkcija iz \cat{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res morfizem v tej kategoriji. Tu imamo tudi primer kategorije, katere objekti so množice z dodatno strukturo ter so morfizmi objektov funkcije, ki ohranjajo strukturo teh množic.
 \end{primer}
 
 \begin{primer}
-Kaj bi bil primer "majhne" kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identitetni morfizem mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 puščicami res kategorija? Za vsak objekt (ki jih ni) obstaja identitetni morfizem in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in en identitetni morfizem. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in eno neidentitetno puščico med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
+Kaj bi bil primer ''majhne'' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt (ki jih ni) obstaja identiteta in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in eno identitete. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in enim neidentitetnim morfizmom med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
 
 \begin{equation}
 \begin{tikzcd}
 \bullet \arrow[loop right] &&&  \arrow[loop left] \bullet \arrow[r] & \bullet \arrow[loop right]
 \end{tikzcd}
 \end{equation}
+%
 Identitetnih morfizmov se ponavadi ne riše. Kategorija $\cat{3}$ bi izgledala takole.
-
+%
 \begin{equation}
 \begin{tikzcd}
 \bullet \arrow[r] \arrow[rd] & \bullet \arrow[d] \\
 & \bullet
 \end{tikzcd}
 \end{equation}
-
 \end{primer}
-
 
 \begin{primer}
 Delno urejena množica ali poset je množica opremljena z relacijo, ki se jo ponavadi označuje z $\leq$ in je:
@@ -347,9 +351,9 @@ Delno urejena množica ali poset je množica opremljena z relacijo, ki se jo pon
 \item Antisimetrična
 \item Tranzitivna
 \end{itemize}
-Morfizem delno urejenih množic P in Q je \textit{monotona} funkcija
+Morfizem delno urejenih množic $P$ in $Q$ je \emph{monotona} funkcija
 $$m : P \to Q$$
-kar pomeni, da za vsaka $x,y \in P$ za katera je $x \leq y$, potem velja $m(x) \leq m(y)$. Ali je to kategorija? Izpolnjevati mora aksiome za kategorij, torej ali imamo identitetne morfizme za vsako delno urejeno množico P? Naravni kandidat je identitetna funkcija $1_P : P \to P$, ki je monotona, say iz $x \leq y$ sledi $x \leq y$.
+kar pomeni, da za vsaka $x,y \in P$ za katera je $x \leq y$, potem velja $m(x) \leq m(y)$. Ali je to kategorija? Izpolnjevati mora aksiome za kategorij, torej ali imamo identiteto za vsako delno urejeno množico $P$? Naravni kandidat je identitetna funkcija $1_P : P \to P$, ki je monotona, say iz $x \leq y$ sledi $x \leq y$.
 Kompozitum dveh monotonih funkcij $m : P \to Q$ in $n : P \to Q$ je tudi monotona funkcija, saj za $x \leq y$ zaradi monotonosti $m$ velja $m(x) \leq m(y)$ in zaradi monotonosti $n$ velja $n(m(x)) \leq n(m(y))$. Imamo torej kategorijo, ki jo označujemo s $\cat{Pos}$, delno urejenih množic in monotonih funkcij.
 \end{primer}
 
@@ -365,40 +369,37 @@ Homomorfizmi monoidov so funkcije $f : M \to N$ za katere velja
 \item $f(e_M) = e_N$
 \item $f(x \bullet y) = f(x) \bullet f(y)$
 \end{enumerate}
-Identitetni homorfizem $1_M : M \to M$ bo predstavljal identitetni morfizem v tej kategoriji. Kompozitum dveh homorfizmov je spet homomorfizem, torej imamo novo kategorijo monoidov in homorfizmov med njimi, ki jo označujemo s $\cat{Mon}$.
-
-
+Identitetni homorfizem $1_M : M \to M$ bo predstavljal identiteto v tej kategoriji. Kompozitum dveh homorfizmov je spet homomorfizem, torej imamo novo kategorijo monoidov in homorfizmov med njimi, ki jo označujemo z $\cat{Mon}$.
 \end{primer}
 
 \begin{primer}
-Naj bo $(P, \leq)$ delno urejena množica. Ali je to tudi kategorija? Najprej se moramo vprašati, kaj so objekti v tej kategoriji in kaj so puščice.
-Imamo množio elementov $p,q \in P$ med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente P in podamo puščico med p in q natanko takrat ko v P velja $p \leq q$.
+Naj bo $(P, \leq)$ delno urejena množica. Ali je to tudi kategorija? Najprej se moramo vprašati, kaj so objekti v tej kategoriji in kaj so morfizmi.
+Imamo množio elementov $p,q \in P$ med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente $P$ in podamo morfizem med $p$ in $q$ natanko takrat ko v $P$ velja $p \leq q$.
 Torej: 
 \begin{itemize}
-\item \textbf{Objekti:} Elementi množice P
-\item \textbf{Puščice:} Puščica $p \rightarrow q \Leftrightarrow p \leq q$
+\item \textbf{Objekti:} Elementi množice $P$
+\item \textbf{Morfizmi:} Morfizem $p \rightarrow q \Leftrightarrow p \leq q$
 \end{itemize}
 Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
 
-\begin{enumerate}[label=(\alph*)]
-\item Za vsak objekt $p \in P$ potrebujemo puščico $1_p : p \to p$. Ali obstaja taka puščica? Seveda, saj za vsak p velja $p \leq p$, kar nam da želeno identitetno puščico.
-\item Za vsaki dve puščici $p \to q$ in $q \to r$ mora obstajati kompozitum $p \to r$. Ali obstaja ta kompozitum? Seveda, saj je relacija $\leq$ tranzitivna in iz $p \leq q$ in $q \leq r$ sledi $p \leq r$, kar nam da želeni kompozitum.
+\begin{enumerate}
+\item Za vsak objekt $p \in P$ potrebujemo morfizem $1_p : p \to p$. Ali obstaja tak morfizem? Seveda, saj za vsak $p$ velja $p \leq p$, kar nam da želeno identiteto.
+\item Za vsaka dva morfizma $p \to q$ in $q \to r$ mora obstajati kompozitum $p \to r$. Ali res obstaja? Seveda, saj je relacija $\leq$ tranzitivna in iz $p \leq q$ in $q \leq r$ sledi $p \leq r$, kar nam da želeni kompozitum.
 \end{enumerate}
 Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije v nekem smislu posplošene delno urejene množice.
 \end{primer}
 
 \begin{primer}
-Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi učasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identitetni morfizem za nek topološki prostor $(X, \mathcal{T})$ je identietna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Kompozitum dveh preslikav je spet preslikava. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
+Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi učasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identiteta za nek topološki prostor $(X, \mathcal{T})$ je identietna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Kompozitum dveh preslikav je spet preslikava. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
 \end{primer}
 
 \section{Različni tipi morfizmov}
 Uvedemo prvo abstraktno definicijo v jeziku teorije kategorij, nečesa kar je že poznano iz drugih področij matematike.
 
-\begin{definicija} Naj bo \cat{C} poljubna kategorija. Puščici $f : A \to B$ pravimo \textit{izomorfizem} (ali izo na kratko), če obstaja taka puščica $g : B \to A$, da velja
+\begin{definicija} Naj bo \cat{C} poljubna kategorija. Morfizmu $f : A \to B$ pravimo \emph{izomorfizem}, če obstaja tak morfizem $g : B \to A$, da velja
 $$g \circ f = 1_A \ in \ f \circ g = 1_B$$
-Puščici g pravimo \textit{inverz} puščice f
+Morfizmu $g$ pravimo \emph{inverz} morfizma f
 \end{definicija}
-Velja:
 
 \begin{trditev} Inverzi, ko obstajajo, so enolični.
 \end{trditev}
@@ -406,28 +407,28 @@ Velja:
 Naj bo $f : A \to B$ izomorfizem in naj bosta $g,h: B \to A$ njegova inveza. Potem velja $g = 1_A \circ g = h \circ f \circ g = h \circ 1_B = h$
 \end{dokaz}
 
-Zaradi česar za inverz od f pišemo $f^{-1}$
+Ker so inverzi enolični, lahko inverz morfizma $f$ upravičeno označujemo z $f^{-1}$.
 
 \begin{primer*}
 Izomorfizmi v kategoriji $\cat{Sets}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar ostaja enoličen inverz te funkcije, ki se komponira v identitetno funkcijo. 
 \end{primer*}
 
 \begin{primer*}
-Vsaka identitetni morfizem je izomorfizem, nima pa nujno kategorija drugih morfizmov kot identitetnega. Na primer kategorija $\cat{2}$ ima samo en neidentitetni morfizem, ki pa nima inverza torej ni izomorfizem.
+Vsak identitetni morfizem je izomorfizem, nima pa nujno kategorija drugih morfizmov kot identitetnega. Na primer kategorija $\cat{2}$ ima samo en neidentitetni morfizem, ki pa nima inverza torej ni izomorfizem.
 \end{primer*}
 
 Primer z funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funkcija bijektivna ravno takrat, ko je surjektivna ter injektivna. Vprašamo se, kaj bi pa bili karakterizaciji teh dveh lastnosti v jeziku teorije kategorij. Izkaže se, da pridemo do malenkost bolj splošnih pojmov, ki jih predstavimo v naslednjih dveh definicijah.
 
 \begin{definicija}
-\underline{Epimorfizem} je tak morfizem $e : E \to A$, da za vsaka morfizma $f,g : A \to B$ iz $f \circ e = g \circ e$ sledi $f = g$. Epimorfizmu rečemo tudi epi na kratko.
+\emph{Epimorfizem} je tak morfizem $e : E \to A$, da za vsaka morfizma $f,g : A \to B$ iz $f \circ e = g \circ e$ sledi $f = g$.
 \end{definicija}
 
 \begin{definicija}
-\underline{Monomorfizem} je tak morfizem $m : B \to M$, da za vsaka morfizma $f,g : A \to B$ iz $m \circ f = m \circ g$ sledi $f = g$. Monomorfizmu rečemo tudi mono na kratko.
+\emph{Monomorfizem} je tak morfizem $m : B \to M$, da za vsaka morfizma $f,g : A \to B$ iz $m \circ f = m \circ g$ sledi $f = g$.
 \end{definicija}
 
 \begin{primer}
-Preverimo, da mono in epi morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti f sledi $g(x) = h(x)$ za vsak x, torej g = h. Privzemimo sedaj, da je f monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice 1 v A predstavljajo ravno elemente množice A. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je f res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je f res epi. Naj bo sedaj f epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
+Preverimo, da mono- in epi-morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti $f$ sledi $g(x) = h(x)$ za vsak $x$, torej $g = h$. Privzemimo sedaj, da je $f$ monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice $1$ v $A$ predstavljajo ravno elemente množice $A$. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je $f$ res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je $f$ res epi. Naj bo sedaj $f$ epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
 \[
 g(x)=
 \begin{cases}
@@ -436,13 +437,13 @@ g(x)=
 \end{cases}
 \]
 $$ h(x) = 1 \quad \forall x \in B $$
-Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $g \circ f(x) = g(f(x)) = 1$ za vsak $x \in A$, saj je $f(x) \in \mathrm{Im}f$. Po drugi strani pa je tudi $h \circ f(x) = h(f(x)) = 1$. Torej je za vsak $x \in A$, $g \circ f(x) = h \circ f(x)$, oziroma $g\circ f = h\circ f$ in ker je f epimorfizem sledi $g = h$, kar pa pomeni, da je za vsak $y \in B$ nek tak $x \in A$, da z f lahko pridemo do njega, kar pa pomeni ravno, da je f surjektivna.
+Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $g \circ f(x) = g(f(x)) = 1$ za vsak $x \in A$, saj je $f(x) \in \mathrm{Im}f$. Po drugi strani pa je tudi $h \circ f(x) = h(f(x)) = 1$. Torej je za vsak $x \in A$, $g \circ f(x) = h \circ f(x)$, oziroma $g\circ f = h\circ f$ in ker je $f$ epimorfizem sledi $g = h$, kar pa pomeni, da je za vsak $y \in B$ nek tak $x \in A$, da z $f$ lahko pridemo do njega, kar pa pomeni ravno, da je $f$ surjektivna.
 \end{primer}
 
-Ta primer bi nam dal misliti, da so epi in mono-morfizmi vedno, kadar imamo opravka z objekti, ki predstavljajo množice, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
+Ta primer bi nam dal misliti, da so epi- in mono-morfizmi vedno, kadar imamo opravka z objekti, ki predstavljajo množice, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
 
 \begin{primer}
-Naj bo $f : \mathbb{N} \to \mathbb{Z}$ homomorfizem monoidov, definiran s predpisom $f(n) = n \quad \forall n \in \mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. Veljajo torej zveze
+Naj bo $f : (\mathbb{N},+) \to (\mathbb{Z},+)$ homomorfizem monoidov, definiran s predpisom $f(n) = n$ za vsak $n$ iz $\mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. Veljajo torej zveze
 $$ g \circ f(1) = h \circ f(1) \implies g(1) = h(1)$$
 
 $$
@@ -452,7 +453,7 @@ $$
 $$ g(-n) = -g(n) = -h(n) = h(-n)$$
 Če vse to pogledamo skupaj, vidimo da velja
 $$g(k) = h(k) \quad \forall k \in \mathbb{Z}$$
-kar pa pomeni $g = h$. Torej je f epimorfizem. Način kako smo prišli do tega primera nam da misliti, da mogoče kar je potrebno, za to da je homorfizem monoidov epi, da je surjektiven na generatorje kodomene.
+kar pa pomeni $g = h$. Torej je $f$ epimorfizem. Način kako smo prišli do tega primera nam da misliti, da mogoče kar je potrebno, za to da je homorfizem monoidov epi, da je surjektiven na generatorje kodomene.
 Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga lahko pri kompoziciji krajšamo z desne: $fe = ge \implies f=g$. Obratno, če je morfizem $m$ mono, pomeni, da ga lahko krajšamo z leve: $mf = mg \implies f = g$.
 
 \end{primer}
@@ -462,7 +463,7 @@ Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga la
 
 % TODO: ta primer bi bilo boljše prestaviti po uvedbi definicije funktorja in kategorije Cat
 \begin{primer}
-Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \textit{Produkt} kategorij $\cat{C} \times \cat{D}$ je prav tako kategorija, z objekti oblike $(C,D)$, kjer sta $C \in \cat{C}$ in $D \in \cat{D}$ in morfizmi oblike $(f,g) : (C,D) \to (C',D')$, kjer je $f : C \to C'$ morfizem v $\cat{C}$ ter $g : D \to D'$ morfizem v $\cat{D}$. Identitene morfizme ter kompozitume definiramo po komponentah, torej
+Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Produkt} kategorij $\cat{C} \times \cat{D}$ je prav tako kategorija, z objekti oblike $(C,D)$, kjer sta $C \in \cat{C}$ in $D \in \cat{D}$ in morfizmi oblike $(f,g) : (C,D) \to (C',D')$, kjer je $f : C \to C'$ morfizem v $\cat{C}$ ter $g : D \to D'$ morfizem v $\cat{D}$. Identitete ter kompozitume definiramo po komponentah, torej
 \begin{equation*}
 1_{(C,D)} = (1_C,1_D)
 \end{equation*}
@@ -480,7 +481,7 @@ definirana kot $\pi_{\cat{C}}(C,D) = C$ in $\pi_{\cat{D}}(C,D) = D$ ter na morfi
 \end{primer}
 
 \begin{primer}
-\textit{Obratna} ali \textit{dualna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : A \to B$ v $\cat{C}$ imamo morfizem $f : B \to A$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitetni morfizmi ostanejo isti, kaj se pa zgodi z kompozitumi. Objekte in morfizme v obratni kategoriji se ponavadi označuje kar z enakimi oznakami, a da bodo stvari bolj jasne uvedimo za trenutek naslednje oznake: Za morfizem $f : A \to B$ v $\cat{C}$ pišimo $f^* : B^* \to A^*$ v $\cat{C}^{op}$. Tako dobimo zvezo med operacijami v $\cat{C}$ in $\cat{C}^{op}$.
+\emph{Obratna} ali \emph{dualna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : A \to B$ v $\cat{C}$ imamo morfizem $f : B \to A$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitete ostanejo iste, kaj se pa zgodi z kompozitumi. Objekte in morfizme v obratni kategoriji se ponavadi označuje kar z enakimi oznakami, a da bodo stvari bolj jasne uvedimo za trenutek naslednje oznake: Za morfizem $f : A \to B$ v $\cat{C}$ pišimo $f^* : B^* \to A^*$ v $\cat{C}^{op}$. Tako dobimo zvezo med operacijami v $\cat{C}$ in $\cat{C}^{op}$.
 \begin{align*}
 (1_C)^* &= 1_{C^*} \\
 (g \circ f)* &= f^* \circ g^*
@@ -490,23 +491,23 @@ Torej diagram v $\cat{C}$
 A \arrow[r, "f"] \arrow[rd, "g \circ f"'] & B \arrow[d, "g"] \\
 &	C \\
 \end{tikzcd} \]
+%
 v $\cat{C}^{op}$ zgleda kot
-
+%
 \[ \begin{tikzcd}
 A^* & \arrow[l, "f^*"'] B^* \\
 & \arrow[lu, "f^* \circ g^*"] C^* \arrow[u, "g^*"']
 \end{tikzcd} \]
-
+%
 Dualna kategorija nam predstavi pojem dualnosti, ki se izkaže za zelo pomembnega v študiju teorije kategorij, saj nam omogoča, da razne konstrukcije prenesemo v njihovo dualno obliko in tako iz eno konstrukcije dobimo dve. 
+
 \begin{primer*}
 Tako dualnost smo že srečali, ko smo upeljali pojma epimorfizma ter monomorfizma. Naj bosta $e : E \to A$ epimorfizem in $m : D \to M$ monomorfizem v kategoriji $\cat{C}$. Če postavimo njuna diagrama enega ob drugega
 
 \[ \begin{tikzcd}
-E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "f'"'] & B & & C \ar[r, shift left, "g"] \ar[r, shift right, "g'"'] & D \ar[r, "m"] & M
+E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "f'"'] & B & C \ar[r, shift left, "g"] \ar[r, shift right, "g'"'] & D \ar[r, "m"] & M
 \end{tikzcd} \]
-postane jasno, da je en samo dualna verzija drugega, ali z drugimi besedami, epimorfizem je monomorfizem v dualni kategoriji. Ta ideja 
-
-
+postane jasno, da je en samo dualna verzija drugega, ali z drugimi besedami, epimorfizem je monomorfizem v dualni kategoriji.
 \end{primer*}
 
 \end{primer}
@@ -523,14 +524,15 @@ A \arrow[d, "f"'] \arrow[r, "g_1"] & A' \arrow[d, "f'"] \\
 B \arrow[r, "g_2"'] & B'
 \end{tikzcd} \]
 Morfizem $f \to g$ je torej par morfizmov $(h_1, h_2)$ iz $\cat{C}$.
-Identitetni morfizem je par $(1_A, 1_B)$.
+Identiteta je par $(1_A, 1_B)$.
 Kar mora še veljati, da bi to bila kategorija, je da lahko take morfizme komponiramo med seboj. Kar mora še veljati je, da sta obe poti po kvadratu enaki, torej $g \circ h_1 = h_2 \circ f$, čemur rečemo, da \textit{kvadrat komutira} (zakaj je to pomembno brez motivacije s strani naravnih transformacij?). Preveriti moramo, da ta pogoj ohranja komponiranje, ali z drugimi besedami, če komponiramo da komutirajoča kvadrata, ali dobimo nov komutirajoč kvadrat.
 Recimo, da imamo naslednjo situacijo
-
-\[ \begin{tikzcd}
+%
+$$\begin{tikzcd}
 A \arrow[d, "f"'] \arrow[r, "g_1"] & A' \arrow[d, "f'"] \arrow[r, "h_1"] & A'' \arrow[d, "f''"] \\
 B \arrow[r, "g_2"'] & B' \arrow[r, "h_2"'] & B'' \\
-\end{tikzcd} \]
+\end{tikzcd}$$
+%
 kjer so $f, f', f''$ objekti v $\cat{C}^{\rightarrow}$, $(g_1, g_2), (h_1,h_2)$ pa morfizmi v $\cat{C}^{\rightarrow}$. Kaj bi bil kompozitum morfizmov $(h_1,h_2) \circ (g_1,g_2)$. Očitna izbira, ki se tudi izkaže za pravilno, je komponiranje po komponentah, oziroma $(h_1,h_2) \circ (g_1,g_2) = (h_1 \circ g_1, h_2 \circ g_2)$. Preveritmi moramo komutativnostni pogoj. 
 \begin{align*}
 f'' \circ (h_1 \circ g_1) &= (f'' \circ h_1) \circ g_1 = \\
@@ -541,29 +543,40 @@ h_2 \circ (g_2 \circ f) &= (h_2 \circ g_2) \circ f
 \end{primer}
 
 \begin{primer}
-\textit{Rezinska kategorija} $\cat{C}/C$ kategorije $\cat{C}$ preko objekta $C \in \cat{C}$. Ideja te kategorije je podobna kategoriji puščic, a da v tem primeru gledamo morfizme v $\cat{C}$, ki imajo kodomeno, torej kažejo v, objekt $C$. Na primer
-
+\emph{Rezine} $\cat{C}/C$ kategorije $\cat{C}$ nad objektom $C \in \cat{C}$. Ideja te kategorije je podobna kategoriji puščic, a da v tem primeru gledamo morfizme v $\cat{C}$, ki imajo kodomeno, torej kažejo v, objekt $C$. Na primer
+%
 \[ \begin{tikzcd}
 A \arrow[rd, "f"'] & & \arrow[ld, "f'"] A' \\
 & C &
 \end{tikzcd} \]
-
-Ostale stvari delujejo podobno kot v kategoriji puščic. Morfizmi so ravno tako morfizmi v $\cat{C}$ a z eno zahtevo manj, saj sedaj ne bo potrebno poslati kodomene prvega morfizma v kodomeno drugega. Tako, bi bil v našem primeru morfizem $f \to f'$ morfizem $g : A \to A'$ v $\cat{C}$, tako da sledeči trikotnik komutira
-
+%
+Ostale stvari delujejo podobno kot v kategoriji puščic. Morfizmi so ravno tako morfizmi v $\cat{C}$ a z eno zahtevo manj, saj sedaj ne bo potrebno poslati kodomene prvega morfizma v kodomeno drugega. Tako, bi bil v našem primeru morfizem $f \to f'$ morfizem $g : A \to A'$ v $\cat{C}$, tako da sledeči trikotnik komutira.
+%
 \[ \begin{tikzcd}
 A \arrow[rd, "f"'] \ar[rr, "g"] & & \arrow[ld, "f'"] A' \\
 & C &
 \end{tikzcd} \]
 oziroma z enačbo
-$$f' \circ g = f$$
-Identitetni morfizem se podeduje iz $\cat{C}$, kompozitum pa deluje ravno tako kot v kategoriji puščic. Če pogledamo malo bolj natančno, lahko vidimo, da ta konstrukcija izgleda kot neka "podkonstrukcija" kategorije puščic, če iz vseh objektov kategorije $\cat{C}^{\rightarrow}$ vzamemo le tiste s kodomeno $C$. Potem so morfizmi oblike $(g, 1_C)$ in vidimo, da komutativnostni kvadrati ustrezajo ravno komutativnostnim trikotnikom v $\cat{C}/C$.
-
+$$f' \circ g = f.$$
+Identiteta se podeduje iz $\cat{C}$, kompozitum pa deluje ravno tako kot v kategoriji puščic. Če pogledamo malo bolj natančno, lahko vidimo, da ta konstrukcija izgleda kot neka ''podkonstrukcija'' kategorije puščic, če iz vseh objektov kategorije $\cat{C}^{\rightarrow}$ vzamemo le tiste s kodomeno $C$. Potem so morfizmi oblike $(g, 1_C)$ in vidimo, da komutativnostni kvadrati ustrezajo ravno komutativnostnim trikotnikom v $\cat{C}/C$.
+%
 \[ \begin{tikzcd}
 A \ar[d, "f"'] \ar[r, "g"] & A' \ar[d, "f'"] \\
 C \ar[r, "1_C"'] & C \\
 \end{tikzcd} \]
-
-Imamo tudi \textit{korezinsko} kategorijo $C/\cat{C}$ kjer za objekte vzamemo morfizme v $\cat{C}$, ki kažejo iz C, oziroma tiste z domeno C. Ostale stvari potekajo podobno kot v rezinski kategoriji.
+%
+Imamo tudi \emph{korezine} $C/\cat{C}$, kjer za objekte vzamemo morfizme v $\cat{C}$, ki kažejo iz $C$, oziroma tiste z domeno $C$. Ostale stvari potekajo podobno kot pri rezinah.
+Poglejmo kako bi iz rezin dobili rezine, kajti ideji sta povezani z dualnostjo.
+Diagrama za $\cat{C}/C$ ter $C/\cat{C}$ izgledata kot
+$$\begin{tikzcd}[column sep=small]
+A \ar[dr, "f"'] \ar[rr, "\alpha"] & &  B \ar[dl, "g"] & & A \ar[rr, "\alpha"] && B \\
+& C &  & & & C \ar[ul, "f"] \ar[ur, "g"'] & \\
+\end{tikzcd}$$
+Če naredimo rezine po dualni kategorij $\cat{C}^{op}$ nad objektom $C$ dobimo diagram
+$$\begin{tikzcd}[column sep=small]
+A && B \ar[ll, "\alpha"'] \\
+& C \ar[ul, "f"] \ar[ur, "g"'] &
+\end{tikzcd}$$
 
 \end{primer}
 
@@ -573,8 +586,8 @@ V kategoriji $\cat{Set}$ množic in funkcij med njimi poznamo posebne tipe množ
 \begin{definicija}
 V poljubni kategoriji $\cat{C}$ je objekt
 \begin{itemize}
-\item[] 0 \textit{začetni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$0 \to C$$
-\item[] 1 \textit{končni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$C \to 1$$
+\item 0 \emph{začetni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$0 \to C$$
+\item 1 \emph{končni}, če za vsak objekt $C \in \cat{C}$ obstaja enoličen morfizem $$C \to 1$$
 \end{itemize}
 \end{definicija}
 Končni objekt je ravno začetni objekt v dualni kategoriji $\cat{C}^{op}$. Ker sta definiciji začetnega in končnega objekta podani z univerzalno lastnostjo lahko pričakujemo, da bodo objekti podani do izomorfizma natančno. To pove naslednja trditev.
@@ -583,13 +596,16 @@ Končni objekt je ravno začetni objekt v dualni kategoriji $\cat{C}^{op}$. Ker 
 Začetni in končni objekti so enolično določeni, do izomorfizma natančno
 \end{trditev}
 \begin{dokaz}
-Naj bosta $0$ in $\hat{0}$ začetna objekta v kategoriji $\cat{C}$ in naj bo $C \in \cat{C}$ poljuben objekt. Potem obstaja enoličen $f : 0 \to C$ in enoličen $\hat{f} : \hat{0} \to C$, prav tako pa obstajata enolična $g : 0 \to \hat{0}$ ter $\hat{g} : \hat{0} \to 0$. Torej je $\hat{g} \circ g$ enoličen morfizem od 0 do 0. To pa pomeni, da mora biti identitetni morfizem (saj ta vedno obstaja in je enoličen), kar pa pomeni, da je $g$ izomorfizem.
-Naj bosta sedaj $1$ in $\hat{1}$ končna objekta in naj bo $A \in \cat{C}$ poljuben. Potem obstaja natanko en morfizem $f : A \to 1$ in natanko en morfizem $\hat{f} : A \to \hat{1}$, prav tako pa obstajata enolična $g : 1 \to \hat{1}$ in $\hat{g} : \hat{1} \to 1$, in je kompozitum $\hat{g} \circ g$ enoličen morfizem $1 \to \hat{1}$, torej identiteta. Torej je $g$ izomorfizem.
+Naj bosta $0$ in $\hat{0}$ začetna objekta v kategoriji $\cat{C}$. Potem obstajata enolična $g : 0 \to \hat{0}$ ter $\hat{g} : \hat{0} \to 0$. Torej je $\hat{g} \circ g$ enoličen morfizem od 0 do 0. To pa pomeni, da mora biti identitetni morfizem (saj ta vedno obstaja in je enoličen), kar pa pomeni, da je $g$ izomorfizem.
+
+Naj bosta sedaj $1$ in $\hat{1}$ končna objekta in naj bo $A \in \cat{C}$ poljuben. Potem obstajata enolična $g : 1 \to \hat{1}$ in $\hat{g} : \hat{1} \to 1$, in je kompozitum $\hat{g} \circ g$ enoličen morfizem $1 \to \hat{1}$, torej identiteta. Torej je $g$ izomorfizem.
 \end{dokaz}
 Vidimo lahko, da sta dokaza za začetni in končni objekt potekala praktično enako. Gre seveda za delo dualnosti, ki jo bomo tudi formalno predstavili.
 
 \begin{primer}
-V kategoriji $\cat{Set}$ je začetni objekt prazna množica, saj za vsako množico $A$ obstaja natanko ena funkcija $! : \emptyset \to A$, ki nobenega elementa ne slika nikamor. Končni objekt v $\cat{Set}$ je množica z enim elementom $1 = \set{*}$. Za vsako množico $A$ obstaja natanko ena funkcija $f : A \to 1$, ki slika vse elemente iz $A$ v *. Tukaj lahko vidimo, da je končni objekt določen "le" do izomorfizma natančno, saj je množica $\set{*}$ izomorfna vsaki drugi enoelementni množici s funkcijo $f : \set{*} \to {a}$, $f(*) = a$. Ta funkcija je očitno bijekcija, torej izomorfizem v ketegoriji $\cat{Set}$.
+V kategoriji $\cat{Set}$ je začetni objekt prazna množica, saj za vsako množico $A$ obstaja natanko ena funkcija $! : \emptyset \to A$, ki nobenega elementa ne slika nikamor. 
+
+Končni objekt v $\cat{Set}$ je enojec $1 = \set{*}$. Za vsako množico $A$ obstaja natanko ena funkcija $f : A \to 1$, ki slika vse elemente iz $A$ v $*$. Tukaj lahko vidimo, da je končni objekt določen "le" do izomorfizma natančno, saj je množica $\set{*}$ izomorfna vsakemu drugemu enojcu s funkcijo $f : \set{*} \to \set{a}$, $f(*) = a$. Ta funkcija je očitno bijekcija, torej izomorfizem v kategoriji $\cat{Set}$.
 \end{primer}
 
 % Dodaj primere: Pos, Mon, Top.
@@ -662,7 +678,7 @@ z naslednjo univerzalno lastnostjo. Za vsak objekt X iz $\cat{C}$ in morfizma $f
 
 $$\begin{tikzcd}
 & X \ar[ld, "f"'] \ar[d, dashed, "u"] \ar[rd, "g"] & \\
-A & P \ar[l, "p_A"'] \ar[r, "p_B"] & B
+A & P \ar[l, "p_A"] \ar[r, "p_B"'] & B
 \end{tikzcd}$$
 
 ali z enačbami
