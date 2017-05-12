@@ -443,14 +443,16 @@ Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $g \circ f(x) = g(f
 Ta primer bi nam dal misliti, da so epi- in mono-morfizmi vedno, kadar imamo opravka z objekti, ki predstavljajo množice, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
 
 \begin{primer}
-Naj bo $f : (\mathbb{N},+) \to (\mathbb{Z},+)$ homomorfizem monoidov, definiran s predpisom $f(n) = n$ za vsak $n$ iz $\mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. Veljajo torej zveze
-$$ g \circ f(1) = h \circ f(1) \implies g(1) = h(1)$$
-
-$$
-g(n) = g(1+\ldots + 1) = g(1) + \ldots + g(1) = ng(1) = n h(1) = h(n)
-$$
-
-$$ g(-n) = -g(n) = -h(n) = h(-n)$$
+Naj bo $f : (\mathbb{N},+) \to (\mathbb{Z},+)$ homomorfizem monoidov, definiran s predpisom $f(n) = n$ za vsak $n$ iz $\mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. 
+Velja torej $$g(n) = gf(n) = hf(n) = h(n)$$
+Ker sta $g,h$ homomorfizma monoidov velja
+$$g(0) = h(0) = 0$$
+Zanima nas še vrednosti $g(-n)$ za $n \in \mathbb{N}$. 
+Računamo 
+\begin{align*}
+g(0) = g(n - n) &= g(n) + g(-n) \\
+\implies g(-n) &= -g(n)
+\end{align*}
 Če vse to pogledamo skupaj, vidimo da velja
 $$g(k) = h(k) \quad \forall k \in \mathbb{Z}$$
 kar pa pomeni $g = h$. Torej je $f$ epimorfizem. Način kako smo prišli do tega primera nam da misliti, da mogoče kar je potrebno, za to da je homorfizem monoidov epi, da je surjektiven na generatorje kodomene.
