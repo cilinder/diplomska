@@ -121,6 +121,8 @@
 
 \renewcommand{\set}[1]{\{\,#1\,\}}
 
+\newcommand{\fprod}[1]{\langle #1 \rangle}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -712,6 +714,20 @@ Zaradi tega lahko produkt A in B upravičeno označujemo z $A \times B$.
 Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti. Naj bosta $A \times B$ kartezični produkt množic $A$ in $B$ z koordinatnima projekcijama $\pi_A$ in $\pi_B$. Denimo, da obstaja množica $X$ s funkcijama $f : X \to A$, $g : X \to B$. Definirajmo funkcijo $\langle f,g \rangle : X \to A \times B$ kot $\langle f,g \rangle(x) = (f(x),g(x))$.
 \end{primer}
 
+Ravno tako kot produkt dveh objektov, lahko definiramo produkt treh ali večih objektov. Naj bo na primer $(C_i)_{i \in I}$ družina objektov indeksirana po neki indeksni množici $I$ (lahko neskončni). Produkt družine $(C_i)_{i \in I}$ je objekt
+$$\prod_{i \in I}C_i$$
+skupaj z družino morfizmov $(p_j : \prod_{i \in I}C_i \to C_j)_{j \in I}$, z univerzalno lastnostjo, da za vsak objekt $X$ z morfizmi $(x_i : X \to C_i)_{i \in I}$ obstaja natanko en morfizem $u : X \to \prod_{i \in I}C_i$, tako da velja $$x_j = p_j \circ u$$ za vsak $j \in I$, oziroma da diagram
+
+$$\begin{tikzcd}
+X \ar[d, dashed, "u"] \ar[dr, "x_j"] & \\
+\prod_{i \in I}C_i \ar[r, "p_j"'] & C_j \\
+\end{tikzcd}$$
+komutira.
+
+Če za vsaka dva objekta v kategoriji $\cat{C}$ obstaja njun produkt pravimo, da $\cat{C}$ \emph{ima dvojiške produkte}.
+
+Definiramo lahko tudi eniški produkt. Eniški produkt objekta je objekt sam, brez dodatnih morfizmov. Ničelni produkt v kategoriji je končni objekt te kategorije, saj za vsak objekt obstaja natanko en morfizem v končni objekt, da nič dodatnega ne komutira. Če v kategoriji $\cat{C}$ obstaja produkt poljubne končne družine objektov pravimo, da $\cat{C}$ \emph{ima končne produkte}.
+
 \section{Dualnost}
 Povejmo (za trenutek še brez dokaza) dve trditvi, ki nam opišeta in utemeljia pojem dualnosti v kategoriji.
 
@@ -900,15 +916,79 @@ Z
 Potem velja $p_1u(z) = p_1(z_1(z),z_2(z)) = z_1(z)$ in $p_2u(z) = p_2(z_1(z),z_2(z)) = z_2(z)$ za vsak $z \in Z$. Denimo sedaj, da obstaja še neka druga funkcija $v : Z \to P$, za katero je $z_1 = p_1v$, $z_2 = p_2v$. Poglejmo, kaj mora veljati za funkcijo $v$. Naj bo $v(z) = (a,b) \in P$ za nek $z \in Z$. Veljati mora $z_1(z) = p_1v(z) = p_1(x,y) = x$. Po drugi strani pa $z_2(z) = p_2v(z) = p_2(x,y) = y$. Torej je $v(z) = (x,y) = (z_1(z),z_2(z))$, oziroma $v = u$.
 \end{primer}
 
-Poglejmo kako bi lahko to idejo konstrukcije povleka razširili na poljubno kategorijio.
-
 \begin{trditev}
-Naj bo $\cat{C}$ kategorija z 
+Naj bo $\cat{C}$ kategorija z končnimi produkti in zožki. Potem $\cat{C}$ ima povleke.
 \end{trditev}
+\begin{dokaz}
+Naj bosta $f : A \to C$, $g : B \to C$ morfizma v kategoriji $\cat{C}$. Za prvi približek vzamemo produkt objektov $A$ in $B$, ki pride opremljen z morfizmoma $\pi_1 : A \times B \to A$ , $\pi_2 : A \times B \to B$. Sedaj vzemimo zožek morfizmov $f\pi_1$ in $g\pi_2$, ki ga poimenujemo $e : E \to A \times B$. Situacija je sledeča.
+
+$$\begin{tikzcd}
+E
+\ar[dr, "e"] \\
+& A \times B \arrow[r, "\pi_2"] \arrow[d, "\pi_1"']
+& B \arrow[d, "g"] \\
+& A \arrow[r, "f"']
+& C
+\end{tikzcd}$$
+oziroma v skrčeni (pullback) obliki
+
+$$\begin{tikzcd}
+& E \arrow[r, "e\pi_2"] \arrow[d, "e\pi_1"']
+& B \arrow[d, "g"] \\
+& A \arrow[r, "f"']
+& C
+\end{tikzcd}$$
+Velja: $f\pi_1e = g\pi_2e$, oziroma ta kvadrat komutira. Recimo sedaj, da je $X$ opremljen z morfizmoma $x_1 : X \to A$, $x_2 : X \to B$, tak da velja $fx_1 = gx_2$. Par morfizmov $x_1,x_2$ je v bistvu morfizem 
+$$\langle x_1,x_2 \rangle : X \to A \times B$$
+za katerega velja
+$$f\pi_1\fprod{x_1,x_2} = g\pi_2\fprod{x_1,x_2}.$$
+
+Ker pa je $e$ zožek $f\pi_1$ in $g\pi_2$, obstaja enoličen morfizem $u : X \to E$, da velja 
+$$\fprod{x_1,x_2} = eu$$
+
+$$\begin{tikzcd}
+X \ar[ddr, bend right, "x_1"'] \ar[drr, bend left, "x_2"] \ar[dr, dashed, "u"] \\
+& E \arrow[r, "e\pi_2"] \arrow[d, "e\pi_1"']
+& B \arrow[d, "g"] \\
+& A \arrow[r, "f"']
+& C
+\end{tikzcd}$$
+%
+Ali napisano drugače
+$$x_1 = \pi_1eu, \quad x_2 = \pi_2eu$$
+Kar pa pomeni ravno, da je $E$, skupaj z morfizmoma $e\pi_1$, $e\pi_2$ ravno povlek $f$ in $g$.
+\end{dokaz}
+
+Iz trditve vidimo, da je v povleku zakodirana vsa informacija, ki jo imata produkt ter zožek. Kot bomo videli, so vsi trije konstrukti primeri splošnejšega pojma, ki mu pravimo limita.
+
 
 
 \subsection{Potiski}
-%TODO
+
+Definicja potiska je seveda dualna definiciji povleka in jo lahko kar napišemo.
+
+\begin{definicija}
+Naj bosta $f: C \to A$ in $g : C \to B$ morfizma v kategoriji $\cat{C}$. \emph{Potisk} $f$ in $g$ je objekt $Q$ skupaj z morfizmoma $q_1 : A \to Q$, $q_2 : B \to Q$, tako da diagram
+$$\begin{tikzcd}
+C \ar[r, "g"] \ar[d, "f"'] & B \ar[d, "q_2"] \\
+A \ar[r, "q_1"'] & Q \\
+\end{tikzcd}$$
+komutira. Ta konstrukcija ima univerzalno lastnost, da za vsak objekt $Z$ z morfizmoma $z_1 : A \to Z$, $z_2 : B \to Z$ za katera velja $$z_1f = z_2g$$
+obstaja enolično določen morfizem $v : Q \to Z$, da naslednji diagram komutira.
+
+$$\begin{tikzcd}
+C \ar[r, "g"] \ar[d, "f"'] & B \ar[d, "q_2"] \ar[ddr, bend left, "z_2"] & \\
+A \ar[r, "q_1"'] \ar[drr, bend right, "z_1"'] & Q \ar[dr, dashed, "v"] & \\
+& & Z 
+\end{tikzcd}$$
+ali z enačbami $$z_1 = v q_1, \quad z_2 = v q_2.$$
+\end{definicija}
+
+Naravna ideja kako se potisk udejanja v ketegoriji $\cat{Set}$ je, da je tako povezan s koprodukti in kozožki, kot je povlek povezan s produkti in zožki.
+
+\begin{primer}
+Naj bosta $f : C \to A$, $g: C \to B$ funkciji iz množice $C$. Naj bo $A + B$ koprodukt (ali disjunktna unija) množic $A$ in $B$. Vemo, da je opremljen z dvema funkcijama $\iota_1 : A \to A + B$, $\iota_2 : B \to A+B$.
+\end{primer}
 
 \section{Limite, kolimite in eksponenti}
 %TODO
@@ -1005,6 +1085,8 @@ komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad o
 
 \subsection{Kolimite}
 %TODO
+Kot smo tega že vajeni, so limite dualen pojem limit. In tako kot limite posplošijo konstrukcije produktov, zožkov, povlekov,... Ravno tako kolimite posplošijo konstrukcije koproduktov, kozožkov, potiskov.
+
 
 
 \subsection{Eksponenti}
@@ -1037,6 +1119,10 @@ $$\widetilde{\overline{g}} = g$$
 Velja pa tudi
 $$\overline{\widetilde{f}} = f$$
 za vsak $f : A \times B \to C$.
+
+\begin{primer}
+
+\end{primer}
 
 \section{Funktorji in naravne transformacije}
 
