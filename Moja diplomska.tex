@@ -392,6 +392,10 @@ Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije
 \end{primer}
 
 \begin{primer}
+Naj bo $A$ poljubna množica. $A$ lahko obravnavamo kot svojo kategorijo $\cat{Dis}(X)$ kjer za objekte vzamemo elemente $X$, kjer so edini morfizmi identitete na vsakem objektu. Taki kategoriji, kjer so edini morfizmi identitete pravimo \emph{diskretna} kategorija.
+\end{primer}
+
+\begin{primer}
 Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi učasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identiteta za nek topološki prostor $(X, \mathcal{T})$ je identietna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Kompozitum dveh preslikav je spet preslikava. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
 \end{primer}
 
@@ -465,24 +469,58 @@ Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga la
 
 \section{Konstrukcije novih kategorij}
 
-% TODO: ta primer bi bilo boljše prestaviti po uvedbi definicije funktorja in kategorije Cat
+\subsection{Funktorji}
+
+V teoriji kategorij spoznamo abstraktne karakterizacije in konstrukcije, ki delujejo v neki kategoriji. Radi bi seveda konstrukcijo, ki smo jo spoznali v eni kategoriji prenesli na druge kategorije, mogoče celo v upanju, da je neke probleme lažje rešiti v drugi kategoriji in da bomo znali rešitev prenesti nazaj v originalno kategorijio kjer nas zanima rešitev problema. V ta namen uvedemo definicijo, ki je na nek način ključna za uporabo teorije kategorij.
+
+\begin{definicija}
+Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C}$ in $\cat{D}$ je par morfizmov
+$$F_0 : \cat{C}_0 \to \cat{D}_0$$
+med objekti in
+$$F_1 : \cat{C}_1 \to \cat{D}_1$$
+med morfizmi, tako da veljajo naslednje lastnosti.
+\begin{enumerate}
+\item $F(f : A \to B) = F(f) : F(A) \to F(B)$
+\item $F(1_A) = 1_{F(A)}$
+\item Za puščici $f : A \to B, \ g : B \to C$ mora veljati:
+$$F(g \circ f) = F(g) \circ F(f)$$
+\end{enumerate}
+\end{definicija}
+
+Funktorji so torej posebni morfizmi med kategorijami.
+
 \begin{primer}
-Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Produkt} kategorij $\cat{C} \times \cat{D}$ je prav tako kategorija, z objekti oblike $(C,D)$, kjer sta $C \in \cat{C}$ in $D \in \cat{D}$ in morfizmi oblike $(f,g) : (C,D) \to (C',D')$, kjer je $f : C \to C'$ morfizem v $\cat{C}$ ter $g : D \to D'$ morfizem v $\cat{D}$. Identitete ter kompozitume definiramo po komponentah, torej
-\begin{equation*}
-1_{(C,D)} = (1_C,1_D)
-\end{equation*}
-\begin{equation*}
-(f,g) \circ (f',g') = (f \circ f', g \circ g')
-\end{equation*}
-za $C \in \cat{C}$, $D \in \cat{D}$ ter $f,f'$ puščici v $\cat{C}$ in $g,g'$ puščici v $\cat{D}$.
-Za produkt $\cat{C} \times \cat{D}$ imamo dva \textit{projekcijska funktorja} 
-\[
-\begin{tikzcd}
-\cat{C} & \arrow[l, "\pi_{\cat{C}}"'] \cat{C} \times \cat{D} \arrow[r, "\pi_{\cat{D}}"] & \cat{D}
-\end{tikzcd}
-\]
-definirana kot $\pi_{\cat{C}}(C,D) = C$ in $\pi_{\cat{D}}(C,D) = D$ ter na morfizmih $\pi_{\cat{C}}(f,g) = f$ in $\pi_{\cat{D}}(f,g) = g$.
+Za vsako kategorijo $\cat{C}$ imamo na voljo identitetni funktor, ki deluje na pričakovan način. Kompozitum funktorjev je spet funktor, saj za funktorja $F : \cat{C} \to \cat{D}$ in $G : \cat{D} \to \cat{E}$ in morfizem $f : A \to B$ velja
+$$G(F(f : A \to B)) = G(F(f) : F(A) \to F(B)) = G(F(f)) : G(F(A)) \to G(F(B))$$
+ter
+$$G(F(1_A)) = G(1_{F(A)}) = 1_{G(F(A))}$$
+in še
+$$G(F(g \circ f)) = G(F(g) \circ F(f)) = G(F(g)) \circ G(F(f))$$
+za $g : B \to C$. Imamo torej kategorijo, kjer so objekti kategorije in morfizmi med njimi so funktorji. To kategorijo ponavadi označujemo z $\cat{Cat}$ 
 \end{primer}
+
+\begin{primer}
+Za neko delno urejeno množico $P$ v kategoriji $\cat{Pos}$ lahko "`pozabimo"' strukturo urejenosti in vzamemo samo množico. Tej ideji pravimo \emph{pozabljivi funktor} $U : \cat{Pos} \to \cat{Sets}$. Ta ideja je tudi bolj splošna, saj lahko za vsako kategorijo, kjer so objektni množice definiramo pozabljivi funktor, tako da vzamemo za vsak objekt samo množico, ki jo predstavlja.
+\end{primer}
+
+\begin{primer}
+V rezinah $\cat{C}/C$ nad objektom $C$ obstaja funktor $U : \cat{C}/C \to C$, ki tudi pozabi na gledani objekt $C$, torej objekte slika v objekte in morfizme v morfizme v $\cat{C}$. Za vsak morfizem $g : C \to D$ lahko definiramo funktor $g_* : \cat{C}/C \to \cat{C}/D$, s predpisom $g_*(f) = g \circ f$,
+
+$$\begin{tikzcd}
+A \ar[d, "f"'] \ar[dr, "g \circ f"] & \\
+C \ar[r, "g"'] & D \\
+\end{tikzcd}$$
+
+\end{primer}
+
+\begin{primer}
+Naj bo $(M,\cdot)$ monoid. Na monoid lahko gledamo kot na kategorijo z enim samim objektom. Morfizmi v tej kategoriji so elementi monoida, ki imajo vsi za domeno ter kodomeno edini objekt iz te kategorije. Identiteta na tem objektu je enota monoida in kompozitum dveh morfizmov je produkt elementov, ki ju predstavljata. Torej, če sta $m,n \in M$ je njun kompozitum enak $m \cdot n$. Zaradi zaprtosti operacije množenja obstaja kompozitum vsakih dveh elementov in asociativnost kompozituma sledi iz asociativnosti množenja.
+
+Lahko se vprašamo, ali imamo v tej kategoriji kake izomorfizme. Kaj bi to pomenilo? Radi bi dva morfizma $m,n$, tako da je njun kompozitum enak identiteti, ali povedano drugače radi bi dva elementa monoida, katerih produkt je enota. To je pa ravno definicija inverza. Torej, v monoidu (gledano kot kategorija) je morfizem izomorfizem natanko takrat, ko ima ta element monoida multiplikativni inverz. Ta razmislek nam pove tudi, da je grupa ravno kategorija z enim objektom, kjer je vsak morfizem izomorfizem.
+
+Naj bosta sedaj $M$ in $N$ monoida in $f : M \to N$ homomorfizem monoidov. Vemo že, da je $f$ morfizem v kategoriji monoidov $\cat{Mon}$, a velja tudi, da je $f$ funktor med $M$ in $N$ če ju gledamo kot kategoriji. Ta funktor slika edini objekt v edini objekt (boljši način za to povedat?) in morfizme usklajeno s tem kam slika elemente monoida. Za $f$ velja še, da slika enoto v enoto ter produkt v produkt, kar so ravno pogoji da je to funktor. Funktorji so v tem smislu kot neki posplošeni homomorfizmi.
+\end{primer}
+
 
 \begin{primer}
 \emph{Obratna} ali \emph{dualna} kategorija $\cat{C}^{op}$ kategorije $\cat{C}$ je kategorija z istimi objekti kot $\cat{C}$ kjer vsem morfizmom zamenjamo domeno in kodomeno. To pomeni, da za morfizem $f : A \to B$ v $\cat{C}$ imamo morfizem $f : B \to A$ v $\cat{C}^{op}$. Konceptualno je to kategorija, kjer so vse puščice obrnjene. Poglejmo si, da je to res tudi kategorija. Identitete ostanejo iste, kaj se pa zgodi z kompozitumi. Objekte in morfizme v obratni kategoriji se ponavadi označuje kar z enakimi oznakami, a da bodo stvari bolj jasne uvedimo za trenutek naslednje oznake: Za morfizem $f : A \to B$ v $\cat{C}$ pišimo $f^* : B^* \to A^*$ v $\cat{C}^{op}$. Tako dobimo zvezo med operacijami v $\cat{C}$ in $\cat{C}^{op}$.
@@ -727,6 +765,24 @@ komutira.
 Če za vsaka dva objekta v kategoriji $\cat{C}$ obstaja njun produkt pravimo, da $\cat{C}$ \emph{ima dvojiške produkte}.
 
 Definiramo lahko tudi eniški produkt. Eniški produkt objekta je objekt sam, brez dodatnih morfizmov. Ničelni produkt v kategoriji je končni objekt te kategorije, saj za vsak objekt obstaja natanko en morfizem v končni objekt, da nič dodatnega ne komutira. Če v kategoriji $\cat{C}$ obstaja produkt poljubne končne družine objektov pravimo, da $\cat{C}$ \emph{ima končne produkte}.
+
+\begin{primer}
+Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Produkt} kategorij $\cat{C} \times \cat{D}$ je prav tako kategorija, z objekti oblike $(C,D)$, kjer sta $C \in \cat{C}$ in $D \in \cat{D}$ in morfizmi oblike $(f,g) : (C,D) \to (C',D')$, kjer je $f : C \to C'$ morfizem v $\cat{C}$ ter $g : D \to D'$ morfizem v $\cat{D}$. Identitete ter kompozitume definiramo po komponentah, torej
+\begin{equation*}
+1_{(C,D)} = (1_C,1_D)
+\end{equation*}
+\begin{equation*}
+(f,g) \circ (f',g') = (f \circ f', g \circ g')
+\end{equation*}
+za $C \in \cat{C}$, $D \in \cat{D}$ ter $f,f'$ puščici v $\cat{C}$ in $g,g'$ puščici v $\cat{D}$.
+Za produkt $\cat{C} \times \cat{D}$ imamo dva \textit{projekcijska funktorja} 
+\[
+\begin{tikzcd}
+\cat{C} & \arrow[l, "\pi_{\cat{C}}"'] \cat{C} \times \cat{D} \arrow[r, "\pi_{\cat{D}}"] & \cat{D}
+\end{tikzcd}
+\]
+definirana kot $\pi_{\cat{C}}(C,D) = C$ in $\pi_{\cat{D}}(C,D) = D$ ter na morfizmih $\pi_{\cat{C}}(f,g) = f$ in $\pi_{\cat{D}}(f,g) = g$.
+\end{primer}
 
 \section{Dualnost}
 Povejmo (za trenutek še brez dokaza) dve trditvi, ki nam opišeta in utemeljia pojem dualnosti v kategoriji.
@@ -1087,7 +1143,10 @@ komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad o
 %TODO
 Kot smo tega že vajeni, so limite dualen pojem limit. In tako kot limite posplošijo konstrukcije produktov, zožkov, povlekov,... Ravno tako kolimite posplošijo konstrukcije koproduktov, kozožkov, potiskov.
 
+\begin{definicija} (Direktna definicija)
 
+\emph{Kolimita} nad diagramom $D : \cat{J} \to \cat{C}$ je začetni objekt v kategoriji kostožcev nad $D$.
+\end{definicija}
 
 \subsection{Eksponenti}
 
@@ -1121,33 +1180,52 @@ $$\overline{\widetilde{f}} = f$$
 za vsak $f : A \times B \to C$.
 
 \begin{primer}
+Naj bosta množici v $\cat{Sets}$. Definirajmo množico $D^C := \set{g : C \to D}$ vseh funkcij od $C$ do $D$. Definirajmo tudi funkcijo $\epsilon : D^C \times C \to D$ s predpisom $\epsilon(g,c) = g(c)$.
 
+Naj bo sedaj $A$ poljubna množica in $f : A \times C \to D$ poljubna funkcija. Da bo množica $D^C$ res eksponent množic $C$ in $D$ mora obstajati taka enolična funkcija $\widetilde{f} : A \to D^C$, da velja enakost $f = \epsilon \circ (\widetilde{f} \times 1_C)$, kar pomeni, da je
+$$f(a,c) = \epsilon \circ (\widetilde{f} \times 1_C)(a,c) = \epsilon(\widetilde{f}(a),c) = \widetilde{f}(a)(c)$$
+za vsak $(a,c) \in A \times C$. Preverimo še, da je tako definiran $\widetilde{f}$ res enolična izbira. Denimo, da obstaja še ena taka funkcija $h$, da velja $f = \epsilon \circ (h \times 1_C)$. Veljati mora
+$$\epsilon \circ (h \times 1_C)(a,c) = \epsilon(h(a),c) = h(a)(c) = \widetilde{f}(a)(c).$$
+Ker pa to velja za poljuben $(a,c) \in A \times C$, sta si funkciji $\widetilde{f}$ in $h$ enaki.
+
+Eksponentni objekt dveh množic je torej ravno množica vseh morfizmov med njima. Ta pojem smo že srečali pod imenom Hom-sets.
+Eksponente v neki kategoriji si lahko torej predstavljamo kot neke vrste posplošeno množico vseh funkcij med dvema objektoma. 
 \end{primer}
 
 \section{Funktorji in naravne transformacije}
 
 \subsection{Morfizmi med kategorijami}
 
-\begin{primer}
 Neuradni moto teorije kategorij bi se lahko glasil \textit{puščice so bistvene},
 kar bi pomenilo, da nas ponavadi ne zanima toliko kaj točno so objekti v neki specifični kategoriji temveč kaj se dogaja s puščicami med njimi.
-\end{primer}
 
-Sedaj imamo nekaj definicij, ki veljajo v splošnih kategorijah, a apliciramo jih lahko samo na vsaki posamezni. Kar bi radi storili, je da prehajamo iz ene kategorije v drugo in pogledamo, če je kak problem lažje rešljiv v kaki drugi kategoriji in to rešitev bi potem prevedli na kategorijo, kjer nas problem bolj zanima.
-Zato uvedemo naslednjo definicijo.
+Funktorji kot vemo so morfizmi v kategoriji $\cat{Cat}$ in kot taki so lahko monomorfizmi ali epimorfizmi. Ker lahko na monomorfizme gledamo kot na posplošene podmnožice, pravimo monomorfizmu v $\cat{Cat}$ \emph{podkategorija}. Za funktorje pa poznamo tudi druge klasifikacije, ki so pogosto uporabne
+
 \begin{definicija}
-Naj bosta $\cat{C} \ in \ \cat{D}$ poljubni kategoriji. \textit{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C} \ in \ \cat{D}$ je par morfizmov
-$$F_0 : \cat{C}_0 \to \cat{D}_0$$
-med objekti in
-$$F_1 : \cat{C}_1 \to \cat{D}_1$$
-med puščicami, tako da veljajo naslednje lastnosti:
-\begin{enumerate}
-\item $F(f : A \to B) = F(f) : F(A) \to F(B)$
-\item $F(1_A) = 1_{F(A)}$
-\item Za puščici $f : A \to B, \ g : B \to C$ mora veljati:
-$$F(g \circ f) = F(g) \circ F(f)$$
-\end{enumerate}
+Za funktor $F : \cat{C} \to \cat{D}$ pravimo, da je 
+\begin{itemize}
+\item \emph{Injektiven na objektih}, če je morfizem objektov $F_0 : \cat{C}_0 \to \cat{D}_0$ injektivna, oziroma, da je \emph{surjektiven na objektih}, če je $F_0$ surjektivna.
+\item \emph{Injektiven}/\emph{surjektiven na morfizmih}, če je $F_1$ injektive/asurjektivna.
+\item \emph{Poln}, če je za vsaka objekta $A,B \in \cat{C}$
+$$F_{A,B} : \Hom_{\cat{C}}(A,B) \to Hom_{\cat{D}}(F(A),F(B))$$
+surjektivna.
+\item \emph{Zvest}, če je za vsaka $A,B \in \cat{C}$
+$$F_{A,B} : \Hom_{\cat{C}}(A,B) \to Hom_{\cat{D}}(F(A),F(B))$$
+injektivna.
+\end{itemize}
 \end{definicija}
+
+\begin{primer}
+Poglejmo si zakaj tej pojmi niso med seboj ekvivalentni. Naj bo $\cat{C}$ kategorija in naj bo $\nabla : \cat{C} + \cat{C} \to \cat{C}$ kodiagonalni funktor, torej tak, ki obe "kopiji" pošlje v "original".
+
+$$\begin{tikzcd}[column sep=normal]
+C \ar[r, "\iota_1"] \ar[dr, "1_C"'] & C + C \ar[d, "\nabla"] & C \ar[l, "\iota_2"'] \ar[dl, "1_C"] \\
+& C & \\
+\end{tikzcd}$$
+
+Pokažimo, da je ta funktor zvest, ni pa injektiven na objektih. Izberimo si dva objekta $A,B \in \cat{C} + \cat{C}$. Med $A$ in $B$ obstaja morfizem natanko 
+
+\end{primer}
 
 \subsection{Morfizmi med funktorji}
 Radi bi nadaljevali temo posploševanja morfizmov in ker smo nazadnje definirali morfizme med kategorijami, se naravno pojavi vprašanje, ali lahko definiramo morfizme med temi morfizmi. Odgovor je pozitiven in pridemo do naslednje definicije.
@@ -1177,7 +1255,7 @@ To da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \ca
 
 \end{trditev}
 \begin{dokaz}
-
+Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}$, ki ima morfizme do vsakega izmed $D_i$ 
 \end{dokaz} 
  
 \begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
