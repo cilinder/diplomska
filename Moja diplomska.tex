@@ -123,6 +123,8 @@
 
 \newcommand{\fprod}[1]{\langle #1 \rangle}
 
+% \newcommand{\coprod}[2]{\cat{#1} + \cat{#2}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -822,6 +824,10 @@ Koprodukt A in B zato označujemo z $A + B$.
 Ali lahko najdemo koprodukte v kategoriji $\cat{Set}$? 
 Veljati mora univerzalna lastnost koprodukta.
 Poskusimo z množico $A+B := \set{(a,1) \mid a \in A} \cup \set{(b,2) \mid b \in B}$ in funkcijama $i_A : A \to A + B$, $i_A(a) = (a,1)$ in $i_B : B \to A+B$, $i_B(b) = (b,2)$. Tej množici pravimo tudi disjunktna unija A in B.
+\end{primer}
+
+\begin{primer}
+Tako kot za produkte, lahko za poljubni kategorji $\cat{C}$, $\cat{D}$ definiramo njun koprodukt $\cat{C} + \cat{D}$, z inkluzijskima funktorjema $\iota_1 : \cat{C} \to \cat{C} + \cat{D}$, $\iota_2 : \cat{C} \to \cat{C} + \cat{D}$
 \end{primer}
 
 \section{Hom-sets}
