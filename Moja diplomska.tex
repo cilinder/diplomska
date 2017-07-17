@@ -66,6 +66,7 @@
 \newtheorem{izrek}[definicija]{Izrek}
 \newtheorem{trditev}[definicija]{Trditev}
 \newtheorem{lema}[definicija]{Lema}
+\newtheorem{posledica}{Posledica}
 \newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
 
 \theoremstyle{definition}
@@ -118,10 +119,13 @@
 \newcommand{\homset}[2]{\mathrm{Hom(#1,#2)}}
 
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\colim}{colim}
 
 \renewcommand{\set}[1]{\{\,#1\,\}}
 
 \newcommand{\fprod}[1]{\langle #1 \rangle}
+
+\newcommand{\predsnop}[1]{\cat{Sets}^{\cat{#1}^{op}}}
 
 % \newcommand{\coprod}[2]{\cat{#1} + \cat{#2}}
 
@@ -1252,7 +1256,15 @@ komutira
 \end{definicija}
 
 
-\chapter{Pomembne trditve}
+\chapter{Pomembne trditve in definicije}
+
+Najprej predstavimo definicijo, ki nam bo omogočala definirati razred kategorij, s katerim je posebej lepo delati.
+\begin{definicija}
+Kategorija $\cat{C}$ je \emph{lokalno majhna}, če je kolekcija morfizmov med vsakima dvema objektoma množica.
+\end{definicija}
+\begin{opomba}
+To torej pomeni, da imamo definiran funktor $\Hom_{\cat{C}} : \cat{C}^{op} \times \cat{C} \to \cat{Sets}$, za vsaka dva objekta iz $\cat{C}$.
+\end{opomba}
 
 \begin{trditev}
 Kategorija ime vse \textit{končne limite} natanko takrat, ko ima vse končne produkte in zožke.
@@ -1267,12 +1279,15 @@ Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}
 \begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
 \end{trditev}
 \begin{dokaz}
-Naj bo $D: \bf{J} \to \bf{C}$ diagram oblike D v {\bf C} in naj bo $$\lim_{\xleftarrow[j \in \bf{J}]{}}D_j$$ limita za D, oz
-\dashuline{$\Hom(C,lim D_j)$ je limita za $\Hom(C,-) \circ D$} \\
-\\
- kjer je $Hom(C,-)\circ D : \bf{J} \to \bf{C}$ diagram v {\bf Sets}
+
 \end{dokaz}
 
+\begin{trditev}
+Za poljubni kategoriji $\cat{C}$ in $\cat{D}$, če je $\cat{D}$ ko-kompletna (ima vse majhne kolimite), potem je ko-kompletna tudi funktorska kategorija $\cat{D}^{\cat{C}}$ in kolimite v $\cat{D}^{\cat{C}}$ se izračuna "po točkah", v smislu, da za vsak $C \in \cat{C}$ evaluacijski funktor
+$$ev_C : \cat{D}^{\cat{C}} \to \cat{D}$$
+ohranja kolimite. Torej imamo za vsako majhno indeksno kategorijo $J$ in funktor $A : J \to \cat{D}^{\cat{C}}$ in vsak $C \in \cat{C}$ kanoničen izomorfizem,
+$$(\colim_j A_j)(C) \quad \cong \quad \colim_j (A_jC)$$
+\end{trditev}
 
 \begin{definicija}
 Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$ z puščico $true: 1 \to \Omega$
@@ -1281,17 +1296,22 @@ Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$
 
 \chapter{Yonedova lema}
 
+V glavni temi diplomske bomo govorili o lemi, ki nam za vsako (dovolj lepo) kategorijo $\cat{C}$ poda vložitev v kategorijo predsnopov $\predsnop{C}$, ki je v nekem smislu precej lepa kateogrija, kajti kot bomo videli je ta kategorija kartezično zaprta ima vse kolimite.
+Podamo lahko analogijo z vložitvijo realnih števil $\mathbb{R}$, kjer obstajajo polinomi, ki nimajo rešitve v tej množici, n primer polinom $p(x) = x^2 + 1$ v kompleksna števila $\mathbb{C}$, kjer pa ima vsak polinom rešitev. To v tem primeru storimo na najbolj ekonomičen, oziroma naraven način. Ravno tako bomo videli, da je vložitev kategorije $\cat{C}$ v funktorsko kategorijo $\predsnop{C}$ naravna.
+
 \section{Yonedova vložitev}
 
 Naj bo $\mathbf{C}$ lokalno majhna kategorija.
-Potem vemo, da za vsak objekt $C \in \mathbf{C}$ obstaja kovariantni predstavljivi funktor
-$$\Hom_{\mathbf{C}}(C, -):\mathbf{C} \to \mathbf{Sets}$$
-Ker lahko ta objekt C izbiramo poljubno imamo v resnici funktor 
-$$k(C) = \Hom(C, \_)$$
-Opravka imamo v bistvu z kontravariantnim funktorjem 
-$$k : \mathbf{C}^{op} \to \mathbf{Sets}^{\mathbf{C}}$$
+Potem vemo, da imamo za vsak objekt $C \in \cat{C}$ definiran kontravariantni funktor 
+$$\Hom_{\cat{C}}(-,C) : \cat{C}^{op} \to \cat{Sets}$$
+Ker lahko ta objekt C izbiramo poljubno imamo v resnici funktor, ki ga označimo z $y$
+$$y(C) = \Hom(-,C) $$
+Opravka imamo z kovariantnim funktorjem 
+$$y : \mathbf{C} \to \mathbf{Sets}^{\cat{C}^{op}}$$
+saj imamo v resnici opravka z transponiranim bifunktorjem
+$$\Hom_{\cat{C}} : \cat{C} \times \cat{C}^{op} \to \cat{Sets}$$
+za katerega po bifunktorski lemi vemo, da je funktor.
 
-Saj za 
 
 \begin{definicija} {\it Yonedova vložitev} je funktor $y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$ \\  za $C \in \bf{C}$ je $$y(C) := \Hom_{\bf{C}}(-, C) : \bf{C}^{op} \to \bf{Sets}$$ in za puščice $f : C \to D$
 $$y(f) := \Hom(-,f) : \Hom(-,C) \to \Hom(-,D)$$
@@ -1301,8 +1321,13 @@ Kasneje bomo pokazali, da je funktor y res vložitev. Funktorju pravimo {\it vlo
 
 \section{Yonedova lema}
 
+Prof. Yoneda was born on 28 March, 1930.  He studied mathematics in
+the University of Tokyo
+
+Profesor Nobuo Yoneda se je rodil 28 marca, leta 1930. Matematiko je študiral na univerzi v Tokiu. V času njegovega študija je Tokijško univerzo obiskal prof. Samuel Eilenberg in Yoneda je z njim potoval po Japonski kot vodič in prevajalec. Kasneje je pridobil Fulbrightovo štipendijo in obiskal Princeton kjer je študiral pod Eilenbergom. Kmalu po tem ko je Yoneda prispel v Princeton je Eilenberg odpotoval v Francijo, kar je po enem letu storil tudi Yoneda. V tem času je Saunders Mac Lane obiskoval ljudi v povezavi s knjigo, ki jo je pisal o teoriji kategorij in na ta način spoznal mladega Yonedo. Njun interviju se je začel v Caf'e at Gare du Nord in trajal vse do odhoda Yonedovega vlaka. Vsebino tega pogovora je Mal Lane poimenoval kot Yonedova lema.
+
 \begin{izrek}[Yonedova lema]
-Naj bo {\bf C} lokalno majhna kategorija. Potem za vsak objekt $C \in \bf{C}$ in funktor $F : \textbf{C}^{op} \to \textbf{Sets}$ velja
+Naj bo $\cat{C}$ lokalno majhna kategorija. Potem za vsak objekt $C \in \bf{C}$ in funktor $F : \textbf{C}^{op} \to \textbf{Sets}$ velja
 $$\Hom(yC,F) \cong FC$$
 In ta izomorfizem je naraven tako v C kot v F, kar pomeni, da za $f : C \to D$ naslednji diagram
 
@@ -1436,27 +1461,38 @@ Torej diagram \ref{diag2} tudi komutira.
 \section{Posledice Yonedove leme}
 
 Takoj dobimo posledico, ki upraviči poimenovanje funktorja y vložitev
-\begin{trditev} Funktor $y : \cat{C} \to \cat{Sets}^{\cat{C}^{op}}$ je poln in zvest.
+\begin{posledica} Funktor $y : \cat{C} \to \cat{Sets}^{\cat{C}^{op}}$ je poln in zvest.
+\end{posledica}
+\begin{dokaz}
+
+\end{dokaz}
+
+Naslednja posledica nam poda način, kako nam Yonedova lema lahko olajša dokazovanje.
+
+\begin{posledica} \emph{Yoneda princip}
+Za poljubna objekta $A$ in $B$ v lokalno majhni kategoriji $\cat{C}$,
+$$\text{iz} \quad yA \cong yB \quad\text{sledi}\quad A \cong B .$$
+\end{posledica}
+\begin{dokaz}
+
+\end{dokaz}
+
+Sedaj si poglejmo v kakem smislu je kategorija predsnopov $\predsnop{C}$ "lepa". Nekaj o tem nam pove naslednja trditev.
+
+\begin{trditev}
+Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kompletna. Za vsak objekt $C \in \cat{C}$, evaluacijski funktor 
+$$ev_C : \predsnop{C} \to \cat{Sets}$$
+ohranja vse limite.
 \end{trditev}
 \begin{dokaz}
 
 \end{dokaz}
 
+Ni pa ta kategorija predsnopov le kompletna, ampak tudi kokompletna, kar pa dejansko sledi že iz dejstva da je kategoriaj $\cat{Sets}$ kompletna.
 
+\begin{trditev}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+\end{trditev}
 
 
 
