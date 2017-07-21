@@ -20,6 +20,7 @@
 \usepackage{mathtools}
 \usepackage{enumitem}
 \usepackage{commath}
+\usepackage{array,xparse}
 
 \usepackage{ulem} % ta knjižnica redefinira komando \emph
 % ta komanda jo nastavi nazaj na privzeto vrednost
@@ -128,6 +129,56 @@
 \newcommand{\predsnop}[1]{\cat{Sets}^{\cat{#1}^{op}}}
 
 % \newcommand{\coprod}[2]{\cat{#1} + \cat{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Two-way rule for adjunction
+%TODO make this more usefull
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ExplSyntaxOn
+\NewDocumentEnvironment{adjunctions}{O{}}
+ {
+  \cs_set_eq:cN {@arraycr} \farin_arraycr:
+  \keys_set:nn { farin/adjunction } { #1 }
+  \begin{array}
+   {
+    @{ \hspace { \dim_eval:n { \l_farin_left_shift_dim + \l_farin_padding_dim } } }
+    r
+    @{ {\farin_strut:} \l_farin_symbol_tl {} }
+    l
+    @{ \hspace { \dim_eval:n { \l_farin_right_shift_dim + \l_farin_padding_dim } } }
+   }
+ }
+ {
+  \end{array}
+ }
+\keys_define:nn { farin/adjunction }
+ {
+  leftshift       .dim_set:N = \l_farin_left_shift_dim,
+  leftshift       .initial:n = 0pt,
+  rightshift      .dim_set:N = \l_farin_right_shift_dim,
+  rightshift      .initial:n = 0pt,
+  padding         .dim_set:N = \l_farin_padding_dim,
+  padding         .initial:n = 6pt,
+  symbol          .tl_set:N  = \l_farin_symbol_tl,
+  symbol          .initial:n = \longrightarrow,
+  verticalspacing .dim_set:N  = \l_farin_vertspac_dim,
+  verticalspacing .initial:n = {3pt},
+ }
+\cs_new_protected:Npn \farin_strut:
+ {
+  \vrule height \dim_eval:n { \ht\strutbox + 1.2\l_farin_vertspac_dim }
+         depth  \dim_eval:n { \dp\strutbox + \l_farin_vertspac_dim }
+         width 0pt
+ }
+\makeatletter
+\exp_args:NNo \cs_new:Npn \farin_arraycr:
+ {
+  \@arraycr\hline
+ }
+\makeatother
+\ExplSyntaxOff
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1147,7 +1198,16 @@ C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D \ar[dl, "p"] \\
 komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D$ je končni objekt v tej kategoriji.
 \end{primer}
 
+\begin{definicija}
+Za kategorijo $\cat{C}$ pravimo, da je \emph{kompletna}, če ima vse majhne limite, kar pomeni, da za vsako majhno indeksno kategorijo $J$ in diagram $D : J \to \cat{C}$ obstaja limita $\lim_{j \in J} D_j$ v $\cat{C}$.
+\end{definicija}
 
+\begin{trditev}
+Kategorija $\cat{Sets}$ je kompletna
+\end{trditev}
+\begin{dokaz}
+TODO
+\end{dokaz}
 
 \subsection{Kolimite}
 %TODO
@@ -1156,6 +1216,10 @@ Kot smo tega že vajeni, so limite dualen pojem limit. In tako kot limite posplo
 \begin{definicija} (Direktna definicija)
 
 \emph{Kolimita} nad diagramom $D : \cat{J} \to \cat{C}$ je začetni objekt v kategoriji kostožcev nad $D$.
+\end{definicija}
+
+\begin{definicija}
+Dualno kot za limite, za kolimite poznamo pojem \emph{kokompletnosti}, kar pomeni, da ima za poljubno majhno indeksno kategorijo $J$, vsak diagram $D : J \to \cat{C}$ kolimito $\colim_{j \in J} D_j$ v $\cat{C}$.
 \end{definicija}
 
 \subsection{Eksponenti}
@@ -1282,12 +1346,35 @@ Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}
 
 \end{dokaz}
 
+
 \begin{trditev}
+$\Hom(A, C^B) \cong \Hom(A \times B, C)$
+\end{trditev}
+\begin{dokaz}
+Sledi iz definicije eksponenta in transponiranja. (Dopolni, bolj ekstenziven dokaz)
+\end{dokaz}
+
+\begin{trditev}
+\label{ohranjanje kolimit}
 Za poljubni kategoriji $\cat{C}$ in $\cat{D}$, če je $\cat{D}$ ko-kompletna (ima vse majhne kolimite), potem je ko-kompletna tudi funktorska kategorija $\cat{D}^{\cat{C}}$ in kolimite v $\cat{D}^{\cat{C}}$ se izračuna "po točkah", v smislu, da za vsak $C \in \cat{C}$ evaluacijski funktor
 $$ev_C : \cat{D}^{\cat{C}} \to \cat{D}$$
-ohranja kolimite. Torej imamo za vsako majhno indeksno kategorijo $J$ in funktor $A : J \to \cat{D}^{\cat{C}}$ in vsak $C \in \cat{C}$ kanoničen izomorfizem,
-$$(\colim_j A_j)(C) \quad \cong \quad \colim_j (A_jC)$$
+ohranja kolimite. Torej imamo za vsako majhno indeksno kategorijo $J$ in funktor $F : J \to \cat{D}^{\cat{C}}$ in vsak $C \in \cat{C}$ kanoničen izomorfizem,
+$$(\colim_j F_j)(C) \quad \cong \quad \colim_j (F_jC)$$
 \end{trditev}
+\begin{dokaz}
+Naj bo $F: J \to \cat{D}^{\cat{C}}$. Po lastnosti eksponentov obstaja enoličen $\overline{F}: J \times \cat{C} \to \cat{D}$, da diagram
+
+\begin{equation}
+\begin{tikzcd}
+\cat{D}^{\cat{C}} \times \cat{C} \ar[r, "\epsilon"] & \cat{D} \\
+J \times \cat{C} \ar[u, "F \times 1_{\cat{C}}"] \ar[ur, "\overline{F}"'] \\
+\end{tikzcd}
+\end{equation}
+komutira, kjer je $\epsilon_{\cat{C}}$ evaluacijski funktor.
+Za vsak $C \in \cat{C}$ lahko definiramo funktor $\overline{F}(-,C): J \to \cat{D}$, ki vsak $i \in J$ slika v $\overline{F}(i,C) = \epsilon(F \times 1_\cat{C})(j,C) = F_j(C)$.
+Kolimito za $F$ definiramo kot
+$$\colim F_k(C) := \colim_{k \in J}\overline{F}(k,C)$$
+\end{dokaz}
 
 \begin{definicija}
 Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$ z puščico $true: 1 \to \Omega$
@@ -1324,7 +1411,11 @@ Kasneje bomo pokazali, da je funktor y res vložitev. Funktorju pravimo {\it vlo
 Prof. Yoneda was born on 28 March, 1930.  He studied mathematics in
 the University of Tokyo
 
-Profesor Nobuo Yoneda se je rodil 28 marca, leta 1930. Matematiko je študiral na univerzi v Tokiu. V času njegovega študija je Tokijško univerzo obiskal prof. Samuel Eilenberg in Yoneda je z njim potoval po Japonski kot vodič in prevajalec. Kasneje je pridobil Fulbrightovo štipendijo in obiskal Princeton kjer je študiral pod Eilenbergom. Kmalu po tem ko je Yoneda prispel v Princeton je Eilenberg odpotoval v Francijo, kar je po enem letu storil tudi Yoneda. V tem času je Saunders Mac Lane obiskoval ljudi v povezavi s knjigo, ki jo je pisal o teoriji kategorij in na ta način spoznal mladega Yonedo. Njun interviju se je začel v Caf'e at Gare du Nord in trajal vse do odhoda Yonedovega vlaka. Vsebino tega pogovora je Mal Lane poimenoval kot Yonedova lema.
+Profesor Nobuo Yoneda se je rodil 28 marca, leta 1930. Matematiko je študiral na univerzi v Tokiu. V času njegovega študija je Tokijško univerzo obiskal prof. Samuel Eilenberg in Yoneda je z njim potoval po Japonski kot vodič in prevajalec. Kasneje je pridobil Fulbrightovo štipendijo in obiskal Princeton kjer je študiral pod Eilenbergom. Kmalu po tem ko je Yoneda prispel v Princeton je Eilenberg odpotoval v Francijo, kar je po enem letu storil tudi Yoneda. V tem času je Saunders Mac Lane obiskoval ljudi v povezavi s knjigo, ki jo je pisal o teoriji kategorij in na ta način spoznal mladega Yonedo. Njun interviju se je začel v Caf'e at Gare du Nord in trajal vse do odhoda Yonedovega vlaka. Vsebino tega pogovora je Mac Lane poimenoval kot Yonedova lema.
+
+
+Glavna ideja Yonedove leme je v tem, da je za opis kontravariantnih funktorjev v $\cat{Sets}$ dovolj poznati le delovanje predstavljivih funktorjev, saj lahko z njimi izrazimo poljuben drug funktor, na naraven način. Poglejmo točno formulacijo.
+
 
 \begin{izrek}[Yonedova lema]
 Naj bo $\cat{C}$ lokalno majhna kategorija. Potem za vsak objekt $C \in \bf{C}$ in funktor $F : \textbf{C}^{op} \to \textbf{Sets}$ velja
@@ -1464,18 +1555,52 @@ Takoj dobimo posledico, ki upraviči poimenovanje funktorja y vložitev
 \begin{posledica} Funktor $y : \cat{C} \to \cat{Sets}^{\cat{C}^{op}}$ je poln in zvest.
 \end{posledica}
 \begin{dokaz}
-
+Funktor $F:\cat{C} \to \cat{D}$ je zvest, če je za vsaka $A,B \in \cat{C}$ funkcija $F_{A,B} : \Hom(A,B) \to \Hom(FA,FB)$ injektivna in poln, če je surjektivna.
+V našem primeru imamo za poljubna $A,B \in \cat{C}$ 
+$$\Hom(yA,yB) \cong yB(A) \cong \Hom(A,B),$$
+kjer prva enakost sledi iz Yonedove leme. Torej je ta inducirana funkcija za vsaka $A$ in $B$ bijekcija, torej je y res zvest in poln.
 \end{dokaz}
+\begin{opomba}
+Opazimo lahko, da je Yonedova vložitev $y : \cat{C} \to \cat{Sets}^{\cat{C}^{op}}$ tudi injektivna na objektih, saj za poljubna $A,B \in \cat{C}$, za katera velja $yA = yB$, potem v posebnem primeru velja $yA(A) = yA(B)$ in $1_A \in \Hom(A,A) \Rightarrow 1_A \in \Hom(B,A) \Rightarrow B = A$.
+\end{opomba}
+
 
 Naslednja posledica nam poda način, kako nam Yonedova lema lahko olajša dokazovanje.
 
-\begin{posledica} \emph{Yoneda princip}
+\begin{posledica} \emph{(Yoneda princip)}
 Za poljubna objekta $A$ in $B$ v lokalno majhni kategoriji $\cat{C}$,
 $$\text{iz} \quad yA \cong yB \quad\text{sledi}\quad A \cong B .$$
 \end{posledica}
 \begin{dokaz}
-
+za $F : \cat{C}^{op} \to \cat{Sets}$ vzamemo kar $yB$ in ker $\Hom(yA,yB) \cong \Hom(A,B)$ in ker bijekcija slika izomorfizem v izomorfizem (y je namreč poln in zvest po prejšnji posledici), res velja $A \cong B$.
 \end{dokaz}
+
+
+Poglejmo si pogosto uporabo tega principa.
+
+\begin{primer}
+Radi pokazali, da v poljubni kartezično zaprti kategoriji $\cat{C}$ za poljubne $A,B,C \in \cat{C}$ velja $(A^B)^C \cong A^{(B \times C)}$.
+Po Yonedovem principu moramo preveriti le, da velja $y((A^B)^C) \cong y(A^{(B \times C)})$ ter, da je ta izomorfizem naraven. Torej vzamemo poljuben $X \in \cat{C}$ in računamo
+\begin{align*}
+\Hom(X, (A^B)^C) \cong &\Hom(X \times C, A^B) \\
+&\Hom(X \times C \times B, A) \\
+&\Hom(X, A^{(B \times C)}) \\
+\end{align*}
+Prevereti je še potrebno, da so tej izomorfizmi naravni v $X$.
+Naj bo torej $f : Y \to X$ v $ \cat{C}$. Situacija v $\cat{C}$ je naslednja
+
+\begin{equation}
+\begin{tikzcd}
+(A^B)^C & (A^B)^C \times C \ar[r, "\epsilon"] & C \\
+X \ar[u, "g"] & X \times C \ar[u, "g \times 1_C"] \ar[ur, "\overline{g}"'] & \\
+Y \ar[u, "f"] & Y \times C \ar[u, "f \times 1_C"] \ar[uur, bend right, "\overline{g \circ f}"'] & \\
+\end{tikzcd}
+\end{equation}
+kjer je $\epsilon$ evaluacija in $\overline{g}$ transponiranka za $g$. Po enoličnosti transponiranja je $\overline{g \circ f}$ enolični morfizem, da ta diagram komutira za $(g \circ f) \times 1_C$.
+
+
+\end{primer}
+
 
 Sedaj si poglejmo v kakem smislu je kategorija predsnopov $\predsnop{C}$ "lepa". Nekaj o tem nam pove naslednja trditev.
 
@@ -1485,22 +1610,97 @@ $$ev_C : \predsnop{C} \to \cat{Sets}$$
 ohranja vse limite.
 \end{trditev}
 \begin{dokaz}
+Naj bo J majhna indeksna kategorija in $D : J \to \cat{Sets}^{\cat{C}^{op}}$ diagram oblike $J$. Če naj bi taka limita obstajala, bi to bil objekt v $\cat{Sets}^{\cat{C}^{op}}$, oziroma funktor 
+$$(\lim_{j \in J} D_j): \cat{C}^{op} \to \cat{Sets}$$
+po Yonedovi lemi, pa bi za tak funktor moralo veljati
+$$(\lim_{j \in J} D_j)(C) \cong \Hom(yC, \lim D_j),$$
+ker pa vemo, da predstavljivi funktorji ohranjajo limite velja
+$$\Hom(yC, \lim D_j) \cong \lim_{j \in J} Hom(yC, D_j).$$
+Z ponovno uporavo Yonedove leme dobimo
+$$\lim_{j \in J} Hom(yC, D_j) \cong \lim_{j \in J} D_j(C).$$
+Torej limito v $\predsnop{C}$ definiramo kar kot $\lim_{j \in J} (D_j(C))$, oz. po točkah.
+Preostane še poiskati oz. definirati stožec nad tem objektom in pokazati, da je končen med stožci nad $D$.
+
+
 
 \end{dokaz}
 
 Ni pa ta kategorija predsnopov le kompletna, ampak tudi kokompletna, kar pa dejansko sledi že iz dejstva da je kategoriaj $\cat{Sets}$ kompletna.
 
 \begin{trditev}
+Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kokompletna in kolimite se izračuna "po točkah".
+\end{trditev}
+\begin{dokaz}
+Sledi iz trditve \ref{ohranjanje kolimit} in dejstva, da je $\cat{Sets}$ kokompletna.
+\end{dokaz}
 
+Povemo pa lahko še več. Naslednji izrek, všasih imenovan tudi \emph{gostotni izrek}, je v nekem smislu dual Yonedove leme.
+
+
+
+\begin{trditev}
+\label{density theorem}
+Za vsako majhno kategorijo $\cat{C}$, se vsak objekt $P$ funktorske kategorije $\predsnop{C}$, da izraziti kot kolimito predstavljivih funktorjev iz neke indeksne kategorije $J$.
+$$ P \cong \colim_{j \in J} yC_j.$$
+Bolj natančno obstaja kanonična izbira indeksne kategorije $J$ in funktorja $\pi : J \to \cat{C}$, tako da obstaja naravni izomorfizem $\colim y \circ \pi \cong P$.
+\end{trditev}
+\begin{dokaz}
+Naj bo torej $P : \cat{C}^{op} \to \cat{Sets}$ element kategorije predsnopov nad $\cat{C}$. Za indeksno kategorijo bomo definirali tako imenovano \emph{kategorijo elementov P}, ki se jo označuje z
+$$\int_{\cat{C}}P,$$
+ki ima za
+\begin{enumerate}
+\item \emph{Objekte}: pare $(x,C)$, kjer je $C \in \cat{C}$ in $x \in P(C)$.
+\item \emph{Morfizme}: trojice $(h, (x',C'), (x,C))$, kjer je $h : C' \to C$ morfizem v $\cat{C}$, tako da velja $Ph(x) = x'$. Zaradi priročnosti te morfizme ponavadi označujemo kar z $h : (x', C') \to (x,C)$ in se zavedamo da morajo zadoščati pogoju.
+Identiteta na $(x,C)$ je kar podedovana identiteta na $C$, kajti funktor ohranja indetitete. Kompozitum dveh takih morfizmov je spet tak morfizem kajti za $h : (x'', C'') \to (x', C')$ in $k : (x', C') \to (x,C)$ velja $P(k \circ h)(x) = Ph \circ Pk(x) = Ph(x') = x''$.
+\end{enumerate}
+
+Definiramo funktor $\pi : \int_{\cat{C}}P \to \cat{C}$, kot $\pi(x,C) = C$ in trdimo, da velja $\colim y\circ \pi (x,C) \cong P$. Da bo to res kolimita potrebujemo morfizme $y\circ \pi (x,C) \to P$ za vsak $(x,C) \in \int_{\cat{C}}P$. Po Yonedovi lemi imamo bijekcijo
+$$x \in PC \leftrightsquigarrow x:yC \to P$$
+
+ki je naravna v $C$, torej za $h: (x',C') \to (x,C)$ naslednji diagram
+$$ \begin{tikzcd}
+yC' \ar[rr, "yh"] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \\
+& P &
+\end{tikzcd} $$
+komutira. Za komponente kostožca nad $y \circ \pi$ torej vzamemo naravne transformacije $x : yC \to P$. Da je to res kolimita, denimo, da obstaja nek drug stožec $y \circ \pi \to Q$ z komponentami $\vartheta_{(x,C)} : yC \to Q$. Iščemo torej tako enolično naravno transformacijo, da naslednji diagram komutira.
+
+$$\begin{tikzcd}
+yC' \ar[rr, "yh"] \ar[ddr, bend right, "\vartheta_{(x',C')}"'] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \ar[ddl, bend left, "\vartheta_{(x,C)}"] \\
+& P \ar[d, dashed, "\vartheta"] & \\
+& Q &
+\end{tikzcd} $$
+Ponovno lahko po Yonedovi lemi identificiramo 
+$$\vartheta_{(x,C)}: yC \to Q \leftrightsquigarrow \vartheta_{(x,C)} \in QC$$
+in za komponente naravne transformacije $\vartheta P \to Q$ vzamemo kar funkcijo, ki jo inducira ta bijekcija, torej 
+$$\vartheta_C : PC \to QC \quad \vartheta_C(x) = \vartheta_{(x,C)}$$
+ker je zgornji izomorfizem naraven v C to implicira komutativnost diagrama. Preveriti je potrebno še enoličnost $\vartheta$. Naj bo torej $\psi : P \to Q$, tak, da stranice trikotnika komutirajo. Potem velja $\psi \circ x = \vartheta_{(x,C)} = \vartheta \circ x$.
+\end{dokaz}
+
+
+
+Kako je pa z eksponenti v $\cat{Sets}^{\cat{C}^{op}}$ ? Če so $X,Q,P$ funktorji v $\predsnop{C}$. Kako bi definirali eksponentni objekt $Q^P$ ? Po Yonedovi lemi bi moralo veljati $Q^P(C) \cong \Hom(yC, Q^P)$. Če pa želimo, da ta objekt izpolnjuje lastnost eksponenta, mora veljati
+$$\Hom(yC,Q^P) \cong \Hom(yC \times P, Q).$$
+po lastnosti transponiranja. Ker pa $\predsnop{C}$ ima produkte, kajti ima vse končne limite, množica $\Hom(yC \times P, Q)$ obstaja. Na ta način tudi definiramo eksponent.
+
+\begin{trditev}
+Za lokalno majhno kategorijo $\cat{C}$, za vse $X,P,Q$ v $\predsnop{C}$ obstaja izomorfizem
+$$\Hom(X,Q^P) \cong \Hom(X \times P, Q),$$
+ki je naraven v $X$.
 \end{trditev}
 
 
+Najprej potrebujemo še dodatno lemo
+\begin{lema}
+
+\end{lema}
 
 
+\begin{dokaz}
+Po \ref{density theorem} velja, da obstaja indeksna kategorija $J$, da je
+$$ X \cong \underset{j \in J}{\colim}\> yCj,$$
+izbrana na kanoničen način.
 
-
-
-
+\end{dokaz}
 
 
 
