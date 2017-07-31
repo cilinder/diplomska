@@ -66,8 +66,8 @@
 \theoremstyle{plain}
 \newtheorem{izrek}[definicija]{Izrek}
 \newtheorem{trditev}[definicija]{Trditev}
+\newtheorem{posledica}{Posledica}[definicija]
 \newtheorem{lema}[definicija]{Lema}
-\newtheorem{posledica}{Posledica}
 \newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
 
 \theoremstyle{definition}
@@ -120,7 +120,9 @@
 \newcommand{\homset}[2]{\mathrm{Hom(#1,#2)}}
 
 \DeclareMathOperator{\Hom}{Hom}
+%\DeclareMathOperator[1]{\colim}{\underset{#1}{colim}}
 \DeclareMathOperator{\colim}{colim}
+%\newcommand[1]{\colim}{\underset{#1}\colim_op}
 
 \renewcommand{\set}[1]{\{\,#1\,\}}
 
@@ -331,7 +333,7 @@ A proper abstract should contain around 100 words which makes this one way too s
 \pagestyle{fancy}
 
 \chapter{Uvod}
-Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko?
+Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko? Običajno se v matematiki obravnava in preučuje neke objekte (pogosto množice, lepše to napisat), ki so običajno opremljeni z neko strukturo, kot na primer grupe, kolobarji, topološki prostori, \ldots, prav tako pa nas pogosto zanimajo kaj so funkcije med tebi množicami, ki ohranjajo to strukturo, najsibo to homomorfizem grup ali homeomorfizem med topološkimi prostori. Učasih opazimo, da se v bistvu vse lastnosti, ki jih naši objekti imajo in kako se obnašajo, da izraziti s tem kakšne so možne transformacije teh objektov. Teorija kategorij poskuša uporabiti in posplošiti to idejo na vse kar se obnaša na tak način. Ne zanimajo nas namreč več kaj so tej objekti, oz. kaj predstavljajo, zanimajo nas le vse te transformacije (ki se jim pogosto pravi morfizmi) in kaj se dogaja na primer pri kompozitumu katerih od teh transformacij in kaj lahko povemo s tem. Na nek način teorija kategorij združuje različna področja v matematiki in poskuša nanje pogledati z enotno perspektivo. Ta posplošitev seveda ne more rešiti vseh specifičnih problemov nekega področja, nam pa da nek bolj globalni pogled na stvari in včasih tudi lahko prenese pristop h reševanju nekega problema na povsem drugo področje, če ga le znamo pogledati s pravilno perspektivo.
 
 \section{Osnovne Definicije}
 
@@ -356,7 +358,7 @@ A \arrow[r, "f"] \arrow[rd, "g \circ f"']  & B  \arrow[d, "g"] \\
 %
 \item Za vsak objekt $A$ obstaja morfizem
 $$1_A : A \to A$$
-ki mu pravimo \emph{identiteta} na A.		
+ki mu pravimo \emph{identiteta} na $A$.		
 \end{itemize}
 Za vse te podatke morata veljati naslednji dve pravili:
 \begin{itemize}
@@ -401,6 +403,15 @@ Identitetnih morfizmov se ponavadi ne riše. Kategorija $\cat{3}$ bi izgledala t
 & \bullet
 \end{tikzcd}
 \end{equation}
+\end{primer}
+
+\begin{primer}
+Objekti v kategoriji pa ne rabijo predstavljati nekih strukturiranih množic in morfizmi ne rabijo predstavljati funkcij med temi množicami. Kategoriji kjer pa je to res, pravimo \emph{konkretna kategorija}. Vse kategorije, ki smo jih videli do tukaj so primeri konkretnih kategorij. 
+Poglejmo pa si še primer ne-konkretne kategorije. Naj bo $\cat{Rel}$ kategorija, kjer so objekti množice in morfizmi naj bodo binarne relacije. Torej morfizem $f : A \to B$ je podmnožica kartezičnega produkta $f \subseteq A \times B$. Identiteta je identitetna relacija na množici.
+$$ 1_A = \set{(a,a) \in A \times A \mid a \in A} \subseteq A \times A$$
+Za relaciji $R \subseteq A \times B$ in $S \subseteq B \times C$, definiramo njun kompozitum $S \circ R$ kot
+$$(a,c) \in S \circ R \quad \Leftrightarrow \quad \exists b, (a,b) \in R \ \& \ (b,c) \in S$$
+
 \end{primer}
 
 \begin{primer}
@@ -557,7 +568,7 @@ za $g : B \to C$. Imamo torej kategorijo, kjer so objekti kategorije in morfizmi
 \end{primer}
 
 \begin{primer}
-Za neko delno urejeno množico $P$ v kategoriji $\cat{Pos}$ lahko "`pozabimo"' strukturo urejenosti in vzamemo samo množico. Tej ideji pravimo \emph{pozabljivi funktor} $U : \cat{Pos} \to \cat{Sets}$. Ta ideja je tudi bolj splošna, saj lahko za vsako kategorijo, kjer so objektni množice definiramo pozabljivi funktor, tako da vzamemo za vsak objekt samo množico, ki jo predstavlja.
+Za neko delno urejeno množico $P$ v kategoriji $\cat{Pos}$ lahko "`pozabimo"' strukturo urejenosti in vzamemo samo množico. Tej ideji pravimo \emph{pozabljivi funktor} $U : \cat{Pos} \to \cat{Sets}$. Ta ideja je tudi bolj splošna, saj lahko za vsako kategorijo, kjer so objektni množice ter morfizmi funkcije med njimi definiramo pozabljivi funktor, tako da vzamemo za vsak objekt samo množico, ki jo predstavlja.
 \end{primer}
 
 \begin{primer}
@@ -714,30 +725,30 @@ Kaj bi bil končni objekt v kategoriji $\cat{Pos}$ delno urejenih množic in mon
 \end{primer}
 
 \section{Posplošeni elementi}
-Za razumevanje tega, kaj je neka množica potrebujemo natanko poznavanje vseh njenih elementov. To nam pove vse, kar lahko vemo o tej množici. Elemente neke množice A pa lahko identificiramo s funkcijami $1 \to A$, saj vsako funkcijo $f : 1 \to A$ identificiramo s tem kam pošlje edini element, z drugimi besedami, množica A je izomorfna množici vseh funkcij iz 1 v A. To množico označujemo z $\Hom_{\cat{Sets}} (1,A)$ in ji pravimo hom-set (boljši izraz ?). Takšne množice bodo ključnega pomena pri Yonedovi lemi.
+Za razumevanje tega, kaj je neka množica potrebujemo natanko poznavanje vseh njenih elementov. To nam pove vse, kar lahko vemo o tej množici. Elemente neke množice $A$ pa lahko identificiramo s funkcijami $1 \to A$, saj vsako funkcijo $f : 1 \to A$ identificiramo s tem kam pošlje edini element, z drugimi besedami, množica A je izomorfna množici vseh funkcij iz $1$ v $A$. To množico označujemo z $\Hom_{\cat{Sets}} (1,A)$ in ji pravimo hom-set (boljši izraz ?). Takšne množice bodo ključnega pomena pri Yonedovi lemi.
 Za kako drugo matematično strukturo to lahko ni dovolj. Na primer za poznavanje topološkega prostora moramo poznati še okolice točk tega prostora in nam poznavanje samo točk prostora ne pove ničesar o lastnostih tega prostora. Kateri morfizmi pa so potrebni za poznavanje nekega objekta. To vprašanje nas privede do naslednje definicije
 
 \begin{definicija}
- \textit{Posplošeni element} objekta $A \in \cat{C}$ je poljuben morfizem 
+\textit{Posplošeni element} objekta $A \in \cat{C}$ je poljuben morfizem 
 $$t : T \to A$$
-iz nekega testnega objekta $T$ v A.
+iz nekega testnega objekta $T$ v $A$.
 \end{definicija}
 Kot je bilo že omenjeno, nam opsplošeni elementi razkrijejo dodatno strukturo, kot ponazori naslednji primer
 
 \begin{primer}
-Recimo, da imamo dve delno urejeni množici X in A z naslednjo ureditvijo:
+Recimo, da imamo dve delno urejeni množici $X$ in $A$ z naslednjo ureditvijo:
 \begin{align*}
 X = \set{x \leq y, x \leq z} \\
 A = \set{a \leq b \leq c} \\
 \end{align*}
 Obe množici imata po 3 elemente, a vidimo, da nimata identične strukture. Torej med njima imamo monotono bijektivno funkcijo $f : X \to A$ definirano kot
 $$f(x) = a, \quad f(y) = b, \quad f(z) = c$$
-a ta funkcija \textbf{ni} izomorfizem v $\cat{Pos}$. Ti dve strukturi v resnici nista izomorfni, a kako to pokazati. En način je z tako imenovanimi \textit{invariantami}, to so lastnosti neke strukture, ki se ohranjajo z izomorfizmi, oz. jih imajo enake vse izomorfne strukture. Invariante se da definirati na lep način z posplošenimi elementi. V našem primeru vidimo, da je invarianta število elementov enaka za obe množici, kar ustreza temu, da morfizmi iz enoelementne delno urejene množice \textbf{1} ne ločujejo med njima. Poglejmo si namesto tega "\textbf{2}-elemente" teh množic. To so morfizmi iz množice $\textbf{2} = \set{0 \leq 1}$ v naši množici. Takih morfizmov v množico X je 5, in sicer trije morfizmi, ki slikajo oba elementa v isti element, na primer oba v x ter še dva dodatna morfizma
+a ta funkcija \textbf{ni} izomorfizem v $\cat{Pos}$. Ti dve strukturi v resnici nista izomorfni, a kako to pokazati. En način je z tako imenovanimi \textit{invariantami}, to so lastnosti neke strukture, ki se ohranjajo z izomorfizmi, oz. jih imajo enake vse izomorfne strukture. Invariante se da definirati na lep način z posplošenimi elementi. V našem primeru vidimo, da je invarianta število elementov enaka za obe množici, kar ustreza temu, da morfizmi iz enoelementne delno urejene množice \textbf{1} ne ločujejo med njima. Poglejmo si namesto tega "\textbf{2}-elemente" teh množic. To so morfizmi iz množice $\textbf{2} = \set{0 \leq 1}$ v naši množici. Takih morfizmov v množico $X$ je 5, in sicer trije morfizmi, ki slikajo oba elementa v isti element, na primer oba v $x$ ter še dva dodatna morfizma
 $$0 \mapsto x, 1 \mapsto y \qquad 0 \mapsto x, 1 \mapsto z$$
 medtem, ko imamo za morfizme $\textbf{2} \to A$, tri dodatne morfizme poleg "točkovnih" (takih, ki slikaj vse elemente v eno točko.
 $$0 \mapsto a, 1 \mapsto b \qquad 0 \mapsto b, 1 \mapsto c \qquad 0 \mapsto a, 1 \mapsto c$$
 kjer zadnji morfizem dobimo zaradi tranzitivnosti.
-Tako je invarianta, ki jo lahko poimenujemo kar "število morfizmov iz \textbf{2}" za množico X enaka 5, za množico A pa 6, torej lahko sklepamo, da množici nista izomorfni v $\cat{Pos}$.
+Tako je invarianta, ki jo lahko poimenujemo kar "število morfizmov iz \textbf{2}" za množico $X$ enaka 5, za množico $A$ pa 6, torej lahko sklepamo, da množici nista izomorfni v $\cat{Pos}$.
 \end{primer}
 
 Posplošeni elementi so uporabni tudi za "testiranje" določenih lastnosti. Poglejmo si na primer diagrame naslednje oblike
@@ -745,9 +756,10 @@ Posplošeni elementi so uporabni tudi za "testiranje" določenih lastnosti. Pogl
 $$\begin{tikzcd}[column sep=large]
 X \ar[r, shift left, "x"] \ar[r, shift right, "x'"'] & A \ar[r, "f"] & B \\
 \end{tikzcd}$$
-Tukaj je morfizem f mono, natanko takrat, ko za vsaka morfizma $x, x'$ iz $fx = fx'$ sledi $x = x'$, ali z drugimi besedami, f je "injektiven na posplošenih elementih" če želimo. \\
-Podobno, da lahko za diagram oblike 
+Tukaj je $f$ monomorfizem, natanko takrat, ko za vsaka morfizma $x, x'$ iz $fx = fx'$ sledi $x = x'$, ali z drugimi besedami, $f$ je "injektiven na posplošenih elementih" če želimo.
 
+
+Podobno, da lahko za diagram oblike 
 $$\begin{tikzcd}[column sep=large, row sep=large]
 A \ar[d, "g"'] \ar[r, "f"] & B \ar[d, "\alpha"] \\
 D \ar[r, "\beta"'] & D
@@ -769,11 +781,11 @@ A & \ar[l, "\pi_A"] A \times B \ar[r, "\pi_B"'] & B \\
 Če 1 zamenjamo z posplošenim elementom, dobimo naslednjo definicijo
 
 \begin{definicija}
-Produkt objektov $A,B \in \cat{C}$ je objekt P, skupaj z projekcijama
+Produkt objektov $A,B \in \cat{C}$ je objekt $P$, skupaj s projekcijama
 $$\begin{tikzcd}
 A & P \ar[l, "p_A"'] \ar[r, "p_A"] & B
 \end{tikzcd}$$
-z naslednjo univerzalno lastnostjo. Za vsak objekt X iz $\cat{C}$ in morfizma $f : X \to A$, $g : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram komutira
+z naslednjo univerzalno lastnostjo. Za vsak objekt $X$ iz $\cat{C}$ in morfizma $f : X \to A$, $g : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram komutira
 
 $$\begin{tikzcd}
 & X \ar[ld, "f"'] \ar[d, dashed, "u"] \ar[rd, "g"] & \\
@@ -781,18 +793,20 @@ A & P \ar[l, "p_A"] \ar[r, "p_B"'] & B
 \end{tikzcd}$$
 
 ali z enačbami
-$$f = p_A \circ u \quad g = p_B \circ u$$
+$$f = p_A \circ u \quad g = p_B \circ u.$$
 Morfizmoma $p_A$ in $p_B$ pravimo (koordinatni) \textit{projekciji}. Enolični morfizem $u$ ponavadi označujemo z $\langle f,g \rangle$.
 \end{definicija}
 
-Če v kategoriji obstaja produkt za vsaka dva objekta pravimo, da ta kategorija \textit{ima binarne produkte}. \\
-Kot vedno z univerzalnimi lastnostmi podanimi na tak način, bo veljala naslednja trditev
+Če v kategoriji obstaja produkt za vsaka dva objekta pravimo, da ta kategorija \textit{ima binarne produkte}.
+
+
+Kot ponavadi z univerzalnimi lastnostmi podanimi na tak način, bo veljala naslednja trditev
 
 \begin{trditev}
 Produkti so enolični do izomorfizma natančno
 \end{trditev}
 \begin{dokaz}
-Naj bosta P in R oba produkt objektov A in B z produktnima projekcijama $p_A, p_B$ ter $r_A, r_B$ (respectively?). Ker je P produkt A in B obstaja enoličen morfizem $u : R \to P$, da velja $r_A = p_Au, r_B = p_Bu$. Obratno ker je R produkt A in B obstaja enoličen $v : P \to R$, da veljata zvezi $p_A = r_Au, p_B = r_Bu$. Stanje prikažemo v diagramu
+Naj bosta $P$ in $R$ oba produkt objektov $A$ in $B$ z produktnima projekcijama $p_A, p_B$ za $P$ ter $r_A, r_B$ za $R$. Ker je $P$ produkt $A$ in $B$ obstaja enoličen morfizem $u : R \to P$, da velja $r_A = p_Au, r_B = p_Bu$. Obratno ker je $R$ produkt $A$ in $B$ obstaja enoličen $v : P \to R$, da veljata zvezi $p_A = r_Au, p_B = r_Bu$. Stanje prikažemo v diagramu
 
 $$\begin{tikzcd}
 & R \ar[dd, dashed, bend right, "u"'] \ar[dl, "r_A"'] \ar[dr, "r_B"] & \\
@@ -800,13 +814,24 @@ A & & B \\
 & P \ar[uu, dashed, bend right, "v"'] \ar[ul, "p_A"] \ar[ur, "p_B"'] & \\
 \end{tikzcd}$$
 
-Morfizem $u \circ v $ je torej enolični morfizem iz P v P. To pa pomeni, da mora biti identitetni morfizem. Enako velja za $v \circ u$, torej sta si inverza in sta P in R izomorfna.
+Morfizem $u \circ v $ je torej enolični morfizem iz $P$ v $P$. To pa pomeni, da mora biti identitetni morfizem. Enako velja za $v \circ u$, torej sta si inverza in sta $P$ in $R$ izomorfna.
 \end{dokaz}
 
-Zaradi tega lahko produkt A in B upravičeno označujemo z $A \times B$.
+Zaradi tega lahko produkt $A$ in $B$ upravičeno označujemo z $A \times B$.
 
 \begin{primer}
-Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti. Naj bosta $A \times B$ kartezični produkt množic $A$ in $B$ z koordinatnima projekcijama $\pi_A$ in $\pi_B$. Denimo, da obstaja množica $X$ s funkcijama $f : X \to A$, $g : X \to B$. Definirajmo funkcijo $\langle f,g \rangle : X \to A \times B$ kot $\langle f,g \rangle(x) = (f(x),g(x))$.
+Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustreza univerzalni lastnosti. Naj bosta $A \times B$ kartezični produkt množic $A$ in $B$ z koordinatnima projekcijama $\pi_A$ in $\pi_B$, ki delujeta na očiten način, npr. $\pi_A(a,b) = a$, za $(a,b) \in A \times B$. Denimo, da obstaja množica $X$ s funkcijama $f : X \to A$, $g : X \to B$. Definirajmo funkcijo $\langle f,g \rangle : X \to A \times B$ kot $\langle f,g \rangle(x) = (f(x),g(x))$. Velja 
+$$ \pi_A \circ \langle f,g \rangle (x) = \pi_A(f(x),g(x)) = f(x) $$
+in 
+$$ \pi_B \circ \langle f,g \rangle (x) = \pi_B(f(x),g(x)) = g(x) $$
+Naj bo sedaj nek $h : X \to A \times B$, tak da velja
+$$\pi_A \circ h = f, \ \pi_B \circ h = g.$$
+Ker $h$ slika v kartezični produkt, ga lahko zapišemo kot 
+$$h(x) = (h_1(x),h_2(x)).$$
+Iz te in zgornje enakost sledi
+$$h_1(x) = f(x)$$
+in $$h_2(x) = g(x)$$
+torej je res $h = \langle f,g \rangle$.
 \end{primer}
 
 Ravno tako kot produkt dveh objektov, lahko definiramo produkt treh ali večih objektov. Naj bo na primer $(C_i)_{i \in I}$ družina objektov indeksirana po neki indeksni množici $I$ (lahko neskončni). Produkt družine $(C_i)_{i \in I}$ je objekt
@@ -857,7 +882,7 @@ Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij,
 
 \subsection{Koprodukti}
 \begin{definicija}
-Naj bosta A in B objekta v kategorji $\cat{C}$. \textit{Koprodukt} A-ja in B-ja je objekt Q skupaj z dvema morfizmoma $q_A : A \to Q$, $q_B : B \to Q$. Z naslednjo univerzalno lastnostjo. Za vsak objekt X in morfizmoma $x_A : A \to X$, $x_B : B \to X$ obstaja enoličen morfizem $u : Q \to X$, za katerega naslednji diagram komutira
+Naj bosta $A$ in $B$ objekta v kategorji $\cat{C}$. \textit{Koprodukt} $A$-ja in $B$-ja je objekt $Q$ skupaj z dvema morfizmoma $q_A : A \to Q$, $q_B : B \to Q$. Z naslednjo univerzalno lastnostjo. Za vsak objekt X in morfizmoma $x_A : A \to X$, $x_B : B \to X$ obstaja enoličen morfizem $u : Q \to X$, za katerega naslednji diagram komutira
 
 $$\begin{tikzcd}
 & X & \\
@@ -874,11 +899,11 @@ Koprodukti so enolično določeni do izomorfizma natančno.
 Uporabimo dejstvo, da to velja za produkte in da je koprodukt dual produkta.
 \end{dokaz}
 
-Koprodukt A in B zato označujemo z $A + B$.
+Koprodukt $A$ in $B$ zato označujemo z $A + B$.
 \begin{primer}
 Ali lahko najdemo koprodukte v kategoriji $\cat{Set}$? 
 Veljati mora univerzalna lastnost koprodukta.
-Poskusimo z množico $A+B := \set{(a,1) \mid a \in A} \cup \set{(b,2) \mid b \in B}$ in funkcijama $i_A : A \to A + B$, $i_A(a) = (a,1)$ in $i_B : B \to A+B$, $i_B(b) = (b,2)$. Tej množici pravimo tudi disjunktna unija A in B.
+Poskusimo z množico $A+B := \set{(a,1) \mid a \in A} \cup \set{(b,2) \mid b \in B}$ in funkcijama $i_A : A \to A + B$, $i_A(a) = (a,1)$ in $i_B : B \to A+B$, $i_B(b) = (b,2)$. Tej množici pravimo tudi disjunktna unija $A$ in $B$.
 \end{primer}
 
 \begin{primer}
@@ -888,9 +913,35 @@ Tako kot za produkte, lahko za poljubni kategorji $\cat{C}$, $\cat{D}$ definiram
 \section{Hom-sets}
 Ustavimo se na kratko pri tej zelo pomembni temi, ki smo jo že srečali in bo postala ključnega pomena kasneje. Naj bo $\cat{C}$ taka kategorija, da je za vsaka dva objekta $A,B \in \cat{C}$ morfizmov med njima toliko, da jih lahko spravimo v množico. Kategoriji kjer velja ta pogoj pravimo \textit{lokalno majhna kategorija}. To množico označujemo kot
 $$\Hom_{\cat{C}}(A,B) := \set{f \in Arr(\cat{C}) \mid dom(f) = A, cod(f) = B}$$
+Ker lahko to definiramo za vsaka dva objekta v $\cat{C}$ nam to za vsak objekt $A \in \cat{C}$ poda funktor
+$$\Hom(A,-) : \cat{C} \to \cat{Sets},$$
+ki se ga imenuje \emph{(kovariantni) predstavljivi funktor}. Njegovor delovanje na objektih in morfizmih je definirano kot
+$$\Hom(A,-)(B) = \Hom(A,B)$$
+ter
+\begin{align*}
+(A,-)(f : B \to C) = \Hom(A,f): \Hom(A,B) &\to \Hom(A,C) \\
+g &\mapsto f \circ g \\
+\end{align*}
 
-
-%TODO
+Za diagram 
+$$ \begin{tikzcd}
+A \ar[r, "g"] \ar[rd, "f \circ g"'] & B \ar[d, "f"] \\
+& C
+\end{tikzcd} $$
+v $\cat{C}$.
+To je res funktor saj je $\Hom(A,1_B)(f:A \to B) = 1_B \circ f = f$. In za diagram 
+$$ \begin{tikzcd}
+& A \ar[dl, "f"'] & \\
+B \ar[r, "g"'] & C \ar[r, "h"'] & D \\
+\end{tikzcd} $$
+velja
+$$
+\Hom(A,h \circ g)(f) = h \circ g \circ f = \Hom(A,h)(g \circ f) = \Hom(A,h) \circ \Hom(A,g)(f).
+$$
+Ravno tako lahko definiramo funktor
+$$\Hom(-,A) : \cat{C}^{op} \to \cat{Sets},$$
+ki mu pravimo \emph{(kontravariantni) predstavljivi funktor},
+kjer pa gledamo vse morfizme v objekt $A$. Funktorji tega tipa (iz dualne kategorije v \cat{Sets}) nas bodo kasneje še posebej zanimali.
 
 \section{Zožki in kozožki}
 
@@ -901,7 +952,7 @@ $$\begin{tikzcd}
 A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B 
 \end{tikzcd}$$
 
-Radi bi zožali domeno A na takšno podmnožico, da se f in g na njej ujemata. Torej $\set{x \in A \mid f(x) = g(x)} \subseteq A$. Označimo to množico z E in inkluzijo E v A z e, torej $\forall x \in E \enspace e(x)= x $. To, da je nek $x \in A$ v E lahko ekvivalentno povemo, kot da obstaja nek morfizem $\hat{x} : 1 \to A$ za katerega je $f \circ \hat{x} = g \circ \hat{x}$. Kar pa ravno tako pomeni, da obstaja nek $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz E. Situacijo lahko ponazorimo z naslednjim diagramom.
+Radi bi zožali domeno $A$ na takšno podmnožico, da se $f$ in $g$ na njej ujemata. Torej $\set{x \in A \mid f(x) = g(x)} \subseteq A$. Označimo to množico z $E$ in inkluzijo $E$ v $A$ z $e$, torej $\forall x \in E \enspace e(x)= x $. To, da je nek $x \in A$ v $E$ lahko ekvivalentno povemo, kot da obstaja nek morfizem $\hat{x} : 1 \to A$ za katerega je $f \circ \hat{x} = g \circ \hat{x}$. Kar pa ravno tako pomeni, da obstaja nek $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz $E$. Situacijo lahko ponazorimo z naslednjim diagramom.
 $$\begin{tikzcd}
 E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
 1 \ar[u, dashed, "\hat{x}'"] \ar[ur, "\hat{x}"'] \\
@@ -910,7 +961,7 @@ E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
 Uporabimo isto idejo kot prej in množico 1 zamenjamo s posplošenim elementom in dobimo naslednjo definicijo.
 
 \begin{definicija}
-\textit{Zožek} dveh morfizmov $f, g : A \to B$ je par objekta E in morfizma $e : E \to A$, da velja $f \circ e = g \circ r$, z univerzalno lastnostjo, da za vsak objekt X in morfizem $x : X \to A$, za katerega velja $f \circ x = g \circ x$, obstaja enoličen morfizem $x' : X \to E$, da lahko x razdelimo na e in $x'$ (pravilna terminologija?), oziroma $x = ex'$.
+\textit{Zožek} dveh morfizmov $f, g : A \to B$ je par objekta $E$ in morfizma $e : E \to A$, da velja $f \circ e = g \circ r$, z univerzalno lastnostjo, da za vsak objekt $X$ in morfizem $x : X \to A$, za katerega velja $f \circ x = g \circ x$, obstaja enoličen morfizem $x' : X \to E$, da lahko $x$ razdelimo na $e$ in $x'$, oziroma $x = ex'$.
 Slika, ki jo lahko imamo v mislih je
 $$\begin{tikzcd}
 E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
@@ -926,10 +977,10 @@ Preverimo, da naš motivacijski zgled res ustreza definiciji zožka. Naj bosta $
 Velja naslednja trditev
 
 \begin{trditev}
-Če je $e : E \to A$ del zožka, je e monomorfizem.
+Če je $e : E \to A$ del zožka, je $e$ monomorfizem.
 \end{trditev}
 \begin{dokaz}
-Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$, recimo temu $z = ex = ey$. Potem po definiciji e velja $fex = gex$. Sledi, da obstaja enoličen $\hat{z} : X \to E$, da je $z = e\hat{z} = ex = ey$. To pa pomeni, da je $x = y$.
+Naj bosta $x,y : X \to E$ takšni, da velja $ex = ey$, recimo temu $z = ex = ey$. Potem po definiciji $e$ velja $fex = gex$. Sledi, da obstaja enoličen $\hat{z} : X \to E$, da je $z = e\hat{z} = ex = ey$. To pa pomeni, da je $x = y$.
 
 $$\begin{tikzcd}
 E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
@@ -944,7 +995,7 @@ X \ar[u, bend left, shift left, dashed, "\hat{z}"] \ar[u, shift left, "x"] \ar[u
 Kozožki so dualni koncept zožkov, zato lahko kar napišemo definicijo
 
 \begin{definicija}
-\textit{Kozožek} morfizmov $f,g:A \to B$ je objekt Q in morfizem $q: B \to Q$ za katega je $q \circ f = q \circ g$, z naslednjo univezalno lastnostjo. Za vsak objekt Z in morfizem $z : B \to Z$ za katerega velja $z \circ f = z \circ g$, obstaja enoličen morfizem $z' : Q \to Z$, da velja $z = z' \circ q$.
+\textit{Kozožek} morfizmov $f,g:A \to B$ je objekt $Q$ in morfizem $q: B \to Q$ za katega je $q \circ f = q \circ g$, z naslednjo univezalno lastnostjo. Za vsak objekt $Z$ in morfizem $z : B \to Z$ za katerega velja $z \circ f = z \circ g$, obstaja enoličen morfizem $z' : Q \to Z$, da velja $z = z' \circ q$.
 
 $$\begin{tikzcd}
 A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \ar[r, "q"] \ar[dr, "z"'] & Q \ar[d, dashed, "z'"] \\
@@ -956,11 +1007,11 @@ A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \ar[r, "q"] \ar[dr, "z"'
 Slednja trditev sledi iz dualnosti.
 
 \begin{trditev}
-Če je $q : B \to Q$ del kozožka, je q epimorfizem.
+Če je $q : B \to Q$ del kozožka, je $q$ epimorfizem.
 \end{trditev}
 
 \begin{primer}
-Kozožki so posplošitev pojma kvocientne množice definirane z ekvivalenčno relacijo. Naj bo torej $A$ poljubna množica ter $R$ ekvivalenčna relacija na A, kar pomeni $R \subseteq A \times A$, z naslednjimi lastnostmi
+Kozožki so posplošitev pojma kvocientne množice definirane z ekvivalenčno relacijo. Naj bo torej $A$ poljubna množica ter $R$ ekvivalenčna relacija na $A$, kar pomeni $R \subseteq A \times A$, z naslednjimi lastnostmi
 \begin{itemize}
 \item Refleksivnost: $xRx \enspace \forall x \in A$
 \item Simetričnost: $xRy \Rightarrow yRx \enspace \forall x,y \in A$
@@ -973,14 +1024,12 @@ $$\begin{tikzcd}
 A & A \times A \ar[l, "p_1"] \ar[r, "p_2"'] & A \\
 \end{tikzcd}$$
 definirani kot $r_1(x,y) = x$ in $r_2(x,y) = y$. Potem je kvocientna projekcija $\pi : A \to A/R$ kozožek $r_1$ in $r_2$.
-Veljati mora $\forall (x,y) \in R : \pi r_1(x,y) = \pi r_2(x,y) \Leftrightarrow \pi(x) = \pi(y) \Leftrightarrow xRy \Leftrightarrow (x,y) \in R$. Denimo nato, da je $f$ tak, da $fr_1 = fr_2$, oz. $fr_1(x,y) = fr_2(x,y) $, kar pa pomeni, da $f$ slika ekvivalentna elementa iz $A$ v isti element, ker pa $\pi$  ravno tako slika ekvivalentna elementa v isti element, lahko $\hat{f}$ definiramo kot $\hat{f}(\pi(x)) ) = f(x) = f(y) = \hat{f}(\pi(y))$ (mogoče boljša notacija $xRy \Leftrightarrow [x] = [y]$?). Torej je $\hat{f}$ dobro definirana. Ali je ta funkcija $\hat{f}$ edina taka? Recimo, da obstaja že neka druga $g : A/R \to X$, da zanjo velja $f = g\pi$. Potem je za $xRy$, $g\pi(x) = f(x) = f(y) = g\pi(y)$. Ker pa je $\hat{f}(\pi(x)) = f(x) = g\pi(x)$, je $g = \hat{f}$. (Bolj razširiti argument?)
+Veljati mora $\forall (x,y) \in R : \pi r_1(x,y) = \pi r_2(x,y) \Leftrightarrow \pi(x) = \pi(y) \Leftrightarrow xRy \Leftrightarrow (x,y) \in R$. Denimo nato, da je $f$ tak, da $fr_1 = fr_2$, oz. $fr_1(x,y) = fr_2(x,y) $, kar pa pomeni, da $f$ slika ekvivalentna elementa iz $A$ v isti element, ker pa $\pi$  ravno tako slika ekvivalentna elementa v isti element, lahko $\hat{f}$ definiramo kot $\hat{f}(\pi(x)) ) = f(x) = f(y) = \hat{f}(\pi(y))$. Torej je $\hat{f}$ dobro definirana. Ali je ta funkcija $\hat{f}$ edina taka? Recimo, da obstaja že neka druga $g : A/R \to X$, da zanjo velja $f = g\pi$. Potem je za $xRy$, $g\pi(x) = f(x) = f(y) = g\pi(y)$. Ker pa je $\hat{f}(\pi(x)) = f(x) = g\pi(x)$, je $g = \hat{f}$.
 
 $$\begin{tikzcd}
 R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & A \ar[r, "\pi"] \ar[dr, "f"'] & A/R \ar[d, dashed, "\hat{f}"] \\
 & & X \\
 \end{tikzcd}$$
-
-
 
 \end{primer}
 
@@ -988,7 +1037,7 @@ R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & A \ar[r, "\pi"] \ar[dr
 V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $\sim$ ekvivalenčna relacija na $X$.
 \end{primer}
 
-O kozožku si lahko mislimo, da zoži B z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi Q.
+O kozožku si lahko mislimo, da zoži $B$ z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi $Q$.
 
 
 \section{Povleki in potiski}
@@ -1101,18 +1150,16 @@ A \ar[r, "q_1"'] \ar[drr, bend right, "z_1"'] & Q \ar[dr, dashed, "v"] & \\
 ali z enačbami $$z_1 = v q_1, \quad z_2 = v q_2.$$
 \end{definicija}
 
-Naravna ideja kako se potisk udejanja v ketegoriji $\cat{Set}$ je, da je tako povezan s koprodukti in kozožki, kot je povlek povezan s produkti in zožki.
+Naravna ideja kako se potisk udejanja v kategoriji $\cat{Set}$ je, da je tako povezan s koprodukti in kozožki, kot je povlek povezan s produkti in zožki.
 
 \begin{primer}
 Naj bosta $f : C \to A$, $g: C \to B$ funkciji iz množice $C$. Naj bo $A + B$ koprodukt (ali disjunktna unija) množic $A$ in $B$. Vemo, da je opremljen z dvema funkcijama $\iota_1 : A \to A + B$, $\iota_2 : B \to A+B$.
 \end{primer}
 
 \section{Limite, kolimite in eksponenti}
-%TODO
 
 
 \subsection{Limite}
-%TODO
 
 Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo nek objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "najboljši" tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
 
@@ -1302,11 +1349,11 @@ Pokažimo, da je ta funktor zvest, ni pa injektiven na objektih. Izberimo si dva
 \end{primer}
 
 \subsection{Morfizmi med funktorji}
-Radi bi nadaljevali temo posploševanja morfizmov in ker smo nazadnje definirali morfizme med kategorijami, se naravno pojavi vprašanje, ali lahko definiramo morfizme med temi morfizmi. Odgovor je pozitiven in pridemo do naslednje definicije.
+Radi bi nadaljevali temo posploševanja morfizmov in ker smo nazadnje definirali morfizme med kategorijami, se naravno pojavi vprašanje, ali lahko definiramo morfizme med temi morfizmi. Odgovor je pozitiven in nas pripelje do naslednje definicije.
 
 \begin{definicija}
 Naj bosta $\cat{C}$ in $\cat{D}$ poljubni kategoriji in naj bosta $F,G : \cat{C} \to \cat{D}$ funktorja med tema kategorijama. \\
-\textit{Naravna transformacija} $\vartheta : F \Rightarrow G$ iz F v G, je družina puščic 
+\textit{Naravna transformacija} $\vartheta : F \Rightarrow G$ iz $F$ v $G$, je družina puščic 
 $$(\vartheta_C : FC \to GC)_{C \in \cat{C}}$$
 tako, da za vsako puščico $f : C \to D$ naslednji diagram:
 
@@ -1318,6 +1365,17 @@ FD \arrow[r, "\vartheta_D"'] & GD
 \end{equation}
 komutira
 \end{definicija}
+
+
+Pogosta situacija kjer srečamo naravne transformacije je sledeča. Recimo, da imamo neko "konstrukcijo" v neki kategoriji \cat{C} in še neko drugo "konstrukcijo" in ti dve "konstrukciji" sta povezani na način, ki je neodvisen od specifičnih objektov in morfizmov v tej kategorji. Povezava je v resnici med "konstrukcijama". 
+\begin{primer}
+Na primer denimo, da ima \cat{C} produkte in za neke objekte $A,B,C \in \cat{C}$ poglejmo produkta
+$$(A \times B) \times C \quad \text{in} \quad A \times (B \times C)$$
+Ne glede na izbiro objektov $A,B,C$ obstaja izomorfizem
+$$h : (A \times B) \times C \xrightarrow{\sim} A \times (B \times C)$$
+Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov ? Recimo
+\end{primer}
+
 
 
 \chapter{Pomembne trditve in definicije}
@@ -1346,6 +1404,9 @@ Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}
 
 \end{dokaz}
 
+\begin{posledica}
+Kontravariantni predstavljivi funktor $\Hom_\cat{C}(-,C) : \cat{C}^{op} \to \cat{Sets}$ ohranja vse kolimite
+\end{posledica}
 
 \begin{trditev}
 $\Hom(A, C^B) \cong \Hom(A \times B, C)$
@@ -1375,10 +1436,6 @@ Za vsak $C \in \cat{C}$ lahko definiramo funktor $\overline{F}(-,C): J \to \cat{
 Kolimito za $F$ definiramo kot
 $$\colim F_k(C) := \colim_{k \in J}\overline{F}(k,C)$$
 \end{dokaz}
-
-\begin{definicija}
-Naj bo \textbf{C} definicja. \textit{Klasifikator podobjekta} je objekt $\Omega$ z puščico $true: 1 \to \Omega$
-\end{definicija}
 
 
 \chapter{Yonedova lema}
@@ -1604,7 +1661,7 @@ kjer je $\epsilon$ evaluacija in $\overline{g}$ transponiranka za $g$. Po enoli�
 
 Sedaj si poglejmo v kakem smislu je kategorija predsnopov $\predsnop{C}$ "lepa". Nekaj o tem nam pove naslednja trditev.
 
-\begin{trditev}
+\begin{trditev} \label{trditev 3.3}
 Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kompletna. Za vsak objekt $C \in \cat{C}$, evaluacijski funktor 
 $$ev_C : \predsnop{C} \to \cat{Sets}$$
 ohranja vse limite.
@@ -1679,10 +1736,12 @@ ker je zgornji izomorfizem naraven v C to implicira komutativnost diagrama. Prev
 
 
 Kako je pa z eksponenti v $\cat{Sets}^{\cat{C}^{op}}$ ? Če so $X,Q,P$ funktorji v $\predsnop{C}$. Kako bi definirali eksponentni objekt $Q^P$ ? Po Yonedovi lemi bi moralo veljati $Q^P(C) \cong \Hom(yC, Q^P)$. Če pa želimo, da ta objekt izpolnjuje lastnost eksponenta, mora veljati
-$$\Hom(yC,Q^P) \cong \Hom(yC \times P, Q).$$
+\begin{equation} \label{eq eksp}
+\Hom(yC,Q^P) \cong \Hom(yC \times P, Q).
+\end{equation}
 po lastnosti transponiranja. Ker pa $\predsnop{C}$ ima produkte, kajti ima vse končne limite, množica $\Hom(yC \times P, Q)$ obstaja. Na ta način tudi definiramo eksponent.
 
-\begin{trditev}
+\begin{trditev} \label{trditev 3.6}
 Za lokalno majhno kategorijo $\cat{C}$, za vse $X,P,Q$ v $\predsnop{C}$ obstaja izomorfizem
 $$\Hom(X,Q^P) \cong \Hom(X \times P, Q),$$
 ki je naraven v $X$.
@@ -1691,20 +1750,161 @@ ki je naraven v $X$.
 
 Najprej potrebujemo še dodatno lemo
 \begin{lema}
-
+Za vsako majhno indeksno kateogrijo $J$, funktor $A : \cat{C} \to \predsnop{C}$ in diagram $\predsnop{C}$, obstaja naravni izomorfizem
+\begin{equation} \label{eq 3.11}
+(\underset{j \in J}{\colim}A_j) \times B \cong \underset{j \in J}{\colim}(A_j \times B)
+\end{equation}
 \end{lema}
-
-
 \begin{dokaz}
-Po \ref{density theorem} velja, da obstaja indeksna kategorija $J$, da je
-$$ X \cong \underset{j \in J}{\colim}\> yCj,$$
-izbrana na kanoničen način.
+Naj bodo 
+$$(\vartheta_i : A_i \to \underset{j \in J}\colim A_j)_{i \in J}$$
+komponente kostožca, za kolimito nad $A$. To komponiramo s funktorjem $- \times B : \predsnop{C} \to \predsnop{C}$, da dobimo komponente kostožca 
+$$-\times B(\vartheta_i)=: \vartheta_i \times B : A_i \times B \to (\underset{j \in J}\colim A_j) \times B, \quad i \in J$$
+Obstaja torej enoličen morfizem iz kolimite nad diagramom $(- \times B) \circ A$, ki ga označimo z $\vartheta :  \underset{j \in J}\colim (A_j \times B) \to (\underset{j \in J}\colim A_j) \times B$, tako da vse ustrezno v diagramu
 
+$$
+\begin{tikzcd}
+&  \underset{j \in J}\colim (A_j \times B) \ar[dd, dashed, "\vartheta"] & \\
+A_i \times B \ar[ur] \ar[dr, "\vartheta_i \times B"'] & & A_k \times B \ar[ul] \ar[dl, "\vartheta_k \times B"] \\
+&  (\underset{j \in J}\colim A_j) \times B &
+\end{tikzcd}
+$$
+komutira. Radi bi pokazali, da je $\vartheta$ naravni izomorfizem. Zadošča pokazati, da so vse komponente
+$$(\vartheta_C : \underset{j \in J}\colim (A_j \times B)(C) \to (\underset{j \in J}\colim A_j) \times B(C)$$
+izomorfizmi v $\cat{Sets}$, torej zadošča pokazati, da to velja za vse točke, kar pomeni, da lahko pokažemo \ref{eq 3.11}, če predpostavimo, da so $A_i$ in $B$ množice. Za poljubno množico $X$ pa velja
+
+\begin{align*}
+\Hom(\colim (A_j \times B), X) &\cong \colim\Hom(A_j \times B, X) \\
+&\cong \colim\Hom(A_j, X^B) \\
+&\cong \Hom(\colim A_j, X^B) \\
+&\cong \Hom((\colim A_j) \times B, X) \\
+\end{align*}
+tej izomorfizmi so jasno naravni v $X$, torej lema sledi po Yonedovi lemi.
 \end{dokaz}
 
 
+\begin{dokaz}[Dokaz trditve]
+Po \ref{density theorem} velja, da obstaja indeksna kategorija $J$, da je
+$$ X \cong \underset{j \in J}{\colim}\> yCj,$$
+izbrana na kanoničen način. Velja torej
+
+\begin{align*}
+\Hom(X, Q^P) &\cong \Hom(\colim yC_j, Q^P) & \\
+&\cong \colim\Hom(yC_j, Q^P) & (\Hom \text{ ohranja kolimite}) \\
+&\cong \colim Q^P(C_j) & (\text{Yoneda}) \\
+&\cong \colim \Hom(yC_j \times P, Q) & (\text{po \ref{eq eksp}}) \\
+&\cong \Hom(\colim(yC_j \times P), Q) & \\
+&\cong \Hom((\colim(yC_j) \times P, Q) & (\text{po lemi}) \\
+&\cong \Hom(X \times P, Q) \\
+\end{align*}
+Tej izomorfizmi so očitno naravni v $X$, torej trditev sledi po Yonedovi lemi.
+\end{dokaz}
+
+Dobljeno združimo v izrek.
+
+\begin{izrek}
+Za vsako majhno kategorijo $\cat{C}$, je kategorija predsnopov $\predsnop{C}$ kartezično zaprta. Prav tako, Yonedova vložitev
+$$y : \cat{C} \to \predsnop{C}$$
+ohranja vse produkte in eksponente v $\cat{C}$.
+\end{izrek}
+\begin{dokaz}
+Po trditvi \ref{trditev 3.3} vemo, da ima $\predsnop{C}$ vse končne produkte in če definiramo eksponente kot zgoraj nam trditev \ref{trditev 3.6} pove, da ima tudi eksponente.
+Pokazati je potrebno še drugi del izreka, torej da Yonedova vložitev ohranja produkte in eksponente. Na to noto denimo, da je $A \times B$ produkt v $\cat{C}$.
+Naj bo $X,Y \in \cat{C}$ in $f : Y \to X$. Velja
+$$ \Hom(X, A\times B) \cong \Hom(X, A) \times \Hom(X,B) $$
+ki je seveda naraven v $X$ s postkompozicijo z $f$.
+Za eksponente recimo, da imamo v $\cat{C}$ eksponent $Q^P$ za objekta $P,Q \in \cat{C}$. Po naši definiciji eksponentov v $\predsnop{C}$ velja
+\begin{align*}
+y(Q)^{y(P)}(C) & \cong \Hom(yC \times yP, yQ) \\
+&\cong \Hom(y(C \times P), yQ) \\
+&\cong yQ(C \times P) \\
+&\cong \Hom(C \times P, Q) \\
+&\cong \Hom(C, Q^P) \cong y(Q^P)(C)
+\end{align*}
+in tej izomorfizmi so jasno naravni v $C$.
+\end{dokaz}
+
+Vidimo torej, da je kategorija $\predsnop{C}$ lepa kategorija v smislu, da je kartezično zaprta, torej če nas zanima neko dejstvo o neki kategoriji $\cat{C}$, lahko to kategorijo vložimo v to kategorijo predsnopov kjer lahko mogoče z njo lažje operiramo, saj lahko poljubno vzamemo produkte, eksponente, etc.
 
 
+Poglejmo si primer take vložitve
+
+\begin{primer}
+Naj bo $\mathbf{\Delta}$ kategorija vseh končnih ordinalnih števil. Objekti so množice $[0],[1],[2],\ldots$, kjer je 
+$$[0] = \emptyset \quad \text{in} \quad [n] = \set{0,1,\ldots,n}$$
+in morfizmi so vse monotone funkcije med temi množicami.
+
+\begin{definicija}
+\emph{Simplicirana množica} je funktor $\mathbf{\Delta}^{op} \to \cat{Sets}$
+\end{definicija}
+Naj bo torej $X : \mathbf{\Delta}^{op} \to \cat{Sets}$ simplicirana množica. Množico $X([n])$ se standardno označuje z $X_n$ in njene elemente imenuje \emph{n-simpleksi}. Funktorsko kategorijo $\mathbf{\Delta}$ se včasih označuje tudi kot $\cat{sSet}$
+
+V kategoriji $\mathbf{\Delta}$ imamo posebne morfizme, ki generirajo vse morfizme v tej kategoriji. Za vsak $n \geq 0$ obstaja $n+1$ injekcij $d^i : [n-1] \to [n]$ imenovani \emph{koobrazi} in $n+1$ surjekcij $s^i : [n+1] \to [n]$ imenovanih \emph{kodegeneracije}, definiriane na sledeči način.
+
+$$d^i(k) = \begin{cases}
+k, & k < i \\
+k+1, & k \geq i 
+\end{cases} $$
+$$s^i(k) = \begin{cases}
+k, & k \leq i \\
+k-1, & k > i
+\end{cases} $$
+Tej morfizmi zadoščajo sledečim relacijam:
+\begin{align*}
+d^j d^i = d^i d^{j-1}, & \quad i < j \\
+s^j s^i = s^i s^{j+1}, & \quad i \leq j 
+\end{align*}
+$$ s^j d^i = \begin{cases}
+1, & i = j, j+1 \\
+d^i s^{j-1}, & i < j \\
+d^{i-1} s^j, & i > j+1
+\end{cases} $$
+
+Brez dokaza lahko povemo, da se da vsak morfizem v $\mathbf{\Delta}$ izraziti kot kompozitum koobrazov in kodegeneracij. Če dodamo še dodatne zahteve o vrstnem redu v katerem se lahko pojavijo, je tak zapis tudi enoličen.
+
+
+Če je $X$ simplicirana množica, označujemo funkcije
+\begin{align*}
+d_i = X(d^i) : X_n \to X_{n-1} & & 0 \leq i \leq n \\
+s_i = X(s^i) : X_n \to X_{n+1} & & 0 \leq i \leq n \\
+\end{align*}
+in jih imenujemo \emph{obrazi} in \emph{degeneracije}. Relacije med $d_i$ in $s_i$ bodo potem dualne kot tiste zgoraj. 
+
+
+Vsakemu $x \in X_n$ degeneracije priredijo $n+1$ $(n+1)$-simpleksov $s_0(x), s_1(x), \ldots , s_n(x)$ iz  $X_{n+1}$. Pravimo, da je simplex $x \in X_n$ \emph{degeneriran}, če je slika kake degeneracije $s_i$, sicer pravimo, da je \emph{ne-degeneriran}.
+
+
+Najbolj enostaven primer simplicirane množice so tako imenovani \emph{standardni simpleksi} $\Delta^n$, ki so definirani za vsak objekt $[n] \in \mathbf{\Delta}$, kot
+$$\Delta^n := y([n]) = \Hom_{\mathbf{\Delta}}(-,[n]).$$
+K-simpleksi v $\Delta^n$ so $\Delta_k^n := \Hom([k], [n])$. Obrazi in degeneracije so podani s prekompozicijo v $\mathbf{\Delta}$ z $d^i$ in $s^i$.
+
+\begin{align*}
+d_i : \Delta_k^n \to \Delta_{k-1}^n & & s_i : \Delta_k^n \to \Delta_{k+1}^n \\
+f \mapsto f \circ d^i & & f \mapsto f \circ s^i \\
+\end{align*}
+
+Simplicirana množica $\Delta^n$ ima enoličen ne-degeneiran n-simples, ki ustreza identiteti na $[n]$. Yonedova lema nam med drugim pove, da so funkcije med standardnimi simpleksi $f : \Delta^n \to \Delta^m$ v bijektivni korespondenci z morfizmi $f : [n] \to [m]$ v $\mathbf{\Delta}$. Yonedova lema nam pa tudi pove, da za vsako simplicirano množico $X$, obstaja naravna bijekcija med n-simpleksi $X$ ter naravnimi transformacijami $\Delta^n \to X_n$ v $\cat{sSet}$. Bolj eksplicitno, n-simpleks $x \in X_n$ lahko obravnavamo kot morfizem $x : \Delta^n \to X$, ki pošlje enolični ne-degenerirani n-simplex v $\Delta^n$ v $x$.
+
+
+Simplicirani množici $X$ lahko konstruiramo asociirano kategorijo elementov $\int_{\mathbf{\Delta}}X$, ki se jo imenuje \emph{kategorija simpleksov}. Po trditvi \ref{density theorem} vemo, da lahko vsak tak $X$ izrazimo kot kolimito standardnih simpleksov indeksirano s svojo kategorijo elementov.
+
+$$X \cong \underset{x \in X_n}{\colim}\Delta^n$$
+
+
+Podajmo sedaj primer simplicirane množice. Naj bo $\cat{C}$ poljubna majhna kategorija. Definirajmo \emph{živec kategorije} $\cat{C}$ kot simplicirano množico $N\cat{C}$, na sledeči način
+
+\begin{enumerate}[label={}]
+\item $N\cat{C}_0 = \set{\text{objekti v } \cat{C}}$
+\item $N\cat{C}_1 = \set{\text{morfizmi v } \cat{C}}$
+\item $N\cat{C}_2 = \set{\text{pari morfizmov } \rightarrow\rightarrow \text{v } \cat{C}}$ \\ % se opravičujem profesor, sem moral malo pohekati, da je ratal lep izpis
+\vdots
+\item $N\cat{C}_n = \set{\text{nizi n morfizmov } \rightarrow\rightarrow\ldots\rightarrow \text{v } \cat{C}}$
+\end{enumerate}
+Degeneracije $s_i:N\cat{C}_n \to N\cat{C}_{n+1}$ delujejo tako, da vzamejo niz n morfizmov
+$$ c_0 \rightarrow c_1 \rightarrow \ldots \rightarrow c_i \rightarrow \ldots \rightarrow c_n$$
+in na $i$-tem mestu vstavi identiteto na $c_i$. Obraz $d_i : N\cat{C}_n \to N\cat{C}_{n-1}$ komponira $i$-t in $i+1$ morfizem, če je $0 < i < n$, oziroma izpusti prvi ali zadnji morfizem za $i = 0$ ali $n$.
+Potrebno bi bilo preveriti, da na ta način definirane funkcije res zadoščajo relacijam za simplicirano množico. Ker je bil namen tega primera samo ilustracija v kakih situacija lahko nastopa Yonedova lema, tega tukaj ne bomo storili.
+\end{primer}
 
 
 
