@@ -123,12 +123,15 @@
 %\DeclareMathOperator[1]{\colim}{\underset{#1}{colim}}
 \DeclareMathOperator{\colim}{colim}
 %\newcommand[1]{\colim}{\underset{#1}\colim_op}
+\DeclareMathOperator{\Fun}{Fun}
 
 \renewcommand{\set}[1]{\{\,#1\,\}}
 
 \newcommand{\fprod}[1]{\langle #1 \rangle}
 
 \newcommand{\predsnop}[1]{\cat{Sets}^{\cat{#1}^{op}}}
+
+\newcommand{\powerset}[1]{\mathcal{P}(#1)}
 
 % \newcommand{\coprod}[2]{\cat{#1} + \cat{#2}}
 
@@ -262,7 +265,7 @@ Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazit
 % prazna stran
 \clearemptydoublepage
 
-Pozdrav
+Svojim staršem
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % posvetilo, če sama zahvala ne zadošča :-)
@@ -333,7 +336,7 @@ A proper abstract should contain around 100 words which makes this one way too s
 \pagestyle{fancy}
 
 \chapter{Uvod}
-Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko? Običajno se v matematiki obravnava in preučuje neke objekte (pogosto množice, lepše to napisat), ki so običajno opremljeni z neko strukturo, kot na primer grupe, kolobarji, topološki prostori, \ldots, prav tako pa nas pogosto zanimajo kaj so funkcije med tebi množicami, ki ohranjajo to strukturo, najsibo to homomorfizem grup ali homeomorfizem med topološkimi prostori. Učasih opazimo, da se v bistvu vse lastnosti, ki jih naši objekti imajo in kako se obnašajo, da izraziti s tem kakšne so možne transformacije teh objektov. Teorija kategorij poskuša uporabiti in posplošiti to idejo na vse kar se obnaša na tak način. Ne zanimajo nas namreč več kaj so tej objekti, oz. kaj predstavljajo, zanimajo nas le vse te transformacije (ki se jim pogosto pravi morfizmi) in kaj se dogaja na primer pri kompozitumu katerih od teh transformacij in kaj lahko povemo s tem. Na nek način teorija kategorij združuje različna področja v matematiki in poskuša nanje pogledati z enotno perspektivo. Ta posplošitev seveda ne more rešiti vseh specifičnih problemov nekega področja, nam pa da nek bolj globalni pogled na stvari in včasih tudi lahko prenese pristop h reševanju nekega problema na povsem drugo področje, če ga le znamo pogledati s pravilno perspektivo.
+Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko? Običajno se v matematiki obravnava in preučuje neke objekte (pogosto množice, lepše to napisat), ki so običajno opremljeni z neko strukturo, kot na primer grupe, kolobarji, topološki prostori, \ldots, prav tako pa nas pogosto zanima, kaj so funkcije med tebi množicami, ki ohranjajo to strukturo, najsibo to homomorfizem grup ali homeomorfizem med topološkimi prostori. Učasih opazimo, da se v bistvu vse lastnosti, ki jih naši objekti imajo in to kako se obnašajo, da izraziti s tem, kakšne so možne transformacije teh objektov. Teorija kategorij poskuša uporabiti in posplošiti to idejo na vse, kar se obnaša na tak način. Ne zanimajo nas namreč več, kaj so tej objekti, oz. kaj predstavljajo, zanimajo nas le vse te transformacije (ki se jim pogosto pravi morfizmi) in kaj se dogaja, na primer pri kompozitumu katerih od teh transformacij in kaj lahko povemo s tem. Na nek način teorija kategorij združuje različna področja v matematiki in poskuša nanje pogledati z enotno perspektivo. Ta posplošitev seveda ne more rešiti vseh specifičnih problemov nekega področja, nam pa da nek bolj globalni pogled na stvari in včasih tudi lahko prenese pristop k reševanju nekega problema na povsem drugo področje, če ga le znamo pogledati s pravilno perspektivo.
 
 \section{Osnovne Definicije}
 
@@ -375,7 +378,7 @@ Objekte kategorije všasih označujemo z $Obj(\cat{C})$ in morfizme z $Arr(\cat{
 \section{Primeri kategorij}
 
 \begin{primer}
-Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo je kategorija množic in funkcij med njimi. Označimo ga z \cat{Sets}. Za kategorijo se vedno prvo vprašamo: kaj so objekti in kaj so morfizmi? Pri \textbf{Sets} so objekti množice in morfizmi funkcije.
+Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo, je kategorija množic in funkcij med njimi. Označimo ga z \cat{Sets}. Za kategorijo se vedno prvo vprašamo: Kaj so objekti in kaj so morfizmi? Pri \textbf{Sets} so objekti množice in morfizmi funkcije.
 Izpolnjena morata biti pogoja asociativnosti in enote.
 Kompozitum morfizmov je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
 Vlogo identitete igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ def. kot $id_A(x) = x$ za vsak element $x \in A$.
@@ -387,7 +390,7 @@ To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij 
 \end{primer}
 
 \begin{primer}
-Kaj bi bil primer ''majhne'' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt (ki jih ni) obstaja identiteta in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in eno identitete. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in enim neidentitetnim morfizmom med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
+Kaj bi bil primer "`majhne"' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt (ki jih ni) obstaja identiteta in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in eno identitete. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in enim neidentitetnim morfizmom med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
 
 \begin{equation}
 \begin{tikzcd}
@@ -537,57 +540,7 @@ Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga la
 
 \section{Konstrukcije novih kategorij}
 
-\subsection{Funktorji}
 
-V teoriji kategorij spoznamo abstraktne karakterizacije in konstrukcije, ki delujejo v neki kategoriji. Radi bi seveda konstrukcijo, ki smo jo spoznali v eni kategoriji prenesli na druge kategorije, mogoče celo v upanju, da je neke probleme lažje rešiti v drugi kategoriji in da bomo znali rešitev prenesti nazaj v originalno kategorijio kjer nas zanima rešitev problema. V ta namen uvedemo definicijo, ki je na nek način ključna za uporabo teorije kategorij.
-
-\begin{definicija}
-Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C}$ in $\cat{D}$ je par morfizmov
-$$F_0 : \cat{C}_0 \to \cat{D}_0$$
-med objekti in
-$$F_1 : \cat{C}_1 \to \cat{D}_1$$
-med morfizmi, tako da veljajo naslednje lastnosti.
-\begin{enumerate}
-\item $F(f : A \to B) = F(f) : F(A) \to F(B)$
-\item $F(1_A) = 1_{F(A)}$
-\item Za puščici $f : A \to B, \ g : B \to C$ mora veljati:
-$$F(g \circ f) = F(g) \circ F(f)$$
-\end{enumerate}
-\end{definicija}
-
-Funktorji so torej posebni morfizmi med kategorijami.
-
-\begin{primer}
-Za vsako kategorijo $\cat{C}$ imamo na voljo identitetni funktor, ki deluje na pričakovan način. Kompozitum funktorjev je spet funktor, saj za funktorja $F : \cat{C} \to \cat{D}$ in $G : \cat{D} \to \cat{E}$ in morfizem $f : A \to B$ velja
-$$G(F(f : A \to B)) = G(F(f) : F(A) \to F(B)) = G(F(f)) : G(F(A)) \to G(F(B))$$
-ter
-$$G(F(1_A)) = G(1_{F(A)}) = 1_{G(F(A))}$$
-in še
-$$G(F(g \circ f)) = G(F(g) \circ F(f)) = G(F(g)) \circ G(F(f))$$
-za $g : B \to C$. Imamo torej kategorijo, kjer so objekti kategorije in morfizmi med njimi so funktorji. To kategorijo ponavadi označujemo z $\cat{Cat}$ 
-\end{primer}
-
-\begin{primer}
-Za neko delno urejeno množico $P$ v kategoriji $\cat{Pos}$ lahko "`pozabimo"' strukturo urejenosti in vzamemo samo množico. Tej ideji pravimo \emph{pozabljivi funktor} $U : \cat{Pos} \to \cat{Sets}$. Ta ideja je tudi bolj splošna, saj lahko za vsako kategorijo, kjer so objektni množice ter morfizmi funkcije med njimi definiramo pozabljivi funktor, tako da vzamemo za vsak objekt samo množico, ki jo predstavlja.
-\end{primer}
-
-\begin{primer}
-V rezinah $\cat{C}/C$ nad objektom $C$ obstaja funktor $U : \cat{C}/C \to C$, ki tudi pozabi na gledani objekt $C$, torej objekte slika v objekte in morfizme v morfizme v $\cat{C}$. Za vsak morfizem $g : C \to D$ lahko definiramo funktor $g_* : \cat{C}/C \to \cat{C}/D$, s predpisom $g_*(f) = g \circ f$,
-
-$$\begin{tikzcd}
-A \ar[d, "f"'] \ar[dr, "g \circ f"] & \\
-C \ar[r, "g"'] & D \\
-\end{tikzcd}$$
-
-\end{primer}
-
-\begin{primer}
-Naj bo $(M,\cdot)$ monoid. Na monoid lahko gledamo kot na kategorijo z enim samim objektom. Morfizmi v tej kategoriji so elementi monoida, ki imajo vsi za domeno ter kodomeno edini objekt iz te kategorije. Identiteta na tem objektu je enota monoida in kompozitum dveh morfizmov je produkt elementov, ki ju predstavljata. Torej, če sta $m,n \in M$ je njun kompozitum enak $m \cdot n$. Zaradi zaprtosti operacije množenja obstaja kompozitum vsakih dveh elementov in asociativnost kompozituma sledi iz asociativnosti množenja.
-
-Lahko se vprašamo, ali imamo v tej kategoriji kake izomorfizme. Kaj bi to pomenilo? Radi bi dva morfizma $m,n$, tako da je njun kompozitum enak identiteti, ali povedano drugače radi bi dva elementa monoida, katerih produkt je enota. To je pa ravno definicija inverza. Torej, v monoidu (gledano kot kategorija) je morfizem izomorfizem natanko takrat, ko ima ta element monoida multiplikativni inverz. Ta razmislek nam pove tudi, da je grupa ravno kategorija z enim objektom, kjer je vsak morfizem izomorfizem.
-
-Naj bosta sedaj $M$ in $N$ monoida in $f : M \to N$ homomorfizem monoidov. Vemo že, da je $f$ morfizem v kategoriji monoidov $\cat{Mon}$, a velja tudi, da je $f$ funktor med $M$ in $N$ če ju gledamo kot kategoriji. Ta funktor slika edini objekt v edini objekt (boljši način za to povedat?) in morfizme usklajeno s tem kam slika elemente monoida. Za $f$ velja še, da slika enoto v enoto ter produkt v produkt, kar so ravno pogoji da je to funktor. Funktorji so v tem smislu kot neki posplošeni homomorfizmi.
-\end{primer}
 
 
 \begin{primer}
@@ -690,6 +643,59 @@ A && B \ar[ll, "\alpha"'] \\
 
 \end{primer}
 
+\section{Funktorji}
+
+V teoriji kategorij spoznamo abstraktne karakterizacije in konstrukcije, ki delujejo v neki kategoriji. Radi bi seveda konstrukcijo, ki smo jo spoznali v eni kategoriji prenesli na druge kategorije, mogoče celo v upanju, da je neke probleme lažje rešiti v drugi kategoriji in da bomo znali rešitev prenesti nazaj v originalno kategorijio kjer nas zanima rešitev problema. V ta namen uvedemo definicijo, ki je na nek način ključna za uporabo teorije kategorij.
+
+\begin{definicija}
+Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C}$ in $\cat{D}$ je par morfizmov
+$$F_0 : \cat{C}_0 \to \cat{D}_0$$
+med objekti in
+$$F_1 : \cat{C}_1 \to \cat{D}_1$$
+med morfizmi, tako da veljajo naslednje lastnosti.
+\begin{enumerate}
+\item $F(f : A \to B) = F(f) : F(A) \to F(B)$
+\item $F(1_A) = 1_{F(A)}$
+\item Za puščici $f : A \to B, \ g : B \to C$ mora veljati:
+$$F(g \circ f) = F(g) \circ F(f)$$
+\end{enumerate}
+\end{definicija}
+
+Funktorji so torej posebni morfizmi med kategorijami.
+
+\begin{primer}
+Za vsako kategorijo $\cat{C}$ imamo na voljo identitetni funktor, ki deluje na pričakovan način. Kompozitum funktorjev je spet funktor, saj za funktorja $F : \cat{C} \to \cat{D}$ in $G : \cat{D} \to \cat{E}$ in morfizem $f : A \to B$ velja
+$$G(F(f : A \to B)) = G(F(f) : F(A) \to F(B)) = G(F(f)) : G(F(A)) \to G(F(B))$$
+ter
+$$G(F(1_A)) = G(1_{F(A)}) = 1_{G(F(A))}$$
+in še
+$$G(F(g \circ f)) = G(F(g) \circ F(f)) = G(F(g)) \circ G(F(f))$$
+za $g : B \to C$. Imamo torej kategorijo, kjer so objekti kategorije in morfizmi med njimi so funktorji. To kategorijo ponavadi označujemo z $\cat{Cat}$ 
+\end{primer}
+
+\begin{primer}
+Za neko delno urejeno množico $P$ v kategoriji $\cat{Pos}$ lahko "`pozabimo"' strukturo urejenosti in vzamemo samo množico. Tej ideji pravimo \emph{pozabljivi funktor} $U : \cat{Pos} \to \cat{Sets}$. Ta ideja je tudi bolj splošna, saj lahko za vsako kategorijo, kjer so objektni množice ter morfizmi funkcije med njimi definiramo pozabljivi funktor, tako da vzamemo za vsak objekt samo množico, ki jo predstavlja.
+\end{primer}
+
+\begin{primer}
+V rezinah $\cat{C}/C$ nad objektom $C$ obstaja funktor $U : \cat{C}/C \to C$, ki tudi pozabi na gledani objekt $C$, torej objekte slika v objekte in morfizme v morfizme v $\cat{C}$. Za vsak morfizem $g : C \to D$ lahko definiramo funktor $g_* : \cat{C}/C \to \cat{C}/D$, s predpisom $g_*(f) = g \circ f$,
+
+$$\begin{tikzcd}
+A \ar[d, "f"'] \ar[dr, "g \circ f"] & \\
+C \ar[r, "g"'] & D \\
+\end{tikzcd}$$
+
+\end{primer}
+
+\begin{primer}
+Naj bo $(M,\cdot)$ monoid. Na monoid lahko gledamo kot na kategorijo z enim samim objektom. Morfizmi v tej kategoriji so elementi monoida, ki imajo vsi za domeno ter kodomeno edini objekt iz te kategorije. Identiteta na tem objektu je enota monoida in kompozitum dveh morfizmov je produkt elementov, ki ju predstavljata. Torej, če sta $m,n \in M$ je njun kompozitum enak $m \cdot n$. Zaradi zaprtosti operacije množenja obstaja kompozitum vsakih dveh elementov in asociativnost kompozituma sledi iz asociativnosti množenja.
+
+Lahko se vprašamo, ali imamo v tej kategoriji kake izomorfizme. Kaj bi to pomenilo? Radi bi dva morfizma $m,n$, tako da je njun kompozitum enak identiteti, ali povedano drugače radi bi dva elementa monoida, katerih produkt je enota. To je pa ravno definicija inverza. Torej, v monoidu (gledano kot kategorija) je morfizem izomorfizem natanko takrat, ko ima ta element monoida multiplikativni inverz. Ta razmislek nam pove tudi, da je grupa ravno kategorija z enim objektom, kjer je vsak morfizem izomorfizem.
+
+Naj bosta sedaj $M$ in $N$ monoida in $f : M \to N$ homomorfizem monoidov. Vemo že, da je $f$ morfizem v kategoriji monoidov $\cat{Mon}$, a velja tudi, da je $f$ funktor med $M$ in $N$ če ju gledamo kot kategoriji. Ta funktor slika edini objekt v edini objekt (boljši način za to povedat?) in morfizme usklajeno s tem kam slika elemente monoida. Za $f$ velja še, da slika enoto v enoto ter produkt v produkt, kar so ravno pogoji da je to funktor. Funktorji so v tem smislu kot neki posplošeni homomorfizmi.
+\end{primer}
+
+
 \section{Začetni in končni objekti}
 V kategoriji $\cat{Set}$ množic in funkcij med njimi poznamo posebne tipe množic, kot na primer prazna množic in eno-elementa množica. Poglejmo si abstraktizacijo teh dveh posebnih primerov v jezik teorije kategorij. Definicijo podamo s tako imenovano \textit{univerzalno lastnostjo}, ki nam pove kako so med seboj povezani morfizmi, ki so relevantni v tej konstrukciji (boljši način za to povedat).
 
@@ -715,7 +721,7 @@ Vidimo lahko, da sta dokaza za začetni in končni objekt potekala praktično en
 \begin{primer}
 V kategoriji $\cat{Set}$ je začetni objekt prazna množica, saj za vsako množico $A$ obstaja natanko ena funkcija $! : \emptyset \to A$, ki nobenega elementa ne slika nikamor. 
 
-Končni objekt v $\cat{Set}$ je enojec $1 = \set{*}$. Za vsako množico $A$ obstaja natanko ena funkcija $f : A \to 1$, ki slika vse elemente iz $A$ v $*$. Tukaj lahko vidimo, da je končni objekt določen "le" do izomorfizma natančno, saj je množica $\set{*}$ izomorfna vsakemu drugemu enojcu s funkcijo $f : \set{*} \to \set{a}$, $f(*) = a$. Ta funkcija je očitno bijekcija, torej izomorfizem v kategoriji $\cat{Set}$.
+Končni objekt v $\cat{Set}$ je enojec $1 = \set{*}$. Za vsako množico $A$ obstaja natanko ena funkcija $f : A \to 1$, ki slika vse elemente iz $A$ v $*$. Tukaj lahko vidimo, da je končni objekt določen "`le"' do izomorfizma natančno, saj je množica $\set{*}$ izomorfna vsakemu drugemu enojcu s funkcijo $f : \set{*} \to \set{a}$, $f(*) = a$. Ta funkcija je očitno bijekcija, torej izomorfizem v kategoriji $\cat{Set}$.
 \end{primer}
 
 % Dodaj primere: Pos, Mon, Top.
@@ -743,20 +749,20 @@ A = \set{a \leq b \leq c} \\
 \end{align*}
 Obe množici imata po 3 elemente, a vidimo, da nimata identične strukture. Torej med njima imamo monotono bijektivno funkcijo $f : X \to A$ definirano kot
 $$f(x) = a, \quad f(y) = b, \quad f(z) = c$$
-a ta funkcija \textbf{ni} izomorfizem v $\cat{Pos}$. Ti dve strukturi v resnici nista izomorfni, a kako to pokazati. En način je z tako imenovanimi \textit{invariantami}, to so lastnosti neke strukture, ki se ohranjajo z izomorfizmi, oz. jih imajo enake vse izomorfne strukture. Invariante se da definirati na lep način z posplošenimi elementi. V našem primeru vidimo, da je invarianta število elementov enaka za obe množici, kar ustreza temu, da morfizmi iz enoelementne delno urejene množice \textbf{1} ne ločujejo med njima. Poglejmo si namesto tega "\textbf{2}-elemente" teh množic. To so morfizmi iz množice $\textbf{2} = \set{0 \leq 1}$ v naši množici. Takih morfizmov v množico $X$ je 5, in sicer trije morfizmi, ki slikajo oba elementa v isti element, na primer oba v $x$ ter še dva dodatna morfizma
+a ta funkcija \textbf{ni} izomorfizem v $\cat{Pos}$. Ti dve strukturi v resnici nista izomorfni, a kako to pokazati. En način je z tako imenovanimi \textit{invariantami}, to so lastnosti neke strukture, ki se ohranjajo z izomorfizmi, oz. jih imajo enake vse izomorfne strukture. Invariante se da definirati na lep način z posplošenimi elementi. V našem primeru vidimo, da je invarianta število elementov enaka za obe množici, kar ustreza temu, da morfizmi iz enoelementne delno urejene množice \textbf{1} ne ločujejo med njima. Poglejmo si namesto tega "`\textbf{2}-elemente"' teh množic. To so morfizmi iz množice $\textbf{2} = \set{0 \leq 1}$ v naši množici. Takih morfizmov v množico $X$ je 5, in sicer trije morfizmi, ki slikajo oba elementa v isti element, na primer oba v $x$ ter še dva dodatna morfizma
 $$0 \mapsto x, 1 \mapsto y \qquad 0 \mapsto x, 1 \mapsto z$$
-medtem, ko imamo za morfizme $\textbf{2} \to A$, tri dodatne morfizme poleg "točkovnih" (takih, ki slikaj vse elemente v eno točko.
+medtem, ko imamo za morfizme $\textbf{2} \to A$, tri dodatne morfizme poleg "`točkovnih"' (takih, ki slikaj vse elemente v eno točko.
 $$0 \mapsto a, 1 \mapsto b \qquad 0 \mapsto b, 1 \mapsto c \qquad 0 \mapsto a, 1 \mapsto c$$
 kjer zadnji morfizem dobimo zaradi tranzitivnosti.
-Tako je invarianta, ki jo lahko poimenujemo kar "število morfizmov iz \textbf{2}" za množico $X$ enaka 5, za množico $A$ pa 6, torej lahko sklepamo, da množici nista izomorfni v $\cat{Pos}$.
+Tako je invarianta, ki jo lahko poimenujemo kar "`število morfizmov iz \textbf{2}"' za množico $X$ enaka 5, za množico $A$ pa 6, torej lahko sklepamo, da množici nista izomorfni v $\cat{Pos}$.
 \end{primer}
 
-Posplošeni elementi so uporabni tudi za "testiranje" določenih lastnosti. Poglejmo si na primer diagrame naslednje oblike
+Posplošeni elementi so uporabni tudi za "`testiranje"' določenih lastnosti. Poglejmo si na primer diagrame naslednje oblike
 
 $$\begin{tikzcd}[column sep=large]
 X \ar[r, shift left, "x"] \ar[r, shift right, "x'"'] & A \ar[r, "f"] & B \\
 \end{tikzcd}$$
-Tukaj je $f$ monomorfizem, natanko takrat, ko za vsaka morfizma $x, x'$ iz $fx = fx'$ sledi $x = x'$, ali z drugimi besedami, $f$ je "injektiven na posplošenih elementih" če želimo.
+Tukaj je $f$ monomorfizem, natanko takrat, ko za vsaka morfizma $x, x'$ iz $fx = fx'$ sledi $x = x'$, ali z drugimi besedami, $f$ je "`injektiven na posplošenih elementih"' če želimo.
 
 
 Podobno, da lahko za diagram oblike 
@@ -877,8 +883,8 @@ Za vsak stavek $\Sigma$ v jeziku teorije kategorij, če $\Sigma$ sledi iz aksiom
 Za vsako trditev $\Sigma$ o kategorijah, če $\Sigma$ drži za vse kategorije, potem drži tudi dualna trditev $\Sigma^*$.
 \end{trditev}
 
-Kar lahko vzamemo iz teh dveh trditev je, da za vsako trditev, ki jo dokažemo za poljubno kategorijo, "zastonj" dobimo še njeno dualno trditev, brez dodatnega dela. Tako bi lahko na primer pri dokazu, da so začetni in končni objekti določeni do izomorfizma natančno uporabili dejstvo, da je končni objekt dualni pojem začetnega objekta in naredili dokaz le za enega izmed njiju.
-Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij, na primer univerzalne lastnosti produkta, hkrati obravnavali tudi njen dual. V tem primeru dualni konstrukciji dodamo predpono "ko-". Tako pridemo do naslednje definicije
+Kar lahko vzamemo iz teh dveh trditev je, da za vsako trditev, ki jo dokažemo za poljubno kategorijo, "`zastonj"' dobimo še njeno dualno trditev, brez dodatnega dela. Tako bi lahko na primer pri dokazu, da so začetni in končni objekti določeni do izomorfizma natančno uporabili dejstvo, da je končni objekt dualni pojem začetnega objekta in naredili dokaz le za enega izmed njiju.
+Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij, na primer univerzalne lastnosti produkta, hkrati obravnavali tudi njen dual. V tem primeru dualni konstrukciji dodamo predpono "`ko-"'. Tako pridemo do naslednje definicije
 
 \subsection{Koprodukti}
 \begin{definicija}
@@ -929,7 +935,7 @@ A \ar[r, "g"] \ar[rd, "f \circ g"'] & B \ar[d, "f"] \\
 & C
 \end{tikzcd} $$
 v $\cat{C}$.
-To je res funktor saj je $\Hom(A,1_B)(f:A \to B) = 1_B \circ f = f$. In za diagram 
+To je res funktor, saj je $\Hom(A,1_B)(f:A \to B) = 1_B \circ f = f$. In za diagram 
 $$ \begin{tikzcd}
 & A \ar[dl, "f"'] & \\
 B \ar[r, "g"'] & C \ar[r, "h"'] & D \\
@@ -1034,19 +1040,29 @@ R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & A \ar[r, "\pi"] \ar[dr
 \end{primer}
 
 \begin{primer}
-V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $\sim$ ekvivalenčna relacija na $X$.
+V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $R$ ekvivalenčna relacija na $X$. Definiramo funkcijo
+$$ q : X \to X/R,$$
+ki jo imenujemo \emph{kvocientna projekcija} in slika točko $x \in C$ v njen ekvivalenčni razred. Od topologije $X/R$ zahtevamo vsaj to, da je kvocientna projekcija zvezna, kar pomeni, da smejo biti med odprtimi množicami v $X/R$ le take množice $V \subseteq X/R$, da je $q^{-1}(V)$ odprta v $X$. Za definicijo kvocientne topologije vzamemo kar vse take množice. Torej velja
+$$V \ \text{je odprta v} \ X/R \quad \overset{\text{def}}{\Leftrightarrow} \quad q^{-1}(V) \ \text{odprta v} \ X.$$
+Trdimo, da je $q$ kozožek koordinatnih projekcij $r_1,r_2$ ekvivalenčne relacije $R$.
+Naj bo torej $f : X \to Y$ zvezna funkcija. Potem za vsako odprto množico $U \subseteq Y$ velja $f^{-1}(U)$ je odprta v $X$. Iščemo tako zvezno funkcijo $\overline{f} : X/R \to Y$, da bo veljalo $f(x) = \overline{f}(q(x))$ za vsak $x \in X$.
+$$\begin{tikzcd}
+R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & X \ar[r, "q"] \ar[dr, "f"'] & X/R \ar[d, dashed, "\overline{f}"] \\
+& & Y \\
+\end{tikzcd}$$
+Da bo $\overline{f}$ zvezna mora veljati za vsako odprto $U \subseteq Y$, $\overline{f}^{-1}(U)$ odprta v $X/R$, iz česar sledi, da je $q^{-1}(\overline{f}{-1}(U))$ odprta v $X$. Recimo, da obstaja še neka $h : X/R \to Y$, za katero velja $f(x) = h(q(x))$. Elementi $X/R$ so ravno ekvivalenčni razredi točk v $X$ oz. $q(x)$ za $x \in X$. Ker velja $\overline{f}(q(x)) = h(q(x))$ za vse $x$, velja torej za vse elemente iz $X/R$, ker pa pomeni, da je $h = \overline{f}$. Funkcija $q$ je torej res kozožek $r_1$ in $r_2$.
+
 \end{primer}
 
-O kozožku si lahko mislimo, da zoži $B$ z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "najboljši" način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi $Q$.
+O kozožku si lahko mislimo, da zoži $B$ z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "`najboljši"' način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi $Q$.
 
 
 \section{Povleki in potiski}
-%TODO
 
 \subsection{Povlek}
 
 \begin{definicija}
-Naj bosta $f : A \to C$ in $g : B \to C$ morfizma v kategoriji $\cat{C}$. \textit{Povlek} $f$ in $g$ je objekt $P$ z morfizmoma $p_1 : P \to A$, $p_2 : P \to B$, tako da tako imenovani "pullback kvadrat" (ustrezna terminologija?) komutira. Torej $fp_1 = gp_2$. Pri tem je P univerzalen tak objekt, kar pomeni, da za vsake $X$, $x_1 : X \to A$, $x_2 : X \to B$ za katere velja $fx_1 = gx_2$ obstaja enoličen morfizem $u : X \to P$ za katerega se $x_1$ in $x_2$ delita z $p_1$ in $p_2$.
+Naj bosta $f : A \to C$ in $g : B \to C$ morfizma v kategoriji $\cat{C}$. \textit{Povlek} $f$ in $g$ je objekt $P$ z morfizmoma $p_1 : P \to A$, $p_2 : P \to B$, tako da tako imenovani "`pullback kvadrat"' (ustrezna terminologija?) komutira. Torej $fp_1 = gp_2$. Pri tem je P univerzalen tak objekt, kar pomeni, da za vsake $X$, $x_1 : X \to A$, $x_2 : X \to B$ za katere velja $fx_1 = gx_2$ obstaja enoličen morfizem $u : X \to P$ za katerega se $x_1$ in $x_2$ delita z $p_1$ in $p_2$.
 
 $$\begin{tikzcd}
 X
@@ -1153,7 +1169,16 @@ ali z enačbami $$z_1 = v q_1, \quad z_2 = v q_2.$$
 Naravna ideja kako se potisk udejanja v kategoriji $\cat{Set}$ je, da je tako povezan s koprodukti in kozožki, kot je povlek povezan s produkti in zožki.
 
 \begin{primer}
-Naj bosta $f : C \to A$, $g: C \to B$ funkciji iz množice $C$. Naj bo $A + B$ koprodukt (ali disjunktna unija) množic $A$ in $B$. Vemo, da je opremljen z dvema funkcijama $\iota_1 : A \to A + B$, $\iota_2 : B \to A+B$.
+Recimo, da imamo dve funkciji v \cat{Sets}
+$$ \begin{tikzcd}
+A \ar[d, "f"'] \ar[r, "g"] & C \\
+B & \\
+\end{tikzcd} $$
+
+Naj bo $B + C$ koprodukt $B$ in $C$. Sedaj identificiramo tiste elemente $b \in B$ in $c \in C$, za katere obstaja nek ta $a \in A$, da velja
+$$f(a) = b \quad \text{in} \quad g(a) = c.$$
+To nam generira ekvivalenčno relacijo $\sim$ na $B + C$ glede na pogoj $f(a) \sim g(a)$ za vse $a \in A$. Če vzamemo kvocientno množico glede na to ekvivalenčno relacijo $B + C/\sim$, dobimo potisk $B +_A C$. Ta konstrukcija je v veliki meri dualna tisti za povleke v $\cat{Sets}$, kar pa niti ni presenetljivo.
+
 \end{primer}
 
 \section{Limite, kolimite in eksponenti}
@@ -1161,7 +1186,7 @@ Naj bosta $f : C \to A$, $g: C \to B$ funkciji iz množice $C$. Naj bo $A + B$ k
 
 \subsection{Limite}
 
-Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo nek objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "najboljši" tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
+Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo nek objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "`najboljši"' tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
 
 \begin{definicija}
 \textit{Diagram oblike} $\cat{J}$ v kategoriji $\cat{C}$ je funktor $D : \cat{J} \to \cat{C}$. Kjer $\cat{J}$ pravimo tudi \textit{indeksna} kategorija. Objekte v indeksni kategoriji označujemo z $i,j,\ldots$ in vrednosti funktorja $D_i,D_j,\ldots$ \\
@@ -1186,7 +1211,7 @@ oz. $$c_i = c_i' \vartheta$$
 Tako dobimo novo kategorijo $\cat{Cone}(D)$ stožcev na $D$.
 \end{definicija}
 
-Diagrame $D$ si lahko predstavljamo kot "slike oblike $\cat{J}$ v $\cat{C}$. Poglejmo si to na majhnem primeru. Kaj se zgodi na primer, če za $\cat{J}$ vzamemo na primer diskretno kategorijo z dvemi elementi $\cat{J} = \set{1,2}$. Stožec nad diagramom $D : \cat{J} \to \cat{C}$ sestoji iz objekta $C$ in dveh morfizmov $c_1 : C \to D_1$, $c_2 : C \to D_2$.
+Diagrame $D$ si lahko predstavljamo kot "`slike oblike $\cat{J}$"' v $\cat{C}$. Poglejmo si to na majhnem primeru. Kaj se zgodi na primer, če za $\cat{J}$ vzamemo na primer diskretno kategorijo z dvemi elementi $\cat{J} = \set{1,2}$. Stožec nad diagramom $D : \cat{J} \to \cat{C}$ sestoji iz objekta $C$ in dveh morfizmov $c_1 : C \to D_1$, $c_2 : C \to D_2$.
 
 $$\begin{tikzcd}[column sep=normal, row sep=small]
 & C \ar[dl, "c_1"'] \ar[dr, "c_2"] & \\
@@ -1217,7 +1242,7 @@ C \ar[rr, dashed, "u"] \ar[drrr, pos=7/11, "c_j"'] \ar[dr, "c_i"'] & & \lim D \a
 \end{tikzcd}$$
 \end{definicija}
 
-Limito si lahko torej predstavljamo kot "najbližji" stožec diagramu $D$, kajti vsi drugi stožci morajo "iti skozi" limito. Limita nekega diagrama ne obstaja nujno. Če obstaja limita za vsak diagram $D : \cat{J} \to \cat{C}$ za neko indeksno kategorijo $\cat{J}$ pravimo, da $\cat{C}$ \textit{ima limite tipa} $\cat{J}$.
+Limito si lahko torej predstavljamo kot "`najbližji"' stožec diagramu $D$, kajti vsi drugi stožci morajo "`iti skozi"' limito. Limita nekega diagrama ne obstaja nujno. Če obstaja limita za vsak diagram $D : \cat{J} \to \cat{C}$ za neko indeksno kategorijo $\cat{J}$ pravimo, da $\cat{C}$ \textit{ima limite tipa} $\cat{J}$.
 
 \begin{primer}
 Nadaljujmo s primerom za diagrame iz diskretne kategorije na dveh objektih, ki jo poimenujmo kot zgoraj z $\cat{J}$. Kaj je limita nad $D : \cat{J} \to \cat{C}$. To je tak objekt $\lim D$ z morfizmi $p_1 : \lim D \to D_1$, $p_2 : \lim D \to D_2$, da za vsak objekt $X$ opremljen z morfizmoma $x_1 : X \to D_1$, $x_2 : X \to D_2$, obstaja enoličen morfizem $u : X \to \lim D$, da naslednja trikotnika komutirata 
@@ -1245,19 +1270,23 @@ C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D \ar[dl, "p"] \\
 komutira. V tej situaciji lahko razpoznamo rezinsko kategorijo $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D$ je končni objekt v tej kategoriji.
 \end{primer}
 
-\begin{definicija}
-Za kategorijo $\cat{C}$ pravimo, da je \emph{kompletna}, če ima vse majhne limite, kar pomeni, da za vsako majhno indeksno kategorijo $J$ in diagram $D : J \to \cat{C}$ obstaja limita $\lim_{j \in J} D_j$ v $\cat{C}$.
-\end{definicija}
 
+Kot pri vseh primerih limiti, ki smo jih spoznali do sedaj velja trditev o enoličnosti, ki nam pove, da ko smo enkrat našli limito, smo že našli "`ta pravo"', saj je vsaka druga izomorfna tej.
 \begin{trditev}
-Kategorija $\cat{Sets}$ je kompletna
+Limite so enolične do izomorfizma natančno.
 \end{trditev}
 \begin{dokaz}
-TODO
+Naj bosta $L$ in $I$ limiti za diagram $D : \cat{J} \to \cat{C}$, za neko indeksno kategorijo $\cat{J}$. Ker je $L$ limita na $D$ je tudi stožec nad $D$, kar pomeni, da obstaja enoličen morfizem $v : I \to L$. Obratno ker je $I$ stožec nad $D$ obstaja enoličen morfizem $u : L \to I$. To pa pomeni, da je $v \circ u$ enoličen morfizem $L \to L$, kar pomeni, da sta $u$ in $v$ izomorfizma in sta $L$ in $I$ izomorfna objekta.
 \end{dokaz}
 
+\begin{definicija}
+Za kategorijo $\cat{C}$ pravimo, da je \emph{kompletna}, če ima vse majhne limite, kar pomeni, da za vsako majhno indeksno kategorijo $\cat{J}$ in diagram $D : \cat{J} \to \cat{C}$ obstaja limita $\lim_{j \in J} D_j$ v $\cat{C}$.
+\end{definicija}
+
+
+
 \subsection{Kolimite}
-%TODO
+
 Kot smo tega že vajeni, so limite dualen pojem limit. In tako kot limite posplošijo konstrukcije produktov, zožkov, povlekov,... Ravno tako kolimite posplošijo konstrukcije koproduktov, kozožkov, potiskov.
 
 \begin{definicija} (Direktna definicija)
@@ -1265,8 +1294,10 @@ Kot smo tega že vajeni, so limite dualen pojem limit. In tako kot limite posplo
 \emph{Kolimita} nad diagramom $D : \cat{J} \to \cat{C}$ je začetni objekt v kategoriji kostožcev nad $D$.
 \end{definicija}
 
+Primeri kolimit so torej pričakovani in dualni primerom limit. Na primer za diskretno indeksno kategorijo z dvemi objekti je kolimita nad diagramom iz te kategorije enaka koproduktu slikama objektov. Kolimita iz indeksne kategorije z enim objektom in enim morfizmom je začetni objekt.
+
 \begin{definicija}
-Dualno kot za limite, za kolimite poznamo pojem \emph{kokompletnosti}, kar pomeni, da ima za poljubno majhno indeksno kategorijo $J$, vsak diagram $D : J \to \cat{C}$ kolimito $\colim_{j \in J} D_j$ v $\cat{C}$.
+Dualno kot za limite, za kolimite poznamo pojem \emph{kokompletnosti}, kar pomeni, da ima za poljubno majhno indeksno kategorijo $J$, vsak diagram $D : \cat{J} \to \cat{C}$ kolimito $\colim_{j \in J} D_j$ v $\cat{C}$.
 \end{definicija}
 
 \subsection{Eksponenti}
@@ -1337,14 +1368,15 @@ injektivna.
 \end{definicija}
 
 \begin{primer}
-Poglejmo si zakaj tej pojmi niso med seboj ekvivalentni. Naj bo $\cat{C}$ kategorija in naj bo $\nabla : \cat{C} + \cat{C} \to \cat{C}$ kodiagonalni funktor, torej tak, ki obe "kopiji" pošlje v "original".
+Poglejmo si zakaj tej pojmi niso med seboj ekvivalentni. Naj bo $\cat{C}$ kategorija in naj bo $\nabla : \cat{C} + \cat{C} \to \cat{C}$ kodiagonalni funktor, torej tak, ki obe "`kopiji"' pošlje v "`original"'.
 
 $$\begin{tikzcd}[column sep=normal]
 C \ar[r, "\iota_1"] \ar[dr, "1_C"'] & C + C \ar[d, "\nabla"] & C \ar[l, "\iota_2"'] \ar[dl, "1_C"] \\
 & C & \\
 \end{tikzcd}$$
 
-Pokažimo, da je ta funktor zvest, ni pa injektiven na objektih. Izberimo si dva objekta $A,B \in \cat{C} + \cat{C}$. Med $A$ in $B$ obstaja morfizem natanko 
+Pokažimo, da je ta funktor zvest, ni pa injektiven na morfizmih. 
+Za vsak morfizem $f : A \to B$ v $\cat{C}$ obstajata v $\cat{C} + \cat{C}$ dva distinktna morfizma $\iota_1(f)$ in $\iota_2(f)$, ki ju $\nabla$ oba slika v isti morfizem, torej očitno ni injektiven na morfizmih. Obratno, za vsaka dva objekta $A,B$ v $\cat{C} + \cat{C}$ med njima obstaja morfizem, le če sta objekta v isti kopiji kategorije $\cat{C}$ in obstaja tak morfzem že v $\cat{C}$. V tem primeru ga $\nabla$ slika v "`isti"' morfizem.
 
 \end{primer}
 
@@ -1367,20 +1399,94 @@ komutira
 \end{definicija}
 
 
-Pogosta situacija kjer srečamo naravne transformacije je sledeča. Recimo, da imamo neko "konstrukcijo" v neki kategoriji \cat{C} in še neko drugo "konstrukcijo" in ti dve "konstrukciji" sta povezani na način, ki je neodvisen od specifičnih objektov in morfizmov v tej kategorji. Povezava je v resnici med "konstrukcijama". 
+Pogosta situacija kjer srečamo naravne transformacije je sledeča. Recimo, da imamo neko "`konstrukcijo"' v neki kategoriji \cat{C} in še neko drugo "`konstrukcijo"' in ti dve "`konstrukciji"' sta povezani na način, ki je neodvisen od specifičnih objektov in morfizmov v tej kategorji. Povezava je v resnici med "`konstrukcijama"'. 
 \begin{primer}
 Na primer denimo, da ima \cat{C} produkte in za neke objekte $A,B,C \in \cat{C}$ poglejmo produkta
 $$(A \times B) \times C \quad \text{in} \quad A \times (B \times C)$$
 Ne glede na izbiro objektov $A,B,C$ obstaja izomorfizem
 $$h : (A \times B) \times C \xrightarrow{\sim} A \times (B \times C)$$
-Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov ? Recimo
+Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov ? Za nek morfizem $f : A \to A'$ dobimo komutativen kvadrat
+
+$$ \begin{tikzcd}
+(A \times B) \times C \ar[r, "h_A"] \ar[d] & A \times (B \times C) \ar[d] \\
+(A' \times B) \times C \ar[r, "h_A'"'] & A' \times (B \times C) 
+\end{tikzcd} $$
+Torej v resnici imamo izomorfizem med konstrukcijama 
+$$(- \times B) \times C \cong - \times (B \times C)$$
+Ti konstrukciji pa sta v resnici samo funktorja $\cat{C} \to \cat{C}$ in naš izomorfizem med konstrukcijama je v resnici torej naravna transformacija med tema funktorjema. Seveda lahko ta dva funktorja razširimo do funktorjev v vseh treh argumentih
+$$(- \times -) \times - : \cat{C}^3 \to \cat{C}$$
+in
+$$ - \times (- \times -) : \cat{C}^3 \to \cat{C}$$
+med katerima tudi obstaja naravna transformacija.
 \end{primer}
 
+\begin{primer}
+Naj bo \cat{C} kategorija s produkti. Poglejmo si funktorja
+\begin{align*}
+\times : \cat{C}^2 \to \cat{C} \\
+\bar{\times} : \cat{C}^2 \to \cat{C}
+\end{align*}
+kjer je $\times$ obučajen produkt in je $\bar{\times}$ definiran na objektih kot
+$$ A \bar{\times} B = B \times A$$
+in na morfizmih
+$$ \alpha \bar{\times} \beta = \beta \times \alpha $$
+Definiramo naravno transformacijo $t : \times \to \bar{\times}$ kot
+$$t_{(A,B)}\langle a,b \rangle = \langle b,a \rangle$$
+za posplošene elemente $\langle a,b \rangle : Z \to A \times B$.
+Da kvadrat
+$$ \begin{tikzcd}
+A \times B \ar[d, "\alpha \times \beta"'] \ar[r, "t_{(A,B)}"] & B \times A \ar[d, "\beta \times \alpha"] \\
+A' \times B' \ar[r, "t_{(A',B')}"'] & B' \times A'
+\end{tikzcd} $$
+komutira pa mora za vsak posplošen element $\langle a,b \rangle$ veljati
+\begin{align*}
+(\beta \times \alpha)(t_{(A,B)}\langle a,b \rangle ) &= (\beta \times \alpha)\langle b,a \rangle \\
+& = \langle \beta b,\alpha a \rangle \\
+& = t_{(A',B')}\langle \alpha a, \beta b \rangle \\
+& = t_{(A', B')}(\alpha \times \beta)\langle a,b \rangle
+\end{align*}
+ker pa velja po definiciji $t$. Torej je to res naravna transformacija.
+\end{primer}
+
+\begin{definicija}
+\emph{Funktorska kategorija} $\Fun(\cat{C}, \cat{D})$ ima za
+\begin{itemize}
+\item \textbf{Objekte}: Funktorje $F : \cat{C} \to \cat{D}$
+\item \textbf{Morfizme}: Naravne transformacije $\vartheta : F \to G$
+\end{itemize}
+Za vsak objekt $F$ ima naravna transformacija $1_F$ komponente
+$$ (1_F)_C = 1_FC : FC \to FC$$
+in kompozitum naravnih transformacij $F \xrightarrow{\vartheta} G \xrightarrow{\varphi} H$
+ima za komponente
+$$ (\varphi \circ \vartheta)_C = \varphi_C \circ \vartheta_C $$
+\end{definicija}
+
+\begin{primer}
+Naj bo $S$ stožec za diagram $D : \cat{J} \to \cat{C}$. V resnici je to samo objekt, za stožec so potrebni še morfizmi $s_i : S \to D_i$ za vsak $i \in \cat{J}$. Imamo torej družino morfizmov za vsak objekt v neki kategoriji, tako da vse kar mora komutira. To zelo spominja na definicijo naravne transformacije, le da imamo tu opravka z komutirajočimi trikotniki.
+$$ \begin{tikzcd}
+& S \ar[dl, "s_i"'] \ar[dr, "s_j"] & \\
+D_i \ar[rr, "D_\alpha"'] & & D_j
+\end{tikzcd} $$
+Ampak, vsak tak trikotnik lahko razširimo do kvadrata
+
+$$ \begin{tikzcd}
+S \ar[d, "s_i"'] \ar[r, "1_S"] & S \ar[d, "s_j"]\\
+D_i \ar[r, "D_\alpha"'] & D_j
+\end{tikzcd} $$
+
+Gre torej za naravno transformacijo iz konstantnega funktorja, ki pošlje vse objekte v $S$ in vse morfizme v $1_S$.
+
+\end{primer}
 
 
 \chapter{Pomembne trditve in definicije}
 
-Najprej predstavimo definicijo, ki nam bo omogočala definirati razred kategorij, s katerim je posebej lepo delati.
+Najprej predstavimo definicijo, ki nam bo omogočala definirati razred kategorij, s katerimo se bomo ukvarjali v povezavi z Yonedovo lemo in v njih veljajo neke posebej lepe stvari.
+
+\begin{definicija}
+Kategorija $\cat{C}$ je \emph{majhna}, če sta tako kolekcija objektov kot kolekcija morfizmov množici.
+\end{definicija}
+
 \begin{definicija}
 Kategorija $\cat{C}$ je \emph{lokalno majhna}, če je kolekcija morfizmov med vsakima dvema objektoma množica.
 \end{definicija}
@@ -1388,19 +1494,89 @@ Kategorija $\cat{C}$ je \emph{lokalno majhna}, če je kolekcija morfizmov med vs
 To torej pomeni, da imamo definiran funktor $\Hom_{\cat{C}} : \cat{C}^{op} \times \cat{C} \to \cat{Sets}$, za vsaka dva objekta iz $\cat{C}$.
 \end{opomba}
 
-\begin{trditev}
+\begin{trditev} \label{konstrukcija limit}
 Kategorija ime vse \textit{končne limite} natanko takrat, ko ima vse končne produkte in zožke.
 
 To da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \cat{J} \to \cat{C}$ limito v $\cat{C}$.
 
 \end{trditev}
 \begin{dokaz}
-Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}$, ki ima morfizme do vsakega izmed $D_i$ 
-\end{dokaz} 
+Če ima kategorija vse limite potem ima očitno tudi produkte in zožke, saj sta to posebna primera limit. Bolj zanimiv del te trditve je njen obrat.
+
+Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}$, ki ima morfizme do vsakega izmed $D_i$. Kot prva ideja je to produkt 
+$$\prod_{i \in \cat{J}}D_i,$$
+ki ima projekcije do vsakega $D_i$. Na žalost tej morfizmi ne komutirajo glede na morfizme v $\cat{J}$. Radi bi še da za vsak $\alpha : j \to k$ v $\cat{J}$ diagram
+
+$$ \begin{tikzcd}
+& \prod_{i \in \cat{J}}D_i \ar[dl, "\pi_j"'] \ar[dr, "\pi_k"] & \\
+D_j \ar[rr, "D_\alpha"'] && D_k
+\end{tikzcd} $$
+komutira. Za to pogledamo še produkt 
+$$ \prod_{\alpha \in Arr(\cat{J})} D_{cod(\alpha)} $$
+po vseh morfizmih v $\cat{J}$ in dva morfizma
+$$ \begin{tikzcd}[sep=normal]
+\prod_{i }D_i \ar[r, shift left, "\phi"] \ar[r, shift right, "\psi"'] & \prod_{\alpha } D_{cod(\alpha)}
+\end{tikzcd} $$
+ki ju definiramo glede na njun kompozitum s projekcijami $\pi_\alpha$ iz drugega produkta, specifično
+\begin{align*}
+\pi_\alpha \circ \phi &= \phi_\alpha = \pi_{cod(\alpha)} \\
+\pi_\alpha \circ \psi &= \psi_\alpha = D_\alpha \circ \pi_{dom(\alpha)}
+\end{align*}
+Da dobimo limito, vzamemo zožek teh dveh morfizmov
+$$ \begin{tikzcd}[sep=normal]
+E \ar[r, "e"] & \prod_{i }D_i \ar[r, shift left, "\phi"] \ar[r, shift right, "\psi"'] & \prod_{\alpha } D_{cod(\alpha)}
+\end{tikzcd} $$
+in definiramo $e_i = \pi_i \circ r$. Da pokažemo da je to res limita, vzamemo poljuben morfizem $c : C \to \prod_i D_i$ in pišemo $c = \langle c_i \rangle$ za $c_i = \pi_i \circ c$. Družina morfimov $(c_i : C \to D_i)_{i \in \cat{J}}$ je stožec nad $D$ natanko takrat ko velja $\psi \circ c = \phi \circ c$, kajti
+
+$$\phi \langle c_i \rangle = \psi \langle c_i \rangle $$
+
+natanko tedaj, ko je za vsak $\alpha$
+$$ \pi_\alpha \phi \langle c_i \rangle = \pi_\alpha \psi \langle c_i \rangle $$
+Velja pa,
+$$ \pi_\alpha \phi \langle c_i \rangle = \phi_\alpha \langle c_i \rangle = \pi_{cod(\alpha)}\langle c_i \rangle = c_{cod(\alpha)} $$
+ter
+$$ \pi_\alpha \psi \langle c_i \rangle = \psi_\alpha \langle c_i \rangle  = D_\alpha \circ \pi_{dom(\alpha)} \langle c_i \rangle = D_\alpha \circ c_{dom(\alpha)} $$
+Sledi, da je $(E, e_i)$ res stožec in da vsak stožec $(c_i : C \to D_i)$ porodi morfizem $\langle c_i \rangle : C \to \prod_i D_i$ da velja $\phi\langle c_i \rangle = \psi \langle c_i \rangle$, torej obstaja enolična faktorizacija $\langle c_i \rangle$ skozi $E$.
+
+\end{dokaz}
+
+\begin{posledica}
+Kateogrija ima vse končne kolimite natanko takrat, ko ima vse končne koprodukt in kozožke
+\end{posledica}
+\begin{dokaz}
+Dualnost.
+\end{dokaz}
+
+\begin{posledica}
+Kategorija $\cat{Sets}$ je kompletna in kokompletna
+\end{posledica}
+\begin{dokaz}
+Sledi iz dejstva, da ima \cat{Sets} produkte, koprodukte, zožke in kozožke, katerih obstoj je bil dokazan s konstrukcijo skozi primere.
+\end{dokaz}
+
  
 \begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
 \end{trditev}
 \begin{dokaz}
+Po trditvi \ref{konstrukcija limit} je potrebno pokazati le, da $\Hom$ funktor ohranja produkte in zožke. 
+
+\begin{itemize}
+\item Za končni objekt $1$ v $\cat{C}$ je $\Hom(C,1) \cong \set{*} \cong 1$ tudi končni objekt v $\cat{Sets}$
+\item Za binarni produkt $X \times Y$ v $\cat{C}$ definiramo morfizem 
+$$h : \Hom(C, X \times Y) \to \Hom(C,X) \times \Hom(C,Y)$$
+kot $h(f : C \to X \times Y) = \langle \pi_1 \circ f, \pi_2 \circ f \rangle$, ki po univerzalni lastnosti produkta določa enoličen izomorfizem.
+\item Podobno kot za binarne produkte naredimo za splošne produkte
+$$\Hom(C, \prod_i X_i) \cong \prod_i \Hom(C, X_i)$$
+\item Naj bo sedaj
+$$ \begin{tikzcd}[sep=normal]
+E \ar[r, "e"] & X \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & Y
+\end{tikzcd} $$
+zožek v $\cat{C}$, ki nam poda diagram
+$$ \begin{tikzcd}[sep=normal]
+\Hom(C,E) \ar[r, "e_*"] & \Hom(C,X) \ar[r, shift left, "f_*"] \ar[r, shift right, "g_*"'] & \Hom(C,Y)
+\end{tikzcd} $$
+v $\cat{Sets}$. Da pokažemo, da je to zožek, vzemimo nek $h \in \Hom(C,X)$ z $f_* h = g_* h$. Potem velja $fh = gh$, torej obstaja enoličen $u : C \to E$, tako da je $eu = h$. Imamo torej enoličen $u \in \Hom(C,E)$ z $e_* u = eu = h$. Torej je $e_* : \Hom(C,E) \to \Hom(C,X)$ res zožek $f_*$ in $g_*$.
+\end{itemize}
 
 \end{dokaz}
 
@@ -1412,29 +1588,7 @@ Kontravariantni predstavljivi funktor $\Hom_\cat{C}(-,C) : \cat{C}^{op} \to \cat
 $\Hom(A, C^B) \cong \Hom(A \times B, C)$
 \end{trditev}
 \begin{dokaz}
-Sledi iz definicije eksponenta in transponiranja. (Dopolni, bolj ekstenziven dokaz)
-\end{dokaz}
-
-\begin{trditev}
-\label{ohranjanje kolimit}
-Za poljubni kategoriji $\cat{C}$ in $\cat{D}$, če je $\cat{D}$ ko-kompletna (ima vse majhne kolimite), potem je ko-kompletna tudi funktorska kategorija $\cat{D}^{\cat{C}}$ in kolimite v $\cat{D}^{\cat{C}}$ se izračuna "po točkah", v smislu, da za vsak $C \in \cat{C}$ evaluacijski funktor
-$$ev_C : \cat{D}^{\cat{C}} \to \cat{D}$$
-ohranja kolimite. Torej imamo za vsako majhno indeksno kategorijo $J$ in funktor $F : J \to \cat{D}^{\cat{C}}$ in vsak $C \in \cat{C}$ kanoničen izomorfizem,
-$$(\colim_j F_j)(C) \quad \cong \quad \colim_j (F_jC)$$
-\end{trditev}
-\begin{dokaz}
-Naj bo $F: J \to \cat{D}^{\cat{C}}$. Po lastnosti eksponentov obstaja enoličen $\overline{F}: J \times \cat{C} \to \cat{D}$, da diagram
-
-\begin{equation}
-\begin{tikzcd}
-\cat{D}^{\cat{C}} \times \cat{C} \ar[r, "\epsilon"] & \cat{D} \\
-J \times \cat{C} \ar[u, "F \times 1_{\cat{C}}"] \ar[ur, "\overline{F}"'] \\
-\end{tikzcd}
-\end{equation}
-komutira, kjer je $\epsilon_{\cat{C}}$ evaluacijski funktor.
-Za vsak $C \in \cat{C}$ lahko definiramo funktor $\overline{F}(-,C): J \to \cat{D}$, ki vsak $i \in J$ slika v $\overline{F}(i,C) = \epsilon(F \times 1_\cat{C})(j,C) = F_j(C)$.
-Kolimito za $F$ definiramo kot
-$$\colim F_k(C) := \colim_{k \in J}\overline{F}(k,C)$$
+Sledi iz definicije eksponenta in transponiranja.
 \end{dokaz}
 
 
@@ -1454,7 +1608,6 @@ Opravka imamo z kovariantnim funktorjem
 $$y : \mathbf{C} \to \mathbf{Sets}^{\cat{C}^{op}}$$
 saj imamo v resnici opravka z transponiranim bifunktorjem
 $$\Hom_{\cat{C}} : \cat{C} \times \cat{C}^{op} \to \cat{Sets}$$
-za katerega po bifunktorski lemi vemo, da je funktor.
 
 
 \begin{definicija} {\it Yonedova vložitev} je funktor $y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$ \\  za $C \in \bf{C}$ je $$y(C) := \Hom_{\bf{C}}(-, C) : \bf{C}^{op} \to \bf{Sets}$$ in za puščice $f : C \to D$
@@ -1659,7 +1812,7 @@ kjer je $\epsilon$ evaluacija in $\overline{g}$ transponiranka za $g$. Po enoli�
 \end{primer}
 
 
-Sedaj si poglejmo v kakem smislu je kategorija predsnopov $\predsnop{C}$ "lepa". Nekaj o tem nam pove naslednja trditev.
+Sedaj si poglejmo v kakem smislu je kategorija predsnopov $\predsnop{C}$ "`lepa"'. Nekaj o tem nam pove naslednja trditev.
 
 \begin{trditev} \label{trditev 3.3}
 Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kompletna. Za vsak objekt $C \in \cat{C}$, evaluacijski funktor 
@@ -1667,7 +1820,7 @@ $$ev_C : \predsnop{C} \to \cat{Sets}$$
 ohranja vse limite.
 \end{trditev}
 \begin{dokaz}
-Naj bo J majhna indeksna kategorija in $D : J \to \cat{Sets}^{\cat{C}^{op}}$ diagram oblike $J$. Če naj bi taka limita obstajala, bi to bil objekt v $\cat{Sets}^{\cat{C}^{op}}$, oziroma funktor 
+Naj bo \cat{J} majhna indeksna kategorija in $D : \cat{J} \to \cat{Sets}^{\cat{C}^{op}}$ diagram oblike $J$. Če naj bi taka limita obstajala, bi to bil objekt v $\cat{Sets}^{\cat{C}^{op}}$, oziroma funktor 
 $$(\lim_{j \in J} D_j): \cat{C}^{op} \to \cat{Sets}$$
 po Yonedovi lemi, pa bi za tak funktor moralo veljati
 $$(\lim_{j \in J} D_j)(C) \cong \Hom(yC, \lim D_j),$$
@@ -1682,24 +1835,14 @@ Preostane še poiskati oz. definirati stožec nad tem objektom in pokazati, da j
 
 \end{dokaz}
 
-Ni pa ta kategorija predsnopov le kompletna, ampak tudi kokompletna, kar pa dejansko sledi že iz dejstva da je kategoriaj $\cat{Sets}$ kompletna.
-
-\begin{trditev}
-Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kokompletna in kolimite se izračuna "po točkah".
-\end{trditev}
-\begin{dokaz}
-Sledi iz trditve \ref{ohranjanje kolimit} in dejstva, da je $\cat{Sets}$ kokompletna.
-\end{dokaz}
-
 Povemo pa lahko še več. Naslednji izrek, všasih imenovan tudi \emph{gostotni izrek}, je v nekem smislu dual Yonedove leme.
-
 
 
 \begin{trditev}
 \label{density theorem}
 Za vsako majhno kategorijo $\cat{C}$, se vsak objekt $P$ funktorske kategorije $\predsnop{C}$, da izraziti kot kolimito predstavljivih funktorjev iz neke indeksne kategorije $J$.
 $$ P \cong \colim_{j \in J} yC_j.$$
-Bolj natančno obstaja kanonična izbira indeksne kategorije $J$ in funktorja $\pi : J \to \cat{C}$, tako da obstaja naravni izomorfizem $\colim y \circ \pi \cong P$.
+Bolj natančno obstaja kanonična izbira indeksne kategorije $J$ in funktorja $\pi : \cat{J} \to \cat{C}$, tako da obstaja naravni izomorfizem $\colim y \circ \pi \cong P$.
 \end{trditev}
 \begin{dokaz}
 Naj bo torej $P : \cat{C}^{op} \to \cat{Sets}$ element kategorije predsnopov nad $\cat{C}$. Za indeksno kategorijo bomo definirali tako imenovano \emph{kategorijo elementov P}, ki se jo označuje z
@@ -1906,7 +2049,17 @@ in na $i$-tem mestu vstavi identiteto na $c_i$. Obraz $d_i : N\cat{C}_n \to N\ca
 Potrebno bi bilo preveriti, da na ta način definirane funkcije res zadoščajo relacijam za simplicirano množico. Ker je bil namen tega primera samo ilustracija v kakih situacija lahko nastopa Yonedova lema, tega tukaj ne bomo storili.
 \end{primer}
 
+\begin{thebibliography}{9}
 
+\bibitem{category theory}
+Steve Awodey (2010)
+\textit{Category Theory},
+Oxford: Oxford University Press.
 
+\bibitem{simplicial sets}
+Emily Riehl
+\textit{A leisurely introduction to simplicial sets}
+\\\texttt{http://www.math.jhu.edu/~eriehl/ssets.pdf}
+\end{thebibliography}
 
 \end{document}
