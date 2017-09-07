@@ -336,21 +336,21 @@ A proper abstract should contain around 100 words which makes this one way too s
 \pagestyle{fancy}
 
 \chapter{Uvod}
-Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko? Običajno se v matematiki obravnava in preučuje neke objekte (pogosto množice, lepše to napisat), ki so običajno opremljeni z neko strukturo, kot na primer grupe, kolobarji, topološki prostori, \ldots, prav tako pa nas pogosto zanima, kaj so funkcije med tebi množicami, ki ohranjajo to strukturo, najsibo to homomorfizem grup ali homeomorfizem med topološkimi prostori. Učasih opazimo, da se v bistvu vse lastnosti, ki jih naši objekti imajo in to kako se obnašajo, da izraziti s tem, kakšne so možne transformacije teh objektov. Teorija kategorij poskuša uporabiti in posplošiti to idejo na vse, kar se obnaša na tak način. Ne zanimajo nas namreč več, kaj so tej objekti, oz. kaj predstavljajo, zanimajo nas le vse te transformacije (ki se jim pogosto pravi morfizmi) in kaj se dogaja, na primer pri kompozitumu katerih od teh transformacij in kaj lahko povemo s tem. Na nek način teorija kategorij združuje različna področja v matematiki in poskuša nanje pogledati z enotno perspektivo. Ta posplošitev seveda ne more rešiti vseh specifičnih problemov nekega področja, nam pa da nek bolj globalni pogled na stvari in včasih tudi lahko prenese pristop k reševanju nekega problema na povsem drugo področje, če ga le znamo pogledati s pravilno perspektivo.
+Kaj je teorija kategorij? Kako se razlikuje od običajnega pogleda na matematiko? Običajno se v matematiki obravnava in preučuje matematične strukture in preslikave med njimi, ki ohranjajo strukturo. Na primer grupe, kolobarje, topološke prostore. Včasih opazimo, da se v bistvu vse lastnosti, ki jih naši objekti imajo in to kako se obnašajo, da izraziti s tem, kakšne so možne transformacije teh objektov. Teorija kategorij poskuša uporabiti in posplošiti to idejo na vse, kar se obnaša na tak način. Ne zanima nas namreč več zgradba teh struktur, ampak le tiste lastnosti, ki jih lahko razberemo iz transformacij med strukturami. Kaj se dogaja, na primer pri kompozitumu katerih od teh transformacij in kaj lahko povemo s tem. Na neki način teorija kategorij združuje različna področja v matematiki in poskuša nanje pogledati z enotno perspektivo. Ta posplošitev seveda ne more rešiti vseh specifičnih problemov nekega področja, nam pa da neki bolj globalni pogled na stvari in včasih tudi lahko prenese pristop k reševanju nekega problema na povsem drugo področje, če ga le znamo pogledati s pravilno perspektivo.
 
 \section{Osnovne Definicije}
 
 \begin{definicija}
-\emph{Kategorija} sestoji iz naslednjih stvari:
+\emph{Kategorija} sestoji iz:
 \begin{itemize}
-\item \emph{Objektov} : $A,B,C,X,Y,\ldots$
-\item \emph{Morfizmov} : $f,g,h,\ldots$
-\item Za vsak morfizem imamo podana dva objekta: $$dom(f), \quad cod(f).$$
-ki jima pravimo domena in kodomena morfizma $f$. Pišemo:
+\item \emph{objektov} : $A,B,C,X,Y,\ldots$
+\item \emph{morfizmov} : $f,g,h,\ldots$
+\item za vsak morfizem imamo podana dva objekta: $$dom(f), \quad cod(f).$$
+ki jima pravimo \emph{domena} in \emph{kodomena} morfizma $f$. Pišemo:
 $$f\colon A \to B$$
 kjer sta $A = dom(f)$ in $B = cod(f)$.
 Pravimo da $f$ gre od $A$ do $B$.
-\item Za vsaka morfizma $f \colon A \to B$ in $g \colon B \to C$, torej taka da velja $cod(f)$ = $dom(g)$, obstaja morfizem $g\circ A \to C$, ki mu pravimo \emph{kompozitum} $f$ in $g$.
+\item Za vsaka morfizma $f \colon A \to B$ in $g \colon B \to C$, torej taka da velja $cod(f)$ = $dom(g)$, obstaja morfizem $g\circ f \to C$, ki mu pravimo \emph{kompozitum} $f$ in $g$.
 %
 \[
 \begin{tikzcd}
@@ -359,38 +359,84 @@ A \arrow[r, "f"] \arrow[rd, "g \circ f"']  & B  \arrow[d, "g"] \\
 \end{tikzcd}
 \] 
 %
-\item Za vsak objekt $A$ obstaja morfizem
+\item za vsak objekt $A$ obstaja morfizem
 $$1_A : A \to A$$
 ki mu pravimo \emph{identiteta} na $A$.		
 \end{itemize}
 Za vse te podatke morata veljati naslednji dve pravili:
 \begin{itemize}
-\item Asociativnost: Za vsake $f : A \to B, g : B \to C, h : C \to D$ velja
+\item asociativnost: Za vsake $f : A \to B, g : B \to C, h : C \to D$ velja
 $$h \circ (g \circ f) = (h \circ g) \circ f$$
-\item Enota: Za vsak $f : A \to B$ velja
+\item enota: Za vsak $f : A \to B$ velja
 $$f \circ 1_A = f = 1_B \circ f$$
 \end{itemize}
 \end{definicija}
 %
-Kategorija je karkoli, kar zadošča tem pogojem.
-Objekte kategorije všasih označujemo z $Obj(\cat{C})$ in morfizme z $Arr(\cat{C})$.
+Zbirko objektov kategorije všasih označujemo z $Obj(\cat{C})$ in zbirko morfizmov z $Arr(\cat{C})$.
 
 \section{Primeri kategorij}
 
 \begin{primer}
-Bazični primer kategorije in tak h katerem se lahko vedno sklicujemo, je kategorija množic in funkcij med njimi. Označimo ga z \cat{Sets}. Za kategorijo se vedno prvo vprašamo: Kaj so objekti in kaj so morfizmi? Pri \textbf{Sets} so objekti množice in morfizmi funkcije.
+Osnovni primer kategorije, na katerega se lahko vedno sklicujemo, je kategorija množic in funkcij med njimi. Označimo ga s \cat{Sets}. Za kategorijo se vedno prvo vprašamo: kaj so objekti in kaj so morfizmi? Pri \textbf{Sets} so objekti množice in morfizmi funkcije.
 Izpolnjena morata biti pogoja asociativnosti in enote.
 Kompozitum morfizmov je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
-Vlogo identitete igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ def. kot $id_A(x) = x$ za vsak element $x \in A$.
+Vlogo identitete igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ id_A = f = id_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $id_A : A \to A$ definirana kot $id_A(x) = x$ za vsak element $x \in A$.
 \end{primer}
 
 \begin{primer}
-Še en primer, ki ga v bistvu že poznamo je podkategorija kategorije \cat{Sets}, in sicer $\cat{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa morfizmi? 
+Še ena kategorija, ki jo v bistvu že poznamo, je $\cat{Sets}_{fin}$, kategorija končnih množic in funkcij med njimi. Zakaj je to res kategorija? Objekti so očitno končne množice, kaj so pa morfizmi? 
 To bi morale biti funkcije med končnimi množicami in kompozitum takih funkcij je seveda tudi funkcija takega tipa, torej iz končne množice v končno množico. Razmisliti moramo še ali imamo identiteto. To seveda imamo, saj bo to podedovana identitetna funkcija iz \cat{Sets}, ki bo v tem primeru funkcija iz končne množice v končno, torej res morfizem v tej kategoriji. Tu imamo tudi primer kategorije, katere objekti so množice z dodatno strukturo ter so morfizmi objektov funkcije, ki ohranjajo strukturo teh množic.
 \end{primer}
 
 \begin{primer}
-Kaj bi bil primer "`majhne"' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt (ki jih ni) obstaja identiteta in za vsaka dva kompatibilna morfizma (ki ju ni) obstaja njun kompozitum. To torej je kategorija. Kaj pa kategorija z enim objektom. Imeti mora torej najmanj en objekt in eno identitete. Tej kateogriji pravimo tudi kategorija $\mathbf{1}$. Kategoriji z dvema objektom in enim neidentitetnim morfizmom med objektoma pravimo $\mathbf{2}$. Te dve kategoriji izgledata takole.
+Delno urejena množica je množica $P$, opremljena z relacijo, ki se jo ponavadi označuje z $\leq$ in je:
+\begin{itemize}
+\item refleksivna: $\forall x \in P \ x \leq x$
+\item antisimetrična: $x \leq y \ \& \ y \leq x \Rightarrow x = y$
+\item tranzitivna: $x \leq y \ \& \ y \leq z \Rightarrow x \leq z$
+\end{itemize}
+Morfizem delno urejenih množic $P$ in $Q$ je \emph{monotona} funkcija
+$$m : P \to Q$$
+kar pomeni, da za vse $x,y \in P$ iz $x \leq y$ sledi $m(x) \leq m(y)$. Ali je to kategorija? Izpolnjevati mora aksiome za kategorij, torej ali imamo identiteto za vsako delno urejeno množico $P$? Naravni kandidat je identitetna funkcija $1_P : P \to P$, ki je monotona, say iz $x \leq y$ sledi $x \leq y$.
+Kompozitum dveh monotonih funkcij $m : P \to Q$ in $n : P \to Q$ je tudi monotona funkcija, saj za $x \leq y$ zaradi monotonosti $m$ velja $m(x) \leq m(y)$ in zaradi monotonosti $n$ velja $n(m(x)) \leq n(m(y))$. Imamo torej kategorijo, ki jo označujemo s $\cat{Pos}$, delno urejenih množic in monotonih funkcij.
+\end{primer}
+
+\begin{primer}
+Monoid $(M, \bullet)$ je množica opremljena z binarno operacijo množenja, za katero drži:
+\begin{itemize}
+\item Zaprtost: $\forall x,y \in M : x \bullet y \in M$
+\item Asociativnost: $\forall x,y,z \in M : x \bullet ( y \bullet z ) = ( x \bullet y ) \bullet z$
+\item Obstoj enote: obstaja tak $e \in M$ tako da $\forall x \in M : e \bullet x = x \bullet e = x$
+\end{itemize}
+Homomorfizmi monoidov so funkcije $f : M \to N$ za katere velja
+\begin{enumerate}
+\item $f(e_M) = e_N$
+\item $f(x \bullet y) = f(x) \bullet f(y)$
+\end{enumerate}
+Identitetni homorfizem $1_M : M \to M$ bo predstavljal identiteto v tej kategoriji. Kompozitum dveh homorfizmov je spet homomorfizem, torej imamo novo kategorijo monoidov in homorfizmov med njimi, ki jo označujemo z $\cat{Mon}$.
+\end{primer}
+
+\begin{primer}
+Objekti kategorije niso nujno strukturirane množice in morfizmi niso nujno funkcije. Kategoriji kjer pa je to res, pravimo \emph{konkretna kategorija}. Vse kategorije, ki smo jih videli do tukaj so primeri konkretnih kategorij. 
+Poglejmo pa si še primer ne-konkretne kategorije. Naj bo $\cat{Rel}$ kategorija, kjer so objekti množice in morfizmi binarne relacije. Torej morfizem $f : A \to B$ je podmnožica kartezičnega produkta $f \subseteq A \times B$. Identiteta je identitetna relacija na množici.
+$$ 1_A = \set{(a,a) \in A \times A \mid a \in A} \subseteq A \times A$$
+Za relaciji $R \subseteq A \times B$ in $S \subseteq B \times C$, definiramo njun kompozitum $S \circ R$ kot
+$$(a,c) \in S \circ R \quad \Leftrightarrow \quad \exists b \ (a,b) \in R \ \& \ (b,c) \in S.$$
+
+Najprej mora veljati, da je tako definiran kompozitum res spet morfizem te vrste, kar jasno je, sam je množica elementov kartezičnega produkta, torej binarna relacija. Da pa to res je kategorija je potrebno preveriti še, ali je kompozitum identitete s poljubnim kompatibilnim morfizmom, res nazaj isti morfizem, in ali je kompozitum morfizmov asociativen. Recimo torej, da imamo množico $A$ in morfizem $R \subseteq A \times B$, če zapišemo njun kompozitum po definiciji, je
+$$R \circ 1_A = \set{(a,b) \in A \times B \mid \exists a \in A (a,a) \in A \ \& \ (a,b)\in R} = R.$$
+Da bi preverili asociativnost, denimo, da imamo morfizme $Q:A \to B$, $R:B \to C$ in $S: C \to D$. Sedaj velja
+\begin{align*}
+(a,d) \in S \circ (R \circ Q) &\Leftrightarrow \exists c \in C \ (a,c) \in R \circ Q \ \& \ (c,d) \in S \\
+&\Leftrightarrow \exists c \in C \ \exists b \in B \ (a,b) \in Q \ \& \ (b,c) \in R \ \& \ (c,d) \in S \\
+&\Leftrightarrow \exists b \in B \ (a,b) \in Q \ \& \ (b,d) \in S \circ R \\
+&\Leftrightarrow (a,d) \in (S \circ R) \circ Q.
+\end{align*}
+
+\end{primer}
+
+\begin{primer}
+Kaj bi bil primer "`minimalistične"' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta mora vsaka kategorija imeti najmanj toliko morfizmov kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt, ki jih ni, obstaja identiteta in za vsaka dva kompatibilna morfizma ,ki ju ni, obstaja njun kompozitum, to torej je kategorija. Kaj pa kategorija z enim objektom? Imeti mora en objekt in najmanj en morfizem, namreč identiteto na ta objekt. To z samo enim morfizmom pogosto označujemo z $\mathbf{1}$, ko je iz konteksta jasno, da gre za kategorijo (je ta del res potreben?). Kategoriji z dvema objektom in enim neidentitetnim morfizmom med objektoma pravimo $\mathbf{2}$. Ti dve kategoriji lahko predstavimo z diagramoma:
 
 \begin{equation}
 \begin{tikzcd}
@@ -409,51 +455,14 @@ Identitetnih morfizmov se ponavadi ne riše. Kategorija $\cat{3}$ bi izgledala t
 \end{primer}
 
 \begin{primer}
-Objekti v kategoriji pa ne rabijo predstavljati nekih strukturiranih množic in morfizmi ne rabijo predstavljati funkcij med temi množicami. Kategoriji kjer pa je to res, pravimo \emph{konkretna kategorija}. Vse kategorije, ki smo jih videli do tukaj so primeri konkretnih kategorij. 
-Poglejmo pa si še primer ne-konkretne kategorije. Naj bo $\cat{Rel}$ kategorija, kjer so objekti množice in morfizmi naj bodo binarne relacije. Torej morfizem $f : A \to B$ je podmnožica kartezičnega produkta $f \subseteq A \times B$. Identiteta je identitetna relacija na množici.
-$$ 1_A = \set{(a,a) \in A \times A \mid a \in A} \subseteq A \times A$$
-Za relaciji $R \subseteq A \times B$ in $S \subseteq B \times C$, definiramo njun kompozitum $S \circ R$ kot
-$$(a,c) \in S \circ R \quad \Leftrightarrow \quad \exists b, (a,b) \in R \ \& \ (b,c) \in S$$
-
-\end{primer}
-
-\begin{primer}
-Delno urejena množica ali poset je množica opremljena z relacijo, ki se jo ponavadi označuje z $\leq$ in je:
-\begin{itemize}
-\item Refleksivna
-\item Antisimetrična
-\item Tranzitivna
-\end{itemize}
-Morfizem delno urejenih množic $P$ in $Q$ je \emph{monotona} funkcija
-$$m : P \to Q$$
-kar pomeni, da za vsaka $x,y \in P$ za katera je $x \leq y$, potem velja $m(x) \leq m(y)$. Ali je to kategorija? Izpolnjevati mora aksiome za kategorij, torej ali imamo identiteto za vsako delno urejeno množico $P$? Naravni kandidat je identitetna funkcija $1_P : P \to P$, ki je monotona, say iz $x \leq y$ sledi $x \leq y$.
-Kompozitum dveh monotonih funkcij $m : P \to Q$ in $n : P \to Q$ je tudi monotona funkcija, saj za $x \leq y$ zaradi monotonosti $m$ velja $m(x) \leq m(y)$ in zaradi monotonosti $n$ velja $n(m(x)) \leq n(m(y))$. Imamo torej kategorijo, ki jo označujemo s $\cat{Pos}$, delno urejenih množic in monotonih funkcij.
-\end{primer}
-
-\begin{primer}
-Monoid $(M, \bullet)$ je množica opremljena z binarno operacijo množenja, za katero drži
-\begin{itemize}
-\item Zaprtost: $\forall x,y \in M : x \bullet y \in M$
-\item Asociativnost: $\forall x,y,z \in M : x \bullet ( y \bullet z ) = ( x \bullet y ) \bullet z$
-\item Obstoj enote: obstaja tak $e \in M$ tako da $\forall x \in M : e \bullet x = x \bullet e = x$
-\end{itemize}
-Homomorfizmi monoidov so funkcije $f : M \to N$ za katere velja
-\begin{enumerate}
-\item $f(e_M) = e_N$
-\item $f(x \bullet y) = f(x) \bullet f(y)$
-\end{enumerate}
-Identitetni homorfizem $1_M : M \to M$ bo predstavljal identiteto v tej kategoriji. Kompozitum dveh homorfizmov je spet homomorfizem, torej imamo novo kategorijo monoidov in homorfizmov med njimi, ki jo označujemo z $\cat{Mon}$.
-\end{primer}
-
-\begin{primer}
 Naj bo $(P, \leq)$ delno urejena množica. Ali je to tudi kategorija? Najprej se moramo vprašati, kaj so objekti v tej kategoriji in kaj so morfizmi.
-Imamo množio elementov $p,q \in P$ med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente $P$ in podamo morfizem med $p$ in $q$ natanko takrat ko v $P$ velja $p \leq q$.
+Imamo množico elementov $p,q \in P$, med katerimi lahko imamo relacijo $p \leq q$, ki je refleksivna, antisimetrična in tranzitivna. Dobimo idejo, da za objekte vzamemo elemente $P$ in podamo morfizem med $p$ in $q$ natanko takrat, ko v $P$ velja $p \leq q$.
 Torej: 
 \begin{itemize}
-\item \textbf{Objekti:} Elementi množice $P$
-\item \textbf{Morfizmi:} Morfizem $p \rightarrow q \Leftrightarrow p \leq q$
+\item objekti: elementi množice $P$
+\item morfizmi: morfizem $p \rightarrow q \Leftrightarrow p \leq q$
 \end{itemize}
-Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
+Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo:
 
 \begin{enumerate}
 \item Za vsak objekt $p \in P$ potrebujemo morfizem $1_p : p \to p$. Ali obstaja tak morfizem? Seveda, saj za vsak $p$ velja $p \leq p$, kar nam da želeno identiteto.
@@ -462,12 +471,14 @@ Potrebno je preveriti, če so izpolnjeni aksiomi za kategorijo.
 Vsaka delno urejena množica je torej svoja kategorija in v bistvu so kategorije v nekem smislu posplošene delno urejene množice.
 \end{primer}
 
+
+
 \begin{primer}
-Naj bo $A$ poljubna množica. $A$ lahko obravnavamo kot svojo kategorijo $\cat{Dis}(X)$ kjer za objekte vzamemo elemente $X$, kjer so edini morfizmi identitete na vsakem objektu. Taki kategoriji, kjer so edini morfizmi identitete pravimo \emph{diskretna} kategorija.
+Vsako množico $A$ lahko obravnavamo kot kategorijo $\cat{Dis}(A)$ kjer za objekte vzamemo elemente $A$, kjer so edini morfizmi identitete na vsakem objektu. Taki kategoriji, kjer so edini morfizmi identitete pravimo \emph{diskretna} kategorija.
 \end{primer}
 
 \begin{primer}
-Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi učasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identiteta za nek topološki prostor $(X, \mathcal{T})$ je identietna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Kompozitum dveh preslikav je spet preslikava. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
+Še en primer, ki ga bralec najverjetneje že pričakuje. Objekti naj bodo topološki prostori in morfizmi naj bodo zvezne funkcije med njimi. Zveznim funkcijam, kot tudi včasih drugim funkcijam, ki ohranjajo struktuo, bomo pravili preslikave. Identiteta za neki topološki prostor $(X, \mathcal{T})$ je identitetna preslikava $1_X : (X, \mathcal{T}) \to (X, \mathcal{T})$, ki je seveda zvezna. Osnovno dejstvo topologije je, da je kompozitum dveh zveznih funkcij spet zvezna funkcija. Torej topološki prostori res tvorijo kategorijo. Označujemo jo s $\cat{Top}$.
 \end{primer}
 
 \section{Različni tipi morfizmov}
@@ -487,14 +498,14 @@ Naj bo $f : A \to B$ izomorfizem in naj bosta $g,h: B \to A$ njegova inveza. Pot
 Ker so inverzi enolični, lahko inverz morfizma $f$ upravičeno označujemo z $f^{-1}$.
 
 \begin{primer*}
-Izomorfizmi v kategoriji $\cat{Sets}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar ostaja enoličen inverz te funkcije, ki se komponira v identitetno funkcijo. 
+Izomorfizmi v kategoriji $\cat{Sets}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar obstaja enoličen inverz te funkcije, ki se komponira v identitetno funkcijo. 
 \end{primer*}
 
 \begin{primer*}
 Vsak identitetni morfizem je izomorfizem, nima pa nujno kategorija drugih morfizmov kot identitetnega. Na primer kategorija $\cat{2}$ ima samo en neidentitetni morfizem, ki pa nima inverza torej ni izomorfizem.
 \end{primer*}
 
-Primer z funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funkcija bijektivna ravno takrat, ko je surjektivna ter injektivna. Vprašamo se, kaj bi pa bili karakterizaciji teh dveh lastnosti v jeziku teorije kategorij. Izkaže se, da pridemo do malenkost bolj splošnih pojmov, ki jih predstavimo v naslednjih dveh definicijah.
+Primer s funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funkcija bijektivna ravno takrat, ko je surjektivna ter injektivna. Vprašamo se, kaj bi pa bili karakterizaciji teh dveh lastnosti v jeziku teorije kategorij. Izkaže se, da pridemo do malenkost bolj splošnih pojmov, ki jih predstavimo v naslednjih dveh definicijah.
 
 \begin{definicija}
 \emph{Epimorfizem} je tak morfizem $e : E \to A$, da za vsaka morfizma $f,g : A \to B$ iz $f \circ e = g \circ e$ sledi $f = g$.
@@ -505,23 +516,26 @@ Primer z funkcijami nam pa naravno porodi novo vprašanje, saj kot vemo, je funk
 \end{definicija}
 
 \begin{primer}
-Preverimo, da mono- in epi-morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da it $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz čeasr iz injektivnosti $f$ sledi $g(x) = h(x)$ za vsak $x$, torej $g = h$. Privzemimo sedaj, da je $f$ monomorfizem. Velja torej $f \circ g = f \circ h \implies g = h$. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice $1$ v $A$ predstavljajo ravno elemente množice $A$. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je $f$ res injektivna. Naj bo sedaj $f : A -> B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$ saj vsak tak y lahko zapišemo kot $f(x)$ za nek $x \in A$. Torej je $f$ res epi. Naj bo sedaj $f$ epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
+Preverimo, da mono- in epi-morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da iz $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$ iz česar iz injektivnosti $f$ sledi $g(x) = h(x)$ za vsak $x$, torej $g = h$. 
+Privzemimo sedaj, da je $f$ monomorfizem. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice $1$ v $A$ predstavljajo ravno elemente množice $A$. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je $f$ res injektivna. Naj bo sedaj $f : A \rightarrow B$ surjektivna funkcija. Velja torej, da $\forall y \in B \ \exists x \in A : f(x) = y$. Naj bosta sedaj $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$, saj vsak tak $y$ lahko zapišemo kot $f(x)$ za neki $x \in A$. Torej je $f$ res epimorfizem. Naj bo sedaj $f : A \to B$ epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
 \[
 g(x)=
 \begin{cases}
-1 \quad\text{;}\quad x \in \mathrm{Im}f \\
-0 \quad\text{;}\quad x \notin \mathrm{Im}f \\
+1 \quad\text{;}\quad x \in \mathrm{Im}(f) \\
+0 \quad\text{;}\quad x \notin \mathrm{Im}(f) \\
 \end{cases}
 \]
-$$ h(x) = 1 \quad \forall x \in B $$
-Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $g \circ f(x) = g(f(x)) = 1$ za vsak $x \in A$, saj je $f(x) \in \mathrm{Im}f$. Po drugi strani pa je tudi $h \circ f(x) = h(f(x)) = 1$. Torej je za vsak $x \in A$, $g \circ f(x) = h \circ f(x)$, oziroma $g\circ f = h\circ f$ in ker je $f$ epimorfizem sledi $g = h$, kar pa pomeni, da je za vsak $y \in B$ nek tak $x \in A$, da z $f$ lahko pridemo do njega, kar pa pomeni ravno, da je $f$ surjektivna.
+$$ h(x) = 1,$$
+kjer je $\mathrm{Im}(f) := \set{y \in B \mid \exists x \in A \ y = f(x)}$.
+Poglejmo sedaj kompozituma $g \circ f$ in $h \circ f$. Velja $(g \circ f)(x) = g(f(x)) = 1$ za vsak $x \in A$, saj je $f(x) \in \mathrm{Im}f$. Po drugi strani pa je tudi $h \circ f(x) = h(f(x)) = 1$. Torej je za vsak $x \in A$, $(g \circ f)(x) = (h \circ f)(x)$, oziroma $g\circ f = h\circ f$ in ker je $f$ epimorfizem sledi $g = h$, kar pomeni, da velja $g(y) = h(y) = 1$ za vsak $y \in B$. Iz definicije $g$ sledi, da za vsak $y \in B$ velja $y \in \mathrm{Im}(f)$, torej je $f$ surjektivna.
 \end{primer}
 
-Ta primer bi nam dal misliti, da so epi- in mono-morfizmi vedno, kadar imamo opravka z objekti, ki predstavljajo množice, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
+Ta primer bi nam dal misliti, da so epi- in mono-morfizmi vedno, v konkretni kategoriji, ravno surjektivne ter injektivne funkcije. Naslednji primer pokaže, da temu ni vedno tako.
 
 \begin{primer}
 Naj bo $f : (\mathbb{N},+) \to (\mathbb{Z},+)$ homomorfizem monoidov, definiran s predpisom $f(n) = n$ za vsak $n$ iz $\mathbb{N}$. Naj bosta sedaj $g,h: \mathbb{Z} \to M$ taka homomorfizma monoidov, da velja $g \circ f = h \circ f$. 
-Velja torej $$g(n) = gf(n) = hf(n) = h(n)$$
+Velja torej 
+$$g(n) = g(f(n)) = h(f(n)) = h(n)$$
 Ker sta $g,h$ homomorfizma monoidov velja
 $$g(0) = h(0) = 0$$
 Zanima nas še vrednosti $g(-n)$ za $n \in \mathbb{N}$. 
@@ -533,7 +547,7 @@ g(0) = g(n - n) &= g(n) + g(-n) \\
 Če vse to pogledamo skupaj, vidimo da velja
 $$g(k) = h(k) \quad \forall k \in \mathbb{Z}$$
 kar pa pomeni $g = h$. Torej je $f$ epimorfizem. Način kako smo prišli do tega primera nam da misliti, da mogoče kar je potrebno, za to da je homorfizem monoidov epi, da je surjektiven na generatorje kodomene.
-Algebraično gledano, to da je nek morfizem $e$ epi, pomeni natanko to, da ga lahko pri kompoziciji krajšamo z desne: $fe = ge \implies f=g$. Obratno, če je morfizem $m$ mono, pomeni, da ga lahko krajšamo z leve: $mf = mg \implies f = g$.
+Algebraično gledano, to da je neki morfizem $e$ epi, pomeni natanko to, da ga lahko pri kompoziciji krajšamo z desne: $fe = ge \implies f=g$. Obratno, če je morfizem $m$ mono, pomeni, da ga lahko krajšamo z leve: $mf = mg \implies f = g$.
 
 \end{primer}
 
@@ -645,7 +659,7 @@ A && B \ar[ll, "\alpha"'] \\
 
 \section{Funktorji}
 
-V teoriji kategorij spoznamo abstraktne karakterizacije in konstrukcije, ki delujejo v neki kategoriji. Radi bi seveda konstrukcijo, ki smo jo spoznali v eni kategoriji prenesli na druge kategorije, mogoče celo v upanju, da je neke probleme lažje rešiti v drugi kategoriji in da bomo znali rešitev prenesti nazaj v originalno kategorijio kjer nas zanima rešitev problema. V ta namen uvedemo definicijo, ki je na nek način ključna za uporabo teorije kategorij.
+V teoriji kategorij spoznamo abstraktne karakterizacije in konstrukcije, ki delujejo v neki kategoriji. Radi bi seveda konstrukcijo, ki smo jo spoznali v eni kategoriji prenesli na druge kategorije, mogoče celo v upanju, da je neke probleme lažje rešiti v drugi kategoriji in da bomo znali rešitev prenesti nazaj v originalno kategorijio kjer nas zanima rešitev problema. V ta namen uvedemo definicijo, ki je na neki način ključna za uporabo teorije kategorij.
 
 \begin{definicija}
 Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Funktor} $F : \cat{C} \to \cat{D}$ med kategorijama $\cat{C}$ in $\cat{D}$ je par morfizmov
@@ -830,7 +844,7 @@ Preverimo, da naš motivacijski zgled z kartezičnim produktom množic res ustre
 $$ \pi_A \circ \langle f,g \rangle (x) = \pi_A(f(x),g(x)) = f(x) $$
 in 
 $$ \pi_B \circ \langle f,g \rangle (x) = \pi_B(f(x),g(x)) = g(x) $$
-Naj bo sedaj nek $h : X \to A \times B$, tak da velja
+Naj bo sedaj neki $h : X \to A \times B$, tak da velja
 $$\pi_A \circ h = f, \ \pi_B \circ h = g.$$
 Ker $h$ slika v kartezični produkt, ga lahko zapišemo kot 
 $$h(x) = (h_1(x),h_2(x)).$$
@@ -958,7 +972,7 @@ $$\begin{tikzcd}
 A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B 
 \end{tikzcd}$$
 
-Radi bi zožali domeno $A$ na takšno podmnožico, da se $f$ in $g$ na njej ujemata. Torej $\set{x \in A \mid f(x) = g(x)} \subseteq A$. Označimo to množico z $E$ in inkluzijo $E$ v $A$ z $e$, torej $\forall x \in E \enspace e(x)= x $. To, da je nek $x \in A$ v $E$ lahko ekvivalentno povemo, kot da obstaja nek morfizem $\hat{x} : 1 \to A$ za katerega je $f \circ \hat{x} = g \circ \hat{x}$. Kar pa ravno tako pomeni, da obstaja nek $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz $E$. Situacijo lahko ponazorimo z naslednjim diagramom.
+Radi bi zožali domeno $A$ na takšno podmnožico, da se $f$ in $g$ na njej ujemata. Torej $\set{x \in A \mid f(x) = g(x)} \subseteq A$. Označimo to množico z $E$ in inkluzijo $E$ v $A$ z $e$, torej $\forall x \in E \enspace e(x)= x $. To, da je neki $x \in A$ v $E$ lahko ekvivalentno povemo, kot da obstaja neki morfizem $\hat{x} : 1 \to A$ za katerega je $f \circ \hat{x} = g \circ \hat{x}$. Kar pa ravno tako pomeni, da obstaja neki $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz $E$. Situacijo lahko ponazorimo z naslednjim diagramom.
 $$\begin{tikzcd}
 E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
 1 \ar[u, dashed, "\hat{x}'"] \ar[ur, "\hat{x}"'] \\
@@ -1040,7 +1054,7 @@ R \ar[r, shift left, "r_1"] \ar[r, shift right, "r_2"'] & A \ar[r, "\pi"] \ar[dr
 \end{primer}
 
 \begin{primer}
-V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ nek topološki prostor in $R$ ekvivalenčna relacija na $X$. Definiramo funkcijo
+V topoloških prostorih tudi pogosto naletimo na situacijo kjer identificiramo neke točke med seboj in generiramo ekvivalenčno relacijo po kateri ustvarimo kvocientni prostor. Tudi to in podobni primeri lepljenja so primer kozožka. Naj bo torej $X$ neki topološki prostor in $R$ ekvivalenčna relacija na $X$. Definiramo funkcijo
 $$ q : X \to X/R,$$
 ki jo imenujemo \emph{kvocientna projekcija} in slika točko $x \in C$ v njen ekvivalenčni razred. Od topologije $X/R$ zahtevamo vsaj to, da je kvocientna projekcija zvezna, kar pomeni, da smejo biti med odprtimi množicami v $X/R$ le take množice $V \subseteq X/R$, da je $q^{-1}(V)$ odprta v $X$. Za definicijo kvocientne topologije vzamemo kar vse take množice. Torej velja
 $$V \ \text{je odprta v} \ X/R \quad \overset{\text{def}}{\Leftrightarrow} \quad q^{-1}(V) \ \text{odprta v} \ X.$$
@@ -1095,7 +1109,7 @@ Z
 & C
 \end{tikzcd}$$
 
-Potem velja $p_1u(z) = p_1(z_1(z),z_2(z)) = z_1(z)$ in $p_2u(z) = p_2(z_1(z),z_2(z)) = z_2(z)$ za vsak $z \in Z$. Denimo sedaj, da obstaja še neka druga funkcija $v : Z \to P$, za katero je $z_1 = p_1v$, $z_2 = p_2v$. Poglejmo, kaj mora veljati za funkcijo $v$. Naj bo $v(z) = (a,b) \in P$ za nek $z \in Z$. Veljati mora $z_1(z) = p_1v(z) = p_1(x,y) = x$. Po drugi strani pa $z_2(z) = p_2v(z) = p_2(x,y) = y$. Torej je $v(z) = (x,y) = (z_1(z),z_2(z))$, oziroma $v = u$.
+Potem velja $p_1u(z) = p_1(z_1(z),z_2(z)) = z_1(z)$ in $p_2u(z) = p_2(z_1(z),z_2(z)) = z_2(z)$ za vsak $z \in Z$. Denimo sedaj, da obstaja še neka druga funkcija $v : Z \to P$, za katero je $z_1 = p_1v$, $z_2 = p_2v$. Poglejmo, kaj mora veljati za funkcijo $v$. Naj bo $v(z) = (a,b) \in P$ za neki $z \in Z$. Veljati mora $z_1(z) = p_1v(z) = p_1(x,y) = x$. Po drugi strani pa $z_2(z) = p_2v(z) = p_2(x,y) = y$. Torej je $v(z) = (x,y) = (z_1(z),z_2(z))$, oziroma $v = u$.
 \end{primer}
 
 \begin{trditev}
@@ -1175,7 +1189,7 @@ A \ar[d, "f"'] \ar[r, "g"] & C \\
 B & \\
 \end{tikzcd} $$
 
-Naj bo $B + C$ koprodukt $B$ in $C$. Sedaj identificiramo tiste elemente $b \in B$ in $c \in C$, za katere obstaja nek ta $a \in A$, da velja
+Naj bo $B + C$ koprodukt $B$ in $C$. Sedaj identificiramo tiste elemente $b \in B$ in $c \in C$, za katere obstaja neki ta $a \in A$, da velja
 $$f(a) = b \quad \text{in} \quad g(a) = c.$$
 To nam generira ekvivalenčno relacijo $\sim$ na $B + C$ glede na pogoj $f(a) \sim g(a)$ za vse $a \in A$. Če vzamemo kvocientno množico glede na to ekvivalenčno relacijo $B + C/\sim$, dobimo potisk $B +_A C$. Ta konstrukcija je v veliki meri dualna tisti za povleke v $\cat{Sets}$, kar pa niti ni presenetljivo.
 
@@ -1186,7 +1200,7 @@ To nam generira ekvivalenčno relacijo $\sim$ na $B + C$ glede na pogoj $f(a) \s
 
 \subsection{Limite}
 
-Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo nek objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "`najboljši"' tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
+Konstrukcije, ki smo jih do sedaj videli imajo med seboj nekaj skupnega, in sicer pri vseh imamo neko posebno konfiguracijo objektov in morfizmov in proizvedemo neki objekt, ki je povezan s to konfiguracijo z neko univerzalno lastnostjo. Je "`najboljši"' tak objekt, ki ustreza pogojem komutativnosti, ki jih ta konstrukcija predstavlja. Do sedaj smo to konfiguracijo poimenovali diagram. Pa definirajmo pojem diagrama bolj točno.
 
 \begin{definicija}
 \textit{Diagram oblike} $\cat{J}$ v kategoriji $\cat{C}$ je funktor $D : \cat{J} \to \cat{C}$. Kjer $\cat{J}$ pravimo tudi \textit{indeksna} kategorija. Objekte v indeksni kategoriji označujemo z $i,j,\ldots$ in vrednosti funktorja $D_i,D_j,\ldots$ \\
@@ -1405,7 +1419,7 @@ Na primer denimo, da ima \cat{C} produkte in za neke objekte $A,B,C \in \cat{C}$
 $$(A \times B) \times C \quad \text{in} \quad A \times (B \times C)$$
 Ne glede na izbiro objektov $A,B,C$ obstaja izomorfizem
 $$h : (A \times B) \times C \xrightarrow{\sim} A \times (B \times C)$$
-Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov ? Za nek morfizem $f : A \to A'$ dobimo komutativen kvadrat
+Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov ? Za neki morfizem $f : A \to A'$ dobimo komutativen kvadrat
 
 $$ \begin{tikzcd}
 (A \times B) \times C \ar[r, "h_A"] \ar[d] & A \times (B \times C) \ar[d] \\
@@ -1481,10 +1495,10 @@ Gre torej za naravno transformacijo iz konstantnega funktorja, ki pošlje vse ob
 
 \chapter{Pomembne trditve in definicije}
 
-Najprej predstavimo definicijo, ki nam bo omogočala definirati razred kategorij, s katerimo se bomo ukvarjali v povezavi z Yonedovo lemo in v njih veljajo neke posebej lepe stvari.
+Najprej predstavimo definicijo, ki nam bo omogočala definirati razred kategorij, s katerimi se bomo ukvarjali v povezavi z Yonedovo lemo in v njih veljajo neke posebej lepe stvari.
 
 \begin{definicija}
-Kategorija $\cat{C}$ je \emph{majhna}, če sta tako kolekcija objektov kot kolekcija morfizmov množici.
+Kategorija $\cat{C}$ je \emph{majhna}, če sta tako kolekcija objektov, kot kolekcija morfizmov množici.
 \end{definicija}
 
 \begin{definicija}
@@ -1501,7 +1515,7 @@ To da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \ca
 
 \end{trditev}
 \begin{dokaz}
-Če ima kategorija vse limite potem ima očitno tudi produkte in zožke, saj sta to posebna primera limit. Bolj zanimiv del te trditve je njen obrat.
+Če ima kategorija vse limite, potem ima očitno tudi produkte in zožke, saj sta to posebna primera limit. Bolj zanimiv del te trditve je njen obrat.
 
 Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}$, ki ima morfizme do vsakega izmed $D_i$. Kot prva ideja je to produkt 
 $$\prod_{i \in \cat{J}}D_i,$$
@@ -1575,7 +1589,7 @@ zožek v $\cat{C}$, ki nam poda diagram
 $$ \begin{tikzcd}[sep=normal]
 \Hom(C,E) \ar[r, "e_*"] & \Hom(C,X) \ar[r, shift left, "f_*"] \ar[r, shift right, "g_*"'] & \Hom(C,Y)
 \end{tikzcd} $$
-v $\cat{Sets}$. Da pokažemo, da je to zožek, vzemimo nek $h \in \Hom(C,X)$ z $f_* h = g_* h$. Potem velja $fh = gh$, torej obstaja enoličen $u : C \to E$, tako da je $eu = h$. Imamo torej enoličen $u \in \Hom(C,E)$ z $e_* u = eu = h$. Torej je $e_* : \Hom(C,E) \to \Hom(C,X)$ res zožek $f_*$ in $g_*$.
+v $\cat{Sets}$. Da pokažemo, da je to zožek, vzemimo neki $h \in \Hom(C,X)$ z $f_* h = g_* h$. Potem velja $fh = gh$, torej obstaja enoličen $u : C \to E$, tako da je $eu = h$. Imamo torej enoličen $u \in \Hom(C,E)$ z $e_* u = eu = h$. Torej je $e_* : \Hom(C,E) \to \Hom(C,X)$ res zožek $f_*$ in $g_*$.
 \end{itemize}
 
 \end{dokaz}
@@ -1728,7 +1742,7 @@ f \mapsto F(f)(a) \\
 Torej
 $$\widehat{\widetilde{a}} = (\vartheta_a)_C(1_C) = F(1_C)(a) = 1_{F(C)}(a) = a$$
 \\
-Sedaj moramo še pokazati, da sta zadoščena naturalnostna pogoja: \\
+Sedaj moramo še pokazati, da sta zadoščena naravna pogoja: \\
 Naj bo $f : C \to D$ in naj bo $\vartheta \in \Hom(yC,F)$. \\
 Pokazali bi radi:
 \begin{equation}
@@ -1862,7 +1876,7 @@ $$ \begin{tikzcd}
 yC' \ar[rr, "yh"] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \\
 & P &
 \end{tikzcd} $$
-komutira. Za komponente kostožca nad $y \circ \pi$ torej vzamemo naravne transformacije $x : yC \to P$. Da je to res kolimita, denimo, da obstaja nek drug stožec $y \circ \pi \to Q$ z komponentami $\vartheta_{(x,C)} : yC \to Q$. Iščemo torej tako enolično naravno transformacijo, da naslednji diagram komutira.
+komutira. Za komponente kostožca nad $y \circ \pi$ torej vzamemo naravne transformacije $x : yC \to P$. Da je to res kolimita, denimo, da obstaja neki drug stožec $y \circ \pi \to Q$ z komponentami $\vartheta_{(x,C)} : yC \to Q$. Iščemo torej tako enolično naravno transformacijo, da naslednji diagram komutira.
 
 $$\begin{tikzcd}
 yC' \ar[rr, "yh"] \ar[ddr, bend right, "\vartheta_{(x',C')}"'] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \ar[ddl, bend left, "\vartheta_{(x,C)}"] \\
