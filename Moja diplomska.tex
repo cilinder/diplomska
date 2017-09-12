@@ -639,7 +639,7 @@ Kako bi sedaj prešli iz $f$ v $g$? Ideja, ki se nam naravno porodi, je da pove�
 A \arrow[d, "f"'] \arrow[r, "g_1"] & A' \arrow[d, "f'"] \\
 B \arrow[r, "g_2"'] & B'
 \end{tikzcd} \]
-Morfizem $f \to g$ je par morfizmov $(g_1, g_2)$ iz $\cat{C}$, tako da sta obe poti po kvadratu enaki, torej $g_2 \circ f = f' \circ g1$, čemur rečemo, da \emph{kvadrat komutira}.
+Morfizem $f \to g$ je par morfizmov $(g_1, g_2)$ iz $\cat{C}$ tako, da sta obe poti po kvadratu enaki, torej $g_2 \circ f = f' \circ g1$, čemur rečemo, da \emph{kvadrat komutira}.
 Identiteta je par $(1_A, 1_B)$.
 Da bo to kategorija, moramo biti sposobni definirati kompozitum takih morfizmov.
 Recimo, da imamo naslednjo situacijo:
@@ -666,7 +666,7 @@ A \arrow[rd, "f"'] & & \arrow[ld, "f'"] A' \\
 & B &
 \end{tikzcd} \]
 %
-Ostale stvari delujejo podobno kot v kategoriji morfizmov. Morfizmi so ravno tako morfizmi v $\cat{C}$, a z eno zahtevo manj, saj sedaj ne bo potrebno poslati kodomene prvega morfizma v kodomeno drugega. V našem primeru bi bil morfizem iz $f$ v $f'$, morfizem $g : A \to A'$ v $\cat{C}$, tako da sledeči trikotnik komutira.
+Ostale stvari delujejo podobno kot v kategoriji morfizmov. Morfizmi so ravno tako morfizmi v $\cat{C}$, a z eno zahtevo manj, saj sedaj ne bo potrebno poslati kodomene prvega morfizma v kodomeno drugega. V našem primeru bi bil morfizem iz $f$ v $f'$, morfizem $g : A \to A'$ v $\cat{C}$ tako, da sledeči trikotnik komutira.
 %
 \[ \begin{tikzcd}
 A \arrow[rd, "f"'] \ar[rr, "g"] & & \arrow[ld, "f'"] A' \\
@@ -706,7 +706,7 @@ Naj bosta $\cat{C}$ in $\cat{D}$ kategoriji. \emph{Funktor} $F : \cat{C} \to \ca
 $$F_0 : \cat{C}_0 \to \cat{D}_0$$
 med objekti kategorij in
 $$F_1 : \cat{C}_1 \to \cat{D}_1$$
-med morfizmi, tako da veljajo naslednje lastnosti:
+med morfizmi tako, da veljajo naslednje lastnosti:
 \begin{itemize}
 \item $F(f : A \to B) = F(f) : F(A) \to F(B)$
 \item $F(1_A) = 1_{F(A)}$
@@ -844,7 +844,7 @@ A & \ar[l, "\pi_A"] A \times B \ar[r, "\pi_B"'] & B \\
 $$\begin{tikzcd}
 A & P \ar[l, "p_A"'] \ar[r, "p_A"] & B,
 \end{tikzcd}$$
-z naslednjo univerzalno lastnostjo: Za vsak objekt $X$ iz $\cat{C}$ in morfizma $f : X \to A$, $g : X \to B$ obstaja natanko en morfizem $u : X \to P$, tako da naslednji diagram:
+z naslednjo univerzalno lastnostjo: Za vsak objekt $X$ iz $\cat{C}$ in morfizma $f : X \to A$, $g : X \to B$ obstaja natanko en morfizem $u : X \to P$ tako, da naslednji diagram:
 %
 $$\begin{tikzcd}
 & X \ar[ld, "f"'] \ar[d, dashed, "u"] \ar[rd, "g"] & \\
@@ -903,7 +903,7 @@ Ravno tako, kot produkt dveh objektov, lahko definiramo produkt treh ali več ob
 $$\prod_{i \in I}C_i,$$
 skupaj z družino morfizmov 
 $$(p_j : \prod_{i \in I}C_i \to C_j)_{j \in I},$$
-z univerzalno lastnostjo, da za vsak objekt $X$, z morfizmi $(x_i : X \to C_i)_{i \in I}$, obstaja natanko en morfizem $u : X \to \prod_{i \in I}C_i$, tako da velja
+z univerzalno lastnostjo, da za vsak objekt $X$, z morfizmi $(x_i : X \to C_i)_{i \in I}$, obstaja natanko en morfizem $u : X \to \prod_{i \in I}C_i$ tako, da velja
 $$x_j = p_j \circ u,$$
 za vsak $j \in I$. Oziroma da diagram:
 
@@ -1140,7 +1140,7 @@ Da bo $\overline{f}$ zvezna, mora za vsako odprto množico $U \subseteq Y$ velja
 
 \end{primer}
 
-O kozožku si lahko mislimo, da zoži $B$ z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "`najboljši"' način, tako, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi $Q$ (mogoče preveč po domače napisano?).
+O kozožku si lahko mislimo, da zoži $B$ z identifikacijo vseh parov $f(a) = f(b)$. To naredi na "`najboljši"' način tako,, da vsako drugo zožanje $f$ in $g$ lahko speljemo skozi $Q$ (mogoče preveč po domače napisano?).
 
 
 \section{Povleki in potiski}
@@ -1149,7 +1149,7 @@ Radi bi nadaljevali serijo posploševanja konceptov iz teorije množic pri čeme
 \subsection{Povlek}
 
 \begin{definicija}
-Naj bosta $f : A \to C$ in $g : B \to C$ morfizma v kategoriji $\cat{C}$. \emph{Povlek} $f$ in $g$ je objekt $P$, skupaj z morfizmoma $p_1 : P \to A$ in $p_2 : P \to B$, takšnima, da tako imenovani "`pullback kvadrat"' (ustrezna terminologija?) komutira. Torej $f \circ p_1 = g \circ p_2$. Pri tem je $P$ izpolnjuje univerzalno lastnost, da za vsake $X$, $x_1 : X \to A$, $x_2 : X \to B$, za katere velja $f \circ x_1 = g \circ x_2$, obstaja enoličen morfizem $u : X \to P$, tako da velja $x_1 = p_1 \circ u$ in $x_2 = p_2 \circ u$. To shematično prikažemo z diagramom:
+Naj bosta $f : A \to C$ in $g : B \to C$ morfizma v kategoriji $\cat{C}$. \emph{Povlek} $f$ in $g$ je objekt $P$, skupaj z morfizmoma $p_1 : P \to A$ in $p_2 : P \to B$, takšnima, da tako imenovani "`pullback kvadrat"' (ustrezna terminologija?) komutira. Torej $f \circ p_1 = g \circ p_2$. Pri tem je $P$ izpolnjuje univerzalno lastnost, da za vsake $X$, $x_1 : X \to A$, $x_2 : X \to B$, za katere velja $f \circ x_1 = g \circ x_2$, obstaja enoličen morfizem $u : X \to P$ tako, da velja $x_1 = p_1 \circ u$ in $x_2 = p_2 \circ u$. To shematično prikažemo z diagramom:
 
 $$\begin{tikzcd}
 X
@@ -1246,7 +1246,7 @@ Iz trditve vidimo, da je v povleku zakodirana vsa informacija, ki jo imata produ
 Definicja potiska je seveda dualna definiciji povleka in jo lahko kar napišemo.
 
 \begin{definicija}
-Naj bosta $f: C \to A$ in $g : C \to B$ morfizma v kategoriji $\cat{C}$. \emph{Potisk} $f$ in $g$ je objekt $Q$, skupaj z morfizmoma $q_1 : A \to Q$, $q_2 : B \to Q$, tako da diagram:
+Naj bosta $f: C \to A$ in $g : C \to B$ morfizma v kategoriji $\cat{C}$. \emph{Potisk} $f$ in $g$ je objekt $Q$, skupaj z morfizmoma $q_1 : A \to Q$, $q_2 : B \to Q$ tako, da diagram:
 $$\begin{tikzcd}
 C \ar[r, "g"] \ar[d, "f"'] & B \ar[d, "q_2"] \\
 A \ar[r, "q_1"'] & Q \\
@@ -1566,8 +1566,7 @@ in na morfizmih
 $$ \alpha \bar{\times} \beta = \beta \times \alpha.$$
 Definiramo naravno transformacijo $t : \times \to \bar{\times}$ kot
 $$t_{(A,B)}\langle a,b \rangle = \langle b,a \rangle,$$
-za posplošene elemente $\langle a,b \rangle : Z \to A \times B$, tako
-Da kvadrat:
+za posplošene elemente $\langle a,b \rangle : Z \to A \times B$ tako, da kvadrat:
 $$ \begin{tikzcd}
 A \times B \ar[d, "\alpha \times \beta"'] \ar[r, "t_{(A,B)}"] & B \times A \ar[d, "\beta \times \alpha"] \\
 A' \times B' \ar[r, "t_{(A',B')}"'] & B' \times A'
@@ -1634,7 +1633,7 @@ $$\cat{C}^I \cong \prod_{i \in I}\cat{C}.$$
 \end{primer}
 
 \begin{primer} \label{grafi}
-\emph{Usmerjen} graf sestoji iz vozlišč in povezav med njimi, kjer ima vsaka povezava "`rep"' in "`glavo"'. Grafe si lahko, tako kot kategorije, tudi narišemo:
+\emph{Usmerjen} graf sestoji iz vozlišč in povezav med njimi, kjer ima vsaka povezava "`rep"' in "`glavo"'. Grafe si lahko tako kot kategorije, tudi narišemo:
 %
 $$
 \begin{tikzcd}[arrow style=tikz, >=latex]
@@ -1681,16 +1680,15 @@ $$\cat{Set}^\Gamma = \cat{Grafi}.$$
 
 
 \begin{trditev} \label{konstrukcija limit}
-Kategorija ime vse \emph{končne limite} natanko takrat, ko ima vse končne produkte in zožke.
-
-To da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \cat{J} \to \cat{C}$ limito v $\cat{C}$.
-
+Kategorija ima vse končne limite natanko takrat, ko ima vse končne produkte in zožke.
 \end{trditev}
+To, da ima kategorija končne limite pomeni, da ima vsak končni diagram $D : \cat{J} \to \cat{C}$ limito v $\cat{C}$.
+
 \begin{dokaz}
 Če ima kategorija vse limite, potem ima očitno tudi produkte in zožke, saj sta to posebna primera limit. Bolj zanimiv del te trditve je njen obrat.
 Naj bo $D : \cat{J} \to \cat{C}$ diagram v $\cat{C}$. Iščemo objekt v $\cat{C}$, ki ima morfizme do vsakega izmed $D_i$. Kot prva ideja je to produkt 
 $$\prod_{i \in \cat{J}}D_i,$$
-ki ima projekcije do vsakega $D_i$. Na žalost tej morfizmi ne komutirajo glede na morfizme v $\cat{J}$. Radi bi še, da za vsak $\alpha : j \to k$ iz  $\cat{J}$ diagram:
+ki ima projekcije do vsakega $D_i$. Na žalost tej morfizmi ne komutirajo nujno glede na morfizme v $\cat{J}$. Radi bi še, da za vsak $\alpha : j \to k$ iz  $\cat{J}$ diagram:
 %
 $$ \begin{tikzcd}
 & \prod_{i \in \cat{J}}D_i \ar[dl, "\pi_j"'] \ar[dr, "\pi_k"] & \\
@@ -1711,14 +1709,14 @@ Da dobimo limito, vzamemo zožek teh dveh morfizmov:
 $$ \begin{tikzcd}[sep=normal]
 E \ar[r, "e"] & \prod_{i }D_i \ar[r, shift left, "\phi"] \ar[r, shift right, "\psi"'] & \prod_{\alpha } D_{cod(\alpha)}
 \end{tikzcd} $$
-in definiramo $e_i := \pi_i \circ r$. Da pokažemo, da je to res limita, vzamemo poljuben morfizem $c : C \to \prod_i D_i$ in pišemo $c = \langle c_i \rangle$, za $c_i = \pi_i \circ c$. Družina morfimov $(c_i : C \to D_i)_{i \in \cat{J}}$ je stožec nad $D$ natanko takrat, ko velja $\psi \circ c = \phi \circ c$, kajti
+in definiramo $e_i := \pi_i \circ r$. Da pokažemo, da je to res limita, vzamemo poljuben morfizem $c : C \to \prod_i D_i$ in pišemo $c = \langle c_i \rangle$ za $c_i = \pi_i \circ c$. Družina morfimov $(c_i : C \to D_i)_{i \in \cat{J}}$ je stožec nad $D$ natanko takrat, ko velja $\psi \circ c = \phi \circ c$, kajti
 $$\phi \langle c_i \rangle = \psi \langle c_i \rangle,$$
 natanko tedaj, ko je za vsak $\alpha$
 $$(\pi_\alpha \circ \phi) \langle c_i \rangle = (\pi_\alpha \circ \psi) \langle c_i \rangle.$$
 Velja pa
 $$(\pi_\alpha \circ \phi) \langle c_i \rangle = \phi_\alpha \langle c_i \rangle = \pi_{cod(\alpha)}\langle c_i \rangle = c_{cod(\alpha)} $$
 ter
-$$(\pi_\alpha \circ \psi) \langle c_i \rangle = \psi_\alpha \langle c_i \rangle  = D_\alpha \circ \pi_{dom(\alpha)} \langle c_i \rangle = D_\alpha \circ c_{dom(\alpha)} $$
+$$(\pi_\alpha \circ \psi) \langle c_i \rangle = \psi_\alpha \langle c_i \rangle  = D_\alpha \circ \pi_{dom(\alpha)} \langle c_i \rangle = D_\alpha \circ c_{dom(\alpha)}.$$
 Sledi, da je $(E, e_i)$ res stožec in da vsak stožec $(c_i : C \to D_i)$ porodi morfizem $\langle c_i \rangle : C \to \prod_i D_i$, da velja $\phi\langle c_i \rangle = \psi \langle c_i \rangle$. Torej obstaja enolična faktorizacija $\langle c_i \rangle$ skozi $E$.
 
 \end{dokaz}
@@ -1750,15 +1748,15 @@ Tudi eksponente smo konstruirali eksplicitno v primeru.
 Po trditvi \ref{konstrukcija limit} je potrebno pokazati le, da $\Hom$ funktor ohranja produkte in zožke:
 %
 \begin{itemize}
-\item za končni objekt $1$ v $\cat{C}$ je 
+\item Za končni objekt $1$ v $\cat{C}$ je 
 $$\Hom(C,1) \cong \set{*} \cong 1$$
 tudi končni objekt v $\cat{Set}.$(ali je tukaj res pika, kaj se potem naslednja točka začne z veliko začetnico?)
-\item za binarni produkt $X \times Y$ v $\cat{C}$ definiramo morfizem 
+\item Za binarni produkt $X \times Y$ v $\cat{C}$ definiramo morfizem 
 $$h : \Hom(C, X \times Y) \to \Hom(C,X) \times \Hom(C,Y),$$
 kot $h(f : C \to X \times Y) = \langle \pi_1 \circ f, \pi_2 \circ f \rangle$, ki po univerzalni lastnosti produkta določa enoličen izomorfizem.
-\item podobno kot za binarne produkte naredimo za splošne produkte
+\item Podobno kot za binarne produkte naredimo za splošne produkte
 $$\Hom(C, \prod_i X_i) \cong \prod_i \Hom(C, X_i)$$
-\item naj bo sedaj
+\item Naj bo sedaj
 $$ \begin{tikzcd}[sep=normal]
 E \ar[r, "e"] & X \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & Y
 \end{tikzcd} $$
@@ -1766,7 +1764,7 @@ zožek v $\cat{C}$, ki nam poda diagram
 $$ \begin{tikzcd}[sep=normal]
 \Hom(C,E) \ar[r, "e_*"] & \Hom(C,X) \ar[r, shift left, "f_*"] \ar[r, shift right, "g_*"'] & \Hom(C,Y)
 \end{tikzcd} $$
-v $\cat{Set}$. Da pokažemo, da je to zožek, vzemimo neki $h \in \Hom(C,X)$ z $f_*(h) = g_*(h)$. Potem velja $f \circ h = g \circ h$, torej obstaja enoličen $u : C \to E$, tako, da velja $e \circ u = h$. Torej je $e_* : \Hom(C,E) \to \Hom(C,X)$ res zožek $f_*$ in $g_*$.
+v $\cat{Set}$. Da pokažemo, da je to zožek, vzemimo neki $h \in \Hom(C,X)$ z $f_*(h) = g_*(h)$. Potem velja $f \circ h = g \circ h$, torej obstaja enoličen $u : C \to E$ tako, da velja $e \circ u = h$. Torej je $e_* : \Hom(C,E) \to \Hom(C,X)$ res zožek $f_*$ in $g_*$.
 \end{itemize}
 
 \end{dokaz}
@@ -1785,13 +1783,13 @@ Sledi iz definicije eksponenta in transponiranja.
 
 \chapter{Yonedova lema}
 
-V tem poglavju si bomo bolj podrobno pogledali posebne funktorske kategorije oblike
+V tem poglavju si bomo bolj podrobno pogledali posebne funktorske kategorije oblike:
 $$\predsnop{C},$$
 kjer je $\cat{C}$ lokalno majhna kategorija. V taki kategoriji so objekti funktorji 
 $$F,G : \cat{C} \to \cat{Set}$$
 in morfizmi so naravne transformacije med takimi funktorji
 $$\alpha, \beta : F \to G.$$ 
-V vsaki taki kategoriji $\predsnop{C}$, lahko evaluiramo vsak komutirajoč(je to beseda ?) diagram:
+V vsaki taki kategoriji $\predsnop{C}$, lahko evaluiramo vsak komutirajoč diagram:
 %
 $$
 \begin{tikzcd}
@@ -1812,19 +1810,21 @@ $$ev_C : \predsnop{C} \to \cat{Set}.$$
 Prav tako, če imamo v $\cat{C}$ morfizem $f : D \to C$, zaradi naravnosti dobimo "`cilinder"' nad zgornjim diagramom.
 
 
-Na take funktorske kategorije pa lahko gledamo še na drugačen način.
-Če se spomnemo primera \ref{grafi} smo videli, da je za kategorijo $\Gamma$, funktorska kategorija $\cat{Set}^\Gamma$ enaka usmerjenim grafom. To nakazuje, da si za splošno kategorijo $\cat{C}$, kategorijo
+Na take funktorske kategorije lahko gledamo še na drugačen način.
+Če se spomnemo primera \ref{grafi} smo videli, da je za kategorijo $\Gamma$ funktorska kategorija $\cat{Set}^\Gamma$ enaka usmerjenim grafom. To nakazuje, da si za splošno kategorijo $\cat{C}$, kategorijo
 $$\cat{Set}^\cat{C}$$
-lahko predstavljamo kot posplošeno kategorijo strukturiranih množic in morfizmov, ki ohranjajo to strukturo med njimi.
+lahko predstavljamo kot posplošeno kategorijo strukturiranih množic in morfizmov, ki ohranjajo strukturo med njimi.
 
 
 \section{Yonedova vložitev}
 
-V svetu matematike poznamo mnogo primerov, ko delamo z neko matematično strukturo in v njej rešujemo specifičen problem, kot na primer iskanje ničel polinomov v realnih številih. Včasih pa je mogoče strukturo v kateri rešujemo problem, razširiti do strukture, kjer problem postane lažje rešljiv. Tako v primeru realnih števil ugotovimo, da nekateri polinomi enostavno nimajo ničel v tej množici, a, ko realna števila razširimo do kompleksnih števil, kar naenkrat postanejo rešljive vse polinomske enačbe. Na analogen način bomo to storili s kategorijami, kjer bomo vzeli neko kategorijo $\cat{C}$, ki mogoče ne bo imela vseh lastnosti, ki bi si jih želeli, in to kategorijo vložili v "`lepšo"' kategorijo, na način, ki spominja na razširitev realnih v kompleksna števila. 
+V svetu matematike poznamo mnogo primerov, ko delamo z neko matematično strukturo in v njej rešujemo specifičen problem, kot na primer iskanje ničel polinomov v realnih številih. Kmalu lahko ugotovimo, da obstajajo problemi, ki so v okvirjih, ki smo si jih zastavili, nerešljivi. Naj se trudimo kolikor hočemo, v realnih številih ne moremo najti ničel polinoma $x^2 + 1$.
+Včasih pa je mogoče strukturo v kateri problem rešujemo razširiti do strukture, kjer problem postane rešljiv.
+Tako v primeru realnih števil ugotovimo, da če jih razširimo do kompleksnih števil, lahko naenkrat najdemo(preveč neformalno ?) ničle vsakega polinoma (vsaj v principu). Na analogen način bomo to storili s kategorijami, kjer bomo vzeli neko kategorijo $\cat{C}$, ki mogoče ne bo imela vseh lastnosti, ki bi si jih želeli, in to kategorijo vložili v "`lepšo"' kategorijo, na način, ki spominja na razširitev realnih v kompleksna števila. 
 
 
-\begin{definicija} \emph{Yonedova vložitev} je funktor 
-$$y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}}$$
+\begin{definicija} \emph{Yonedova vložitev} je funktor: 
+$$y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}},$$
 ki je na objektih $C \in \cat{C}$ definiran kot:
 $$y(C) := \Hom_{\cat{C}}(-, C) : \cat{C}^{op} \to \cat{Set}$$ 
 in na morfizmih $f : C \to D$
@@ -1870,7 +1870,7 @@ tudi komutira.
 %
 \end{izrek}
 \begin{dokaz}
-Poglejmo, kaj mora veljati, za neko naravno transformacijo
+Poglejmo, kaj mora veljati za neko naravno transformacijo
 $$\vartheta : yC \to F,$$
 ki je v bistvu družina morfizmov 
 $$(\vartheta_D : yC(D) \to F(D))_{D \in \bf{C}}.$$
@@ -1882,7 +1882,7 @@ Tej morfizmi morajo izpolnjevati naravnostni pogoj, da za vsak morfizem $f : D \
 \end{tikzcd} \]
 komutira. Torej mora veljati 
 $$(F(f) \circ \vartheta_C) (g) = (\vartheta_D \circ \Hom(f,C)) (g)$$
-za vsak $g \in \Hom(C,C)$. En tak $g$ je identiteta na C, oziroma $1_C : C \to C$. Veljati mora zato enakost:
+za vsak $g \in \Hom(C,C)$. En tak $g$ je identiteta na C, oziroma $1_C : C \to C$. Zato mora veljati enakost:
 
 \begin{align} \label{eq1}
 \begin{split}
@@ -1892,9 +1892,8 @@ za vsak $g \in \Hom(C,C)$. En tak $g$ je identiteta na C, oziroma $1_C : C \to C
 \end{split}
 \end{align}
 Vidimo torej, da je vrednost komponente za $\vartheta$ v $D$ določena že s tem, kam $\vartheta_C$ slika $1_C$.
-Naj bo z 
+Naj bo iskani izomorfizem označen z: 
 $$\alpha_{C,F} : \Hom(yC,F) \to FC$$ 
-označen iskani izomorfizem.
 Definiramo torej naravno transformacijo $\vartheta \in \Hom(yC,F)$ kot
 \begin{equation}
 \alpha_{C,F}(\vartheta) := \vartheta_C(1_C)
@@ -1920,11 +1919,11 @@ Sedaj je potrebno preveriti, da tako definirana preslikava res ustreza pogojem i
 Najprej preverimo, da sta si predpisa vzajemno inverzna.
 Torej, da za vsak $\vartheta \in \Hom(yC,F)$ velja: 
 $$\widetilde{\widehat{\vartheta}} = \vartheta$$
-in za vsak $a \in FC$ velja
+in da za vsak $a \in FC$ velja:
 $$\widehat{\widetilde{a}} = a.$$
 \begin{itemize}
-\item
-$\widehat{\vartheta} = \vartheta_C(1_C) \in FC$.
+\item Najprej opazimo:
+$$\widehat{\vartheta} = \vartheta_C(1_C) \in FC$$
 Potem je 
 $$\widetilde{\widehat{\vartheta}} = \eta_{\widehat{\vartheta}}.$$
 Poglejmo kako ta naravna transformacija deluje na morfizmih. Naj bo $f : D \to C$. Velja:
@@ -1941,7 +1940,7 @@ in zato je:
 \implies& \eta_{\widehat{\vartheta}} = \vartheta
 \implies \underline{\widetilde{\widehat{\vartheta}} = \vartheta}
 \end{align*}
-\item še v drugo smer. Najprej opazimo:
+\item Še v drugo smer. Če upoštevamo definicijo vidmo:
 $$\widetilde{a} = \vartheta_a : yC \to F$$
 Velja
 \begin{align*}
@@ -1952,7 +1951,7 @@ Torej je res:
 $$\widehat{\widetilde{a}} = (\vartheta_a)_C(1_C) = F(1_C)(a) = 1_{F(C)}(a) = a.$$
 \end{itemize}
 %
-Sedaj moramo še pokazati, da sta zadoščena naravna pogoja.
+Sedaj moramo še pokazati, da sta zadoščena naravnostna pogoja.
 Naj bo $f : C \to D$ in naj bo $\vartheta \in \Hom(yC,F)$.
 Pokazali bi radi:
 \begin{equation}
@@ -1966,8 +1965,7 @@ in po drugi strani:
 (\vartheta \circ yf)_D (1_D) = (\vartheta_D \circ yf_D)(1_D) = \\
 \vartheta_D(f \circ 1_D) = \underline{\vartheta_D(f)}.
 \end{align*}
-Enakost (\ref{eq1}) pa nam pove ravno, da je $F(f(\vartheta_C(1_C))) = \vartheta_D(f)$
-To pa pomeni, da diagram (\ref{diag1}) komutira.
+Enakost (\ref{eq1}) pa nam pove ravno to, da je $F(f)(\vartheta_C(1_C)) = \vartheta_D(f)$, kar pa pomeni, da diagram (\ref{diag1}) komutira.
 
 Kaj pa drugi diagram? Naj bo $\varphi : F \to G$ naravna transformacija med funktorjema $F,G : \cat{C}^{op} \to \cat{Set}$.
 Veljati mora enakost:
@@ -1993,11 +1991,11 @@ $$\Hom(yA,yB) \cong yB(A) \cong \Hom(A,B),$$
 kjer prvi izomorfizem sledi iz Yonedove leme. Torej je ta inducirana funkcija za vsaka $A$ in $B$ bijekcija in je $y$ res zvest in poln.
 \end{dokaz}
 \begin{opomba}
-Opazimo lahko, da je Yonedova vložitev $y : \cat{C} \to \cat{Set}^{\cat{C}^{op}}$ tudi injektivna na objektih, saj za poljubna $A,B \in \cat{C}$, za katera velja $yA = yB$, potem v posebnem primeru velja $yA(A) = yA(B)$ in $1_A \in \Hom(A,A) \implies 1_A \in \Hom(B,A) \implies B = A$.
+Opazimo lahko, da je Yonedova vložitev $y : \cat{C} \to \cat{Set}^{\cat{C}^{op}}$ tudi injektivna na objektih, saj za poljubna $A,B \in \cat{C}$ za katera velja $yA = yB$, potem v posebnem primeru velja $yA(A) = yA(B)$ in $1_A \in \Hom(A,A) \implies 1_A \in \Hom(B,A) \implies B = A$.
 \end{opomba}
 
 
-Naslednja posledica nam poda način, kako nam Yonedova lema lahko olajša dokazovanje.
+Naslednja posledica nam poda način, na katerega nam Yonedova lema lahko olajša dokazovanje.
 
 \begin{posledica} \emph{(Yonedov princip)}
 Za poljubna objekta $A$ in $B$ v lokalno majhni kategoriji $\cat{C}$,
@@ -2011,7 +2009,7 @@ Za $F : \cat{C}^{op} \to \cat{Set}$ vzamemo kar $yB$ in dobimo: $Hom(yA,yB) \con
 Poglejmo si pogosto uporabo tega principa.
 
 \begin{primer}
-Radi pokazali, da v kartezično zaprti kategoriji $\cat{C}$ za poljubne $A,B,C \in \cat{C}$ velja 
+Radi bi pokazali, da v kartezično zaprti kategoriji $\cat{C}$ za poljubne $A,B,C \in \cat{C}$ velja 
 $$(A^B)^C \cong A^{(B \times C)}.$$
 Po Yonedovem principu je dovolj preveriti, da velja $y((A^B)^C) \cong y(A^{(B \times C)})$ ter, da je ta izomorfizem naraven. Torej vzamemo poljuben $X \in \cat{C}$ in računamo:
 \begin{align*}
@@ -2029,12 +2027,12 @@ X \ar[u, "g"] & X \times C \ar[u, "g \times 1_C"] \ar[ur, "\overline{g}"'] & \\
 Y \ar[u, "f"] & Y \times C \ar[u, "f \times 1_C"] \ar[uur, bend right, "\overline{g \circ f}"'] & \\
 \end{tikzcd}
 \end{equation}
-kjer je $\epsilon$ evaluacija, in $\overline{g}$ transponiranka $g$. Po enoličnosti transponiranja je $\overline{g \circ f}$ enolični morfizem, da ta diagram komutira za $(g \circ f) \times 1_C$.
+kjer je $\epsilon$ evaluacija in $\overline{g}$ transponiranka $g$. Po enoličnosti transponiranja je $\overline{g \circ f}$ enolični morfizem, da ta diagram komutira za $(g \circ f) \times 1_C$.
 
 \end{primer}
 
 
-Sedaj si poglejmo, v kakem smislu je kategorija predsnopov $\predsnop{C}$ "`lepa"'. Nekaj o tem nam pove naslednja trditev.
+Sedaj si poglejmo v kakšnem smislu je kategorija predsnopov $\predsnop{C}$ "`lepa"'. Nekaj o tem nam pove naslednja trditev.
 
 \begin{trditev} \label{trditev 3.3}
 Za vsako lokalno majhno kategorijo $\cat{C}$ je funktorska kategorija $\predsnop{C}$ kompletna. Za vsak objekt $C \in \cat{C}$, evaluacijski funktor 
@@ -2046,9 +2044,9 @@ Naj bo $\cat{J}$ majhna indeksna kategorija in $D : \cat{J} \to \cat{Set}^{\cat{
 $$(\lim_{j \in J} D_j): \cat{C}^{op} \to \cat{Set}$$
 po Yonedovi lemi pa bi za tak funktor moralo veljati
 $$(\lim_{j \in J} D_j)(C) \cong \Hom(yC, \lim D_j),$$
-ker pa vemo, da predstavljivi funktorji ohranjajo limite velja
+ker pa vemo, da predstavljivi funktorji ohranjajo limite, velja
 $$\Hom(yC, \lim D_j) \cong \lim_{j \in J} Hom(yC, D_j).$$
-Z ponovno uporavo Yonedove leme dobimo
+S ponovno uporavo Yonedove leme dobimo
 $$\lim_{j \in J} Hom(yC, D_j) \cong \lim_{j \in J} D_j(C).$$
 Torej limito v $\predsnop{C}$ definiramo kar kot $\lim_{j \in J} (D_j(C))$, oziroma po točkah.
 %
@@ -2063,7 +2061,7 @@ Povemo pa lahko še več. Naslednji izrek, všasih imenovan tudi \emph{gostotni 
 \label{density theorem}
 Za vsako majhno kategorijo $\cat{C}$, se vsak objekt $P$ funktorske kategorije $\predsnop{C}$ da izraziti, kot kolimito predstavljivih funktorjev iz neke indeksne kategorije $\cat{J}$.
 $$ P \cong \colim_{j \in J} yC_j.$$
-Bolj natančno, obstaja kanonična izbira indeksne kategorije $\cat{J}$ in funktorja $\pi : \cat{J} \to \cat{C}$, tako da obstaja naravni izomorfizem $\colim y \circ \pi \cong P$.
+Bolj natančno, obstaja kanonična izbira indeksne kategorije $\cat{J}$ in funktorja $\pi : \cat{J} \to \cat{C}$ tako, da obstaja naravni izomorfizem $\colim y \circ \pi \cong P$.
 \end{trditev}
 \begin{dokaz}
 Naj bo torej $P : \cat{C}^{op} \to \cat{Set}$ objekt v kategoriji predsnopov nad $\cat{C}$. Za indeksno kategorijo bomo definirali tako imenovano \emph{kategorijo elementov P}, ki se jo označuje z
@@ -2071,19 +2069,19 @@ $$\int_{\cat{C}}P$$
 in ima za:
 \begin{itemize}
 \item objekte: pare $(x,C)$, kjer je $C \in \cat{C}$ in $x \in P(C)$.
-\item morfizme: trojice $(h, (x',C'), (x,C))$, kjer je $h : C' \to C$ morfizem v $\cat{C}$, tako da velja $P(h(x)) = x'$. Zaradi priročnosti te morfizme ponavadi označujemo kar s $h : (x', C') \to (x,C)$ in se zavedamo, da morajo zadoščati pogoju.
+\item morfizme: trojice $(h, (x',C'), (x,C))$, kjer je $h : C' \to C$ morfizem v $\cat{C}$ tako, da velja $P(h(x)) = x'$. Zaradi priročnosti te morfizme ponavadi označujemo kar s $h : (x', C') \to (x,C)$, pri tem pa se zavedamo, da morajo zadoščati pogoju.
 Identiteta na $(x,C)$ je kar podedovana identiteta na $C$, kajti funktorji ohranjajo indetitete. Kompozitum dveh takih morfizmov je spet tak morfizem, kajti za $h : (x'', C'') \to (x', C')$ in $k : (x', C') \to (x,C)$ velja $P(k \circ h)(x) = (P(h) \circ P(k))(x) = P(h(x')) = x''$.
 \end{itemize}
 Definiramo funktor $\pi : \int_{\cat{C}}P \to \cat{C}$, kot $\pi(x,C) = C$ in trdimo, da velja 
 $$\colim y\circ \pi (x,C) \cong P.$$
-Da bo to res kolimita, potrebujemo morfizme $y\circ \pi (x,C) \to P$, za vsak $(x,C) \in \int_{\cat{C}}P$. Po Yonedovi lemi imamo bijekcijo
+Da bo to res kolimita, potrebujemo morfizme $y\circ \pi (x,C) \to P$ za vsak $(x,C) \in \int_{\cat{C}}P$. Po Yonedovi lemi imamo bijekcijo
 $$x \in PC \leftrightsquigarrow x:yC \to P,$$
 ki je naravna v $C$, torej za $h: (x',C') \to (x,C)$ naslednji diagram:
 $$ \begin{tikzcd}
 yC' \ar[rr, "yh"] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \\
 & P &
 \end{tikzcd} $$
-komutira. Za komponente kostožca nad $y \circ \pi$ vzamemo torej naravne transformacije $x : yC \to P$. Da vidimo, da je to res kolimita, denimo, da obstaja neki drug stožec $y \circ \pi \to Q$, s komponentami $\vartheta_{(x,C)} : yC \to Q$. Iščemo torej tako enolično naravno transformacijo, da naslednji diagram komutira.
+komutira. Za komponente kostožca nad $y \circ \pi$ vzamemo torej naravne transformacije $x : yC \to P$. Da vidimo, da je to res kolimita, denimo, da obstaja neki drug stožec $y \circ \pi \to Q$ s komponentami $\vartheta_{(x,C)} : yC \to Q$. Iščemo torej takšno enolično naravno transformacijo, da naslednji diagram komutira.
 %
 $$\begin{tikzcd}
 yC' \ar[rr, "yh"] \ar[ddr, bend right, "\vartheta_{(x',C')}"'] \ar[rd, "x'"'] & & yC \ar[ld, "x"] \ar[ddl, bend left, "\vartheta_{(x,C)}"] \\
@@ -2105,7 +2103,7 @@ Kako pa je z eksponenti v $\cat{Set}^{\cat{C}^{op}}$? Če sta $Q,P$ funktorja v 
 po lastnosti transponiranja. Ker pa $\predsnop{C}$ ima produkte, kajti ima vse končne limite, množica $\Hom(yC \times P, Q)$ obstaja. Na ta način tudi definiramo eksponent.
 
 \begin{trditev} \label{trditev 3.6}
-Za lokalno majhno kategorijo $\cat{C}$, za vse $X,P,Q$ v $\predsnop{C}$ obstaja izomorfizem
+Za lokalno majhno kategorijo $\cat{C}$ in vse $X,P,Q$ objekte v $\predsnop{C}$ obstaja izomorfizem
 $$\Hom(X,Q^P) \cong \Hom(X \times P, Q),$$
 ki je naraven v $X$.
 \end{trditev}
@@ -2123,7 +2121,7 @@ $$(\vartheta_i : A_i \to \underset{j \in J}\colim A_j)_{i \in J}$$
 komponente kostožca, za kolimito nad $A$. To komponiramo s funktorjem $$- \times B : \predsnop{C} \to \predsnop{C0},$$
 da dobimo komponente kostožca:
 $$-\times B(\vartheta_i)=: \vartheta_i \times B : A_i \times B \to (\underset{j \in J}\colim A_j) \times B, \quad i \in J.$$
-Obstaja torej enoličen morfizem iz kolimite nad diagramom $(- \times B) \circ A$, ki ga označimo z $\vartheta :  \underset{j \in J}\colim (A_j \times B) \to (\underset{j \in J}\colim A_j) \times B$, tako da vse ustrezno v diagramu:
+Obstaja torej enoličen morfizem iz kolimite nad diagramom $(- \times B) \circ A$, ki ga označimo z $\vartheta :  \underset{j \in J}\colim (A_j \times B) \to (\underset{j \in J}\colim A_j) \times B$ tako, da vse ustrezno v diagramu:
 %
 $$
 \begin{tikzcd}
@@ -2134,7 +2132,7 @@ A_i \times B \ar[ur] \ar[dr, "\vartheta_i \times B"'] & & A_k \times B \ar[ul] \
 $$
 komutira. Radi bi pokazali, da je $\vartheta$ naravni izomorfizem. Zadošča pokazati, da so vse komponente
 $$(\vartheta_C : \underset{j \in J}\colim (A_j \times B)(C) \to (\underset{j \in J}\colim A_j) \times B(C))_{C \in \cat{C}}$$
-izomorfizmi v $\cat{Set}$, torej zadošča pokazati, da to velja za vse točke, kar pomeni, da lahko pokažemo (\ref{eq 3.11}), če predpostavimo, da so $A_i$ in $B$ množice. Za poljubno množico $X$ pa velja:
+izomorfizmi v $\cat{Set}$. Zadošča torej pokazati, da to velja za vse točke, kar pomeni, da lahko pokažemo (\ref{eq 3.11}), če predpostavimo, da so $A_i$ in $B$ množice. Za poljubno množico $X$ pa velja:
 %
 \begin{align*}
 \Hom(\colim (A_j \times B), X) &\cong \colim\Hom(A_j \times B, X) \\
@@ -2166,17 +2164,17 @@ Tej izomorfizmi so očitno naravni v $X$, torej trditev sledi iz Yonedove leme.
 Dobljeno združimo v izrek.
 
 \begin{izrek}
-Za vsako majhno kategorijo $\cat{C}$, je kategorija predsnopov $\predsnop{C}$ kartezično zaprta. Prav tako, Yonedova vložitev
+Za vsako majhno kategorijo $\cat{C}$, je kategorija predsnopov $\predsnop{C}$ kartezično zaprta. Prav tako Yonedova vložitev
 $$y : \cat{C} \to \predsnop{C}$$
 ohranja vse produkte in eksponente v $\cat{C}$.
 \end{izrek}
 \begin{dokaz}
 Po trditvi (\ref{trditev 3.3}) vemo, da ima $\predsnop{C}$ vse končne produkte. Če definiramo eksponente kot zgoraj, nam trditev (\ref{trditev 3.6}) pove, da ima tudi eksponente.
-Pokazati je potrebno še drugi del izreka torej, da Yonedova vložitev ohranja produkte in eksponente. Na to noto denimo, da je $A \times B$ produkt v $\cat{C}$.
+Pokazati je potrebno še drugi del izreka, torej, da Yonedova vložitev ohranja produkte in eksponente. Na to noto denimo, da je $A \times B$ produkt v $\cat{C}$.
 Naj bo $X,Y \in \cat{C}$ in $f : Y \to X$. Velja
 $$ \Hom(X, A\times B) \cong \Hom(X, A) \times \Hom(X,B),$$
 ki je seveda naraven v $X$ s postkompozicijo z $f$.(ali je potrebno definirati pojem postokompozicije?)
-Za eksponente recimo, da imamo v $\cat{C}$ eksponent $Q^P$, za objekta $P,Q \in \cat{C}$. Po naši definiciji eksponentov v $\predsnop{C}$ velja:
+Za eksponente recimo, da imamo v $\cat{C}$ eksponent $Q^P$ za objekta $P,Q \in \cat{C}$. Po naši definiciji eksponentov v $\predsnop{C}$ velja:
 \begin{align*}
 y(Q)^{y(P)}(C) & \cong \Hom(yC \times yP, yQ) \\
 &\cong \Hom(y(C \times P), yQ) \\
@@ -2187,7 +2185,7 @@ y(Q)^{y(P)}(C) & \cong \Hom(yC \times yP, yQ) \\
 in tej izomorfizmi so jasno naravni v $C$.
 \end{dokaz}
 
-Vidimo torej, da je kategorija $\predsnop{C}$ lepa kategorija v smislu, da je kartezično zaprta, če nas torej zanima neko dejstvo o kategoriji $\cat{C}$, lahko to kategorijo vložimo v kategorijo predsnopov, kjer lahko mogoče z njo lažje operiramo, saj lahko poljubno vzamemo(definiramo, uporabljamo ?) produkte, eksponente, itd.
+Vidimo torej, da je kategorija $\predsnop{C}$ lepa kategorija v smislu, da je kartezično zaprta. Če nas torej zanima neko dejstvo o kategoriji $\cat{C}$, lahko to kategorijo vložimo v kategorijo predsnopov, kjer lahko mogoče z njo lažje operiramo, saj lahko poljubno vzamemo(definiramo, uporabljamo ?) produkte, eksponente, itd.
 
 
 Poglejmo si primer take vložitve.
@@ -2195,7 +2193,7 @@ Poglejmo si primer take vložitve.
 \begin{primer}
 Naj bo $\mathbf{\Delta}$ kategorija vseh končnih ordinalnih števil. Objekti so množice $[0],[1],[2],\ldots$, kjer je:
 $$[0] = \emptyset \quad \text{in} \quad [n] = \set{0,1,\ldots,n}$$
-in morfizmi so vse monotone funkcije med temi množicami.
+morfizmi pa so vse monotone funkcije med temi množicami.
 Funktorsko kategorijo $\mathbf{\Delta}$ se včasih označuje tudi kot $\cat{sSet}$.
 \begin{definicija}
 \emph{Simplicirana množica}(pravilna terminologija ?) je funktor $\mathbf{\Delta}^{op} \to \cat{Set}$.
@@ -2229,7 +2227,7 @@ d^i s^{j-1}, & i < j \\
 d^{i-1} s^j, & i > j+1
 \end{cases} $$
 %
-Brez dokaza lahko povemo, da je mogoče vsak morfizem v $\mathbf{\Delta}$ izraziti kot kompozitum koobrazov in kodegeneracij. Če dodamo še dodatne zahteve o vrstnem redu, v katerem se lahko pojavijo, je tak zapis tudi enoličen.
+Brez dokaza lahko povemo, da je mogoče vsak morfizem v $\mathbf{\Delta}$ izraziti kot kompozitum koobrazov in kodegeneracij. Če podamo še dodatne zahteve o vrstnem redu v katerem se lahko pojavijo, je tak zapis tudi enoličen.
 %
 Če je $X$ simplicirana množica, označujemo funkcije
 \begin{align*}
@@ -2248,15 +2246,15 @@ Obrazi in degeneracije so podani s prekompozicijo v $\mathbf{\Delta}$ z $d^i$ in
 d_i : \Delta_k^n \to \Delta_{k-1}^n & & s_i : \Delta_k^n \to \Delta_{k+1}^n \\
 f \mapsto f \circ d^i & & f \mapsto f \circ s^i \\
 \end{align*}
-Simplicirana množica $\Delta^n$ ima enoličen ne-degeneiran n-simples, ki ustreza identiteti na $[n]$. Yonedova lema nam med drugim pove, da so funkcije med standardnimi simpleksi $f : \Delta^n \to \Delta^m$ v bijektivni korespondenci z morfizmi $f : [n] \to [m]$ v $\mathbf{\Delta}$. Yonedova lema nam pa pove tudi, da za vsako simplicirano množico $X$, obstaja naravna bijekcija, med n-simpleksi v $X$ in naravnimi transformacijami $\Delta^n \to X_n$ v $\cat{sSet}$. Bolj eksplicitno, n-simpleks $x \in X_n$ lahko obravnavamo kot morfizem $x : \Delta^n \to X$, ki pošlje enolični ne-degenerirani n-simplex v $\Delta^n$, v $x$. (mogoče malo nejasno napisano)
+Simplicirana množica $\Delta^n$ ima enoličen ne-degeneiran n-simples, ki ustreza identiteti na $[n]$. Yonedova lema nam med drugim pove, da so funkcije med standardnimi simpleksi $f : \Delta^n \to \Delta^m$ v bijektivni korespondenci z morfizmi $f : [n] \to [m]$ v $\mathbf{\Delta}$. Yonedova lema nam pove tudi, da za vsako simplicirano množico $X$ obstaja naravna bijekcija med n-simpleksi v $X$ in naravnimi transformacijami $\Delta^n \to X_n$ v $\cat{sSet}$. Bolj eksplicitno, n-simpleks $x \in X_n$ lahko obravnavamo kot morfizem $x : \Delta^n \to X$, ki v $x$ pošlje enolični ne-degenerirani n-simplex v $\Delta^n$. (mogoče malo nejasno napisano)
 Simplicirani množici $X$ lahko konstruiramo asociirano kategorijo elementov
 $$\int_{\mathbf{\Delta}}X,$$
-ki se jo imenuje \emph{kategorija simpleksov}. Po trditvi (\ref{density theorem}) vemo, da lahko vsak tak $X$ izrazimo, kot kolimito standardnih simpleksov, indeksirano s svojo kategorijo elementov.
+ki se jo imenuje \emph{kategorija simpleksov}. Po trditvi (\ref{density theorem}) vemo, da lahko vsak tak $X$ izrazimo kot kolimito standardnih simpleksov, indeksirano s svojo kategorijo elementov.
 
 $$X \cong \underset{x \in X_n}{\colim}\Delta^n$$
 
 
-Podajmo sedaj primer simplicirane množice. Naj bo $\cat{C}$ poljubna majhna kategorija. Definirajmo \emph{živec kategorije} $\cat{C}$, kot simplicirano množico $N\cat{C}$, na sledeči način:
+Podajmo sedaj primer simplicirane množice. Naj bo $\cat{C}$ poljubna majhna kategorija. Definirajmo \emph{živec kategorije} $\cat{C}$ kot simplicirano množico $N\cat{C}$, na sledeči način:
 
 \begin{enumerate}[label={}]
 \item $N\cat{C}_0 = \set{\text{objekti v } \cat{C}}$
@@ -2268,7 +2266,7 @@ Podajmo sedaj primer simplicirane množice. Naj bo $\cat{C}$ poljubna majhna kat
 Degeneracije $s_i:N\cat{C}_n \to N\cat{C}_{n+1}$ delujejo tako, da vzamejo niz n morfizmov
 $$ c_0 \rightarrow c_1 \rightarrow \ldots \rightarrow c_i \rightarrow \ldots \rightarrow c_n$$
 in na $i$-tem mestu vstavijo identiteto na $c_i$. Obraz $d_i : N\cat{C}_n \to N\cat{C}_{n-1}$ komponira $i$-t in $i+1$ morfizem, če je $0 < i < n$, oziroma izpusti prvi ali zadnji morfizem za, $i = 0$ ali $i = n$.
-Potrebno bi bilo preveriti, da na ta način definirane funkcije res zadoščajo relacijam za simplicirano množico. Ker je bil namen tega primera ilustracija v kakih situacija lahko nastopa Yonedova lema, tega tukaj ne bomo storili.
+Potrebno bi bilo preveriti, da na ta način definirane funkcije res zadoščajo relacijam za simplicirano množico. Ker je bil namen tega primera ilustracija v kakšnih situacija lahko nastopa Yonedova lema, tega tukaj ne bomo storili.
 \end{primer}
 
 \begin{thebibliography}{9}
