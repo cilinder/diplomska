@@ -41,8 +41,8 @@
 \newcommand{\tsubject}{\ttitle}
 \newcommand{\tsubjectEn}{\ttitleEn}
 \newcommand{\tauthor}{Jure Taslak}
-\newcommand{\tkeywords}{računalnik, računalnik, računalnik}
-\newcommand{\tkeywordsEn}{computer, computer, computer}
+\newcommand{\tkeywords}{Teorija kategorij, Yonedova lema, kategorije}
+\newcommand{\tkeywordsEn}{Category theory, Yoneda lemma, categories}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -253,7 +253,7 @@ Fakulteta za računalništvo in informatiko izdaja naslednjo nalogo:
 
 Tematika naloge:
 \end{tabbing}
-Besedilo teme diplomskega dela študent prepiše iz študijskega informacijskega sistema, kamor ga je vnesel mentor. V nekaj stavkih bo opisal, kaj pričakuje od kandidatovega diplomskega dela. Kaj so cilji, kakšne metode uporabiti, morda bo zapisal tudi ključno literaturo.
+Delo obravnava Yonedovo lemo, ki je eden od osrednjih izrekov teorije kategorij. Predstavljene bodo tudi nekatere aplikacije Yonedove leme.
 \vspace{15mm}
 
 \vspace{2cm}
@@ -264,25 +264,14 @@ Besedilo teme diplomskega dela študent prepiše iz študijskega informacijskega
 % zahvala
 \thispagestyle{empty}\mbox{}\vfill\null\it%
 \noindent
-Na tem mestu zapišite, komu se zahvaljujete za izdelavo diplomske naloge. Pazite, da ne boste koga pozabili. Utegnil vam bo zameriti. Temu se da izogniti tako, da celotno zahvalo izpustite.
+Zahvaljujem se mentorju prof. dr. Andreju Bauerju za usmerjanje in vso ostalo pomoč. \\
+Svojim staršem, za vso podporo. \\
+Alešu, za ideje in razpravo. \\
+Klavdiji, za pomoč pri iskanju napak.
 \rm\normalfont
 
 % prazna stran
 \clearemptydoublepage
-
-Svojim staršem, za vso podporo. \\
-Alešu, za ideje in razpravo o formulaciji povedi. \\
-Klavdiji, za pomoč pri iskanju napak.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% posvetilo, če sama zahvala ne zadošča :-)
-\thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
-
-\normalfont\end{minipage}
-
-% prazna stran
-\clearemptydoublepage
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % kazalo
@@ -306,9 +295,9 @@ Klavdiji, za pomoč pri iskanju napak.
 \bigskip
 
 %\noindent\textbf{Povzetek:} 
-\noindent V vzorcu je predstavljen postopek priprave diplomskega dela z uporabo okolja \LaTeX. Vaš povzetek mora sicer vsebovati približno 100 besed, ta tukaj je odločno prekratek.
-Dober povzetek vključuje: (1) kratek opis obravnavanega problema, (2) kratek opis vašega pristopa za reševanje tega problema in (3) (najbolj uspešen) rezultat ali prispevek magistrske naloge.
-
+\noindent
+V diplomskem delu je obravnavana Yonedova lema, ki velja za enega osrednjih izrekov teorije kategorij. Uvodni del definira osnovne pojme v teoriji kategorij, ki so kasneje uporabljeni za formulacijo in dokaz leme. Skozi besedilo je predstavljen tudi kategorični način razmišljanja, ki nam omogoča specifično situacijo, ki jo srečamo v matematiki, obravnavati bistveno bolj splošno, z uporabo kategoričnih metod.
+V zaključnem poglavju je predstavljena in dokazana Yonedova lema, ki nam poda način za obravnavo kategorije z obravnavo njene vložitve v kategorijo funktorjev. Predstavljenih je tudi nekaj primerov uporabe leme.
 \bigskip
 
 \noindent\textbf{Ključne besede:} \tkeywords.
@@ -326,10 +315,11 @@ Dober povzetek vključuje: (1) kratek opis obravnavanega problema, (2) kratek op
 
 \noindent\textbf{Author:} \tauthor
 \bigskip
-
 %\noindent\textbf{Abstract:} 
-\noindent This sample document presents an approach to typesetting your BSc thesis using \LaTeX. 
-A proper abstract should contain around 100 words which makes this one way too short.
+
+\noindent 
+The thesis discusses the Yoneda lemma, which is considered one of the central theorems in category theory. The introduction defines the basic concepts of category theory, which are later used to formulate and prove the lemma. Throughout the text there are examples of the categorical way of thinking, where we take a specific situation, that we encounter in mathematics and look at it in a more general setting. In the final chapter we describe and prove the Yoneda lemma, that presents a way of studying a category, by studying its inclusion into a category of functors. We show some use cases of the lemma.
+
 \bigskip
 
 \noindent\textbf{Keywords:} \tkeywordsEn.
@@ -385,7 +375,7 @@ Zbirko objektov kategorije včasih označujemo z $\mathrm{Obj}(\cat{C})$ (ali na
 \section{Primeri kategorij}
 
 \begin{primer}
-Osnovni primer kategorije, na katerega se lahko vedno sklicujemo, je kategorija množic in funkcij med njimi. Označimo jo s $\cat{Set}$. Za kategorijo se vedno najprej vprašamo: kaj so objekti in kaj so morfizmi? Pri $\cat{Sets}$ so objekti množice in morfizmi funkcije.
+Osnovni primer kategorije, na katerega se lahko vedno sklicujemo, je kategorija množic in funkcij med njimi. Označimo jo s $\cat{Set}$. Za kategorijo se vedno najprej vprašamo: kaj so objekti in kaj so morfizmi? Pri $\cat{Set}$ so objekti množice in morfizmi funkcije.
 Izpolnjena morata biti pogoja asociativnosti in enote.
 Kompozitum morfizmov je kompozitum funkcij, ki je asociativen, kar vemo iz teorije množic.
 Vlogo identitete igra identitetna funkcija, ki jo lahko vedno definiramo in zanjo velja $f \circ \mathrm{id}_A = f = \mathrm{id}_B \circ f$ za vsako funkcijo $f : A \to B$, kjer je $\mathrm{id}_A : A \to A$ definirana kot $\mathrm{id}_A(x) = x$ za vsak element $x \in A$.
@@ -443,7 +433,7 @@ Da bi preverili asociativnost, denimo, da imamo morfizme $Q:A \to B$, $R:B \to C
 \end{primer}
 
 \begin{primer}
-Kaj bi bil primer "`minimalistične"' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta, mora vsaka kategorija imeti najmanj toliko morfizmov, kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je 0. Ali je kategorija z 0 objekti in 0 morfizmi res kategorija? Za vsak objekt, ki jih ni, obstaja identiteta, in za vsaka dva kompatibilna morfizma, ki ju ni, obstaja njun kompozitum. To torej je kategorija. 
+Kaj bi bil primer "`minimalistične"' kategorije? Kategorije z majhnim številom objektov ali morfizmov. Ker mora za vsak objekt obstajati identiteta, mora vsaka kategorija imeti najmanj toliko morfizmov, kolikor je objektov. Najmanjše število objektov, ki jih lahko imamo je $0$. Ali je kategorija z $0$ objekti in $0$ morfizmi res kategorija? Za vsak objekt, ki jih ni, obstaja identiteta, in za vsaka dva kompatibilna morfizma, ki ju ni, obstaja njun kompozitum. To torej je kategorija. 
 
 Kaj pa kategorija z enim objektom? Imeti mora en objekt in najmanj en morfizem, namreč identiteto na tem objektu. To kategorijo, z enim samim morfizmom, pogosto označujemo z $\mathbf{1}$, ko je iz konteksta jasno, da gre za kategorijo. Kategorijo z dvema objektoma in enim ne-identitetnim morfizmom med objektoma označujemo z $\mathbf{2}$. Ti dve kategoriji lahko predstavimo z diagramoma:
 
@@ -508,7 +498,7 @@ $$g = 1_A \circ g = h \circ f \circ g = h \circ 1_B = h.$$
 Ker so inverzi enolični, lahko inverz morfizma $f$ upravičeno označujemo z $f^{-1}$.
 
 \begin{primer*}
-Izomorfizmi v kategoriji $\cat{Sets}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar obstaja enoličen inverz te funkcije, ki se komponira v identiteto. 
+Izomorfizmi v kategoriji $\cat{Set}$ ustrezajo ravno bijektivnim preslikavam, saj kot vemo iz teorije množic, ima funkcija inverz, ravno kadar obstaja enoličen inverz te funkcije, ki se komponira v identiteto. 
 \end{primer*}
 
 \begin{primer*}
@@ -534,7 +524,7 @@ Primer s funkcijami nam naravno porodi novo vprašanje, saj kot vemo, je funkcij
 Algebraično gledano to, da je morfizem $e$ epimorfizem, pomeni natanko to, da ga lahko pri kompoziciji krajšamo z desne: $fe = ge \implies f=g$. Obratno, če je morfizem $m$ monomorfizem, pomeni, da ga lahko krajšamo z leve: $mf = mg \implies f = g$.
 
 \begin{primer} \label{primer:mono v Set}
-Preverimo, da mono- in epi-morfizmi v $\cat{Sets}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da iz $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$, iz česar iz injektivnosti $f$ sledi $g(x) = h(x)$, za vsak $x$, torej $g = h$. 
+Preverimo, da mono- in epi-morfizmi v $\cat{Set}$ ustrezajo ravno injektivnim in surjektivnim funkcijam. Naj bo torej najprej $f : A \to B$ injektivna funkcija. Potem za vsaka $x,y \in A$ velja, da iz $f(x) = f(y)$ sledi $x = y$. Naj bosta sedaj $g,h : C \to A$ taki funkciji, da velja $f \circ g = f \circ h$. Torej za vsak $x \in C$ velja $f(g(x)) = f(h(x))$, iz česar iz injektivnosti $f$ sledi $g(x) = h(x)$, za vsak $x$, torej $g = h$. 
 Privzemimo sedaj, da je $f$ monomorfizem. Naj bo $1 = \{\star\}$ in naj bosta $x,y : 1 \to A$. Funkcije iz množice $1$ v $A$ predstavljajo ravno elemente množice $A$. Ker pa velja $f \circ x = f \circ y \implies x = y$ velja tudi, da za vsaka $x,y \in A$ velja $f(x) = f(y) \implies x = y$ in je $f$ res injektivna. Naj bo sedaj $f : A \rightarrow B$ surjektivna funkcija. Naj bosta $g,h : B \to C$ taki funkciji, da velja $g \circ f = h \circ f$. Torej za vsak $y \in B$ velja $g(y) = h(y)$, saj zaradi surjektivnosti lahko najdemo $x \in A$, za katerega velja $y = f(x)$. Torej je $f$ res epimorfizem. Naj bo zdaj $f : A \to B$ epimorfizem in naj bosta $g,h : B \to 2$ definirani z naslednjima predpisoma
 \[
 g(x)=
@@ -944,7 +934,7 @@ definirana na objektih kot $\pi_1(C,D) = C$ in $\pi_2(C,D) = D$, ter na morfizmi
 \end{primer}
 
 \section{Dualnost}
-Povejmo (za trenutek še brez dokaza) dve trditvi, ki nam opišeta in utemeljita pojem dualnosti v kategoriji.
+Povejmo (brez dokaza) dve trditvi, ki nam opišeta in utemeljita pojem dualnosti v kategoriji.
 
 \begin{trditev} \emph{(Formalna dualnost)}. 
 Za vsak stavek $\Sigma$, v jeziku teorije kategorij, če $\Sigma$ sledi iz aksiomov kategorij, potem sledi tudi njegov dualni stavek $\Sigma^*$.
@@ -955,7 +945,7 @@ Za vsako trditev $\Sigma$ o kategorijah, če $\Sigma$ drži za vse kategorije, p
 \end{trditev}
 
 Kar lahko potegnemo iz teh dveh trditev je, da za vsako trditev, ki jo dokažemo za poljubno kategorijo, "`zastonj"' dobimo še njeno dualno trditev, brez dodatnega dela. Tako bi lahko na primer pri dokazu, da so začetni in končni objekti določeni do izomorfizma natančno uporabili dejstvo, da je končni objekt dualni pojem začetnega objekta in naredili dokaz le za enega izmed njiju.
-Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij (na primer univerzalne lastnosti produkta) hkrati obravnavali tudi njen dual. V takem primeru dualni konstrukciji dodamo predpono "`ko-"'. To nas pripelje do naslednjega poglavja (definicije?).
+Ta ideja nam pove, da smo z obravnavanjem neke konstrukcije v teoriji kategorij (na primer univerzalne lastnosti produkta) hkrati obravnavali tudi njen dual. V takem primeru dualni konstrukciji dodamo predpono "`ko-"'. To nas pripelje do naslednje definicije.
 
 \subsection{Koprodukti}
 \begin{definicija}
@@ -1015,7 +1005,7 @@ Naj bo $\cat{C}$ taka kategorija, da je za vsaka objekta $A,B \in \cat{C}$ morfi
 $$\Hom_{\cat{C}}(A,B) := \set{f \in Arr(\cat{C}) \mid \dom(f) = A, \cod(f) = B}.$$
 \end{definicija}
 Če en objekt $A \in \cat{C}$ fiksiramo, dobimo funktor
-$$\Hom(A,-) : \cat{C} \to \cat{Sets},$$
+$$\Hom(A,-) : \cat{C} \to \cat{Set},$$
 ki se ga imenuje \emph{(kovariantni) predstavljivi funktor}. Njegovo delovanje na objektih in morfizmih je definirano kot:
 $$\Hom(A,-)(B) = \Hom(A,B)$$
 ter
@@ -1052,7 +1042,7 @@ $$\begin{tikzcd}
 A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B 
 \end{tikzcd}$$
 %
-Radi bi zožili domeno $A$ na takšno podmnožico, da se $f$ in $g$ na njej ujemata. Označimo to množico z $E = \set{x \in A \mid f(x) = g(x)} \subseteq A$ in vložitev $E$ v $A$ z $e$, ki je torej definirana s predpisom $e(x) = x$ za vse $x \in E$. To, da je $x \in A$ v $E$, lahko ekvivalentno povemo tako, da obstaja morfizem $\hat{x} : 1 \to A$,(ta vejica res tukaj?) za katerega je $f \circ \hat{x} = g \circ \hat{x}$. To pa prav tako pomeni, da obstaja $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz $E$. Situacijo lahko ponazorimo z naslednjim diagramom:
+Radi bi zožili domeno $A$ na takšno podmnožico, da se $f$ in $g$ na njej ujemata. Označimo to množico z $E = \set{x \in A \mid f(x) = g(x)} \subseteq A$ in vložitev $E$ v $A$ z $e$, ki je torej definirana s predpisom $e(x) = x$ za vse $x \in E$. To, da je $x \in A$ v $E$, lahko ekvivalentno povemo tako, da obstaja morfizem $\hat{x} : 1 \to A$, za katerega je $f \circ \hat{x} = g \circ \hat{x}$. To pa prav tako pomeni, da obstaja $\hat{x}' : 1 \to E$, da je $\hat{x} = e \circ \hat{x}' = \hat{x}'$, kajti taki so ravno vsi elementi iz $E$. Situacijo lahko ponazorimo z naslednjim diagramom:
 $$\begin{tikzcd}
 E \ar[r, "e"] & A \ar[r, shift left, "f"] \ar[r, shift right, "g"'] & B \\
 1 \ar[u, dashed, "\hat{x}'"] \ar[ur, "\hat{x}"']
@@ -1344,44 +1334,43 @@ $$c_1' = c_1 \circ \vartheta, \quad c_2' = c_2 \circ \vartheta.$$
 %
 \begin{definicija}
 \emph{Limita} nad diagramom $D : \cat{J} \to \cat{C}$ je končni objekt v kategoriji stožcev nad $D$. Limito diagrama označujemo kot
-$$\lim_{i \in \cat{J}}D_i,$$
-(mogoče rajši samo $\lim D$)
-skupaj z morfizmi $p_i : \lim D \to D_i$.
+$$\lim_{j \in \cat{J}}D_j,$$
+skupaj z morfizmi $p_i : \lim D_j \to D_i$.
 \end{definicija}
 %
-Če v celoti razpišemo univerzalno lastnost limite nad $D$ dobimo, da za vsak drug stožec $(C,c_i)$ v $\cat{Cone}(D)$, obstaja enoličen morfizem $u : C \to \lim D$ tako, da za vse $i \in \cat{J}$ velja $c_i = p_i \circ u$. To lahko vizualno predstavimo kot:
+Če v celoti razpišemo univerzalno lastnost limite nad $D$ dobimo, da za vsak drug stožec $(C,c_i)$ v $\cat{Cone}(D)$, obstaja enoličen morfizem $u : C \to \lim D_j$ tako, da za vse $i \in \cat{J}$ velja $c_i = p_i \circ u$. To lahko vizualno predstavimo kot:
 %
 $$\begin{tikzcd}
-C \ar[rr, dashed, "u"] \ar[drrr, pos=7/11, "c_j"'] \ar[dr, "c_i"'] & & \lim D \ar[dl, crossing over, pos=1/3, "p_i"'] \ar[dr, "p_j"] \\
+C \ar[rr, dashed, "u"] \ar[drrr, pos=7/11, "c_j"'] \ar[dr, "c_i"'] & & \lim D_j \ar[dl, crossing over, pos=1/3, "p_i"'] \ar[dr, "p_j"] \\
 & D_i \ar[rr, "D_\alpha"'] & & D_j
 \end{tikzcd}$$
 %
 Limito si lahko torej predstavljamo kot "`najbližji"' stožec nad diagramom $D$, kajti vsi drugi stožci se faktorizirajo skozi limito. 
 
 \begin{primer}
-Nadaljujmo s primerom za diagrame iz diskretne kategorije na dveh objektih, ki jo poimenujmo kot zgoraj z $\cat{J}$. Kaj je limita nad $D : \cat{J} \to \cat{C}$? To je tak objekt $\lim D$ z morfizmi $p_1 : \lim D \to D_1$, $p_2 : \lim D \to D_2$, da za vsak objekt $X$, opremljen z morfizmoma $x_1 : X \to D_1$, $x_2 : X \to D_2$, obstaja enoličen morfizem $u : X \to \lim D$, da naslednja trikotnika:
+Nadaljujmo s primerom za diagrame iz diskretne kategorije na dveh objektih, ki jo poimenujmo kot zgoraj z $\cat{J}$. Kaj je limita nad $D : \cat{J} \to \cat{C}$? To je tak objekt $\lim D_j$ z morfizmi $p_1 : \lim D_j \to D_1$, $p_2 : \lim D_j \to D_2$, da za vsak objekt $X$, opremljen z morfizmoma $x_1 : X \to D_1$, $x_2 : X \to D_2$, obstaja enoličen morfizem $u : X \to \lim D_j$, da naslednja trikotnika:
 %
 $$\begin{tikzcd}
 & X \ar[dl, "x_1"'] \ar[d, dashed, "u"] \ar[dr, "x_2"] & \\
-D_1 & \lim D \ar[l, "p_1"] \ar[r, "p_2"'] & D_2
+D_1 & \lim D_j \ar[l, "p_1"] \ar[r, "p_2"'] & D_2
 \end{tikzcd}$$
 komutirata. V tem diagramu pa lahko zagledamo ravno univerzalno lastnost produkta objektov $D_1$ in $D_2$. Torej kategorija $\cat{C}$ ima limite tipa $\cat{J}$ natanko takrat, ko ima dvojiške produkte.
 
 \end{primer}
 
 \begin{primer}
-Poskusimo še z enostavnejšo indeksno kategorijo. Naj bo $\cat{J}$ prazna kategorija, brez objektov in brez morfizmov. Potem obstaja natanko en diagram $D : \cat{J} \to \cat{C}$, ki nobenega objekta ne pošlje nikamor. Limita $\lim D$ nad tem diagramom je objekt brez dodatnih morfizmov tako, da za vsak drug objekt $C \in \cat{C}$ obstaja natanko en morfizem $u : C \to \lim D$ in nič dodatnega ne komutira. Ta limita je torej ravno \emph{končni objekt} v $\cat{C}$.
+Poskusimo še z enostavnejšo indeksno kategorijo. Naj bo $\cat{J}$ prazna kategorija, brez objektov in brez morfizmov. Potem obstaja natanko en diagram $D : \cat{J} \to \cat{C}$, ki nobenega objekta ne pošlje nikamor. Limita $\lim D_j$ nad tem diagramom je objekt brez dodatnih morfizmov tako, da za vsak drug objekt $C \in \cat{C}$ obstaja natanko en morfizem $u : C \to \lim D_j$ in nič dodatnega ne komutira. Ta limita je torej ravno \emph{končni objekt} v $\cat{C}$.
 \end{primer}
 Iz tega primera je razvidno tudi, da limita diagrama ne obstaja nujno v neki kategoriji, saj nima vsaka kategorija končnih objektov. Če za neko indeksno kategorijo obstaja limita za vsak diagram $D : \cat{J} \to \cat{C}$, pravimo, da $\cat{C}$ \emph{ima limite tipa} $\cat{J}$.
 
 \begin{primer}
-Naj bo $\cat{J}$ enaka kategoriji $\cat{1} = \set{\ast}$ z enim objektom in enim morfizmom. Stožec nad diagramom $D : \cat{1} \to \cat{C}$ je objekt $C$, skupaj z morfizmom $c : C \to D$. Limita nad D je objekt $\lim D$ z morfizmom $p : \lim D \to D$ tako, da za vsak drug stožec $(C, c)$ obstaja enoličen morfizem $u : C \to \lim D$, da trikotnik:
+Naj bo $\cat{J}$ enaka kategoriji $\cat{1} = \set{\ast}$ z enim objektom in enim morfizmom. Stožec nad diagramom $D : \cat{1} \to \cat{C}$ je objekt $C$, skupaj z morfizmom $c : C \to D$. Limita nad D je objekt $\lim D_j$ z morfizmom $p : \lim D_j \to D$ tako, da za vsak drug stožec $(C, c)$ obstaja enoličen morfizem $u : C \to \lim D_j$, da trikotnik:
 
 $$\begin{tikzcd}[column sep=small]
-C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D \ar[dl, "p"] \\
+C \ar[dr, "c"'] \ar[rr, dashed, "u"] & & \lim D_j \ar[dl, "p"] \\
 & D &
 \end{tikzcd}$$
-komutira. V ti situaciji lahko razpoznamo rezine $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D$ je končni objekt v ti kategoriji.
+komutira. V ti situaciji lahko razpoznamo rezine $\cat{C}/D$ nad objektom $D = D(\ast)$. Limita $\lim D_j$ je končni objekt v ti kategoriji.
 \end{primer}
 %
 Kot pri vseh primerih limit, ki smo jih spoznali do tukaj, velja trditev o enoličnosti, ki nam pove, da ko smo enkrat našli limito, smo že našli "`ta pravo"', saj je vsaka druga ti izomorfna.
@@ -1554,7 +1543,8 @@ Pogosta situacija, kjer srečamo naravne transformacije, je sledeča. Recimo, da
 Denimo, da ima $\cat{C}$ produkte. Za neke objekte $A,B,C \in \cat{C}$ si poglejmo produkta
 $$(A \times B) \times C \quad \text{in} \quad A \times (B \times C).$$
 Ne glede na izbiro objektov $A,B,C$ obstaja izomorfizem
-$$h : (A \times B) \times C \xrightarrow{\sim} A \times (B \times C).$$
+$$h : (A \times B) \times C \xrightarrow{\sim} A \times (B \times C),$$
+ki sledi iz univerzale lastnosti produkta, če do na obeh produktih uporabimo dvakrat.
 Kaj pa pomeni, da je ta izomorfizem neodvisen od izbranih objektov? Za vsak morfizem $f : A \to A'$ dobimo komutativen kvadrat:
 %
 $$ \begin{tikzcd}
@@ -1778,7 +1768,7 @@ Kategorija $\cat{Set}$ je kartezično zaprta.
 Eksponente v $\cat{Set}$ smo konstruirali v uvodu poglavja o eksponentih \autoref{poglavje:eksponenti}.
 \end{dokaz}
  
-\begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Sets}$ ohranja vse limite.
+\begin{trditev} Predstavljivi funktor $\Hom_{\bf{C}}(C,-): \bf{C} \to \bf{Set}$ ohranja vse limite.
 \end{trditev}
 
 To, da funktor $F : \cat{C} \to \cat{D}$ ohranja limite, pomeni, da če imamo v $\cat{C}$ limito $\lim_{j \in \cat{J}}D_j$
@@ -1790,7 +1780,7 @@ Po trditvi \ref{konstrukcija limit} je potrebno pokazati le, da $\Hom$ funktor o
 \begin{itemize}
 \item Za končni objekt $1$ v $\cat{C}$ je 
 $$\Hom(C,1) \cong \set{*} \cong 1$$
-tudi končni objekt v $\cat{Set}.$(ali je tukaj res pika, kaj se potem naslednja točka začne z veliko začetnico?)
+tudi končni objekt v $\cat{Set}.$
 \item Za produkt $\prod_{i \in I} X_i$ v $\cat{C}$ definiramo morfizem
 $$h : \Hom(C, \prod_{i \in I} X_i) \to \prod_{i \in I} \Hom(C, X_i)$$
 kot $h(f : C \to \prod_i X_i) = \fprod{\pi_i \circ f}$ za vse $i \in I$, ki po univerzalni lastnosti produkta določa enoličen izomorfizem.
@@ -1833,7 +1823,7 @@ zato definiramo kot $h(f) = \widetilde{f}$, $h^{-1}(g) = \overline{g}$.
 
 V tem poglavju si bomo bolj podrobno pogledali posebne funktorske kategorije oblike:
 $$\predsnop{C},$$
-kjer je $\cat{C}$ lokalno majhna kategorija. V taki kategoriji so objekti funktorji 
+imenovane tudi \emph{predsnopi nad }$\cat{C}$, kjer je $\cat{C}$ lokalno majhna kategorija. V taki kategoriji so objekti funktorji 
 $$F,G : \cat{C} \to \cat{Set}$$
 in morfizmi so naravne transformacije med njimi
 $$\alpha, \beta : F \to G.$$ 
@@ -1845,7 +1835,7 @@ funkcija v $\cat{Set}$. Izkaže se, da je to funktor
 $$ ev_C : \predsnop{C} \to \cat{Set}.$$
 
 Na take funktorske kategorije lahko gledamo še na drugačen način.
-Če se spomnimo primera \ref{grafi} smo videli, da je za kategorijo $\Gamma$ funktorska kategorija $\cat{Set}^\Gamma$ enaka usmerjenim grafom. To nakazuje, da si za splošno kategorijo $\cat{C}$, kategorijo
+Če se spomnimo primera \ref{grafi}, smo videli, da je za kategorijo $\Gamma$ funktorska kategorija $\cat{Set}^\Gamma$ izomorfna kategoriji usmerjenih grafov. To nakazuje, da si za splošno kategorijo $\cat{C}$, kategorijo
 $$\cat{Set}^\cat{C}$$
 lahko predstavljamo kot posplošeno kategorijo strukturiranih množic in morfizmov, ki ohranjajo strukturo med njimi.
 
@@ -1854,11 +1844,11 @@ lahko predstavljamo kot posplošeno kategorijo strukturiranih množic in morfizm
 
 V svetu matematike poznamo mnogo primerov, ko delamo z neko matematično strukturo in v njej rešujemo specifičen problem, kot na primer iskanje ničel polinomov v realnih številih. Kmalu lahko ugotovimo, da obstajajo problemi, ki so v okvirjih, ki smo si jih zastavili, nerešljivi. Naj se trudimo kolikor hočemo, v realnih številih ne moremo najti ničel polinoma $x^2 + 1$.
 Včasih pa je mogoče strukturo v kateri problem rešujemo razširiti do strukture, kjer problem postane rešljiv.
-Tako v primeru realnih števil ugotovimo, da če jih razširimo do kompleksnih števil, lahko naenkrat najdemo(preveč neformalno ?) ničle vsakega polinoma (vsaj v principu). Na analogen način bomo to storili s kategorijami, kjer bomo vzeli neko kategorijo $\cat{C}$, ki mogoče ne bo imela vseh lastnosti, ki bi si jih želeli, in to kategorijo vložili v "`lepšo"' kategorijo, na način, ki spominja na razširitev realnih v kompleksna števila. 
+Tako v primeru realnih števil ugotovimo, da če jih razširimo do kompleksnih števil, lahko naenkrat najdemo ničle vsakega polinoma (vsaj v principu). Na analogen način bomo to storili s kategorijami, kjer bomo vzeli neko kategorijo $\cat{C}$, ki mogoče ne bo imela vseh lastnosti, ki bi si jih želeli, in to kategorijo vložili v "`lepšo"' kategorijo, na način, ki spominja na razširitev realnih v kompleksna števila. 
 
 
 \begin{definicija} \emph{Yonedova vložitev} je funktor: 
-$$y : \bf{C} \to \bf{Sets}^{\bf{C}^{op}},$$
+$$y : \bf{C} \to \bf{Set}^{\bf{C}^{op}},$$
 ki je na objektih $C \in \cat{C}$ definiran kot:
 $$y(C) := \Hom_{\cat{C}}(-, C) : \cat{C}^{op} \to \cat{Set}$$ 
 in na morfizmih $f : C \to D$
@@ -2162,7 +2152,7 @@ izomorfizmi v $\cat{Set}$. Zadošča torej pokazati, da to velja za vse točke, 
 &\cong \Hom(\colim A_j, X^B) \\
 &\cong \Hom((\colim A_j) \times B, X).
 \end{align*}
-Ti izomorfizmi so jasno naravni v $X$, torej lema sledi iz Yonedove leme.(mogoče ni tako jasno ?)
+Ti izomorfizmi so jasno naravni v $X$, torej lema sledi iz Yonedove leme.
 \end{dokaz}
 
 
@@ -2272,12 +2262,12 @@ Po trditvi \ref{density theorem} vemo, da lahko vsak tak $X$ izrazimo kot kolimi
 $$X \cong \underset{x \in X_n}{\colim}\Delta^n$$
 
 
-Podajmo sedaj primer simplicialne množice. Naj bo $\cat{C}$ poljubna majhna kategorija. \emph{Pot dolžine $n$} v kategoriji $\cat{C}$ je zaporedje morfizmov $f_1, \ldots, f_n$, ki jih lahko komponiramo, torej velja $\cod(f_i) = \dom(f_{i+1})$ za vse $i = 1, \ldots, n-1$. 
+Podajmo sedaj primer simplicialne množice. Naj bo $\cat{C}$ poljubna majhna kategorija. \emph{Pot dolžine }$n$ v kategoriji $\cat{C}$ je zaporedje morfizmov $f_1, \ldots, f_n$, ki jih lahko komponiramo, torej velja $\cod(f_i) = \dom(f_{i+1})$ za vse $i = 1, \ldots, n-1$. 
 Definirajmo \emph{živec kategorije} $\cat{C}$ kot simplicialno množico $N(\cat{C})$, na sledeči način:
 $$N(C)_n :=  \text{množica vseh poti dolžine} \ n \ \text{v} \ \cat{C},$$
 kjer posebej definiramo
 $$N(C)_0 := \set{\text{objekti v \cat{C}}}$$
-Degeneracije $s_i:N(\cat{C})_n \to N(\cat{C})_{n+1}$ delujejo tako, da vzamejo niz n morfizmov
+Degeneracije $s_i:N(\cat{C})_n \to N(\cat{C})_{n+1}$ delujejo tako, da vzamejo niz $n$ morfizmov
 $$ c_0 \rightarrow c_1 \rightarrow \ldots \rightarrow c_i \rightarrow \ldots \rightarrow c_n$$
 in na $i$-tem mestu vstavijo identiteto na $c_i$. Lice $d_i : N(\cat{C})_n \to N(\cat{C})_{n-1}$ komponira $i$-ti in $i+1$-ti morfizem, če je $0 < i < n$, oziroma izpusti prvi ali zadnji morfizem za $i = 0$ ali $i = n$.
 Potrebno bi bilo preveriti, da na ta način definirane funkcije res zadoščajo relacijam za simplicialno množico. Ker je bil namen tega primera ilustracija v kakšnih situacija lahko nastopa Yonedova lema, tega tukaj ne bomo storili.
